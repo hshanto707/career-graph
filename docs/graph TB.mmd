@@ -1,0 +1,62 @@
+graph TB
+    subgraph CLIENT["Frontend — React/TypeScript (Vite)"]
+        UI_LOGIN[Login Page]
+        UI_DASH[Dashboard]
+        UI_PROFILE[Profile & Edit]
+        UI_JOBS[Job Explorer]
+        UI_SKILLS[Skill Analysis]
+        UI_REC[Recommendations]
+    end
+
+    subgraph API["Backend — FastAPI (Python 3.11)"]
+        AUTH_R["/auth router"]
+        PROFILE_R["/profile router"]
+        JOBS_R["/jobs router"]
+        SKILLS_R["/skills router"]
+        REC_R["/recommendations router"]
+        MARKET_R["/market router"]
+        GAP_R["/gap-analysis router"]
+
+        subgraph SERVICES["Service Layer"]
+            GRAPH_SVC[Graph Service\nCypher Queries]
+            AGENT_SVC[Agent Service\nClaude Orchestration]
+            REC_SVC[Recommendation Service]
+            GAP_SVC[Gap Analysis Service]
+        end
+    end
+
+    subgraph DATA["Data Layer"]
+        PG[(PostgreSQL\nUsers & Profiles)]
+        NEO4J[(Neo4j\nKnowledge Graph)]
+    end
+
+    subgraph AI["AI Layer"]
+        CLAUDE[Claude Sonnet API\nAnthropic]
+    end
+
+    subgraph ETL["ETL Pipeline"]
+        CSV[jobs.csv\n50 job postings]
+        LOAD_JOBS[load_jobs.py]
+        SEED_DEMO[seed_demo_data.py]
+    end
+
+    CLIENT -->|REST + JWT Bearer| API
+    AUTH_R --> PG
+    PROFILE_R --> PG
+    PROFILE_R --> GRAPH_SVC
+    JOBS_R --> GRAPH_SVC
+    SKILLS_R --> GRAPH_SVC
+    REC_R --> REC_SVC
+    GAP_R --> GAP_SVC
+    MARKET_R --> GRAPH_SVC
+
+    GRAPH_SVC --> NEO4J
+    REC_SVC --> GRAPH_SVC
+    REC_SVC --> AGENT_SVC
+    GAP_SVC --> GRAPH_SVC
+    GAP_SVC --> AGENT_SVC
+    AGENT_SVC --> CLAUDE
+
+    CSV --> LOAD_JOBS --> NEO4J
+    SEED_DEMO --> PG
+    SEED_DEMO --> NEO4J
