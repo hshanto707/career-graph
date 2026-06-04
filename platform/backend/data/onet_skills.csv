@@ -1,0 +1,81 @@
+id,name,category,description
+SKILL_001,Python,Programming Languages,A high-level general-purpose programming language widely used in web development, data science, and automation.
+SKILL_002,JavaScript,Programming Languages,A dynamic scripting language primarily used for building interactive web applications on both client and server sides.
+SKILL_003,TypeScript,Programming Languages,A statically typed superset of JavaScript that compiles to plain JavaScript and improves developer productivity.
+SKILL_004,Java,Programming Languages,A strongly typed object-oriented language used extensively in enterprise applications and Android development.
+SKILL_005,Go,Programming Languages,An open-source compiled language designed by Google for high-performance networked and cloud applications.
+SKILL_006,Rust,Programming Languages,A systems programming language focused on safety, concurrency, and performance without a garbage collector.
+SKILL_007,C++,Programming Languages,A general-purpose language with low-level memory manipulation capabilities widely used in systems and game development.
+SKILL_008,C#,Programming Languages,A Microsoft-developed object-oriented language primarily used with the .NET framework for Windows and web applications.
+SKILL_009,PHP,Programming Languages,A server-side scripting language designed for web development and widely powering content management systems.
+SKILL_010,Ruby,Programming Languages,A dynamic object-oriented language known for its elegant syntax and the Ruby on Rails web framework.
+SKILL_011,Kotlin,Programming Languages,A modern statically typed language that runs on the JVM and is the preferred language for Android development.
+SKILL_012,Swift,Programming Languages,Apple's compiled language for building iOS, macOS, and other Apple platform applications.
+SKILL_013,React,Web Frontend,A JavaScript library for building component-based user interfaces developed and maintained by Meta.
+SKILL_014,Vue.js,Web Frontend,A progressive JavaScript framework for building user interfaces with a gentle learning curve and flexible architecture.
+SKILL_015,Angular,Web Frontend,A TypeScript-based front-end web application framework developed by Google for building single-page applications.
+SKILL_016,Next.js,Web Frontend,A React-based framework with server-side rendering, static site generation, and full-stack capabilities.
+SKILL_017,HTML,Web Frontend,The standard markup language for structuring and presenting content on the World Wide Web.
+SKILL_018,CSS,Web Frontend,A style sheet language used to describe the presentation and layout of HTML documents.
+SKILL_019,TailwindCSS,Web Frontend,A utility-first CSS framework that allows rapid UI development through low-level utility classes.
+SKILL_020,Node.js,Web Backend,A JavaScript runtime built on Chrome's V8 engine for building scalable server-side and network applications.
+SKILL_021,Express.js,Web Backend,A minimal and flexible Node.js web application framework providing a robust set of features for web and API development.
+SKILL_022,FastAPI,Web Backend,A modern high-performance Python web framework for building APIs with automatic interactive documentation.
+SKILL_023,Django,Web Backend,A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+SKILL_024,Flask,Web Backend,A lightweight Python WSGI web application micro-framework designed to keep the core simple and extensible.
+SKILL_025,Spring Boot,Web Backend,An opinionated Java framework that simplifies building production-ready Spring-based applications.
+SKILL_026,.NET,Web Backend,Microsoft's developer platform for building web, desktop, cloud, mobile, and gaming applications.
+SKILL_027,PostgreSQL,Databases,A powerful open-source object-relational database system known for its reliability, robustness, and performance.
+SKILL_028,MySQL,Databases,The world's most popular open-source relational database management system used in countless web applications.
+SKILL_029,MongoDB,Databases,A document-oriented NoSQL database that stores data in flexible JSON-like documents for modern applications.
+SKILL_030,Redis,Databases,An in-memory data structure store used as a database, cache, message broker, and streaming engine.
+SKILL_031,Elasticsearch,Databases,A distributed search and analytics engine built on Apache Lucene for full-text search and log analytics.
+SKILL_032,Neo4j,Databases,A native graph database management system designed to store, query, and manage highly connected data.
+SKILL_033,SQL Server,Databases,Microsoft's relational database management system for enterprise data storage and business intelligence workloads.
+SKILL_034,AWS,Cloud & DevOps,Amazon Web Services is the world's most comprehensive cloud platform offering 200+ services globally.
+SKILL_035,Google Cloud Platform,Cloud & DevOps,Google's suite of cloud computing services for building, deploying, and scaling applications on Google infrastructure.
+SKILL_036,Microsoft Azure,Cloud & DevOps,Microsoft's cloud computing platform offering a broad range of services including compute, analytics, and storage.
+SKILL_037,Docker,Cloud & DevOps,An open platform for developing, shipping, and running applications in lightweight portable containers.
+SKILL_038,Kubernetes,Cloud & DevOps,An open-source container orchestration system for automating deployment, scaling, and management of containerized apps.
+SKILL_039,CI/CD,Cloud & DevOps,Continuous Integration and Continuous Deployment practices that automate the software build, test, and release pipeline.
+SKILL_040,Terraform,Cloud & DevOps,An infrastructure-as-code tool for building, changing, and versioning infrastructure safely and efficiently.
+SKILL_041,Linux,Cloud & DevOps,An open-source Unix-like operating system kernel widely used in servers, cloud, and embedded systems.
+SKILL_042,Ansible,Cloud & DevOps,An open-source automation tool for configuration management, application deployment, and task automation.
+SKILL_043,Pandas,Data Science,A fast, powerful, and flexible Python data analysis and manipulation library built on top of NumPy.
+SKILL_044,NumPy,Data Science,The fundamental package for scientific computing in Python providing multi-dimensional array support.
+SKILL_045,scikit-learn,Data Science,A free Python machine learning library featuring classification, regression, clustering, and dimensionality reduction.
+SKILL_046,TensorFlow,Data Science,An end-to-end open-source machine learning platform developed by Google for building and deploying ML models.
+SKILL_047,PyTorch,Data Science,A dynamic deep learning framework developed by Meta widely used in research and production ML systems.
+SKILL_048,Jupyter Notebook,Data Science,An open-source web application for creating and sharing documents containing live code, equations, and visualizations.
+SKILL_049,Data Visualization,Data Science,The graphical representation of data and information to communicate insights clearly through charts and graphs.
+SKILL_050,Machine Learning,AI/ML,A field of AI enabling systems to learn from data and improve their performance without being explicitly programmed.
+SKILL_051,Deep Learning,AI/ML,A subset of machine learning using multi-layered neural networks to learn representations from raw data.
+SKILL_052,NLP,AI/ML,Natural Language Processing is a branch of AI concerned with giving computers the ability to understand text and speech.
+SKILL_053,Computer Vision,AI/ML,A field of AI that enables machines to derive meaningful information from images, videos, and visual inputs.
+SKILL_054,Large Language Models,AI/ML,Transformer-based neural networks trained on vast text corpora capable of generating and understanding human language.
+SKILL_055,Generative AI,AI/ML,A class of AI models that can generate new content including text, images, audio, and code from learned patterns.
+SKILL_056,Microservices,Architecture,An architectural style that structures an application as a collection of small independently deployable services.
+SKILL_057,REST APIs,Architecture,Representational State Transfer APIs are a standard interface for web services using HTTP methods and resources.
+SKILL_058,GraphQL,Architecture,A query language for APIs and a runtime for fulfilling those queries with your existing data.
+SKILL_059,gRPC,Architecture,A high-performance open-source RPC framework using Protocol Buffers for inter-service communication.
+SKILL_060,System Design,Architecture,The process of defining architecture, components, modules, and interfaces of a system to satisfy requirements.
+SKILL_061,Distributed Systems,Architecture,Systems whose components are located on networked computers communicating and coordinating to achieve a common goal.
+SKILL_062,Git,Tools,A distributed version control system for tracking changes in source code during software development.
+SKILL_063,GitHub,Tools,A cloud-based platform for hosting Git repositories with collaboration features like pull requests and issues.
+SKILL_064,Jira,Tools,A project management and issue tracking tool widely used by agile software development teams.
+SKILL_065,Agile/Scrum,Tools,An iterative project management methodology that organizes work in short sprints with regular feedback cycles.
+SKILL_066,Communication,Soft Skills,The ability to convey information effectively and efficiently through verbal, written, and non-verbal channels.
+SKILL_067,Problem Solving,Soft Skills,The capacity to identify issues, analyze root causes, and develop effective solutions in a systematic manner.
+SKILL_068,Teamwork,Soft Skills,The ability to collaborate effectively with colleagues to achieve shared goals and deliver results together.
+SKILL_069,Leadership,Soft Skills,The ability to guide, motivate, and inspire individuals and teams toward achieving organizational objectives.
+SKILL_070,Apache Kafka,Cloud & DevOps,A distributed event streaming platform used for high-performance data pipelines and streaming analytics.
+SKILL_071,Apache Spark,Data Science,A unified analytics engine for large-scale data processing with built-in modules for streaming and machine learning.
+SKILL_072,ETL/ELT,Data Science,Extract, Transform, Load processes for moving and transforming data between source systems and data warehouses.
+SKILL_073,Tableau,Data Science,A visual analytics platform that helps people see and understand data through interactive dashboards.
+SKILL_074,Power BI,Data Science,Microsoft's business analytics tool for creating interactive reports and dashboards from diverse data sources.
+SKILL_075,Data Warehousing,Data Science,The process of collecting and managing data from varied sources to provide meaningful business insights.
+SKILL_076,Retrieval-Augmented Generation,AI/ML,A technique combining information retrieval with generative AI to produce accurate and grounded responses.
+SKILL_077,Vector Databases,AI/ML,Databases optimized for storing and querying high-dimensional vector embeddings used in AI applications.
+SKILL_078,Prompt Engineering,AI/ML,The practice of designing and optimizing input prompts to guide large language models toward desired outputs.
+SKILL_079,Bash,Cloud & DevOps,A Unix shell and command language used for scripting automation tasks and system administration.
+SKILL_080,NoSQL,Databases,A category of non-relational databases designed to handle unstructured data at massive scale with flexible schemas.
