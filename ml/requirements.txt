@@ -1,0 +1,31 @@
+# ml/requirements.txt — Custom AI Model (GNN link prediction) dependencies.
+#
+# Deliberately kept SEPARATE from backend/requirements.txt: the core FastAPI
+# backend must run (including the graceful GNN-unavailable fallback path in
+# app/engine/algorithmic/gnn_recommendation_agent.py) without torch/PyTorch
+# Geometric installed at all. Only install this file when training or
+# evaluating the GNN, or when you want app/engine/algorithmic/
+# gnn_recommendation_agent.py to actually score edges instead of falling
+# back to the algorithmic agents.
+#
+# Install:
+#   python3 -m venv ml/.venv && source ml/.venv/bin/activate
+#   pip install -r ml/requirements.txt
+#   # also needed because export_graph.py reuses backend/app's ingestion
+#   # pipeline + tests/fakes.py FakeGraphService directly (no live Neo4j):
+#   pip install -r backend/requirements.txt
+#
+# See docs/gnn-model.md for exact run steps and reported results.
+
+torch==2.13.0
+torch_geometric==2.8.0
+scikit-learn==1.9.0
+
+# transitively required because export_graph.py / graph_build.py import
+# backend/app's IngestionAgent, NormalizationAgent, and seed_demo_data
+# modules directly rather than re-implementing CSV parsing / synonym
+# resolution:
+rapidfuzz==3.11.0
+neo4j==5.27.0
+pydantic==2.10.4
+pydantic-settings==2.7.1

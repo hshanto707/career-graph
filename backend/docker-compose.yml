@@ -1,9 +1,13 @@
 version: "3.9"
 
+# Self-contained compose file for the backend/ scaffold: Postgres + Neo4j +
+# the FastAPI service, plus an optional local Ollama LLM provider.
+# Bring the whole stack up with: docker compose up -d
+
 services:
   postgres:
     image: postgres:15
-    container_name: careergraph_postgres
+    container_name: careergraph_backend_postgres
     environment:
       POSTGRES_USER: careergraph
       POSTGRES_PASSWORD: careergraph
@@ -22,20 +26,15 @@ services:
 
   neo4j:
     image: neo4j:5
-    container_name: careergraph_neo4j
+    container_name: careergraph_backend_neo4j
     environment:
       NEO4J_AUTH: neo4j/careergraph
-      NEO4J_PLUGINS: '["apoc"]'
-      NEO4J_dbms_security_procedures_unrestricted: apoc.*
-      NEO4J_dbms_memory_heap_initial__size: 512m
-      NEO4J_dbms_memory_heap_max__size: 1G
     ports:
       - "7474:7474"
       - "7687:7687"
     volumes:
       - neo4j_data:/data
       - neo4j_logs:/logs
-      - neo4j_plugins:/plugins
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
       interval: 15s
@@ -44,27 +43,27 @@ services:
       start_period: 30s
     restart: unless-stopped
 
-  api:
+  backend:
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile
-    container_name: careergraph_api
+    container_name: careergraph_backend_api
     environment:
       DATABASE_URL: postgresql+psycopg2://careergraph:careergraph@postgres:5432/careergraph
       NEO4J_URI: bolt://neo4j:7687
       NEO4J_USER: neo4j
       NEO4J_PASSWORD: careergraph
-      JWT_SECRET: ${JWT_SECRET:-change-me-in-production-use-256-bit-key}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      JWT_SECRET: ${JWT_SECRET:-change-me-to-a-real-256-bit-secret}
       LLM_PROVIDER: ${LLM_PROVIDER:-none}
       LLM_MODEL: ${LLM_MODEL:-claude-sonnet-4-6}
-      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OLLAMA_BASE_URL: http://ollama:11434
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - .:/app
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       postgres:
@@ -73,21 +72,10 @@ services:
         condition: service_healthy
     restart: unless-stopped
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: careergraph_frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - api
-    restart: unless-stopped
-
   # Optional local LLM provider. Only started with: docker compose --profile ollama up
   ollama:
     image: ollama/ollama:latest
-    container_name: careergraph_ollama
+    container_name: careergraph_backend_ollama
     profiles: ["ollama"]
     ports:
       - "11434:11434"
@@ -99,5 +87,4 @@ volumes:
   postgres_data:
   neo4j_data:
   neo4j_logs:
-  neo4j_plugins:
   ollama_data:

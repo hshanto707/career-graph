@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 168 80% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 215 25% 25%;
+
+    --muted: 210 15% 96%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 168 80% 95%;
+    --accent-foreground: 168 80% 25%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 168 80% 32%;
+
+    --radius: 0.5rem;
+
+    /* Custom semantic tokens */
+    --success: 142 72% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    --surface: 210 20% 98%;
+    --surface-elevated: 0 0% 100%;
+
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 215 25% 25%;
+    --sidebar-primary: 168 80% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 168 80% 95%;
+    --sidebar-accent-foreground: 168 80% 25%;
+    --sidebar-border: 214 20% 90%;
+    --sidebar-ring: 168 80% 32%;
+  }
+
+  .dark {
+    --background: 215 25% 9%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 168 72% 45%;
+    --primary-foreground: 215 25% 9%;
+
+    --secondary: 215 20% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 215 15% 60%;
+
+    --accent: 168 50% 15%;
+    --accent-foreground: 168 72% 65%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 20%;
+    --input: 215 20% 20%;
+    --ring: 168 72% 45%;
+
+    --success: 142 60% 45%;
+    --warning: 38 80% 55%;
+    --info: 199 75% 55%;
+
+    --surface: 215 25% 11%;
+    --surface-elevated: 215 25% 14%;
+
+    --sidebar-background: 215 25% 11%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 168 72% 45%;
+    --sidebar-primary-foreground: 215 25% 9%;
+    --sidebar-accent: 168 50% 15%;
+    --sidebar-accent-foreground: 168 72% 65%;
+    --sidebar-border: 215 20% 20%;
+    --sidebar-ring: 168 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-foreground;
+  }
+}
+
+@layer components {
+  .stat-card {
+    @apply bg-card rounded-lg border border-border p-4 md:p-6 transition-colors;
+  }
+
+  .stat-value {
+    @apply text-2xl md:text-3xl font-bold text-foreground;
+  }
+
+  .stat-label {
+    @apply text-xs md:text-sm font-medium text-muted-foreground;
+  }
+
+  .skill-tag {
+    @apply inline-flex items-center px-2.5 py-1 md:px-3 rounded-full text-xs md:text-sm font-medium bg-accent text-accent-foreground;
+  }
+
+  .skill-tag-missing {
+    @apply inline-flex items-center px-2.5 py-1 md:px-3 rounded-full text-xs md:text-sm font-medium bg-destructive/10 text-destructive;
+  }
+
+  .match-score {
+    @apply inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full text-xs md:text-sm font-bold;
+  }
+
+  .match-score-high {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .match-score-medium {
+    @apply bg-warning/10 text-warning;
+  }
+
+  .match-score-low {
+    @apply bg-destructive/10 text-destructive;
+  }
+
+  .section-title {
+    @apply text-base md:text-lg font-semibold text-foreground mb-3 md:mb-4;
+  }
+
+  .page-title {
+    @apply text-xl md:text-2xl font-bold text-foreground;
+  }
+
+  .page-subtitle {
+    @apply text-sm md:text-base text-muted-foreground mt-1;
+  }
+}

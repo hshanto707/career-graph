@@ -1,0 +1,519 @@
+skill_name,category
+Python,Programming Languages
+JavaScript,Programming Languages
+TypeScript,Programming Languages
+Java,Programming Languages
+C++,Programming Languages
+C#,Programming Languages
+Go,Programming Languages
+Rust,Programming Languages
+Ruby,Programming Languages
+PHP,Programming Languages
+Kotlin,Programming Languages
+Swift,Programming Languages
+Scala,Programming Languages
+R,Programming Languages
+MATLAB,Programming Languages
+Perl,Programming Languages
+Shell Scripting,Programming Languages
+Dart,Programming Languages
+Elixir,Programming Languages
+Haskell,Programming Languages
+React,Web Frameworks
+Angular,Web Frameworks
+Vue.js,Web Frameworks
+Node.js,Web Frameworks
+Express.js,Web Frameworks
+Django,Web Frameworks
+Flask,Web Frameworks
+FastAPI,Web Frameworks
+Spring Boot,Web Frameworks
+Ruby on Rails,Web Frameworks
+ASP.NET,Web Frameworks
+Next.js,Web Frameworks
+Svelte,Web Frameworks
+Laravel,Web Frameworks
+Nuxt.js,Web Frameworks
+PostgreSQL,Databases
+MySQL,Databases
+MongoDB,Databases
+Redis,Databases
+SQLite,Databases
+Microsoft SQL Server,Databases
+Oracle Database,Databases
+Cassandra,Databases
+Neo4j,Databases
+Elasticsearch,Databases
+DynamoDB,Databases
+MariaDB,Databases
+CockroachDB,Databases
+Firebase,Databases
+Amazon Web Services,Cloud & DevOps
+Microsoft Azure,Cloud & DevOps
+Google Cloud Platform,Cloud & DevOps
+Docker,Cloud & DevOps
+Kubernetes,Cloud & DevOps
+Terraform,Cloud & DevOps
+Jenkins,Cloud & DevOps
+GitHub Actions,Cloud & DevOps
+Ansible,Cloud & DevOps
+CI/CD Pipelines,Cloud & DevOps
+Prometheus,Cloud & DevOps
+Grafana,Cloud & DevOps
+Helm,Cloud & DevOps
+Nginx,Cloud & DevOps
+Linux Administration,Cloud & DevOps
+Machine Learning,Data & Machine Learning
+Deep Learning,Data & Machine Learning
+Natural Language Processing,Data & Machine Learning
+Computer Vision,Data & Machine Learning
+Data Analysis,Data & Machine Learning
+Data Visualization,Data & Machine Learning
+TensorFlow,Data & Machine Learning
+PyTorch,Data & Machine Learning
+Scikit-learn,Data & Machine Learning
+Pandas,Data & Machine Learning
+NumPy,Data & Machine Learning
+Apache Spark,Data & Machine Learning
+Apache Kafka,Data & Machine Learning
+ETL Pipelines,Data & Machine Learning
+Statistics,Data & Machine Learning
+SQL,Data & Machine Learning
+Data Warehousing,Data & Machine Learning
+Tableau,Data & Machine Learning
+Power BI,Data & Machine Learning
+A/B Testing,Data & Machine Learning
+iOS Development,Mobile Development
+Android Development,Mobile Development
+React Native,Mobile Development
+Flutter,Mobile Development
+SwiftUI,Mobile Development
+Jetpack Compose,Mobile Development
+UI Design,Design
+UX Research,Design
+Figma,Design
+Adobe Photoshop,Design
+Adobe Illustrator,Design
+Wireframing,Design
+Prototyping,Design
+Design Systems,Design
+Sketch,Design
+Agile Methodology,Project & Product
+Scrum,Project & Product
+Kanban,Project & Product
+Product Management,Project & Product
+Jira,Project & Product
+Stakeholder Management,Project & Product
+Roadmap Planning,Project & Product
+Requirements Gathering,Project & Product
+Unit Testing,Quality & Testing
+Test Automation,Quality & Testing
+Selenium,Quality & Testing
+Cypress,Quality & Testing
+Pytest,Quality & Testing
+Jest,Quality & Testing
+Quality Assurance,Quality & Testing
+Performance Testing,Quality & Testing
+Application Security,Security
+Penetration Testing,Security
+Network Security,Security
+Identity and Access Management,Security
+Cryptography,Security
+OWASP,Security
+Communication,Soft Skills
+Team Leadership,Soft Skills
+Problem Solving,Soft Skills
+Technical Writing,Soft Skills
+Mentoring,Soft Skills
+Cross-functional Collaboration,Soft Skills
+Time Management,Soft Skills
+Critical Thinking,Soft Skills
+Business Analysis,Business & Analytics
+Financial Modeling,Business & Analytics
+Market Research,Business & Analytics
+Salesforce,Business & Analytics
+Excel,Business & Analytics
+Google Analytics,Business & Analytics
+SEO,Business & Analytics
+Digital Marketing,Business & Analytics
+Content Strategy,Business & Analytics
+C,Programming Languages
+Objective-C,Programming Languages
+Groovy,Programming Languages
+Lua,Programming Languages
+Clojure,Programming Languages
+F#,Programming Languages
+Julia,Programming Languages
+Assembly,Programming Languages
+COBOL,Programming Languages
+Fortran,Programming Languages
+Visual Basic .NET,Programming Languages
+PL/SQL,Programming Languages
+Bash,Programming Languages
+PowerShell,Programming Languages
+Solidity,Programming Languages
+Zig,Programming Languages
+Erlang,Programming Languages
+OCaml,Programming Languages
+Crystal,Programming Languages
+Nim,Programming Languages
+HTML,Frontend
+CSS,Frontend
+Sass,Frontend
+Less,Frontend
+Tailwind CSS,Frontend
+Bootstrap,Frontend
+Webpack,Frontend
+Vite,Frontend
+Redux,Frontend
+MobX,Frontend
+jQuery,Frontend
+D3.js,Frontend
+Three.js,Frontend
+GraphQL Client (Apollo),Frontend
+Web Components,Frontend
+Progressive Web Apps,Frontend
+Responsive Design,Frontend
+Cross-browser Compatibility,Frontend
+Storybook,Frontend
+WebAssembly,Frontend
+Accessibility (WCAG),Frontend
+Material UI,Frontend
+Chakra UI,Frontend
+Ember.js,Frontend
+Backbone.js,Frontend
+GraphQL,Backend & Frameworks
+gRPC,Backend & Frameworks
+REST API Design,Backend & Frameworks
+Microservices Architecture,Backend & Frameworks
+Serverless Architecture,Backend & Frameworks
+Message Queues (RabbitMQ),Backend & Frameworks
+NestJS,Backend & Frameworks
+Koa.js,Backend & Frameworks
+Gin (Go),Backend & Frameworks
+Fiber (Go),Backend & Frameworks
+Actix (Rust),Backend & Frameworks
+Phoenix (Elixir),Backend & Frameworks
+Symfony,Backend & Frameworks
+CodeIgniter,Backend & Frameworks
+Micronaut,Backend & Frameworks
+Quarkus,Backend & Frameworks
+gRPC-Web,Backend & Frameworks
+API Gateway Design,Backend & Frameworks
+Event-Driven Architecture,Backend & Frameworks
+Domain-Driven Design,Backend & Frameworks
+Hexagonal Architecture,Backend & Frameworks
+System Design,Backend & Frameworks
+Distributed Systems,Backend & Frameworks
+Load Balancing,Backend & Frameworks
+Caching Strategies,Backend & Frameworks
+WebSockets,Backend & Frameworks
+Snowflake,Databases
+BigQuery,Databases
+Redshift,Databases
+Apache Cassandra Query Language,Databases
+Couchbase,Databases
+InfluxDB,Databases
+TimescaleDB,Databases
+ClickHouse,Databases
+Supabase,Databases
+PlanetScale,Databases
+Database Sharding,Databases
+Database Replication,Databases
+Query Optimization,Databases
+Database Indexing,Databases
+NoSQL Data Modeling,Databases
+Graph Databases,Databases
+Vector Databases,Databases
+Pinecone,Databases
+Milvus,Databases
+ChromaDB,Databases
+AWS Lambda,Cloud & DevOps
+AWS EC2,Cloud & DevOps
+AWS S3,Cloud & DevOps
+AWS RDS,Cloud & DevOps
+Azure DevOps,Cloud & DevOps
+Azure Functions,Cloud & DevOps
+Google Kubernetes Engine,Cloud & DevOps
+Cloud Architecture,Cloud & DevOps
+Infrastructure as Code,Cloud & DevOps
+Pulumi,Cloud & DevOps
+CloudFormation,Cloud & DevOps
+Chef,Cloud & DevOps
+Puppet,Cloud & DevOps
+Vagrant,Cloud & DevOps
+Site Reliability Engineering,Cloud & DevOps
+Observability,Cloud & DevOps
+Datadog,Cloud & DevOps
+Splunk,Cloud & DevOps
+New Relic,Cloud & DevOps
+PagerDuty,Cloud & DevOps
+GitLab CI,Cloud & DevOps
+CircleCI,Cloud & DevOps
+Argo CD,Cloud & DevOps
+Service Mesh (Istio),Cloud & DevOps
+Container Orchestration,Cloud & DevOps
+Docker Compose,Cloud & DevOps
+Blue-Green Deployment,Cloud & DevOps
+Canary Deployment,Cloud & DevOps
+Cost Optimization (FinOps),Cloud & DevOps
+Multi-cloud Strategy,Cloud & DevOps
+Data Engineering,Data & Analytics
+Data Modeling,Data & Analytics
+Data Governance,Data & Analytics
+Data Quality Management,Data & Analytics
+Big Data,Data & Analytics
+Apache Airflow,Data & Analytics
+dbt,Data & Analytics
+Apache Hadoop,Data & Analytics
+Apache Hive,Data & Analytics
+Apache Flink,Data & Analytics
+Databricks,Data & Analytics
+Looker,Data & Analytics
+Qlik Sense,Data & Analytics
+Google Data Studio,Data & Analytics
+Excel VBA,Data & Analytics
+Statistical Modeling,Data & Analytics
+Time Series Analysis,Data & Analytics
+Predictive Analytics,Data & Analytics
+Business Intelligence,Data & Analytics
+Data Storytelling,Data & Analytics
+Data Pipeline Design,Data & Analytics
+Metabase,Data & Analytics
+Amplitude,Data & Analytics
+Mixpanel,Data & Analytics
+Segment,Data & Analytics
+Data Lake Architecture,Data & Analytics
+Generative AI,AI/ML
+Large Language Models,AI/ML
+Prompt Engineering,AI/ML
+Reinforcement Learning,AI/ML
+MLOps,AI/ML
+Model Deployment,AI/ML
+Feature Engineering,AI/ML
+Hyperparameter Tuning,AI/ML
+Transfer Learning,AI/ML
+Neural Networks,AI/ML
+Recommender Systems,AI/ML
+Speech Recognition,AI/ML
+Retrieval-Augmented Generation,AI/ML
+LangChain,AI/ML
+Hugging Face Transformers,AI/ML
+Keras,AI/ML
+XGBoost,AI/ML
+LightGBM,AI/ML
+AutoML,AI/ML
+Model Interpretability (SHAP/LIME),AI/ML
+Vector Embeddings,AI/ML
+AI Ethics & Fairness,AI/ML
+Diffusion Models,AI/ML
+Multi-modal AI,AI/ML
+Anomaly Detection,AI/ML
+SIEM Tools,Cybersecurity
+Threat Modeling,Cybersecurity
+Incident Response,Cybersecurity
+Vulnerability Assessment,Cybersecurity
+Security Auditing,Cybersecurity
+Zero Trust Architecture,Cybersecurity
+SOC Operations,Cybersecurity
+Firewall Configuration,Cybersecurity
+Endpoint Security,Cybersecurity
+Malware Analysis,Cybersecurity
+Digital Forensics,Cybersecurity
+"GRC (Governance, Risk & Compliance)",Cybersecurity
+ISO 27001,Cybersecurity
+SOC 2 Compliance,Cybersecurity
+GDPR Compliance,Cybersecurity
+HIPAA Compliance,Cybersecurity
+DevSecOps,Cybersecurity
+Secure Code Review,Cybersecurity
+Public Key Infrastructure,Cybersecurity
+VPN Configuration,Cybersecurity
+Xcode,Mobile
+Android Studio,Mobile
+Cross-platform Development,Mobile
+Mobile App Architecture,Mobile
+App Store Optimization,Mobile
+Push Notifications,Mobile
+Mobile UI Testing,Mobile
+Objective-C for iOS,Mobile
+Kotlin Multiplatform,Mobile
+Mobile CI/CD,Mobile
+Ionic,Mobile
+Xamarin,Mobile
+Cordova,Mobile
+Mobile Performance Optimization,Mobile
+In-app Purchases,Mobile
+Playwright,QA/Testing
+Appium,QA/Testing
+Postman,QA/Testing
+API Testing,QA/Testing
+Regression Testing,QA/Testing
+Load Testing (JMeter),QA/Testing
+Test Case Design,QA/Testing
+Test Plan Development,QA/Testing
+Behavior-Driven Development,QA/Testing
+Continuous Testing,QA/Testing
+Mobile Testing,QA/Testing
+Accessibility Testing,QA/Testing
+Exploratory Testing,QA/Testing
+Bug Tracking,QA/Testing
+User Research,Product & Design & UX
+Usability Testing,Product & Design & UX
+Information Architecture,Product & Design & UX
+Interaction Design,Product & Design & UX
+Persona Development,Product & Design & UX
+Customer Journey Mapping,Product & Design & UX
+Product Discovery,Product & Design & UX
+User Story Mapping,Product & Design & UX
+OKRs,Product & Design & UX
+Feature Prioritization,Product & Design & UX
+Competitive Analysis,Product & Design & UX
+Design Thinking,Product & Design & UX
+A/B Test Design,Product & Design & UX
+Figma Prototyping,Product & Design & UX
+Miro,Product & Design & UX
+Adobe XD,Product & Design & UX
+InVision,Product & Design & UX
+Motion Design,Product & Design & UX
+Design Critique Facilitation,Product & Design & UX
+Accessibility Design,Product & Design & UX
+Budgeting & Forecasting,"Business, Finance & Analytics"
+Financial Analysis,"Business, Finance & Analytics"
+Investment Analysis,"Business, Finance & Analytics"
+Risk Management,"Business, Finance & Analytics"
+Accounting Principles,"Business, Finance & Analytics"
+Cost-Benefit Analysis,"Business, Finance & Analytics"
+Business Development,"Business, Finance & Analytics"
+Contract Negotiation,"Business, Finance & Analytics"
+Vendor Management,"Business, Finance & Analytics"
+P&L Management,"Business, Finance & Analytics"
+Pricing Strategy,"Business, Finance & Analytics"
+Competitive Intelligence,"Business, Finance & Analytics"
+KPI Development,"Business, Finance & Analytics"
+Data-Driven Decision Making,"Business, Finance & Analytics"
+Excel Financial Modeling,"Business, Finance & Analytics"
+QuickBooks,"Business, Finance & Analytics"
+SAP,"Business, Finance & Analytics"
+NetSuite,"Business, Finance & Analytics"
+Procurement,"Business, Finance & Analytics"
+Supply Chain Analysis,"Business, Finance & Analytics"
+Content Marketing,"Marketing, Sales & Growth"
+Email Marketing,"Marketing, Sales & Growth"
+Social Media Marketing,"Marketing, Sales & Growth"
+Paid Search Advertising,"Marketing, Sales & Growth"
+Paid Social Advertising,"Marketing, Sales & Growth"
+Marketing Automation,"Marketing, Sales & Growth"
+HubSpot,"Marketing, Sales & Growth"
+Growth Hacking,"Marketing, Sales & Growth"
+Conversion Rate Optimization,"Marketing, Sales & Growth"
+Brand Strategy,"Marketing, Sales & Growth"
+Copywriting,"Marketing, Sales & Growth"
+Influencer Marketing,"Marketing, Sales & Growth"
+Affiliate Marketing,"Marketing, Sales & Growth"
+Customer Retention Strategy,"Marketing, Sales & Growth"
+Lead Generation,"Marketing, Sales & Growth"
+CRM Management,"Marketing, Sales & Growth"
+Sales Forecasting,"Marketing, Sales & Growth"
+Account-Based Marketing,"Marketing, Sales & Growth"
+Marketing Analytics,"Marketing, Sales & Growth"
+Public Relations,"Marketing, Sales & Growth"
+Program Management,Project & Program Management
+Risk Assessment (Projects),Project & Program Management
+Resource Allocation,Project & Program Management
+Gantt Chart Planning,Project & Program Management
+PMP Certification,Project & Program Management
+PRINCE2,Project & Program Management
+Change Management,Project & Program Management
+Vendor Coordination,Project & Program Management
+SAFe (Scaled Agile Framework),Project & Program Management
+Sprint Planning,Project & Program Management
+Retrospective Facilitation,Project & Program Management
+Portfolio Management,Project & Program Management
+Milestone Tracking,Project & Program Management
+Confluence,Project & Program Management
+Asana,Project & Program Management
+Monday.com,Project & Program Management
+Trello,Project & Program Management
+Microsoft Project,Project & Program Management
+Budget Management (Projects),Project & Program Management
+Cross-team Coordination,Project & Program Management
+Public Speaking,Soft Skills & Communication
+Negotiation,Soft Skills & Communication
+Conflict Resolution,Soft Skills & Communication
+Emotional Intelligence,Soft Skills & Communication
+Active Listening,Soft Skills & Communication
+Adaptability,Soft Skills & Communication
+Decision Making,Soft Skills & Communication
+Creativity,Soft Skills & Communication
+Coaching,Soft Skills & Communication
+Presentation Skills,Soft Skills & Communication
+Empathy,Soft Skills & Communication
+Collaboration,Soft Skills & Communication
+Feedback Delivery,Soft Skills & Communication
+Interpersonal Skills,Soft Skills & Communication
+Facilitation,Soft Skills & Communication
+Electronic Health Records (EHR),Healthcare IT
+HL7,Healthcare IT
+FHIR Standards,Healthcare IT
+Epic Systems,Healthcare IT
+Cerner,Healthcare IT
+Clinical Data Management,Healthcare IT
+Telehealth Systems,Healthcare IT
+Medical Coding (ICD-10),Healthcare IT
+Healthcare Interoperability,Healthcare IT
+HIPAA Security Rule,Healthcare IT
+Health Informatics,Healthcare IT
+Population Health Analytics,Healthcare IT
+TCP/IP,Networking & Systems
+DNS Administration,Networking & Systems
+Network Routing & Switching,Networking & Systems
+VoIP Systems,Networking & Systems
+Load Balancers (F5),Networking & Systems
+Network Monitoring,Networking & Systems
+Windows Server Administration,Networking & Systems
+Active Directory,Networking & Systems
+Virtualization (VMware),Networking & Systems
+Storage Area Networks,Networking & Systems
+Network Automation,Networking & Systems
+SD-WAN,Networking & Systems
+IPv6,Networking & Systems
+Blockchain Development,Blockchain & Emerging Tech
+Smart Contracts,Blockchain & Emerging Tech
+Ethereum,Blockchain & Emerging Tech
+Web3,Blockchain & Emerging Tech
+Cryptocurrency Systems,Blockchain & Emerging Tech
+NFT Platforms,Blockchain & Emerging Tech
+Decentralized Finance (DeFi),Blockchain & Emerging Tech
+Distributed Ledger Technology,Blockchain & Emerging Tech
+Hyperledger Fabric,Blockchain & Emerging Tech
+Quantum Computing Fundamentals,Blockchain & Emerging Tech
+Augmented Reality Development,Blockchain & Emerging Tech
+Virtual Reality Development,Blockchain & Emerging Tech
+IoT Systems Design,Blockchain & Emerging Tech
+Embedded C,Hardware & Embedded
+Microcontroller Programming,Hardware & Embedded
+FPGA Design,Hardware & Embedded
+RTOS (Real-Time Operating Systems),Hardware & Embedded
+PCB Design,Hardware & Embedded
+Arduino,Hardware & Embedded
+Raspberry Pi Development,Hardware & Embedded
+Robotics Programming,Hardware & Embedded
+Sensor Integration,Hardware & Embedded
+Firmware Development,Hardware & Embedded
+VHDL,Hardware & Embedded
+SPI/I2C Protocols,Hardware & Embedded
+Git,Tools & Methodologies
+Version Control,Tools & Methodologies
+GitHub,Tools & Methodologies
+GitLab,Tools & Methodologies
+Bitbucket,Tools & Methodologies
+Code Review Practices,Tools & Methodologies
+Pair Programming,Tools & Methodologies
+Continuous Integration,Tools & Methodologies
+Continuous Deployment,Tools & Methodologies
+Documentation Best Practices,Tools & Methodologies
+Peer Code Review,Tools & Methodologies
+Monorepo Management,Tools & Methodologies
+Feature Flags,Tools & Methodologies
+Trunk-Based Development,Tools & Methodologies

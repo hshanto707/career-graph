@@ -1,0 +1,901 @@
+title,company,location,type,skills_required,salary_min,salary_max,category
+Senior Cybersecurity Engineer,Coral Reef Software,"Bengaluru, India",Full-time,"Vulnerability Assessment, GRC (Governance, Risk & Compliance), Amazon Web Services (AWS)",105406,164569,Security
+QA Manager,Patchbay Technologies,"San Francisco, CA",Full-time,"Playwright, JavaScript, API Testing, Postman, Regression Testing, Exploratory Testing",118880,176284,QA & Testing
+Junior IT Support Analyst,Timberline Analytics,"Bengaluru, India",Full-time,"Linux Administration, Network Automation, Virtualization (VMware), Network Monitoring, Storage Area Networks, SD-WAN",38108,54111,IT Support
+Junior Penetration Tester,Skyline Ventures IT,"Dallas, TX",Full-time,"Identity and Access Management, GDPR Compliance, Microsoft Azure, Cryptography, Linux Administration",63177,90754,Security
+Senior SDET,Pinecrest Digital,"Dublin, Ireland",Internship,"Behavior-Driven Development, Performance Testing, Load Testing (JMeter), Postman, Exploratory Testing, Mobile Testing, Unit Testing, SQL",104332,150742,QA & Testing
+Intern Manual QA Tester,Anchorpoint Systems,Singapore,Part-time,"Test Case Design, Mobile Testing, Pytest",17733,36447,QA & Testing
+Junior GRC Analyst,Meshpoint Systems,"London, UK",Contract,"Shell Scripting, Network Security, Application Security, Malware Analysis, Security Auditing, Threat Modeling, Penetration Testing",55170,78314,Security
+Mid-level SDET,Circuitline IT,"Washington, DC",Full-time,"Performance Testing, Accessibility Testing, Quality Assurance, API Testing, Git, Appium, Jest",75713,116873,QA & Testing
+Staff Cloud Security Architect,Bastion Point Systems,"Dallas, TX",Full-time,"Secure Code Review, Amazon Web Services (AWS), Threat Modeling, Incident Response, Security Auditing, Identity and Access Management, Penetration Testing, HIPAA Compliance",159105,221474,Security
+Junior Compliance & Risk Analyst,Vertexguard Systems,"Bengaluru, India",Full-time,"OWASP, Documentation Best Practices, Malware Analysis",51053,73515,Security
+Manager QA Engineer,Threadneedle Cyber,"Chicago, IL",Full-time,"Load Testing (JMeter), Performance Testing, Exploratory Testing",109894,159216,QA & Testing
+IT Support Manager,Cryptbridge Systems,"Chicago, IL",Contract,"VoIP Systems, Network Automation, Load Balancers (F5), Windows Server Administration",126265,177502,IT Support
+IT Support Manager,Endpointe Technologies,"Dallas, TX",Full-time,"Storage Area Networks, Active Directory, Linux Administration, Network Monitoring, VoIP Systems, Endpoint Security, VPN Configuration",125501,167121,IT Support
+Junior IT Support Specialist,Crestline Digital,"Chicago, IL",Full-time,"Documentation Best Practices, Active Directory, Interpersonal Skills, Customer Service, Network Routing & Switching, Network Monitoring, Endpoint Security",38220,60662,IT Support
+QA Manager,Quietstone Security,Remote,Internship,"Accessibility Testing, CI/CD Pipelines, Jira, Jira",140633,193420,QA & Testing
+Manager SOC Analyst,Streamline Cyber Co,"Denver, CO",Full-time,"Threat Modeling, Shell Scripting, Zero Trust Architecture, SOC Operations, DevSecOps, Secure Code Review",112077,169711,Security
+Help Desk Manager,Shieldwall Technologies,Remote,Full-time,"DNS Administration, Virtualization (VMware), Documentation Best Practices",107539,163037,IT Support
+Junior Quality Assurance Engineer,Uptime Grove IT,"Dallas, TX",Part-time,"Python, Load Testing (JMeter), Regression Testing, SQL",53639,75209,QA & Testing
+Senior GRC Analyst,Terminalpoint Tech,Remote,Full-time,"OWASP, VPN Configuration, Firewall Configuration, ISO 27001, HIPAA Compliance",96888,143183,Security
+QA Manager,Rigortest Software,Remote,Full-time,"Test Case Design, Test Plan Development, Playwright, API Testing, Bug Tracking",121298,181305,QA & Testing
+Manager SOC Analyst,Stonewall Cyber Labs,"Dublin, Ireland",Internship,"SIEM Tools, Zero Trust Architecture, Cryptography, Shell Scripting, VPN Configuration, Linux Administration, Vulnerability Assessment, Firewall Configuration, SIEM Tools",113698,170394,Security
+IT Support Analyst,Stonewall Cyber Labs,"Boston, MA",Full-time,"VPN Configuration, TCP/IP, Virtualization (VMware), IPv6, Linux Administration, Active Directory",52549,77898,IT Support
+Junior QA Engineer,Truescope Software,Remote,Internship,"SQL, Postman, Pytest, test automation, Selenium, Playwright, Accessibility Testing, Interpersonal Skills",50141,77283,QA & Testing
+Junior Offensive Security Engineer,Stonewall Cyber Labs,"Toronto, ON",Full-time,"Firewall Configuration, Collaboration, Public Key Infrastructure, OWASP, Shell Scripting, VPN Configuration, SOC 2 Compliance",57895,92016,Security
+Mid-level Systems Administrator,Frameworth Digital,"Boston, MA",Full-time,"DNS Administration, Virtualization (VMware), Endpoint Security, Windows Server Administration, TCP/IP, Storage Area Networks, Active Directory",66283,98495,IT Support
+Help Desk Manager,Anchorpoint Systems,"London, UK",Internship,"Collaboration, VoIP Systems, Documentation Best Practices, Network Automation, IPv6",108361,159586,IT Support
+QA Manager,Blueforge Cyber,Remote,Full-time,"Test Case Design, API Testing, JavaScript, Presentation Skills, Mobile Testing, Bug Tracking",150888,202567,QA & Testing
+Lead Application Security Engineer,Fortress Grove Inc,"Atlanta, GA",Internship,"OWASP, VPN Configuration, Penetration Testing, ISO 27001, Documentation Best Practices, Vulnerability Assessment",140671,192069,Security
+Junior GRC Analyst,Trustline Networks,"Boston, MA",Full-time,"Cloud Security, Zero Trust Architecture, Python, Threat Modeling, Penetration Testing, OWASP, Digital Forensics",53487,73865,Security
+Intern Security Analyst,Routewise Networks,"Atlanta, GA",Full-time,"SOC 2 Compliance, Linux Administration, Secure Code Review, Firewall Configuration",21354,40180,Security
+Junior Application Security Engineer,Bastion Point Systems,"Seattle, WA",Internship,"Cryptography, HIPAA Compliance, ISO 27001, SOC Operations",57576,84151,Security
+Senior Compliance & Risk Analyst,Ironwood Systems,"Bengaluru, India",Full-time,"Zero Trust Architecture, Amazon Web Services (AWS), Application Security, Cryptography",96239,145947,Security
+Junior GRC Analyst,Bugtrail Technologies,"Denver, CO",Contract,"Endpoint Security, Security Auditing, ISO 27001, VPN Configuration, HIPAA Compliance, Amazon Web Services (AWS)",50727,77296,Security
+Senior Penetration Tester,Meridian Apps,"Bengaluru, India",Internship,"Amazon Web Services (AWS), Cloud Security, Digital Forensics, Malware Analysis, Linux Administration",108471,162831,Security
+Junior Network Administrator,Signalcheck Labs,Singapore,Full-time,"Load Balancers (F5), VoIP Systems, Time Management",47626,70971,IT Support
+Mid-level Application Security Engineer,Nova Field Labs,Remote,Full-time,"Endpoint Security, Threat Modeling, GDPR Compliance, Collaboration, Cryptography",82900,119709,Security
+Junior Test Automation Engineer,Bridgeline Networks,Remote,Full-time,"Appium, Test Plan Development, Performance Testing, Python, Load Testing (JMeter)",57150,82553,QA & Testing
+Junior QA Analyst,Beacon Ridge Security,Remote,Full-time,"Load Testing (JMeter), Python, Git, Appium, Selenium, Quality Assurance",46394,66136,QA & Testing
+Junior Manual QA Tester,Signalcheck Labs,"San Francisco, CA",Internship,"Behavior-Driven Development, Agile Methodology, Python, Continuous Testing",44537,66765,QA & Testing
+Junior Manual QA Tester,Palisade Systems Inc,"San Francisco, CA",Part-time,"Test Plan Development, Selenium, Pytest, Test Case Design",44852,69824,QA & Testing
+Lead Cybersecurity Engineer,Aegis Loop Technologies,"Vancouver, BC",Internship,"Documentation Best Practices, ISO 27001, Public Key Infrastructure, TCP/IP, HIPAA Compliance, Shell Scripting",139491,192137,Security
+Intern QA Analyst,Ironclad Cyber Group,"New York, NY",Full-time,"Jira, Python, Quality Assurance, Selenium, Test Plan Development, Accessibility Testing, API Testing",15229,33809,QA & Testing
+QA Manager,Keyline Security Group,"Sydney, Australia",Full-time,"Load Testing (JMeter), Unit Testing,   Selenium , Test Plan Development",135335,184061,QA & Testing
+Lead Network Administrator,Vertexguard Systems,"Raleigh, NC",Contract,"Storage Area Networks, Windows Server Administration, VPN Configuration, Network Automation, Network Routing & Switching",114246,156688,IT Support
+Junior Test Automation Engineer,Meshpoint Systems,"Dallas, TX",Full-time,"Postman, Appium, Continuous Testing, Test Automation, Load Testing (JMeter), Test Plan Development",54094,86192,QA & Testing
+Manager GRC Analyst,Deskline Support Co,Remote,Full-time,"Cloud Security, Linux Administration, Vulnerability Assessment, GDPR Compliance",107954,160756,Security
+Senior Technical Support Engineer,Anchorpoint Systems,"Dallas, TX",Full-time,"Git, Virtualization (VMware), DNS Administration, Load Balancers (F5), Network Automation",76620,115168,IT Support
+IT Support Manager,Terminalpoint Tech,"Dallas, TX",Part-time,"Linux Administration, SD-WAN, Endpoint Security, Load Balancers (F5), Network Monitoring, Interpersonal Skills",111067,165565,IT Support
+Manager QA Lead,Granite Peak Tech,"Toronto, ON",Full-time,"Pytest, Test Automation, Appium",121373,182207,QA & Testing
+GRC Analyst,Terminalpoint Tech,Remote,Full-time,"Application Security, Firewall Configuration, SOC Operations",68967,105170,Security
+Senior SDET,Precisionpath QA,Remote,Full-time,"Cypress, Test Automation, Behavior-Driven Development",103475,151847,QA & Testing
+Senior QA Engineer,Aegis Loop Technologies,Remote,Full-time,"Problem Solving, Postman, Test Plan Development, Selenium, Unit Testing, Python, CI/CD Pipelines",93472,142321,QA & Testing
+Junior Help Desk Technician,Quietstone Security,"New York, NY",Full-time,"IPv6, VPN Configuration, Endpoint Security, Virtualization (VMware), Load Balancers (F5), Linux Administration, DNS Administration",36380,54507,IT Support
+Junior Application Security Engineer,Byteforge Labs,"Boston, MA",Part-time,"VPN Configuration, SOC Operations, Endpoint Security, Secure Code Review, SOC 2 Compliance",59916,88383,Security
+Staff Offensive Security Engineer,Northwind Analytics,Remote,Full-time,"Endpoint Security, HIPAA Compliance, Network Security, Penetration Testing, Firewall Configuration, VPN Configuration, Documentation Best Practices, Application Security",150835,201874,Security
+Senior IT Support Specialist,Deadbolt Digital,Remote,Full-time,"Network Automation, Interpersonal Skills, VoIP Systems",68061,107129,IT Support
+Lead Offensive Security Engineer,Verityloop Digital,Remote,Part-time,"Shell Scripting, Malware Analysis, Amazon Web Services (AWS)",142386,193107,Security
+Mid-level SOC Analyst,Coral Reef Software,"Austin, TX",Full-time,"Python, Linux Administration, Security Auditing, Time Management",73380,111507,Security
+Mid-level Offensive Security Engineer,Fieldwire IT Systems,"London, UK",Full-time,"Vulnerability Assessment, SIEM Tools, SOC Operations, Firewall Configuration, Zero Trust Architecture",83545,121174,Security
+Junior Cybersecurity Engineer,Sentinel Ridge Security,"Seattle, WA",Part-time,"Vulnerability Assessment, Linux Administration, Incident Response, GRC (Governance, Risk & Compliance), Microsoft Azure",57660,84534,Security
+Manager QA Lead,Anchorpoint Systems,Remote,Full-time,"Test Plan Development, Appium, Test Case Design, Exploratory Testing, Quality Assurance, Playwright, Performance Testing, Bug Tracking",119117,178572,QA & Testing
+Principal Cybersecurity Engineer,Aegis Loop Technologies,Remote,Contract,"Zero Trust Architecture, Threat Modeling, Network Security",155419,203188,Security
+Lead Technical Support Engineer,Nodecare Technologies,Remote,Full-time,"Documentation Best Practices, Virtualization (VMware), Load Balancers (F5), TCP/IP, Network Monitoring, SD-WAN, Linux Administration",100551,133857,IT Support
+Staff Penetration Tester,Consolebridge Systems,Singapore,Full-time,"Security Auditing, Cloud Security, Secure Code Review, SOC 2 Compliance, Shell Scripting, Malware Analysis, ISO 27001, Network Security",148856,205512,Security
+Senior QA Analyst,Signalcheck Labs,Remote,Full-time,"Bug Tracking, Quality Assurance, Load Testing (JMeter), Cypress, Accessibility Testing, Unit Testing, JavaScript",83871,132376,QA & Testing
+Principal Application Security Engineer,Assurewave Software,Remote,Full-time,"Digital Forensics, Security Auditing, GDPR Compliance, GRC (Governance, Risk & Compliance), SOC 2 Compliance, ISO 27001, Cryptography",153909,206678,Security
+Junior GRC Analyst,Helprail Technologies,"Toronto, ON",Full-time,"Python, Amazon Web Services (AWS), ISO 27001",53208,79079,Security
+Application Security Engineer,Beacon Ridge Security,Remote,Full-time,"Network Security, TCP/IP, Cryptography, Threat Modeling, Digital Forensics, Public Key Infrastructure",78170,123345,Security
+Lead Cybersecurity Engineer,Signalcheck Labs,Singapore,Internship,"Digital Forensics, Amazon Web Services (AWS), Shell Scripting, Endpoint Security, Microsoft Azure, Vulnerability Assessment, Incident Response",137992,189461,Security
+Lead Cybersecurity Engineer,Solstice Data Co,"Berlin, Germany",Full-time,"Python, HIPAA Compliance, Zero Trust Architecture, Network Security, Threat Modeling, Incident Response",140217,190299,Security
+Senior Security Architect,Ticketforge Systems,"Toronto, ON",Full-time,"Public Key Infrastructure, Endpoint Security, Python",118990,182514,Security
+Junior Compliance & Risk Analyst,Circuitline IT,"Denver, CO",Full-time,"Problem Solving, TCP/IP, Firewall Configuration, Incident Response, Threat Modeling, HIPAA Compliance",49599,79133,Security
+Manual QA Tester,Cobalt Robotics Group,"Sydney, Australia",Contract,"Python, Accessibility Testing, Load Testing (JMeter), Behavior-Driven Development, Bug Tracking, Selenium",62775,97407,QA & Testing
+Lead Security Analyst,Stonewall Cyber Labs,"Atlanta, GA",Full-time,"OWASP, Communication, Zero Trust Architecture, Malware Analysis, Threat Modeling",130915,179065,Security
+Junior Security Analyst,Redwood Data Systems,"Vancouver, BC",Full-time,"Security Auditing, Network Security, Malware Analysis, ISO 27001, OWASP, Problem Solving, Vulnerability Assessment",53720,82793,Security
+Principal Security Engineer,Ticketforge Systems,"Washington, DC",Full-time,"SOC 2 Compliance, Security Auditing, Application Security",153866,206007,Security
+Mid-level QA Engineer,Ironclad Cyber Group,Remote,Contract,"Mobile Testing, Unit Testing, Time Management, Test Plan Development, Load Testing (JMeter), Performance Testing, Playwright, SQL",72494,103779,QA & Testing
+Staff Test Automation Engineer,Streamline Cyber Co,"Austin, TX",Full-time,"Performance Testing, Continuous Testing, Accessibility Testing, Python, Mobile Testing, Pytest, Jest, SQL",138666,190895,QA & Testing
+Junior SDET,Nova Field Labs,"Dallas, TX",Contract,"Presentation Skills, Python, API Testing, Pytest, Exploratory Testing, CI/CD Pipelines, Mobile Testing, Continuous Testing",57849,81407,QA & Testing
+Manager Security Analyst,Qualitrix Systems,"Chicago, IL",Full-time,"Shell Scripting, Vulnerability Assessment, Agile Methodology, SIEM Tools",116302,168426,Security
+Lead Quality Assurance Engineer,Fortress Grove Inc,"Sydney, Australia",Full-time,"Python, Behavior-Driven Development, CI/CD Pipelines, Exploratory Testing, Documentation Best Practices, Postman, Performance Testing, Bug Tracking",121873,167830,QA & Testing
+Senior QA Analyst,Clearbench Systems,"Seattle, WA",Contract,"Cypress, Pytest, Continuous Testing, Exploratory Testing, SQL, Test Plan Development, Load Testing (JMeter), Python",83988,125760,QA & Testing
+Principal QA Lead,Onyx Bridge Tech,Remote,Full-time,"Test Plan Development, Test Automation, Jira, Load Testing (JMeter), Test Case Design, JavaScript",152124,200422,QA & Testing
+Lead Desktop Support Engineer,Argus Point Technologies,Remote,Full-time,"Network Automation, Active Directory, DNS Administration, Windows Server Administration, VPN Configuration, Load Balancers (F5)",102173,134044,IT Support
+IT Support Manager,Truescope Software,"Dublin, Ireland",Full-time,"Load Balancers (F5), TCP/IP, Linux Administration, Network Monitoring, Customer Service, VoIP Systems, VPN Configuration, DNS Administration",123074,166679,IT Support
+QA Manager,Meridian Apps,"Toronto, ON",Full-time,"Quality Assurance, Test Automation, Unit Testing, Jira",133974,182583,QA & Testing
+Mid-level Quality Assurance Engineer,Systemcove Technologies,Remote,Full-time,"Communication, Playwright, Test Case Design, CI/CD Pipelines, Appium",71523,106856,QA & Testing
+Senior Cybersecurity Engineer,Fieldwire IT Systems,Remote,Full-time,"OWASP, SOC 2 Compliance, Firewall Configuration",106272,159880,Security
+Junior GRC Analyst,Ridgeline Security Labs,"New York, NY",Full-time,"Cryptography, ISO 27001, Agile Methodology, Amazon Web Services (AWS)",50838,80567,Security
+Principal Application Security Engineer,Bastion Point Systems,"Dublin, Ireland",Internship,"Secure Code Review, DevSecOps, Threat Modeling, Firewall Configuration, SOC Operations, TCP/IP, Incident Response",153821,205476,Security
+Lead Systems Administrator,Routewise Networks,Remote,Full-time,"Linux Administration, virtualization (vmware), SD-WAN, TCP/IP, IPv6, Network Routing & Switching, Load Balancers (F5)",117319,162300,IT Support
+Manager Compliance & Risk Analyst,Aegis Loop Technologies,"Sydney, Australia",Full-time,"Public Key Infrastructure, HIPAA Compliance, Penetration Testing, GDPR Compliance, Malware Analysis",109024,166458,Security
+Manager Compliance & Risk Analyst,Rigortest Software,Singapore,Full-time,"Amazon Web Services (AWS), Malware Analysis, Firewall Configuration, Incident Response, Threat Modeling, OWASP, SOC Operations, GRC (Governance, Risk & Compliance)",107270,163215,Security
+Lead Penetration Tester,Nightwatch Security Co,"Dublin, Ireland",Full-time,"Network Security, Vulnerability Assessment, SOC 2 Compliance, Threat Modeling, Zero Trust Architecture",142166,196242,Security
+Application Security Engineer,Ticketforge Systems,"Vancouver, BC",Internship,"SOC 2 Compliance, Documentation Best Practices, Microsoft Azure, Secure Code Review, GDPR Compliance, Vulnerability Assessment, Linux Administration",81942,119376,Security
+IT Support Manager,Ironveil Networks,"Chicago, IL",Full-time,"Load Balancers (F5), IPv6, Network Automation, Time Management, VPN Configuration, Customer Service",127923,178369,IT Support
+Senior Network Administrator,Ironwood Systems,"Washington, DC",Full-time,"Documentation Best Practices, Network Monitoring, Windows Server Administration, DNS Administration, TCP/IP",92270,132504,IT Support
+Principal Security Architect,Aegis Loop Technologies,"Raleigh, NC",Contract,"GDPR Compliance, Public Key Infrastructure, Vulnerability Assessment, Network Security, Presentation Skills, Linux Administration, Firewall Configuration",171265,226896,Security
+Application Security Engineer,Netframe Solutions,"Dublin, Ireland",Full-time,"Shell Scripting, GRC (Governance, Risk & Compliance), SIEM Tools, SOC 2 Compliance, Zero Trust Architecture, SOC Operations, Incident Response",78291,119709,Security
+Principal Security Architect,Solstice Data Co,Remote,Contract,"Amazon Web Services (AWS), ISO 27001, Python, Application Security, Git, Malware Analysis, Incident Response",171997,232485,Security
+Junior Penetration Tester,Fieldwire IT Systems,Remote,Full-time,"Shell Scripting, Zero Trust Architecture, GRC (Governance, Risk & Compliance), Endpoint Security, Jira, Security Auditing, Application Security, Amazon Web Services (AWS)",61254,91812,Security
+Senior QA Engineer,Fieldwire IT Systems,"Seattle, WA",Full-time,"Test Automation, Test Plan Development, JavaScript, Exploratory Testing, CI/CD Pipelines",95176,141815,QA & Testing
+Junior Desktop Support Engineer,Cobalt Robotics Group,"San Francisco, CA",Internship,"Network Monitoring, TCP/IP, Virtualization (VMware), SD-WAN, Active Directory",41707,67078,IT Support
+Senior QA Engineer,Harborline Technologies,"New York, NY",Full-time,"Postman, Performance Testing, Jest, Python, Quality Assurance, CI/CD Pipelines, Test Case Design, Pytest",97775,144868,QA & Testing
+Mid-level Manual QA Tester,Quietstone Security,"San Francisco, CA",Internship,"Accessibility Testing, Continuous Testing, Jest, CI/CD Pipelines, Communication, Python, Pytest, API Testing",66311,92211,QA & Testing
+Junior Cybersecurity Engineer,Consolebridge Systems,"Seattle, WA",Contract,"Endpoint Security, Threat Modeling, Security Auditing",60934,90495,Security
+Senior Offensive Security Engineer,Watchtower Data Co,Remote,Full-time,"Endpoint Security, Python, Shell Scripting, GDPR Compliance",108163,162941,Security
+Junior QA Engineer,Streamline Cyber Co,"Vancouver, BC",Full-time,"Appium, Mobile Testing, Test Case Design, Continuous Testing, JavaScript",53907,80115,QA & Testing
+Technical Support Engineer,Bastion Point Systems,"London, UK",Internship,"Storage Area Networks, Network Automation, VPN Configuration, SD-WAN, Network Routing & Switching, Windows Server Administration",59774,82810,IT Support
+Senior Security Engineer,Signalcheck Labs,Remote,Full-time,"Cloud Security, Application Security, Secure Code Review, SOC Operations, Python",105171,161546,Security
+Staff Systems Administrator,Watchtower Data Co,"Atlanta, GA",Full-time,"Network Routing & Switching, Network Automation, Customer Service",123806,164878,IT Support
+Junior Offensive Security Engineer,Streamline Cyber Co,"London, UK",Internship,"TCP/IP, DevSecOps, Firewall Configuration, ISO 27001, VPN Configuration, Time Management, Threat Modeling",61525,85805,Security
+Senior QA Analyst,Vanguard Mesh Systems,"Chicago, IL",Full-time,"Load Testing (JMeter), Jira, Python, Test Plan Development, Continuous Testing, Jest",83116,126904,QA & Testing
+Lead Security Architect,Pinecrest Digital,"Seattle, WA",Full-time,"Amazon Web Services (AWS), TCP/IP, GDPR Compliance, Linux Administration, VPN Configuration, Zero Trust Architecture, SOC 2 Compliance",154183,210503,Security
+Mid-level QA Engineer,Lattice Works,"Seattle, WA",Full-time,"Behavior-Driven Development, API Testing, Load Testing (JMeter), Test Plan Development, SQL, Playwright, Jira",70427,107936,QA & Testing
+Junior Cybersecurity Analyst,Gridline Support Co,"Chicago, IL",Full-time,"Microsoft Azure, VPN Configuration, DevSecOps, Malware Analysis, Python, Cloud Security, HIPAA Compliance, Zero Trust Architecture",56447,83050,Security
+Security Engineer,Nova Field Labs,"San Francisco, CA",Full-time,"DevSecOps, Secure Code Review, Cloud Security, VPN Configuration, Security Auditing",83210,116544,Security
+IT Support Manager,Trustline Networks,"Dallas, TX",Full-time,"Active Directory, VoIP Systems, SD-WAN",106538,161496,IT Support
+Junior Security Analyst,Quietstone Security,Remote,Contract,"SIEM Tools, DevSecOps, Interpersonal Skills, Digital Forensics",56823,82566,Security
+Senior Penetration Tester,Precisionpath QA,Singapore,Full-time,"Linux Administration, VPN Configuration, DevSecOps, Secure Code Review, Zero Trust Architecture, Incident Response, soc 2 compliance",111915,163393,Security
+QA Manager,Byteforge Labs,"Austin, TX",Full-time,"SQL, Test Case Design, Appium, Regression Testing",138944,184024,QA & Testing
+Mid-level Manual QA Tester,Fieldwire IT Systems,Remote,Full-time,"Performance Testing, API Testing, Selenium, Agile Methodology",62206,94292,QA & Testing
+Junior SOC Analyst,Vanguard Mesh Systems,"Dublin, Ireland",Internship,"SIEM Tools, GDPR Compliance, Shell Scripting, Linux Administration, Amazon Web Services (AWS), Cryptography, Microsoft Azure, Presentation Skills",56979,81880,Security
+Manager QA Engineer,Ironwood Systems,"Bengaluru, India",Full-time,"JavaScript, Documentation Best Practices, Mobile Testing, Postman, Accessibility Testing, Performance Testing",109437,165643,QA & Testing
+IT Support Manager,Ironwood Systems,Remote,Internship,"Network Automation, Network Monitoring, IPv6",130191,173735,IT Support
+Mid-level Security Analyst,Fieldwire IT Systems,"New York, NY",Full-time,"SOC Operations, VPN Configuration, Security Auditing, Application Security, TCP/IP, Amazon Web Services (AWS)",76628,114396,Security
+Junior Cybersecurity Analyst,Pinecrest Digital,"Atlanta, GA",Part-time,"VPN Configuration, Digital Forensics, GRC (Governance, Risk & Compliance), Penetration Testing, Zero Trust Architecture, Public Key Infrastructure",54700,78604,Security
+Intern IT Support Analyst,Bluepeak Software,Remote,Full-time,"Endpoint Security, Documentation Best Practices, DNS Administration, NETWORK AUTOMATION, IPv6",15000,31120,IT Support
+Junior SDET,Cryptbridge Systems,"Austin, TX",Full-time,"Test Case Design, Playwright, Quality Assurance, Test Plan Development, Exploratory Testing, Mobile Testing, Agile Methodology",53622,83370,QA & Testing
+Junior Manual QA Tester,Coreloop Systems,"Raleigh, NC",Full-time,"Performance Testing, Exploratory Testing, Quality Assurance, Test Case Design, Test Plan Development",44069,69880,QA & Testing
+Senior Help Desk Technician,Bridgeline Networks,"Sydney, Australia",Internship,"Storage Area Networks, Network Routing & Switching, DNS Administration, Network Automation, VoIP Systems, VPN Configuration, Windows Server Administration",69453,108494,IT Support
+Junior IT Support Analyst,Anchorpoint Systems,"Bengaluru, India",Full-time,"Network Automation, Customer Service, Storage Area Networks, Load Balancers (F5), DNS Administration, Active Directory, SD-WAN, Network Routing & Switching",37476,58887,IT Support
+Junior GRC Analyst,Qualitrix Systems,Remote,Full-time,"GRC (Governance, Risk & Compliance), DevSecOps, Application Security",51384,80060,Security
+QA Manager,Truescope Software,"Denver, CO",Full-time,"Mobile Testing, Exploratory Testing, SQL, Pytest, Test Plan Development, Appium, Behavior-Driven Development, Jira",136065,188273,QA & Testing
+Senior Technical Support Engineer,Ridgeline Security Labs,Remote,Contract,"TCP/IP, DNS Administration, Customer Service",76446,116988,IT Support
+Lead Cybersecurity Engineer,Ticketforge Systems,"Raleigh, NC",Full-time,"Cloud Security, Endpoint Security, Documentation Best Practices, Application Security, Secure Code Review, Penetration Testing",143124,190690,Security
+Junior GRC Analyst,Validex Systems,"Berlin, Germany",Contract,"SIEM Tools, Zero Trust Architecture, Network Security, Malware Analysis",51753,76209,Security
+Lead SDET,Palisade Systems Inc,"Dublin, Ireland",Full-time,"Jira, JavaScript, Test Automation, Accessibility Testing, Appium, Documentation Best Practices, Behavior-Driven Development, API Testing",133966,176024,QA & Testing
+Staff Offensive Security Engineer,Ridgeline Security Labs,Remote,Full-time,"Security Auditing, SOC Operations, Cloud Security, Application Security, Firewall Configuration, Threat Modeling, OWASP",148330,202019,Security
+Junior Technical Support Engineer,Uptime Grove IT,"Bengaluru, India",Full-time,"DNS Administration, Linux Administration, Load Balancers (F5), SD-WAN, Windows Server Administration, TCP/IP, Network Automation, VoIP Systems",44206,62570,IT Support
+Systems Administrator,Terminalpoint Tech,"Berlin, Germany",Full-time,"Storage Area Networks, Windows Server Administration, Load Balancers (F5), Customer Service, Active Directory, Endpoint Security, Network Routing & Switching",68862,102588,IT Support
+Staff SDET,Uptime Grove IT,"Toronto, ON",Part-time,"Python, Load Testing (JMeter), Jest, Unit Testing, Postman, Cypress, SQL",138197,190215,QA & Testing
+Manager QA Engineer,Frameworth Digital,Remote,Full-time,"Load Testing (JMeter), Unit Testing, Quality Assurance, JavaScript, API Testing, Pytest, Exploratory Testing",108839,165424,QA & Testing
+Lead SOC Analyst,Assurewave Software,"Seattle, WA",Full-time,"SECURE CODE REVIEW, SOC Operations, SIEM Tools, Documentation Best Practices",127132,177199,Security
+Principal Security Architect,Uptime Grove IT,"Austin, TX",Internship,"Shell Scripting, Identity and Access Management, Endpoint Security, Threat Modeling, Firewall Configuration, GDPR Compliance, SOC 2 Compliance, Cryptography",174416,230062,Security
+Senior Cybersecurity Engineer,Cobalt Robotics Group,Remote,Full-time,"Network Security, Endpoint Security, GRC (Governance, Risk & Compliance), Jira, Penetration Testing, ISO 27001, Zero Trust Architecture, Python",109192,161108,Security
+Senior Cybersecurity Analyst,Blueforge Cyber,"Bengaluru, India",Full-time,"Endpoint Security, Threat Modeling, Cloud Security, VPN Configuration, Firewall Configuration, SOC Operations, Git",101871,154092,Security
+Intern Cybersecurity Analyst,Streamline Cyber Co,Singapore,Full-time,"Penetration Testing, GDPR Compliance, TCP/IP, Vulnerability Assessment, GRC (Governance, Risk & Compliance), Vulnerability Assessment",19052,39770,Security
+Staff QA Lead,Onyx Bridge Tech,"Boston, MA",Full-time,"Python, Behavior-Driven Development, Playwright, Interpersonal Skills, SQL, Test Automation",139089,195869,QA & Testing
+Lead Security Engineer,Vertex Cloud Labs,"Sydney, Australia",Part-time,"Incident Response, Cloud Security, HIPAA Compliance, OWASP",142981,189369,Security
+Intern IT Support Analyst,Truescope Software,"Dallas, TX",Contract,"Virtualization (VMware), Storage Area Networks, VoIP Systems, Load Balancers (F5), VPN Configuration",16115,31308,IT Support
+Mid-level QA Analyst,Shieldwall Technologies,"Raleigh, NC",Full-time,"Appium, Load Testing (JMeter), Postman, Jira, Jira, Unit Testing",62195,95618,QA & Testing
+Junior IT Support Analyst,Peaksec Technologies,"Boston, MA",Full-time,"Interpersonal Skills, Active Directory, Linux Administration, Storage Area Networks",39650,59145,IT Support
+Quality Assurance Engineer,Bastion Point Systems,Remote,Part-time,"Mobile Testing, Selenium, Quality Assurance, Test Automation, Unit Testing, Accessibility Testing",69332,101743,QA & Testing
+Junior Manual QA Tester,Blueforge Cyber,"Chicago, IL",Part-time,"Quality Assurance, Unit Testing, Playwright, Pytest, Continuous Testing, SQL",47304,72121,QA & Testing
+QA Manager,Beacon Ridge Security,"Vancouver, BC",Part-time,"Playwright, Behavior-Driven Development, Exploratory Testing, Appium, Quality Assurance, Performance Testing",121145,181879,QA & Testing
+Lead Systems Administrator,Anchorpoint Systems,"Chicago, IL",Full-time,"Customer Service, Endpoint Security, Virtualization (VMware), IPv6",117513,157381,IT Support
+Senior Quality Assurance Engineer,Deadbolt Digital,"Berlin, Germany",Full-time,"JavaScript, Test Case Design, Playwright",94918,145689,QA & Testing
+Security Analyst,Vertexguard Systems,"Berlin, Germany",Part-time,"Collaboration, Vulnerability Assessment, GDPR Compliance, Application Security, Firewall Configuration, Incident Response",73183,107751,Security
+Junior QA Analyst,Deskline Support Co,"Bengaluru, India",Full-time,"Quality Assurance, Performance Testing, Regression Testing, Postman, Behavior-Driven Development, Test Plan Development",45261,71033,QA & Testing
+Application Security Engineer,Hardwireline Support,"Seattle, WA",Full-time,"GRC (Governance, Risk & Compliance), Public Key Infrastructure, Threat Modeling, OWASP, HIPAA Compliance, GDPR Compliance, Python",79340,121207,Security
+Senior SOC Analyst,Vertex Cloud Labs,Remote,Internship,"SOC Operations, HIPAA Compliance, Endpoint Security, SOC 2 Compliance, SIEM Tools",98077,154893,Security
+Mid-level GRC Analyst,Basecamp Support Labs,"Toronto, ON",Full-time,"Microsoft Azure, Security Auditing, Amazon Web Services (AWS), SOC 2 Compliance, Linux Administration",70442,101878,Security
+Lead Test Automation Engineer,Ticketforge Systems,Remote,Full-time,"Collaboration, Appium, Unit Testing, Performance Testing",134393,180102,QA & Testing
+Mid-level IT Support Analyst,Argus Point Technologies,Remote,Full-time,"Linux Administration, IPv6, Network Monitoring, Storage Area Networks, VoIP Systems, Endpoint Security, Customer Service",55445,75518,IT Support
+Help Desk Manager,Vertex Cloud Labs,"New York, NY",Full-time,"Active Directory, TCP/IP, Network Automation",120728,166767,IT Support
+Mid-level Desktop Support Engineer,Skyline Ventures IT,Remote,Part-time,"Documentation Best Practices, TCP/IP, Presentation Skills, Windows Server Administration, IPv6",57609,82881,IT Support
+Junior Network Administrator,Ticketforge Systems,Remote,Full-time,"Network Routing & Switching, IPv6, VoIP Systems, SD-WAN, Windows Server Administration, Virtualization (VMware), Customer Service",52066,70034,IT Support
+Junior IT Support Specialist,Clearbench Systems,"Vancouver, BC",Part-time,"Documentation Best Practices, Network Monitoring, Network Routing & Switching, IPv6, SD-WAN, Presentation Skills",38263,60505,IT Support
+Staff QA Lead,Pinecrest Digital,Remote,Part-time,"Pytest, Mobile Testing, Appium",139248,193773,QA & Testing
+Senior Offensive Security Engineer,Terminalpoint Tech,"London, UK",Full-time,"Network Security, Penetration Testing, Linux Administration, Digital Forensics, Malware Analysis, Incident Response, Jira",111741,163733,Security
+Offensive Security Engineer,Clearbench Systems,"Dublin, Ireland",Full-time,"DevSecOps, Secure Code Review, Microsoft Azure, Malware Analysis",84230,122985,Security
+IT Support Specialist,Hardwireline Support,Singapore,Full-time,"VPN Configuration, Network Routing & Switching, Active Directory, Virtualization (VMware), Endpoint Security, Load Balancers (F5), Collaboration",50721,77543,IT Support
+Lead Security Architect,Harborline Technologies,"Washington, DC",Full-time,"Firewall Configuration, GRC (Governance, Risk & Compliance), Secure Code Review",155495,211321,Security
+Intern Cybersecurity Analyst,Perimeter Nine Labs,"Denver, CO",Full-time,"Firewall Configuration, GDPR Compliance, Threat Modeling, SOC 2 Compliance, Network Security, Collaboration",17374,42737,Security
+Compliance & Risk Analyst,Patchbay Technologies,"Bengaluru, India",Full-time,"Secure Code Review, ISO 27001, Endpoint Security, Public Key Infrastructure, Firewall Configuration, OWASP",68284,109325,Security
+Manager Quality Assurance Engineer,Basecamp Support Labs,"Chicago, IL",Internship,"Accessibility Testing, API Testing, Regression Testing, Python, CI/CD Pipelines, Mobile Testing, Playwright",107114,162392,QA & Testing
+Manager Cybersecurity Analyst,Granite Peak Tech,"Bengaluru, India",Full-time,"Penetration Testing, Amazon Web Services (AWS), Incident Response, Secure Code Review, Digital Forensics, VPN Configuration, Application Security",113928,167596,Security
+Manager QA Lead,Harborline Technologies,Remote,Part-time,"Load Testing (JMeter), Mobile Testing, Test Case Design, JavaScript, Interpersonal Skills",118331,177384,QA & Testing
+Compliance & Risk Analyst,Threadneedle Cyber,"Dallas, TX",Contract,"Public Key Infrastructure, Cryptography, ISO 27001, HIPAA Compliance",69512,107201,Security
+IT Support Manager,Vanguard Mesh Systems,"Dallas, TX",Full-time,"Communication, DNS Administration, Customer Service",126513,175873,IT Support
+Staff Systems Administrator,Deadbolt Digital,"Dallas, TX",Full-time,"IPv6, DNS Administration, VoIP Systems, SD-WAN, Endpoint Security, VPN Configuration, Virtualization (VMware), Load Balancers (F5)",123600,165296,IT Support
+Manager Security Analyst,Argus Point Technologies,"Chicago, IL",Full-time,"Identity and Access Management, Endpoint Security, SOC 2 Compliance, Firewall Configuration, SIEM Tools, Application Security, Secure Code Review, Penetration Testing",112055,174998,Security
+Lead QA Engineer,Cobalt Robotics Group,Remote,Full-time,"Quality Assurance, Exploratory Testing, API Testing, Load Testing (JMeter)",124770,170587,QA & Testing
+IT Support Manager,Nova Field Labs,Remote,Contract,"DNS Administration, Active Directory, Endpoint Security, Virtualization (VMware), Interpersonal Skills",127639,176617,IT Support
+Manager Security Analyst,Testforge Labs,"Dublin, Ireland",Contract,"Zero Trust Architecture, Network Security, Threat Modeling, JIRA, Microsoft Azure, Incident Response",116425,167584,Security
+Mid-level Help Desk Technician,Voidline Inc,"Dallas, TX",Part-time,"DNS Administration, Network Routing & Switching, Endpoint Security, TCP/IP, Customer Service, VoIP Systems",54543,76354,IT Support
+Lead Network Administrator,Routewise Networks,Remote,Part-time,"Load Balancers (F5), IPv6, Documentation Best Practices, SD-WAN, Endpoint Security, Load Balancers (F5)",119305,155102,IT Support
+Senior Network Administrator,Fieldwire IT Systems,"London, UK",Full-time,"Active Directory, Documentation Best Practices, IPv6, VPN Configuration, DNS Administration, Network Routing & Switching, Linux Administration, TCP/IP",87308,138979,IT Support
+Senior Cloud Security Architect,Northwind Analytics,"Chicago, IL",Internship,"Endpoint Security, Firewall Configuration, Public Key Infrastructure, Malware Analysis, Penetration Testing, Digital Forensics",117292,181321,Security
+Lead Offensive Security Engineer,Ironveil Networks,"San Francisco, CA",Part-time,"GDPR Compliance, Network Security, Zero Trust Architecture, Application Security, Digital Forensics, Cloud Security, Malware Analysis",140572,192975,Security
+QA Manager,Fernwood Interactive,Remote,Full-time,"Pytest, Collaboration, Continuous Testing, Performance Testing, Jira",133652,186514,QA & Testing
+Senior Security Architect,Faultline Technologies,"Austin, TX",Full-time,"Firewall Configuration, Endpoint Security, Python, SOC 2 Compliance, VPN Configuration, Incident Response, Linux Administration, Network Security",117362,178467,Security
+QA Manager,Netframe Solutions,"Vancouver, BC",Internship,"Jest, Regression Testing, API Testing, SQL, Jira",144527,192704,QA & Testing
+Junior Technical Support Engineer,Stonewall Cyber Labs,Singapore,Full-time,"Documentation Best Practices, Network Routing & Switching, Virtualization (VMware)",40711,62347,IT Support
+QA Manager,Hardwireline Support,"Denver, CO",Internship,"Quality Assurance, Python, CI/CD Pipelines, Accessibility Testing, Selenium, Mobile Testing, Pytest",122228,179075,QA & Testing
+Mid-level Penetration Tester,Endpointe Technologies,"Dallas, TX",Full-time,"Security Auditing, Identity and Access Management, Documentation Best Practices, Firewall Configuration, Network Security, SOC Operations, TCP/IP",82814,121691,Security
+Senior Penetration Tester,Quietstone Security,"Chicago, IL",Full-time,"Firewall Configuration, SOC 2 Compliance, Linux Administration, TCP/IP",112153,163455,Security
+Security Analyst,Streamline Cyber Co,Remote,Full-time,"Cloud Security, TCP/IP, OWASP, SOC Operations, Security Auditing, Penetration Testing",72929,111874,Security
+Junior Network Administrator,Voidline Inc,"Dublin, Ireland",Full-time,"Storage Area Networks, Endpoint Security, VPN Configuration, DNS Administration, Network Routing & Switching",48352,74725,IT Support
+Senior Systems Administrator,Stonewall Cyber Labs,Remote,Full-time,"VoIP Systems, Network Monitoring, Storage Area Networks, Active Directory, Documentation Best Practices, IPv6, Virtualization (VMware), Customer Service",87762,132601,IT Support
+Mid-level SDET,Fieldwire IT Systems,Remote,Full-time,"Load Testing (JMeter), SQL, Test Automation, Jira, Performance Testing, Pytest",76971,110921,QA & Testing
+Intern Quality Assurance Engineer,Threadneedle Cyber,"Raleigh, NC",Full-time,"Time Management, Test Automation, Postman",20422,39330,QA & Testing
+Senior Technical Support Engineer,Aegis Loop Technologies,"Bengaluru, India",Full-time,"Storage Area Networks, Customer Service, VPN Configuration, DNS Administration, Linux Administration",75932,120426,IT Support
+Manager QA Lead,Bluepeak Software,"Dallas, TX",Full-time,"Collaboration, Selenium, Mobile Testing, Exploratory Testing, Postman",121957,175839,QA & Testing
+Mid-level IT Support Specialist,Rigortest Software,"Washington, DC",Internship,"Active Directory, Linux Administration, Endpoint Security, IPv6, VoIP Systems, VPN Configuration, TCP/IP, SD-WAN",54202,78267,IT Support
+Lead Penetration Tester,Bridgeline Networks,"Dallas, TX",Internship,"OWASP, Vulnerability Assessment, Git, Linux Administration, GRC (Governance, Risk & Compliance), Security Auditing, Incident Response, Python",143762,193362,Security
+Intern Security Analyst,Stonewall Cyber Labs,Singapore,Full-time,"Time Management, Microsoft Azure, SOC Operations, SIEM Tools, GRC (Governance, Risk & Compliance), Cryptography, Security Auditing",22940,39332,Security
+Lead SDET,Bluepeak Software,Singapore,Internship,"CI/CD Pipelines, Selenium, Quality Assurance, Behavior-Driven Development, Mobile Testing, Test Case Design",132649,178838,QA & Testing
+Junior Systems Administrator,Systemcove Technologies,"Sydney, Australia",Full-time,"Windows Server Administration, IPv6, Active Directory",51088,69600,IT Support
+Principal QA Lead,Cipher Harbor Labs,Remote,Full-time,"Test Automation, Quality Assurance, Selenium, Time Management",151432,202759,QA & Testing
+Senior Offensive Security Engineer,Clearbench Systems,"Sydney, Australia",Full-time,"Problem Solving, Python, Vulnerability Assessment, Cryptography",107269,168219,Security
+Senior Technical Support Engineer,Cobalt Robotics Group,"Sydney, Australia",Internship,"VPN Configuration, Network Monitoring, TCP/IP, Windows Server Administration",80952,118161,IT Support
+Lead QA Lead,Nightwatch Security Co,"Vancouver, BC",Internship,"Pytest, Accessibility Testing, Cypress, Jest, JavaScript",137642,186417,QA & Testing
+Mid-level Test Automation Engineer,Circuitline IT,"Denver, CO",Internship,"Cypress, test automation, Test Case Design, Problem Solving, SQL, Appium",76695,109474,QA & Testing
+Senior Manual QA Tester,Assurewave Software,"Berlin, Germany",Contract,"CI/CD Pipelines, Performance Testing, Jira, Agile Methodology",84118,127309,QA & Testing
+Senior Desktop Support Engineer,Cryptbridge Systems,Remote,Full-time,"IPv6, Problem Solving, Linux Administration, Documentation Best Practices, Network Monitoring, Windows Server Administration",77076,117021,IT Support
+Junior IT Support Analyst,Redwood Data Systems,"Boston, MA",Full-time,"Windows Server Administration, VPN Configuration, Network Automation, Virtualization (VMware), Documentation Best Practices, Network Monitoring, Customer Service, Linux Administration",37039,59817,IT Support
+Senior Test Automation Engineer,Peaksec Technologies,Remote,Part-time,"Selenium, Bug Tracking, Playwright, Continuous Testing, Appium",101911,156221,QA & Testing
+Junior SOC Analyst,Assurewave Software,"Bengaluru, India",Internship,"Linux Administration, Public Key Infrastructure, VPN Configuration, SOC 2 Compliance, Network Security, SIEM Tools",53769,79985,Security
+Manager SOC Analyst,Bridgeline Networks,"Toronto, ON",Full-time,"Vulnerability Assessment, Problem Solving, ISO 27001, Amazon Web Services (AWS), Cloud Security, Shell Scripting",114752,167507,Security
+Intern Help Desk Technician,Circuitline IT,"Denver, CO",Internship,"Documentation Best Practices, Load Balancers (F5), VPN Configuration, Linux Administration, Active Directory, VoIP Systems",16145,26719,IT Support
+Senior Application Security Engineer,Netframe Solutions,"Seattle, WA",Full-time,"Identity and Access Management, Threat Modeling, Linux Administration, DevSecOps, Shell Scripting, Problem Solving, Network Security",108455,161755,Security
+Junior QA Analyst,Cryptbridge Systems,Remote,Internship,"Postman, Cypress, Continuous Testing, Test Plan Development, Jest",46401,70552,QA & Testing
+Junior GRC Analyst,Cryptbridge Systems,"Atlanta, GA",Full-time,"OWASP, Digital Forensics, Cloud Security, Public Key Infrastructure, Firewall Configuration",51722,75058,Security
+Lead Offensive Security Engineer,Ghost Corp,"Atlanta, GA",Full-time,"Digital Forensics, Python, HIPAA Compliance",140245,194870,Security
+Intern Manual QA Tester,Watchtower Data Co,"Toronto, ON",Full-time,"Test Plan Development, Appium, Continuous Testing, Quality Assurance",17090,32662,QA & Testing
+Lead Test Automation Engineer,Peaksec Technologies,"New York, NY",Full-time,"Mobile Testing, Test Case Design, Jest, Python, Unit Testing, Continuous Testing",131128,181139,QA & Testing
+Lead Test Automation Engineer,Vertex Cloud Labs,Remote,Internship,"Interpersonal Skills, Test Plan Development, SQL, Jest, Test Automation",133150,179544,QA & Testing
+Senior Manual QA Tester,Faultline Technologies,Remote,Internship,"Mobile Testing, Time Management, Postman, Test Plan Development",86976,124610,QA & Testing
+Senior IT Support Analyst,Redwood Data Systems,"Raleigh, NC",Full-time,"Endpoint Security, VPN Configuration, Linux Administration, Documentation Best Practices, DNS Administration",68254,109246,IT Support
+Junior Quality Assurance Engineer,Blueforge Cyber,"Chicago, IL",Part-time,"Jira, Mobile Testing, Bug Tracking",54334,74493,QA & Testing
+Junior Compliance & Risk Analyst,Uptime Grove IT,"Sydney, Australia",Full-time,"Cryptography, Python, Amazon Web Services (AWS), Secure Code Review, SIEM Tools",49281,73634,Security
+Intern Help Desk Technician,Argus Point Technologies,Remote,Full-time,"Windows Server Administration, Load Balancers (F5), Customer Service, Documentation Best Practices, Storage Area Networks, Network Monitoring, VoIP Systems, DNS Administration",16713,25217,IT Support
+Lead SDET,Granite Peak Tech,"Sydney, Australia",Internship,"Performance Testing, Accessibility Testing, Python",133556,180740,QA & Testing
+Staff Security Engineer,Consolebridge Systems,"Seattle, WA",Full-time,"Digital Forensics, Linux Administration, Python",146329,202668,Security
+Junior Quality Assurance Engineer,Ironclad Cyber Group,"London, UK",Part-time,"Selenium, Behavior-Driven Development, Git, Accessibility Testing",54576,80983,QA & Testing
+Mid-level Compliance & Risk Analyst,Sentinel Ridge Security,"Seattle, WA",Part-time,"Presentation Skills, Application Security, Linux Administration",68465,101547,Security
+Manager Compliance & Risk Analyst,Ironveil Networks,"Raleigh, NC",Full-time,"DevSecOps, Zero Trust Architecture, Identity and Access Management, Microsoft Azure, SOC Operations, Amazon Web Services (AWS), Shell Scripting",108032,159768,Security
+Junior Systems Administrator,Fernwood Interactive,"Atlanta, GA",Internship,"SD-WAN, VPN Configuration, Network Monitoring, IPv6, DNS Administration, Linux Administration, Active Directory, Virtualization (VMware)",48801,75448,IT Support
+Senior QA Analyst,Byteforge Labs,"Boston, MA",Full-time,"Jest, API Testing, Performance Testing, SQL, Jira, Cypress, Behavior-Driven Development, JavaScript",86147,130051,QA & Testing
+Staff Security Engineer,Bugtrail Technologies,Remote,Full-time,"VPN Configuration, Linux Administration, Firewall Configuration, Microsoft Azure",144380,202876,Security
+Senior Cloud Security Architect,Quietstone Security,"Dallas, TX",Full-time,"Digital Forensics, Endpoint Security, Secure Code Review, TCP/IP, Amazon Web Services (AWS), Vulnerability Assessment, Identity and Access Management, Python",117594,184306,Security
+Mid-level Cybersecurity Analyst,Redteam Ridge Labs,"Dublin, Ireland",Full-time,"Security Auditing, Network Security, Microsoft Azure, Python, Cryptography, TCP/IP, VPN Configuration, Identity and Access Management",76035,114912,Security
+Intern IT Support Analyst,Coreloop Systems,"Vancouver, BC",Full-time,"Storage Area Networks, Documentation Best Practices, Linux Administration, Network Automation, Endpoint Security, SD-WAN, IPv6, Windows Server Administration",15000,26731,IT Support
+Senior Manual QA Tester,Bastion Point Systems,"Boston, MA",Full-time,"Playwright, Python, Bug Tracking, Accessibility Testing, Git, Unit Testing",86255,131441,QA & Testing
+Lead Security Analyst,Bluepeak Software,"Bengaluru, India",Full-time,"SOC 2 Compliance, DevSecOps, Python, Network Security, Cloud Security, Firewall Configuration",129960,178685,Security
+Mid-level Network Administrator,Netframe Solutions,"Berlin, Germany",Full-time,"Time Management, Network Routing & Switching, Virtualization (VMware)",66852,100688,IT Support
+Cybersecurity Analyst,Cobalt Robotics Group,"Sydney, Australia",Part-time,"Public Key Infrastructure, Firewall Configuration, TCP/IP, Security Auditing, SIEM Tools, Application Security, VPN Configuration",75926,114848,Security
+Help Desk Manager,Hardwireline Support,"Dublin, Ireland",Full-time,"Network Monitoring, Storage Area Networks, DNS Administration, Documentation Best Practices, Load Balancers (F5), VoIP Systems, Linux Administration",128338,180600,IT Support
+Lead QA Engineer,Endpointe Technologies,Remote,Full-time,"Regression Testing, Continuous Testing, CI/CD Pipelines, Accessibility Testing, Appium, Load Testing (JMeter), JavaScript, Jest",126210,170437,QA & Testing
+Help Desk Manager,Amber Path Studios,"London, UK",Internship,"DNS Administration, Customer Service, Documentation Best Practices, Linux Administration, Virtualization (VMware)",126055,176414,IT Support
+Senior IT Support Specialist,Deadbolt Digital,"Berlin, Germany",Full-time,"Endpoint Security, Network Automation, Network Monitoring, Documentation Best Practices, SD-WAN, Load Balancers (F5), Storage Area Networks",72516,108260,IT Support
+Principal Cloud Security Architect,Cobalt Robotics Group,"Atlanta, GA",Full-time,"Endpoint Security, Microsoft Azure, Public Key Infrastructure, GRC (Governance, Risk & Compliance), Digital Forensics, Penetration Testing, Identity and Access Management, Python",173221,226411,Security
+Junior Penetration Tester,Onyx Bridge Tech,Remote,Contract,"Problem Solving, Penetration Testing, Linux Administration, Python, TCP/IP",59583,91976,Security
+Lead Technical Support Engineer,Peaksec Technologies,"San Francisco, CA",Internship,"TCP/IP, Customer Service, Linux Administration, Network Automation",104038,140977,IT Support
+Senior Offensive Security Engineer,Helprail Technologies,"Bengaluru, India",Full-time,"Cloud Security, HIPAA Compliance, SIEM Tools, Threat Modeling",108973,165345,Security
+Junior Test Automation Engineer,Threadneedle Cyber,"Chicago, IL",Full-time,"Postman, Behavior-Driven Development, Test Case Design, Bug Tracking, API Testing, Continuous Testing, Exploratory Testing",56893,82128,QA & Testing
+Junior Technical Support Engineer,Clearbench Systems,"Raleigh, NC",Contract,"Endpoint Security, DNS Administration, Network Routing & Switching, Windows Server Administration, TCP/IP, Documentation Best Practices, Active Directory, Virtualization (VMware)",40612,65304,IT Support
+Mid-level Penetration Tester,Verityloop Digital,"New York, NY",Full-time,"Microsoft Azure, Firewall Configuration, GRC (Governance, Risk & Compliance), Cryptography, TCP/IP",80842,125941,Security
+Quality Assurance Engineer,Northwind Analytics,"Dallas, TX",Full-time,"Unit Testing, Presentation Skills, Performance Testing, Python, Selenium, API Testing, JavaScript",68710,104196,QA & Testing
+IT Support Manager,Anchorpoint Systems,"Toronto, ON",Full-time,"VoIP Systems, Endpoint Security, Customer Service, SD-WAN, Documentation Best Practices, Active Directory",111022,164422,IT Support
+Staff Network Administrator,Circuitline IT,"London, UK",Full-time,"VoIP Systems, Network Automation, DNS Administration, Linux Administration, Time Management, Storage Area Networks, Active Directory",122442,164744,IT Support
+Lead Penetration Tester,Nova Field Labs,"Vancouver, BC",Part-time,"Microsoft Azure, SIEM Tools, Linux Administration",143301,191649,Security
+Staff Network Administrator,Ticketforge Systems,"Washington, DC",Full-time,"Network Monitoring, Active Directory, Storage Area Networks, Documentation Best Practices, Endpoint Security, Customer Service, Virtualization (VMware), Linux Administration",123768,168083,IT Support
+Junior GRC Analyst,Netframe Solutions,Remote,Full-time,"ISO 27001, TCP/IP, Microsoft Azure, linux administration, SOC 2 Compliance",50161,73524,Security
+Junior Security Engineer,Nightwatch Security Co,"Seattle, WA",Full-time,"Public Key Infrastructure, TCP/IP, GDPR Compliance, Firewall Configuration, Application Security, Python, OWASP, SIEM Tools",58184,88938,Security
+Junior IT Support Analyst,Harborline Technologies,"New York, NY",Full-time,"Network Routing & Switching, VPN Configuration, Active Directory, Interpersonal Skills",36980,56756,IT Support
+Lead Cloud Security Architect,Anchorpoint Systems,"Sydney, Australia",Full-time,"OWASP, Malware Analysis, Identity and Access Management, Linux Administration, Secure Code Review, Public Key Infrastructure",158285,212513,Security
+Senior Network Administrator,Meridian Apps,"Seattle, WA",Full-time,"VPN Configuration, Network Automation, TCP/IP",89859,134291,IT Support
+Lead Network Administrator,Palisade Systems Inc,Singapore,Internship,"Presentation Skills, Storage Area Networks, VoIP Systems, TCP/IP",115607,156265,IT Support
+Junior Quality Assurance Engineer,Precisionpath QA,"London, UK",Contract,"Mobile Testing, Load Testing (JMeter), Jest, Regression Testing, Behavior-Driven Development, Test Plan Development, Appium, Playwright",49557,80662,QA & Testing
+IT Support Manager,Frameworth Digital,"Washington, DC",Internship,"Network Routing & Switching, Documentation Best Practices, Endpoint Security, IPv6, Linux Administration, DNS Administration, Virtualization (VMware), DNS Administration",106951,159168,IT Support
+Lead Penetration Tester,Perimeter Nine Labs,"Raleigh, NC",Full-time,"Network Security, ISO 27001, Git",141288,194846,Security
+Lead Security Engineer,Lattice Works,"Sydney, Australia",Part-time,"Incident Response, Network Security, Linux Administration, OWASP, Application Security, VPN Configuration",139297,192520,Security
+Senior QA Analyst,Circuitline IT,"Sydney, Australia",Part-time,"Jira, Appium, API Testing",87315,130732,QA & Testing
+Staff QA Lead,Frameworth Digital,"Chicago, IL",Part-time,"Load Testing (JMeter), Postman, Jira, Mobile Testing, Python, JavaScript, Pytest",141485,191459,QA & Testing
+Senior Test Automation Engineer,Solstice Data Co,"Raleigh, NC",Full-time,"Collaboration, Unit Testing, SQL, Selenium, Mobile Testing, Bug Tracking, Accessibility Testing, Behavior-Driven Development",101922,156721,QA & Testing
+Senior Desktop Support Engineer,Granite Peak Tech,"Raleigh, NC",Contract,"Storage Area Networks, Windows Server Administration, Presentation Skills",79117,118179,IT Support
+Lead Network Administrator,Skyline Ventures IT,"Denver, CO",Internship,"Windows Server Administration, Network Automation, Network Routing & Switching",114176,157160,IT Support
+Lead Systems Administrator,Redteam Ridge Labs,"Vancouver, BC",Internship,"Active Directory, Virtualization (VMware), Documentation Best Practices, SD-WAN, Windows Server Administration",117669,159571,IT Support
+Junior Test Automation Engineer,Signalcheck Labs,"Dallas, TX",Full-time,"Pytest, Mobile Testing, Exploratory Testing, Regression Testing, Playwright, Git",54881,81671,QA & Testing
+Junior QA Analyst,Vertex Cloud Labs,"New York, NY",Full-time,"Bug Tracking, SQL, API Testing",47256,66848,QA & Testing
+QA Engineer,Ticketforge Systems,Remote,Full-time,"Accessibility Testing, Pytest, Appium",73178,105259,QA & Testing
+Senior GRC Analyst,Northwind Analytics,"New York, NY",Internship,"Identity and Access Management, Digital Forensics, ISO 27001, SOC 2 Compliance, Threat Modeling, Amazon Web Services (AWS)",93775,141929,Security
+Manager SOC Analyst,Rigortest Software,Remote,Contract,"Shell Scripting, Security Auditing, Microsoft Azure, Communication",116819,174998,Security
+Mid-level Quality Assurance Engineer,Frameworth Digital,"Raleigh, NC",Contract,"Jira, Python, Test Automation, Mobile Testing, Quality Assurance, Performance Testing, Selenium, CI/CD Pipelines",69411,104773,QA & Testing
+Network Administrator,Sentinel Ridge Security,"Boston, MA",Full-time,"VPN Configuration, Network Automation, SD-WAN, Customer Service, Network Monitoring, Network Routing & Switching, DNS Administration",69814,100909,IT Support
+Senior SDET,Bluepeak Software,Remote,Full-time,"Jira, Presentation Skills, Performance Testing, Postman, SQL, Mobile Testing, Load Testing (JMeter), Playwright",101836,151640,QA & Testing
+Offensive Security Engineer,Rigortest Software,"Bengaluru, India",Contract,"Cloud Security, DevSecOps, VPN Configuration, Threat Modeling, Network Security, TCP/IP",80306,123398,Security
+Senior Security Analyst,Sentinel Ridge Security,"Vancouver, BC",Full-time,"Security Auditing, Threat Modeling, Microsoft Azure, SOC 2 Compliance, devsecops, Identity and Access Management, Git, TCP/IP",98323,152819,Security
+Principal Cloud Security Architect,Patchbay Technologies,"Toronto, ON",Internship,"Linux Administration, Shell Scripting, Identity and Access Management",175208,227126,Security
+Junior Technical Support Engineer,Nodecare Technologies,"Washington, DC",Full-time,"Load Balancers (F5), IPv6, VoIP Systems, Windows Server Administration, Network Automation",45055,65642,IT Support
+Junior Cybersecurity Analyst,Meridian Apps,"Sydney, Australia",Full-time,"SOC Operations, Shell Scripting, Threat Modeling, Network Security, Python, OWASP, Security Auditing",56347,80457,Security
+Manager SOC Analyst,Bugtrail Technologies,"Bengaluru, India",Full-time,"Public Key Infrastructure, Zero Trust Architecture, Interpersonal Skills, Amazon Web Services (AWS), TCP/IP, Python, Identity and Access Management",117412,173903,Security
+Intern QA Engineer,Precisionpath QA,"Washington, DC",Full-time,"Accessibility Testing, Jira, Quality Assurance, Continuous Testing, Selenium, Jest",21742,41902,QA & Testing
+Junior Test Automation Engineer,Vertex Cloud Labs,Remote,Full-time,"Test Case Design, Continuous Testing, SQL",58214,79567,QA & Testing
+Senior Help Desk Technician,Truescope Software,"New York, NY",Full-time,"Problem Solving, Network Monitoring, SD-WAN",72977,106901,IT Support
+Lead Application Security Engineer,Qualitrix Systems,"San Francisco, CA",Full-time,"Network Security, Malware Analysis, OWASP",139309,192969,Security
+Manual QA Tester,Bugtrail Technologies,"Washington, DC",Full-time,"SQL, Exploratory Testing, JavaScript, Test Case Design, API Testing, Jira, Mobile Testing, Appium",64114,96383,QA & Testing
+IT Support Manager,Hardwireline Support,"Sydney, Australia",Full-time,"Load Balancers (F5), DNS Administration, Network Monitoring",123342,166790,IT Support
+Junior Systems Administrator,Vertexguard Systems,"Washington, DC",Part-time,"Storage Area Networks, Collaboration, VPN Configuration, IPv6, Virtualization (VMware), VoIP Systems, Active Directory",51324,70197,IT Support
+Senior IT Support Analyst,Meridian Apps,"Austin, TX",Full-time,"VoIP Systems, Documentation Best Practices, Customer Service, Communication",68004,106286,IT Support
+Manager Compliance & Risk Analyst,Fortress Grove Inc,"Bengaluru, India",Contract,"Git, Python, Identity and Access Management, Microsoft Azure, SOC Operations, Public Key Infrastructure, Secure Code Review, Application Security",110689,164219,Security
+Application Security Engineer,Argus Point Technologies,"Chicago, IL",Full-time,"Firewall Configuration, Amazon Web Services (AWS), DevSecOps, Cloud Security, Cryptography",83212,120334,Security
+Senior Cybersecurity Analyst,Coreloop Systems,Remote,Full-time,"Python, DevSecOps, GDPR Compliance, Cloud Security, Zero Trust Architecture, Identity and Access Management",101015,148493,Security
+Senior Application Security Engineer,Basecamp Support Labs,"Sydney, Australia",Part-time,"TCP/IP, Threat Modeling, Network Security, Secure Code Review, DevSecOps",107482,162128,Security
+Senior Security Engineer,Ironclad Cyber Group,"Seattle, WA",Full-time,"Public Key Infrastructure, Vulnerability Assessment, SOC 2 Compliance, Network Security, Python, Incident Response, SOC Operations, GDPR Compliance",108482,165194,Security
+Senior Penetration Tester,Faultline Technologies,"San Francisco, CA",Full-time,"Endpoint Security, Vulnerability Assessment, Malware Analysis, Incident Response, Amazon Web Services (AWS), Secure Code Review, Problem Solving, SOC 2 Compliance",111861,166902,Security
+Junior GRC Analyst,Sentinel Ridge Security,"Toronto, ON",Full-time,"GDPR Compliance, Amazon Web Services (AWS), TCP/IP, Firewall Configuration, Zero Trust Architecture, Shell Scripting",50521,79408,Security
+Systems Administrator,Peaksec Technologies,"Denver, CO",Full-time,"Documentation Best Practices, Time Management, Active Directory, SD-WAN, TCP/IP",69473,101385,IT Support
+Manager Cybersecurity Analyst,Threadneedle Cyber,"Raleigh, NC",Full-time,"Security Auditing, Network Security, GRC (Governance, Risk & Compliance), Penetration Testing, DevSecOps, GDPR Compliance, HIPAA Compliance, Secure Code Review",112075,168055,Security
+IT Support Manager,Fernwood Interactive,"Berlin, Germany",Internship,"Collaboration, Storage Area Networks, Endpoint Security",109706,158688,IT Support
+Lead Test Automation Engineer,Threadneedle Cyber,"Vancouver, BC",Full-time,"Test Case Design, Continuous Testing, Behavior-Driven Development, Test Automation, Cypress, Selenium, Jira",130297,179633,QA & Testing
+Test Automation Engineer,Lattice Works,"Dublin, Ireland",Full-time,"Behavior-Driven Development, Mobile Testing, Quality Assurance, Test Plan Development, Selenium, Jest",77863,116407,QA & Testing
+Senior Desktop Support Engineer,Qualitrix Systems,"Boston, MA",Full-time,"TCP/IP, Customer Service, SD-WAN, VPN Configuration",80027,121022,IT Support
+Help Desk Manager,Nightwatch Security Co,"Boston, MA",Full-time,"VPN Configuration, Network Automation, Windows Server Administration, Problem Solving, SD-WAN, Load Balancers (F5)",106400,163740,IT Support
+Lead Systems Administrator,Crestline Digital,"New York, NY",Full-time,"SD-WAN, TCP/IP, Network Routing & Switching, DNS Administration, Active Directory, Load Balancers (F5), VPN Configuration",115589,161837,IT Support
+QA Analyst,Threadneedle Cyber,"Toronto, ON",Contract,"Quality Assurance, Exploratory Testing, Mobile Testing, CI/CD Pipelines, JavaScript",61553,92383,QA & Testing
+Mid-level Technical Support Engineer,Datastack Ventures,"Bengaluru, India",Internship,"Active Directory, Windows Server Administration, VPN Configuration, IPV6, Load Balancers (F5), Storage Area Networks, Virtualization (VMware)",55630,84991,IT Support
+Senior IT Support Analyst,Verityloop Digital,Remote,Full-time,"IPv6, Documentation Best Practices, Network Monitoring, Problem Solving, Network Routing & Switching, VoIP Systems, Virtualization (VMware), SD-WAN",71128,107267,IT Support
+Senior QA Analyst,Palisade Systems Inc,"New York, NY",Internship,"Test Case Design, Playwright, Jest, Accessibility Testing, Test Case Design",86801,125943,QA & Testing
+Senior QA Analyst,Datastack Ventures,"London, UK",Contract,"Test Case Design, Jest, Appium, Cypress, Bug Tracking, Quality Assurance, Test Automation",82138,128748,QA & Testing
+Manager Quality Assurance Engineer,Checkframe Labs,"Sydney, Australia",Full-time,"Quality Assurance, SQL, Pytest, Continuous Testing, Performance Testing",109860,160842,QA & Testing
+Junior Penetration Tester,Northwind Analytics,Remote,Full-time,"Shell Scripting, GRC (Governance, Risk & Compliance), Public Key Infrastructure, VPN Configuration, Python, Security Auditing",61429,92274,Security
+Staff Systems Administrator,Aegis Loop Technologies,"Boston, MA",Internship,"Documentation Best Practices, TCP/IP, VPN Configuration, Windows Server Administration, Customer Service",118999,164326,IT Support
+Mid-level Test Automation Engineer,Ironveil Networks,"Seattle, WA",Full-time,"Test Automation, CI/CD Pipelines, Selenium, Unit Testing, Load Testing (JMeter), API Testing, JavaScript, Jira",79217,113832,QA & Testing
+Intern Manual QA Tester,Redwood Data Systems,"London, UK",Full-time,"CI/CD Pipelines, Cypress, Selenium, Jira, Quality Assurance, Accessibility Testing, Behavior-Driven Development, Bug Tracking",19591,32334,QA & Testing
+Junior Quality Assurance Engineer,Consolebridge Systems,"London, UK",Full-time,"Test Case Design, Bug Tracking, Test Automation, Load Testing (JMeter)",54950,75949,QA & Testing
+Lead Quality Assurance Engineer,Threadneedle Cyber,"Sydney, Australia",Full-time,"Continuous Testing, Appium, CI/CD Pipelines, Communication, Regression Testing, Mobile Testing",121552,169300,QA & Testing
+Senior QA Analyst,Redwood Data Systems,Remote,Internship,"Agile Methodology, Playwright, Bug Tracking",86218,132272,QA & Testing
+Principal QA Lead,Cryptbridge Systems,"New York, NY",Full-time,"Accessibility Testing, Jira, Unit Testing, Load Testing (JMeter), Python",150674,200330,QA & Testing
+Manager Cybersecurity Analyst,Fortress Grove Inc,"Toronto, ON",Internship,"Endpoint Security, Security Auditing, Digital Forensics, DevSecOps",117202,169090,Security
+Senior Quality Assurance Engineer,Blueforge Cyber,"Seattle, WA",Full-time,"Behavior-Driven Development, Pytest, Jira, API Testing, Test Plan Development, Accessibility Testing, Cypress, Appium",92099,143592,QA & Testing
+Junior Technical Support Engineer,Vertexguard Systems,"Dallas, TX",Part-time,"IPv6, VoIP Systems, Storage Area Networks, TCP/IP",43882,67224,IT Support
+Senior IT Support Specialist,Cobalt Robotics Group,"New York, NY",Full-time,"Load Balancers (F5), VPN Configuration, Active Directory, Time Management, Storage Area Networks",69117,107948,IT Support
+Senior Desktop Support Engineer,Checkframe Labs,"New York, NY",Full-time,"Storage Area Networks, Windows Server Administration, Documentation Best Practices",75439,115130,IT Support
+Help Desk Manager,Validex Systems,"Washington, DC",Full-time,"Active Directory, Documentation Best Practices, VPN Configuration, Storage Area Networks",125208,165354,IT Support
+Principal QA Lead,Cobalt Robotics Group,"Berlin, Germany",Full-time,"Exploratory Testing, Pytest, Test Automation, Accessibility Testing, Postman, Regression Testing, Test Plan Development, JavaScript",150708,197176,QA & Testing
+Lead Security Architect,Palisade Systems Inc,"Austin, TX",Full-time,"Application Security, Microsoft Azure, Python, Vulnerability Assessment, Shell Scripting, HIPAA Compliance",157321,209659,Security
+Intern IT Support Analyst,Redteam Ridge Labs,Remote,Full-time,"Load Balancers (F5), SD-WAN, TCP/IP, Active Directory, Customer Service, Network Automation, Network Monitoring, Network Routing & Switching",15436,29796,IT Support
+Junior Quality Assurance Engineer,Keyline Security Group,"London, UK",Contract,"Continuous Testing, Load Testing (JMeter), Pytest, Regression Testing, Exploratory Testing, Test Plan Development, Problem Solving",53045,79321,QA & Testing
+Penetration Tester,Checkframe Labs,"Raleigh, NC",Internship,"Presentation Skills, SIEM Tools, ISO 27001, OWASP, Security Auditing, Application Security, GDPR Compliance, Malware Analysis",83302,118265,Security
+Senior QA Analyst,Qualitrix Systems,"Austin, TX",Full-time,"Selenium, Appium, Mobile Testing",84571,130045,QA & Testing
+Manager QA Engineer,Palisade Systems Inc,Remote,Full-time,"Accessibility Testing, Exploratory Testing, Test Case Design, Bug Tracking",109402,163892,QA & Testing
+Lead Security Analyst,Checkframe Labs,"Chicago, IL",Full-time,"Shell Scripting, ISO 27001, Public Key Infrastructure, Endpoint Security, Documentation Best Practices, Threat Modeling, TCP/IP",129778,178262,Security
+Junior QA Analyst,Hardwireline Support,Singapore,Part-time,"Postman, Jira, Test Automation, Quality Assurance, Unit Testing, Problem Solving, Test Case Design, Cypress",43759,65447,QA & Testing
+Junior Systems Administrator,Consolebridge Systems,"London, UK",Full-time,"Network Monitoring, Load Balancers (F5), Linux Administration, Windows Server Administration, Documentation Best Practices, Virtualization (VMware), VPN Configuration, Network Routing & Switching",49196,71269,IT Support
+Lead Security Architect,Trustline Networks,"Chicago, IL",Full-time,"OWASP, GRC (Governance, Risk & Compliance), Presentation Skills, Security Auditing, Identity and Access Management, Penetration Testing",153053,210942,Security
+QA Manager,Trustline Networks,"Bengaluru, India",Full-time,"Test Case Design, Communication, Python, Continuous Testing",142149,199029,QA & Testing
+Lead Desktop Support Engineer,Bridgeline Networks,"Dallas, TX",Full-time,"VoIP Systems, Load Balancers (F5), Network Automation, Documentation Best Practices",99737,139746,IT Support
+Junior Security Analyst,Granite Peak Tech,Remote,Full-time,"Linux Administration, SOC 2 Compliance, SIEM Tools, Threat Modeling",52177,82769,Security
+QA Manager,Peaksec Technologies,"Berlin, Germany",Full-time,"Problem Solving, Selenium, Performance Testing",151717,199236,QA & Testing
+Mid-level Compliance & Risk Analyst,Keyline Security Group,Remote,Full-time,"GRC (Governance, Risk & Compliance), Identity and Access Management, Zero Trust Architecture",70466,109110,Security
+Staff QA Lead,Ghost Corp,"New York, NY",Full-time,"Jira, API Testing, Test Case Design, Pytest, SQL, Cypress, Continuous Testing, Mobile Testing",141452,192062,QA & Testing
+Senior Network Administrator,Lattice Works,Remote,Part-time,"Network Routing & Switching, Linux Administration, TCP/IP, VoIP Systems, Customer Service, Storage Area Networks, Windows Server Administration, Network Monitoring",87823,135876,IT Support
+Senior Network Administrator,Crestline Digital,"Washington, DC",Full-time,"Endpoint Security, Documentation Best Practices, SD-WAN",91813,135058,IT Support
+Lead Cybersecurity Analyst,Coral Reef Software,Singapore,Full-time,"Python, VPN Configuration, Vulnerability Assessment, Firewall Configuration",129290,175755,Security
+Mid-level Penetration Tester,Rigortest Software,"Vancouver, BC",Internship,"SOC Operations, Microsoft Azure, Zero Trust Architecture, Penetration Testing, SOC 2 Compliance, Application Security, OWASP, DevSecOps",82205,122911,Security
+IT Support Manager,Systemcove Technologies,"Berlin, Germany",Part-time,"Network Routing & Switching, SD-WAN, IPv6, Documentation Best Practices, DNS Administration, Active Directory",111517,165630,IT Support
+Manager Security Analyst,Assurewave Software,"Washington, DC",Full-time,"Communication, Python, DevSecOps, Microsoft Azure, SIEM Tools, Firewall Configuration",114622,168102,Security
+Mid-level Cybersecurity Engineer,Suretest Technologies,"London, UK",Contract,"Firewall Configuration, GRC (Governance, Risk & Compliance), Application Security, SOC 2 Compliance, GDPR Compliance, HIPAA Compliance, Cryptography",83384,121815,Security
+Junior Manual QA Tester,Gridline Support Co,Singapore,Full-time,"Playwright, Selenium, Regression Testing, Behavior-Driven Development, Collaboration, JavaScript, Appium",44072,68073,QA & Testing
+Senior Cloud Security Architect,Signalcheck Labs,"Boston, MA",Full-time,"Security Auditing, Cloud Security, Vulnerability Assessment, Secure Code Review, SIEM Tools, SOC 2 Compliance",120111,183159,Security
+Senior IT Support Analyst,Amber Path Studios,"Austin, TX",Full-time,"Active Directory, TCP/IP, Network Routing & Switching, Network Automation, Windows Server Administration, Endpoint Security, Documentation Best Practices",70127,104668,IT Support
+Senior Systems Administrator,Coreloop Systems,"London, UK",Full-time,"Presentation Skills, Network Routing & Switching, Virtualization (VMware)",90834,138901,IT Support
+Senior Compliance & Risk Analyst,Uptime Grove IT,"San Francisco, CA",Contract,"Malware Analysis, Microsoft Azure, Endpoint Security, GRC (Governance, Risk & Compliance), Firewall Configuration, Cloud Security, Jira, SOC 2 Compliance",96820,142480,Security
+QA Manager,Harborline Technologies,"Raleigh, NC",Contract,"Jira, Jest, SQL, Bug Tracking, Performance Testing, Appium, Exploratory Testing",133983,183176,QA & Testing
+Senior QA Engineer,Harborline Technologies,Remote,Full-time,"Bug Tracking, Jest, Behavior-Driven Development, Accessibility Testing",94678,140923,QA & Testing
+Mid-level QA Analyst,Pinecrest Digital,"Boston, MA",Full-time,"Load Testing (JMeter), Exploratory Testing, Interpersonal Skills",65987,92891,QA & Testing
+Mid-level Help Desk Technician,Fortress Grove Inc,"London, UK",Full-time,"Network Routing & Switching, DNS Administration, Storage Area Networks, IPv6, Network Automation, Customer Service",54533,79801,IT Support
+Junior SOC Analyst,Ticketforge Systems,"Bengaluru, India",Full-time,"Incident Response, Microsoft Azure, SOC 2 Compliance, Communication, TCP/IP, SOC Operations, Amazon Web Services (AWS)",56414,82745,Security
+Help Desk Manager,Cobalt Robotics Group,"Raleigh, NC",Full-time,"IPv6, Windows Server Administration, VPN Configuration, Endpoint Security, Storage Area Networks, Active Directory, Network Automation",110497,160914,IT Support
+Lead Penetration Tester,Cipher Harbor Labs,"Berlin, Germany",Full-time,"DevSecOps, GRC (Governance, Risk & Compliance), Malware Analysis",142951,197051,Security
+Lead Systems Administrator,Systemcove Technologies,"Chicago, IL",Full-time,"Windows Server Administration, Network Automation, Virtualization (VMware), Active Directory, Linux Administration, Collaboration, Network Routing & Switching, IPv6",114233,155985,IT Support
+Lead Cybersecurity Engineer,Validex Systems,Remote,Contract,"GDPR Compliance, SIEM Tools, SOC 2 Compliance, Public Key Infrastructure, OWASP",142337,193708,Security
+Staff Security Architect,Fieldwire IT Systems,"London, UK",Full-time,"Digital Forensics, Shell Scripting, Linux Administration",161525,221059,Security
+Mid-level Compliance & Risk Analyst,Cryptbridge Systems,"Washington, DC",Full-time,"HIPAA Compliance, Python, Penetration Testing",71394,106947,Security
+Junior Help Desk Technician,Onyx Bridge Tech,"Sydney, Australia",Full-time,"Windows Server Administration, Customer Service, Network Routing & Switching, Active Directory, Endpoint Security, DNS Administration",38708,55644,IT Support
+Junior QA Analyst,Cobalt Robotics Group,"Atlanta, GA",Full-time,"Behavior-Driven Development, Jest, Playwright, Continuous Testing, CI/CD Pipelines, API Testing",47242,65820,QA & Testing
+Mid-level Manual QA Tester,Ticketforge Systems,Remote,Full-time,"Regression Testing, Behavior-Driven Development, Jira, Mobile Testing",61650,91037,QA & Testing
+Intern QA Engineer,Threadneedle Cyber,"Dallas, TX",Internship,"Continuous Testing, Bug Tracking, Python, Test Automation, Test Plan Development, Selenium",19971,42305,QA & Testing
+Senior IT Support Specialist,Routewise Networks,"London, UK",Full-time,"VPN Configuration, DNS Administration, Linux Administration, Storage Area Networks, Network Automation",67535,109796,IT Support
+Intern QA Analyst,Timberline Analytics,"Bengaluru, India",Full-time,"Jest, Mobile Testing, Postman",18643,36461,QA & Testing
+Staff Test Automation Engineer,Uptime Grove IT,Remote,Full-time,"Continuous Testing, SQL, CI/CD Pipelines, Accessibility Testing",134957,192022,QA & Testing
+Junior Security Analyst,Shieldwall Technologies,"Bengaluru, India",Part-time,"OWASP, Vulnerability Assessment, Penetration Testing, SIEM Tools",56569,79184,Security
+Senior Desktop Support Engineer,Lattice Works,"Chicago, IL",Part-time,"Network Routing & Switching, Load Balancers (F5), Network Automation, VoIP Systems, VPN Configuration",80002,120718,IT Support
+Lead Systems Administrator,Suretest Technologies,"Denver, CO",Internship,"Virtualization (VMware), VPN Configuration, Documentation Best Practices, TCP/IP, Customer Service, VoIP Systems",117875,157382,IT Support
+Manager QA Lead,Coreloop Systems,Remote,Contract,"Exploratory Testing, Appium, Git, Test Plan Development",122449,176467,QA & Testing
+Intern IT Support Specialist,Ironclad Cyber Group,"Raleigh, NC",Full-time,"VoIP Systems, Active Directory, Linux Administration",15000,26024,IT Support
+Junior Manual QA Tester,Rigortest Software,Remote,Full-time,"Test Case Design, JavaScript, Jest, Accessibility Testing, Quality Assurance, Playwright, Exploratory Testing, Jira",48445,70493,QA & Testing
+Senior Help Desk Technician,Argus Point Technologies,"Atlanta, GA",Contract,"Endpoint Security, Linux Administration, IPv6,   Documentation Best Practices , Virtualization (VMware), Network Monitoring",69340,108927,IT Support
+Lead Security Architect,Lattice Works,Remote,Part-time,"Secure Code Review, SOC 2 Compliance, VPN Configuration",156459,212172,Security
+Manager QA Lead,Aegis Loop Technologies,"Boston, MA",Full-time,"Pytest, API Testing, Jira, Playwright, Interpersonal Skills",120063,177412,QA & Testing
+Senior Cloud Security Architect,Deadbolt Digital,"Washington, DC",Full-time,"Public Key Infrastructure, ISO 27001, Network Security, Malware Analysis, Penetration Testing",122752,182668,Security
+Manager QA Engineer,Nova Field Labs,"Boston, MA",Part-time,"Python, Playwright, Load Testing (JMeter), Appium, Quality Assurance",111890,158963,QA & Testing
+Junior Quality Assurance Engineer,Qualitrix Systems,Singapore,Full-time,"Quality Assurance, Unit Testing, Performance Testing, JavaScript, Jira, Interpersonal Skills, Bug Tracking, Load Testing (JMeter)",53018,73980,QA & Testing
+Principal Cloud Security Architect,Precisionpath QA,"Washington, DC",Full-time,"Linux Administration, ISO 27001, SIEM Tools, Vulnerability Assessment, Shell Scripting, GDPR Compliance",172626,232532,Security
+Lead QA Engineer,Fernwood Interactive,"Toronto, ON",Full-time,"Test Case Design, Test Automation, Behavior-Driven Development, Postman, Communication, Jira, Unit Testing",123842,165123,QA & Testing
+Mid-level QA Engineer,Deadbolt Digital,Remote,Full-time,"Test Case Design, Mobile Testing, Test Automation, Accessibility Testing",68387,101571,QA & Testing
+Junior Compliance & Risk Analyst,Coreloop Systems,"Raleigh, NC",Full-time,"Network Security, Identity and Access Management, Amazon Web Services (AWS), Security Auditing, HIPAA Compliance",52374,77228,Security
+Senior Network Administrator,Argus Point Technologies,"Bengaluru, India",Contract,"Storage Area Networks, Communication, Active Directory, VPN Configuration, Customer Service",90897,135034,IT Support
+Mid-level Application Security Engineer,Sentinel Ridge Security,Remote,Full-time,"Application Security, Python, Vulnerability Assessment, OWASP",80371,117304,Security
+Principal QA Lead,Faultline Technologies,"Berlin, Germany",Full-time,"Exploratory Testing, Load Testing (JMeter), Bug Tracking, API Testing, Pytest, CI/CD Pipelines",154599,200064,QA & Testing
+QA Manager,Faultline Technologies,Remote,Full-time,"Git, Test Case Design, Test Plan Development, Load Testing (JMeter)",137574,184117,QA & Testing
+Manager QA Lead,Basecamp Support Labs,"New York, NY",Part-time,"SQL, Communication, Continuous Testing, Test Automation, Quality Assurance, Jira",122763,180565,QA & Testing
+Junior Penetration Tester,Deskline Support Co,Remote,Internship,"SOC 2 Compliance, Interpersonal Skills, GDPR Compliance",63045,87330,Security
+Junior Compliance & Risk Analyst,Uptime Grove IT,"Austin, TX",Internship,"Firewall Configuration, Presentation Skills, Application Security, Shell Scripting, VPN Configuration, SOC 2 Compliance, Public Key Infrastructure",53373,79366,Security
+Senior Offensive Security Engineer,Blueforge Cyber,"Sydney, Australia",Part-time,"OWASP, Malware Analysis, SOC 2 Compliance, ISO 27001, Penetration Testing, Public Key Infrastructure, Zero Trust Architecture",107185,163994,Security
+Lead Desktop Support Engineer,Streamline Cyber Co,"Dublin, Ireland",Full-time,"Virtualization (VMware), SD-WAN, Jira, Endpoint Security, TCP/IP",99692,139624,IT Support
+Junior Help Desk Technician,Basecamp Support Labs,"Denver, CO",Internship,"Presentation Skills, Network Monitoring, Network Routing & Switching, Linux Administration, Virtualization (VMware), VoIP Systems",39992,54679,IT Support
+QA Manager,Circuitline IT,"Raleigh, NC",Internship,"CI/CD Pipelines, Exploratory Testing, Playwright, Continuous Testing, Unit Testing, SQL",140200,193810,QA & Testing
+Intern QA Analyst,Vertexguard Systems,"Sydney, Australia",Full-time,"Playwright, Exploratory Testing, Jira, Load Testing (JMeter), Pytest, Mobile Testing, Performance Testing, SQL",16152,36675,QA & Testing
+Senior Security Analyst,Circuitline IT,Remote,Full-time,"Agile Methodology, ISO 27001, SOC Operations, Secure Code Review, Vulnerability Assessment, SOC 2 Compliance, Microsoft Azure, HIPAA Compliance",97316,147461,Security
+Staff Cloud Security Architect,Vertexguard Systems,Singapore,Full-time,"Amazon Web Services (AWS), SOC Operations, Security Auditing",159502,220209,Security
+Manager Cybersecurity Analyst,Ironclad Cyber Group,"Bengaluru, India",Full-time,"TCP/IP, OWASP, Incident Response, SIEM Tools, Shell Scripting, Python, Security Auditing",112899,172348,Security
+Desktop Support Engineer,Rigortest Software,"Boston, MA",Internship,"Network Routing & Switching, TCP/IP, Active Directory, Storage Area Networks, Load Balancers (F5), Customer Service, Windows Server Administration",60516,84273,IT Support
+Junior SDET,Bluepeak Software,"San Francisco, CA",Internship,"Behavior-Driven Development, Regression Testing, Jira, SQL, Agile Methodology, Unit Testing, Selenium",57313,85454,QA & Testing
+Junior Technical Support Engineer,Fernwood Interactive,"Berlin, Germany",Full-time,"Linux Administration, Customer Service, TCP/IP",40944,63348,IT Support
+Senior SOC Analyst,Peaksec Technologies,Remote,Full-time,"Cryptography, Vulnerability Assessment, GRC (Governance, Risk & Compliance), Incident Response, Public Key Infrastructure, HIPAA Compliance, Identity and Access Management",101726,151537,Security
+Intern QA Analyst,Ironclad Cyber Group,"Raleigh, NC",Full-time,"Jira, Test Automation, Exploratory Testing, Collaboration, Mobile Testing",18903,33694,QA & Testing
+Senior Application Security Engineer,Datastack Ventures,"Boston, MA",Full-time,"Python, SOC 2 Compliance, Digital Forensics, Presentation Skills, Cryptography, Microsoft Azure",107218,164433,Security
+Senior IT Support Specialist,Streamline Cyber Co,Remote,Full-time,"VPN Configuration, Network Routing & Switching, VoIP Systems, SD-WAN, Virtualization (VMware), Active Directory, Storage Area Networks, Load Balancers (F5)",69142,109701,IT Support
+Junior Manual QA Tester,Fernwood Interactive,Remote,Full-time,"Regression Testing, Unit Testing, Quality Assurance",49490,72178,QA & Testing
+Lead Network Administrator,Routewise Networks,Remote,Full-time,"Active Directory, Documentation Best Practices, VoIP Systems, TCP/IP, Endpoint Security, Network Automation, Load Balancers (F5), DNS Administration",115856,162113,IT Support
+Junior Manual QA Tester,Qualitrix Systems,"Denver, CO",Full-time,"Test Case Design, Test Automation, Selenium, Accessibility Testing, Cypress, JavaScript, Test Plan Development, Collaboration",49508,71850,QA & Testing
+Junior Cybersecurity Engineer,Qualitrix Systems,Remote,Internship,"Digital Forensics, Public Key Infrastructure, Identity and Access Management, DevSecOps",60401,84505,Security
+Junior Help Desk Technician,Testforge Labs,"Washington, DC",Internship,"Endpoint Security, VoIP Systems, DNS Administration, Linux Administration, Customer Service, TCP/IP, Network Automation, Windows Server Administration",41399,58567,IT Support
+Mid-level QA Analyst,Faultline Technologies,"Austin, TX",Part-time,"Performance Testing, Postman, Time Management",63098,94622,QA & Testing
+Mid-level Offensive Security Engineer,Streamline Cyber Co,"Toronto, ON",Full-time,"Public Key Infrastructure, Problem Solving,   Network Security , Microsoft Azure, HIPAA Compliance",82246,125617,Security
+Senior Network Administrator,Endpointe Technologies,"Boston, MA",Full-time,"VoIP Systems, DNS Administration, Linux Administration, Endpoint Security, SD-WAN, Network Monitoring, IPv6",91197,137126,IT Support
+Senior GRC Analyst,Hardwireline Support,"Berlin, Germany",Full-time,"  Zero Trust Architecture , Digital Forensics, TCP/IP, Communication, Public Key Infrastructure, Penetration Testing",93405,140606,Security
+Staff Network Administrator,Watchtower Data Co,"New York, NY",Part-time,"Storage Area Networks, Active Directory, Virtualization (VMware), Network Routing & Switching, Windows Server Administration, Network Monitoring, Load Balancers (F5), Endpoint Security",123914,171425,IT Support
+SDET,Nova Field Labs,"Washington, DC",Full-time,"Python, Playwright, JavaScript, Exploratory Testing, Test Automation, Documentation Best Practices, Appium, Selenium",75042,110077,QA & Testing
+Lead SDET,Redwood Data Systems,Remote,Full-time,"Bug Tracking, Python, Jira, Quality Assurance, CI/CD Pipelines, Exploratory Testing",134003,179783,QA & Testing
+Intern Security Analyst,Nova Field Labs,"Bengaluru, India",Part-time,"Application Security, Amazon Web Services (AWS), Microsoft Azure, cryptography, HIPAA Compliance, SIEM Tools",20873,41220,Security
+Staff Cloud Security Architect,Timberline Analytics,Remote,Full-time,"Cryptography, GDPR Compliance, TCP/IP, Threat Modeling, Endpoint Security, Incident Response, Network Security",161181,220554,Security
+IT Support Manager,Suretest Technologies,"San Francisco, CA",Internship,"DNS Administration, Network Automation, TCP/IP, Linux Administration, Network Routing & Switching, Network Monitoring, VoIP Systems, Documentation Best Practices",110411,162980,IT Support
+Manager QA Lead,Argus Point Technologies,"Atlanta, GA",Internship,"Mobile Testing, Test Automation, JavaScript",122283,177909,QA & Testing
+Lead Network Administrator,Uptime Grove IT,"London, UK",Contract,"Customer Service, Endpoint Security, VoIP Systems, SD-WAN",116002,160523,IT Support
+Senior Application Security Engineer,Uptime Grove IT,Remote,Full-time,"Security Auditing, SOC 2 Compliance, Threat Modeling, Zero Trust Architecture, Shell Scripting, Firewall Configuration",109351,166950,Security
+IT Support Manager,Cipher Harbor Labs,Remote,Contract,"Windows Server Administration, Interpersonal Skills, TCP/IP, VPN Configuration, Virtualization (VMware), SD-WAN, DNS Administration",127961,175113,IT Support
+Manager SOC Analyst,Datastack Ventures,"Toronto, ON",Internship,"Network Security, SIEM Tools, Digital Forensics, SOC Operations, SOC Operations",115445,167176,Security
+Lead Test Automation Engineer,Deadbolt Digital,"Berlin, Germany",Contract,"Test Case Design, Mobile Testing, Quality Assurance, Performance Testing",132545,179891,QA & Testing
+Intern IT Support Specialist,Granite Peak Tech,"Berlin, Germany",Contract,"Windows Server Administration, SD-WAN, Virtualization (VMware), TCP/IP, Load Balancers (F5), Network Monitoring",15000,31989,IT Support
+QA Manager,Frameworth Digital,"Austin, TX",Full-time,"Test Case Design, Playwright, Agile Methodology",138981,187953,QA & Testing
+Senior Compliance & Risk Analyst,Quietstone Security,"Seattle, WA",Full-time,"GDPR Compliance, SOC Operations, Linux Administration, Firewall Configuration, Penetration Testing, Cryptography",93630,146592,Security
+Intern QA Analyst,Fernwood Interactive,"Vancouver, BC",Part-time,"Accessibility Testing, Postman, Continuous Testing, API Testing, Test Plan Development",16646,32581,QA & Testing
+Staff Network Administrator,Cryptbridge Systems,"Atlanta, GA",Full-time,"Active Directory, Documentation Best Practices, VoIP Systems, Endpoint Security, IPv6, Network Monitoring",124047,167394,IT Support
+IT Support Manager,Ridgeline Security Labs,Remote,Full-time,"Virtualization (VMware), DNS Administration, Interpersonal Skills, Storage Area Networks, SD-WAN, Documentation Best Practices",107027,158683,IT Support
+Junior Compliance & Risk Analyst,Signalcheck Labs,"London, UK",Part-time,"Security Auditing, Vulnerability Assessment, GRC (Governance, Risk & Compliance), Network Security",51325,78298,Security
+QA Manager,Amber Path Studios,"Atlanta, GA",Full-time,"JavaScript, Playwright, Test Automation, Selenium, Test Case Design, Quality Assurance, Appium, Behavior-Driven Development",139779,195580,QA & Testing
+Mid-level Help Desk Technician,Precisionpath QA,"London, UK",Part-time,"Collaboration, IPv6, Network Monitoring, Load Balancers (F5), Active Directory",53697,75729,IT Support
+Senior Test Automation Engineer,Stonewall Cyber Labs,"Berlin, Germany",Full-time,"JavaScript, Quality Assurance, Agile Methodology, Playwright, Performance Testing, Test Case Design, Pytest",103920,156258,QA & Testing
+Lead Network Administrator,Peaksec Technologies,"London, UK",Full-time,"Network Monitoring, IPv6, Endpoint Security, DNS Administration, VoIP Systems, Network Automation, Virtualization (VMware), Windows Server Administration",116012,156287,IT Support
+Senior SOC Analyst,Redwood Data Systems,"Denver, CO",Full-time,"Firewall Configuration, Agile Methodology, Threat Modeling",99629,147922,Security
+Manager GRC Analyst,Peaksec Technologies,Remote,Full-time,"Digital Forensics, DevSecOps, Problem Solving",108386,161877,Security
+Lead SDET,Palisade Systems Inc,"London, UK",Part-time,"Jest, Exploratory Testing, API Testing, Jira",135072,177161,QA & Testing
+Staff Penetration Tester,Cryptbridge Systems,"Sydney, Australia",Full-time,"HIPAA Compliance, SOC Operations, SOC 2 Compliance, Problem Solving, Application Security",147781,201456,Security
+Mid-level Compliance & Risk Analyst,Coreloop Systems,"Raleigh, NC",Part-time,"TCP/IP, HIPAA Compliance, Vulnerability Assessment, ISO 27001",72511,102877,Security
+Mid-level Offensive Security Engineer,Ticketforge Systems,Remote,Full-time,"DevSecOps, Linux Administration, Penetration Testing",80869,124262,Security
+Senior Network Administrator,Vanguard Mesh Systems,"Austin, TX",Full-time,"DNS Administration, Network Monitoring, Load Balancers (F5), Storage Area Networks, Windows Server Administration",92651,133710,IT Support
+Lead Quality Assurance Engineer,Ironclad Cyber Group,"Atlanta, GA",Full-time,"Bug Tracking, Pytest, Selenium, Regression Testing, Playwright, Performance Testing, Cypress",125160,163907,QA & Testing
+Help Desk Manager,Ironveil Networks,"Bengaluru, India",Full-time,"Virtualization (VMware), Jira, Network Automation, TCP/IP, DNS Administration, Customer Service",122040,164192,IT Support
+Manager QA Lead,Assurewave Software,Remote,Full-time,"Bug Tracking, Load Testing (JMeter), Unit Testing, CI/CD Pipelines, Python, Regression Testing",123464,182218,QA & Testing
+Mid-level QA Analyst,Cobalt Robotics Group,Remote,Full-time,"Mobile Testing,   Test Plan Development , Appium",62100,93033,QA & Testing
+Principal Security Architect,Pinecrest Digital,Remote,Part-time,"OWASP, AppSec, SOC Operations",172247,229879,Security
+IT Support Manager,Systemcove Technologies,"Bengaluru, India",Full-time,"Network Routing & Switching, Documentation Best Practices, Network Automation, Network Monitoring, Storage Area Networks, Endpoint Security",106268,163451,IT Support
+Senior GRC Analyst,Netframe Solutions,"Washington, DC",Full-time,"Firewall Configuration, Cloud Security, Cryptography",95614,143536,Security
+Mid-level Help Desk Technician,Bridgeline Networks,Remote,Internship,"Customer Service, Storage Area Networks, Network Automation, VPN Configuration, IPv6, Documentation Best Practices, Endpoint Security",55417,77950,IT Support
+Mid-level IT Support Analyst,Bluepeak Software,Remote,Part-time,"Network Monitoring, Presentation Skills, Windows Server Administration, VPN Configuration, Load Balancers (F5), VoIP Systems, TCP/IP, SD-WAN",54312,74664,IT Support
+QA Manager,Peaksec Technologies,"Bengaluru, India",Internship,"Interpersonal Skills, API Testing, Bug Tracking, Test Case Design",153803,198170,QA & Testing
+Intern Manual QA Tester,Ironwood Systems,Remote,Full-time,"Bug Tracking, Jira, Unit Testing, Behavior-Driven Development",15000,38164,QA & Testing
+Junior Security Analyst,Blueforge Cyber,"Raleigh, NC",Contract,"Incident Response, Amazon Web Services (AWS), Cloud Security, Public Key Infrastructure, Endpoint Security",57564,79007,Security
+Lead Quality Assurance Engineer,Datastack Ventures,"Toronto, ON",Full-time,"Postman, Mobile Testing, Playwright, Test Automation, SQL, Appium, Bug Tracking, Jira, Appium",124777,164228,QA & Testing
+Junior QA Engineer,Bluepeak Software,"Sydney, Australia",Full-time,"API Testing, Collaboration, Bug Tracking, Jest, Python, Postman, Accessibility Testing, Load Testing (JMeter)",54323,74528,QA & Testing
+Lead SOC Analyst,Clearbench Systems,"New York, NY",Contract,"GDPR Compliance, SOC 2 Compliance, Endpoint Security, Time Management, Identity and Access Management, Cryptography",131182,177940,Security
+Junior Cybersecurity Engineer,Validex Systems,"San Francisco, CA",Contract,"SIEM Tools, Cloud Security, Microsoft Azure, HIPAA Compliance, SOC Operations, Secure Code Review",62234,91116,Security
+Mid-level Test Automation Engineer,Verityloop Digital,Remote,Full-time,"Appium, SQL, CI/CD Pipelines, Jest, Playwright",75931,115734,QA & Testing
+Principal QA Lead,Threadneedle Cyber,Remote,Full-time,"Load Testing (JMeter), Quality Assurance, Exploratory Testing, Test Case Design, Test Automation, Bug Tracking",151894,200845,QA & Testing
+Help Desk Manager,Ghost Corp,"Berlin, Germany",Full-time,"Customer Service, VPN Configuration, Virtualization (VMware), Network Routing & Switching",110632,159775,IT Support
+IT Support Specialist,Uptime Grove IT,Remote,Part-time,"Linux Administration, Load Balancers (F5), Virtualization (VMware), Virtualization (VMware)",49760,79672,IT Support
+Mid-level Cybersecurity Engineer,Solstice Data Co,Remote,Full-time,"Public Key Infrastructure, GDPR Compliance, Identity and Access Management, Secure Code Review, Cloud Security, Identity and Access Management",80133,123602,Security
+Lead Application Security Engineer,Gridline Support Co,"Raleigh, NC",Full-time,"Endpoint Security, Secure Code Review, Identity and Access Management, SOC 2 Compliance, Zero Trust Architecture, Shell Scripting, Malware Analysis, GDPR Compliance",141104,191406,Security
+Lead Cloud Security Architect,Fernwood Interactive,"Raleigh, NC",Full-time,"Communication, Microsoft Azure, Threat Modeling, Linux Administration, Vulnerability Assessment, Python",153513,208919,Security
+Quality Assurance Engineer,Gridline Support Co,"Berlin, Germany",Contract,"Appium, Jest, Test Automation, Jira",72633,105384,QA & Testing
+Manager Compliance & Risk Analyst,Trustline Networks,"Dublin, Ireland",Full-time,"Threat Modeling, OWASP, Endpoint Security",111700,164084,Security
+Lead Security Architect,Fieldwire IT Systems,"London, UK",Full-time,"Penetration Testing, Identity and Access Management, Threat Modeling, Application Security",157901,207438,Security
+Help Desk Manager,Assurewave Software,"Dublin, Ireland",Full-time,"Windows Server Administration, Active Directory, Storage Area Networks, IPv6, Linux Administration, TCP/IP, VoIP Systems, DNS Administration",109099,163024,IT Support
+Lead Cybersecurity Analyst,Aegis Loop Technologies,"Toronto, ON",Contract,"DevSecOps, TCP/IP, Identity and Access Management, GRC (Governance, Risk & Compliance), Amazon Web Services (AWS), OWASP, Vulnerability Assessment, Threat Modeling",132117,178445,Security
+Principal QA Lead,Truescope Software,"Vancouver, BC",Internship,"CI/CD PIPELINES, Selenium, Performance Testing, Exploratory Testing, Jira",152694,198728,QA & Testing
+Senior Offensive Security Engineer,Amber Path Studios,Singapore,Full-time,"Identity and Access Management, Python, Malware Analysis, Threat Modeling, VPN Configuration, HIPAA Compliance, Linux Administration, Secure Code Review",109669,162184,Security
+Junior Quality Assurance Engineer,Datastack Ventures,"Dublin, Ireland",Full-time,"SQL, JavaScript, Playwright, Jest, Test Case Design, API Testing, Test Automation",51909,80352,QA & Testing
+Junior Penetration Tester,Northwind Analytics,"Berlin, Germany",Contract,"Incident Response, GDPR Compliance, Amazon Web Services (AWS), Shell Scripting, Cloud Security, Firewall Configuration, VPN Configuration",59029,87020,Security
+Intern IT Support Analyst,Netframe Solutions,"Toronto, ON",Full-time,"Customer Service, SD-WAN, Linux Administration, DNS Administration, Documentation Best Practices",15000,27552,IT Support
+Staff Offensive Security Engineer,Terminalpoint Tech,"Sydney, Australia",Full-time,"HIPAA Compliance, Documentation Best Practices, Endpoint Security, Vulnerability Assessment, Application Security, Firewall Configuration, Malware Analysis",147522,207404,Security
+Staff Penetration Tester,Vertexguard Systems,"Sydney, Australia",Full-time,"Malware Analysis,   TCP/IP , SOC Operations, GDPR Compliance, Cloud Security",145586,205535,Security
+Lead Security Engineer,Basecamp Support Labs,"Toronto, ON",Full-time,"Malware Analysis, Linux Administration, Application Security, Amazon Web Services (AWS), GDPR Compliance, TCP/IP",138674,186145,Security
+Junior QA Analyst,Crestline Digital,Remote,Contract,"Performance Testing, Jest, Cypress, Exploratory Testing",44498,70942,QA & Testing
+Senior Manual QA Tester,Clearbench Systems,Remote,Internship,"Exploratory Testing, Performance Testing, Jest, Behavior-Driven Development, Jira, SQL",86941,126292,QA & Testing
+Cybersecurity Engineer,Deadbolt Digital,Remote,Full-time,"Threat Modeling, DevSecOps, SIEM Tools, Time Management, Threat Modeling",82805,120541,Security
+Intern SOC Analyst,Fernwood Interactive,"Boston, MA",Full-time,"Problem Solving, ISO 27001, Cloud Security, Identity and Access Management, Secure Code Review, Shell Scripting",20994,43391,Security
+Senior Cybersecurity Analyst,Circuitline IT,"Sydney, Australia",Full-time,"Public Key Infrastructure, GDPR Compliance, Microsoft Azure, Application Security, Cryptography, Threat Modeling",99230,151666,Security
+QA Manager,Coreloop Systems,"Dublin, Ireland",Full-time,"Behavior-Driven Development, Appium, Load Testing (JMeter), Exploratory Testing, Performance Testing, Playwright, Python, Appium",152975,201954,QA & Testing
+Help Desk Manager,Coral Reef Software,"Seattle, WA",Full-time,"IPv6, Load Balancers (F5), DNS Administration, TCP/IP, Network Monitoring",111036,166321,IT Support
+Junior Systems Administrator,Vertexguard Systems,"San Francisco, CA",Full-time,"Network Routing & Switching, Linux Administration, VPN Configuration",52437,70210,IT Support
+Senior Cloud Security Architect,Blueforge Cyber,"Chicago, IL",Full-time,"OWASP, Application Security, Communication, Shell Scripting, Secure Code Review",122299,179479,Security
+Mid-level Network Administrator,Qualitrix Systems,Remote,Internship,"Windows Server Administration, Network Monitoring, Active Directory, Agile Methodology, Documentation Best Practices, Load Balancers (F5)",69918,98054,IT Support
+Principal Cloud Security Architect,Netframe Solutions,"Dublin, Ireland",Contract,"Microsoft Azure, Shell Scripting, GDPR Compliance, Network Security, SOC Operations, Cryptography, Incident Response, Penetration Testing",171263,229420,Security
+IT Support Manager,Cipher Harbor Labs,"Bengaluru, India",Part-time,"Linux Administration, Storage Area Networks, Active Directory, SD-WAN, Documentation Best Practices, DNS Administration, IPv6, Documentation Best Practices",109056,160284,IT Support
+Senior SOC Analyst,Ticketforge Systems,"Bengaluru, India",Full-time,"Application Security, GRC (Governance, Risk & Compliance), Cloud Security, Penetration Testing, Amazon Web Services (AWS)",101935,152245,Security
+Staff Test Automation Engineer,Keyline Security Group,"Washington, DC",Full-time,"Continuous Testing, Playwright,   Load Testing (JMeter) , Collaboration, Test Plan Development, Exploratory Testing, Behavior-Driven Development",135196,188147,QA & Testing
+Manager QA Engineer,Rigortest Software,Remote,Part-time,"Python, Pytest, SQL",110800,162665,QA & Testing
+Mid-level Test Automation Engineer,Ghost Corp,"Atlanta, GA",Full-time,"Jest, Postman, Interpersonal Skills, Continuous Testing, Test Case Design, Performance Testing, Python",76441,114092,QA & Testing
+IT Support Manager,Cryptbridge Systems,Singapore,Full-time,"Endpoint Security, Load Balancers (F5), IPv6, Network Routing & Switching, DNS Administration, VPN Configuration",121398,168199,IT Support
+Junior Compliance & Risk Analyst,Pinecrest Digital,"Chicago, IL",Internship,"Malware Analysis, Secure Code Review, Cloud Security, Threat Modeling, Firewall Configuration",49841,78535,Security
+Senior IT Support Analyst,Cobalt Robotics Group,Remote,Full-time,"DNS Administration, TCP/IP, Endpoint Security, Windows Server Administration, Documentation Best Practices, VoIP Systems",70264,109566,IT Support
+Senior GRC Analyst,Nodecare Technologies,"Austin, TX",Full-time,"Cloud Security, Endpoint Security, Malware Analysis, TCP/IP, Network Security, ISO 27001",95009,142272,Security
+Senior SDET,Fortress Grove Inc,Remote,Full-time,"Test Automation, Continuous Testing, Postman, Mobile Testing, Playwright, Exploratory Testing, Behavior-Driven Development",102772,157043,QA & Testing
+Intern QA Analyst,Bastion Point Systems,"San Francisco, CA",Full-time,"Playwright, API Testing, Behavior-Driven Development",19445,31469,QA & Testing
+Lead SDET,Amber Path Studios,"Austin, TX",Contract,"Exploratory Testing, Appium, Jira",132756,177204,QA & Testing
+IT Support Manager,Frameworth Digital,Remote,Full-time,"TCP/IP, DNS Administration, Virtualization (VMware), Linux Administration, Network Automation, Storage Area Networks",127933,177067,IT Support
+Lead Quality Assurance Engineer,Verityloop Digital,Singapore,Full-time,"Selenium, Python, Continuous Testing, CI/CD Pipelines, Jira, Quality Assurance, API Testing, Performance Testing",126069,168567,QA & Testing
+Intern IT Support Analyst,Shieldwall Technologies,Remote,Part-time,"Linux Administration, Windows Server Administration, Network Routing & Switching, SD-WAN, Customer Service",15000,32493,IT Support
+Principal Cloud Security Architect,Assurewave Software,"San Francisco, CA",Full-time,"SIEM Tools, Incident Response, Python, Penetration Testing, Malware Analysis, Public Key Infrastructure, Communication",175664,232773,Security
+Junior Systems Administrator,Routewise Networks,"Berlin, Germany",Internship,"Documentation Best Practices, Endpoint Security, Active Directory, Network Automation, SD-WAN, VPN Configuration, TCP/IP",51536,71209,IT Support
+Lead Offensive Security Engineer,Rigortest Software,"Austin, TX",Contract,"Shell Scripting, GDPR Compliance, Microsoft Azure, SOC 2 Compliance, OWASP, Python, Cryptography",141618,190281,Security
+Lead Cybersecurity Engineer,Granite Peak Tech,Remote,Contract,"Python, Problem Solving, Incident Response, Application Security, Endpoint Security",139193,192481,Security
+Offensive Security Engineer,Datastack Ventures,"Dublin, Ireland",Full-time,"TCP/IP, GDPR Compliance, SOC 2 Compliance, Linux Administration",82911,125181,Security
+Manager QA Lead,Quietstone Security,"Chicago, IL",Internship,"Interpersonal Skills, Behavior-Driven Development, Selenium",120053,182111,QA & Testing
+GRC Analyst,Endpointe Technologies,Remote,Full-time,"Threat Modeling, Python, Malware Analysis, GDPR Compliance",70789,105462,Security
+IT Support Manager,Terminalpoint Tech,Remote,Full-time,"DNS Administration, Network Automation, Active Directory, Interpersonal Skills",122968,170415,IT Support
+Manager QA Engineer,Vertexguard Systems,"London, UK",Full-time,"Performance Testing, Unit Testing, JavaScript, Load Testing (JMeter), Behavior-Driven Development, Quality Assurance",110564,163838,QA & Testing
+Staff Offensive Security Engineer,Redwood Data Systems,Singapore,Full-time,"Cryptography, Linux Administration, Digital Forensics, TCP/IP, SOC Operations, Zero Trust Architecture, HIPAA Compliance, Cloud Security",146555,203530,Security
+Lead Systems Administrator,Sentinel Ridge Security,"Chicago, IL",Internship,"Network Automation, VoIP Systems, Time Management, Customer Service",116003,160932,IT Support
+Junior GRC Analyst,Argus Point Technologies,"Dublin, Ireland",Full-time,"TCP/IP, SOC 2 Compliance, Threat Modeling, Linux Administration, Endpoint Security, Cryptography, Security Auditing",53284,74717,Security
+Mid-level Cybersecurity Engineer,Cobalt Robotics Group,"Atlanta, GA",Full-time,"Security Auditing, Zero Trust Architecture, GDPR Compliance, Cloud Security, Threat Modeling, Collaboration, Linux Administration, OWASP",79864,118743,Security
+Quality Assurance Engineer,Perimeter Nine Labs,"Atlanta, GA",Internship,"Cypress, Playwright, Test Case Design, Postman",69863,105485,QA & Testing
+Lead Penetration Tester,Beacon Ridge Security,Remote,Part-time,"Shell Scripting, TCP/IP, Malware Analysis, Vulnerability Assessment, ISO 27001, Threat Modeling, DevSecOps",141982,191761,Security
+Mid-level Quality Assurance Engineer,Stonewall Cyber Labs,"San Francisco, CA",Internship,"Selenium, Regression Testing, Jira",73086,105519,QA & Testing
+Junior Quality Assurance Engineer,Bluepeak Software,"Washington, DC",Full-time,"Postman, API Testing, Performance Testing, Continuous Testing, Selenium, JavaScript",53220,78266,QA & Testing
+Junior Technical Support Engineer,Skyline Ventures IT,"London, UK",Full-time,"Storage Area Networks, Endpoint Security, Documentation Best Practices, Network Monitoring, Windows Server Administration, Endpoint Security",40391,63969,IT Support
+Junior Manual QA Tester,Peaksec Technologies,Remote,Full-time,"Test Plan Development, Jira, JavaScript, Quality Assurance, Playwright",46909,70823,QA & Testing
+Senior SOC Analyst,Peaksec Technologies,"Atlanta, GA",Internship,"Zero Trust Architecture, OWASP, Identity and Access Management, SOC 2 Compliance, TCP/IP, Amazon Web Services (AWS), Secure Code Review, SIEM Tools",101535,150653,Security
+Senior Security Engineer,Deskline Support Co,"Seattle, WA",Internship,"ISO 27001, Amazon Web Services (AWS), Secure Code Review, Shell Scripting, OWASP",105251,165516,Security
+Senior GRC Analyst,Fortress Grove Inc,Remote,Full-time,"Threat Modeling, Network Security, Identity and Access Management, HIPAA Compliance, Firewall Configuration, Documentation Best Practices, GRC (Governance, Risk & Compliance)",97953,146385,Security
+Lead Penetration Tester,Peaksec Technologies,"Sydney, Australia",Full-time,"Secure Code Review, Identity and Access Management, Public Key Infrastructure, Network Security",140133,194479,Security
+Lead QA Lead,Stonewall Cyber Labs,"Dallas, TX",Internship,"Continuous Testing, Unit Testing, SQL, Time Management, Load Testing (JMeter)",135048,188547,QA & Testing
+Help Desk Manager,Bluepeak Software,Remote,Internship,"Storage Area Networks, Network Automation, VoIP Systems",128331,176982,IT Support
+Junior Security Analyst,Bastion Point Systems,"Sydney, Australia",Full-time,"Security Auditing, DevSecOps, Presentation Skills",57450,83284,Security
+Staff Systems Administrator,Palisade Systems Inc,"Sydney, Australia",Part-time,"Active Directory, Customer Service, IPv6, Windows Server Administration, Network Routing & Switching, VoIP Systems, Interpersonal Skills, SD-WAN",119932,163614,IT Support
+Manager GRC Analyst,Amber Path Studios,"Berlin, Germany",Full-time,"Network Security, VPN Configuration, Collaboration, Shell Scripting, Python, Vulnerability Assessment",107911,161378,Security
+Mid-level GRC Analyst,Datastack Ventures,Remote,Contract,"Python, Linux Administration, OWASP, DevSecOps, Security Auditing, Vulnerability Assessment, SOC 2 Compliance",72021,108933,Security
+Mid-level Network Administrator,Crestline Digital,"Chicago, IL",Internship,"Storage Area Networks, Customer Service, SD-WAN, Active Directory, Linux Administration, DNS Administration, Network Automation, VPN Configuration",67943,97617,IT Support
+Lead Desktop Support Engineer,Byteforge Labs,"Raleigh, NC",Full-time,"IPv6, DNS Administration, Load Balancers (F5)",99348,139538,IT Support
+Lead Technical Support Engineer,Perimeter Nine Labs,"Austin, TX",Internship,"TCP/IP, DNS Administration, VPN Configuration, Network Routing & Switching, Documentation Best Practices, Load Balancers (F5), Customer Service, IPv6",102348,141004,IT Support
+Manual QA Tester,Bugtrail Technologies,"Berlin, Germany",Full-time,"Accessibility Testing, Problem Solving, Jira, Bug Tracking",63838,92960,QA & Testing
+QA Manager,Solstice Data Co,Remote,Full-time,"Quality Assurance, Mobile Testing, Jira",122200,179054,QA & Testing
+Help Desk Manager,Verityloop Digital,"Atlanta, GA",Full-time,"TCP/IP, Linux Administration, Active Directory, IPv6",125720,169281,IT Support
+Mid-level Manual QA Tester,Trustline Networks,Singapore,Contract,"Postman, Python, Behavior-Driven Development, API Testing, JavaScript, SQL, Selenium, Test Automation",62747,94407,QA & Testing
+IT Support Manager,Bluepeak Software,"San Francisco, CA",Full-time,"VoIP Systems, Linux Administration, Documentation Best Practices, Customer Service, Network Monitoring, DNS Administration, Windows Server Administration, IPv6",128175,173766,IT Support
+Lead Network Administrator,Basecamp Support Labs,"Dallas, TX",Full-time,"IPv6, VoIP Systems, Customer Service, Active Directory",118861,156212,IT Support
+Intern IT Support Analyst,Validex Systems,"Dallas, TX",Full-time,"TCP/IP, VoIP Systems, Virtualization (VMware), Load Balancers (F5), Storage Area Networks, Endpoint Security, Network Routing & Switching",15000,32063,IT Support
+Manual QA Tester,Nightwatch Security Co,Remote,Full-time,"Jest, Postman, Quality Assurance, Unit Testing, Behavior-Driven Development, Performance Testing",64705,98271,QA & Testing
+Junior Desktop Support Engineer,Hardwireline Support,Remote,Full-time,"Network Automation, SD-WAN, Storage Area Networks, Windows Server Administration, Problem Solving, Endpoint Security, Network Monitoring, Linux Administration",43539,60560,IT Support
+Lead Application Security Engineer,Verityloop Digital,"Berlin, Germany",Internship,"Cloud Security, Penetration Testing, Application Security, Security Auditing, GDPR Compliance, Cryptography, ISO 27001",141443,188267,Security
+Principal Cloud Security Architect,Hardwireline Support,Remote,Full-time,"VPN Configuration, Incident Response, GRC (Governance, Risk & Compliance), Digital Forensics, Endpoint Security, ISO 27001, Security Auditing, OWASP",176055,229621,Security
+Junior Application Security Engineer,Checkframe Labs,"Denver, CO",Full-time,"Vulnerability Assessment, HIPAA Compliance, Application Security, ISO 27001, Incident Response, Shell Scripting",60481,90369,Security
+Help Desk Manager,Beacon Ridge Security,"London, UK",Full-time,"IPv6, Windows Server Administration, Linux Administration, Network Routing & Switching, Linux Administration",123489,167462,IT Support
+Junior Offensive Security Engineer,Sentinel Ridge Security,"Dublin, Ireland",Full-time,"Vulnerability Assessment, Threat Modeling, SOC Operations, Secure Code Review",60904,85426,Security
+GRC Analyst,Vertex Cloud Labs,"Boston, MA",Full-time,"SIEM Tools, OWASP, Vulnerability Assessment, Linux Administration, Incident Response, Amazon Web Services (AWS), DevSecOps, Secure Code Review",70310,103867,Security
+Intern QA Analyst,Threadneedle Cyber,"Bengaluru, India",Full-time,"Accessibility Testing, Playwright, Exploratory Testing, Regression Testing, SQL, CI/CD Pipelines, JavaScript, Continuous Testing",19306,32580,QA & Testing
+Manager GRC Analyst,Anchorpoint Systems,"Sydney, Australia",Full-time,"Cryptography, Penetration Testing, VPN Configuration, Vulnerability Assessment, Public Key Infrastructure",107781,160271,Security
+IT Support Manager,Quietstone Security,"Vancouver, BC",Internship,"Virtualization (VMware), Active Directory, SD-WAN, Interpersonal Skills, Network Automation, Documentation Best Practices, Windows Server Administration",109566,158941,IT Support
+Lead Desktop Support Engineer,Keyline Security Group,"Vancouver, BC",Part-time,"VPN Configuration, Storage Area Networks, Documentation Best Practices",98893,140239,IT Support
+Mid-level Penetration Tester,Meridian Apps,"Dallas, TX",Full-time,"Identity and Access Management, Threat Modeling, Endpoint Security, Public Key Infrastructure, TCP/IP",83021,121721,Security
+Intern IT Support Specialist,Nodecare Technologies,"Denver, CO",Contract,"Virtualization (VMware), IPv6, TCP/IP, Communication, Load Balancers (F5), Active Directory",15000,31264,IT Support
+Junior Penetration Tester,Meshpoint Systems,"Vancouver, BC",Full-time,"HIPAA Compliance, VPN Configuration, Network Security, Secure Code Review, Identity and Access Management",60661,87470,Security
+Cybersecurity Analyst,Frameworth Digital,"Toronto, ON",Full-time,"SIEM Tools, Shell Scripting, Network Security, Endpoint Security, Security Auditing",75746,107017,Security
+Network Administrator,Consolebridge Systems,"San Francisco, CA",Full-time,"Load Balancers (F5), Presentation Skills, VoIP Systems, Documentation Best Practices, Virtualization (VMware), Customer Service, Storage Area Networks",67059,100635,IT Support
+IT Support Manager,Aegis Loop Technologies,"Boston, MA",Full-time,"DNS Administration, Load Balancers (F5), Network Monitoring",130494,173503,IT Support
+Compliance & Risk Analyst,Qualitrix Systems,"Washington, DC",Internship,"DevSecOps, TCP/IP, Linux Administration, Zero Trust Architecture, Security Auditing, TCP/IP",71601,107454,Security
+Intern Security Analyst,Endpointe Technologies,"Seattle, WA",Full-time,"Incident Response, Endpoint Security, Cloud Security",22630,42559,Security
+Staff QA Lead,Byteforge Labs,"Dallas, TX",Internship,"SQL, Bug Tracking, Jest, Behavior-Driven Development, Quality Assurance, Accessibility Testing, Jira, Pytest",142992,192624,QA & Testing
+IT Support Manager,Circuitline IT,Remote,Full-time,"Endpoint Security, VoIP Systems, TCP/IP, Storage Area Networks, IPv6, Load Balancers (F5)",125401,166655,IT Support
+Junior Test Automation Engineer,Anchorpoint Systems,"Chicago, IL",Full-time,"Quality Assurance, Test Case Design, SQL, Mobile Testing, Pytest, Test Plan Development",58435,79819,QA & Testing
+Senior Quality Assurance Engineer,Ironveil Networks,Remote,Full-time,"Time Management, Jira, Bug Tracking",92017,142983,QA & Testing
+Junior Compliance & Risk Analyst,Fortress Grove Inc,Remote,Full-time,"ISO 27001, Identity and Access Management, Public Key Infrastructure, TCP/IP, Linux Administration, Agile Methodology",49747,76024,Security
+Senior Technical Support Engineer,Vanguard Mesh Systems,"Chicago, IL",Full-time,"Windows Server Administration, Network Routing & Switching, Network Monitoring",75916,121606,IT Support
+Penetration Tester,Nodecare Technologies,"Dallas, TX",Full-time,"Python, Time Management, ISO 27001",83720,120007,Security
+IT Support Manager,Anchorpoint Systems,"Denver, CO",Full-time,"Network Monitoring, Virtualization (VMware), Network Routing & Switching",130754,178412,IT Support
+Intern QA Engineer,Blueforge Cyber,Remote,Full-time,"Exploratory Testing, Problem Solving, Pytest, Unit Testing, Mobile Testing, Cypress",20703,39846,QA & Testing
+Junior QA Analyst,Testforge Labs,"Atlanta, GA",Full-time,"SQL, JavaScript, Selenium, Appium, Quality Assurance, Pytest, Exploratory Testing",49096,71776,QA & Testing
+Senior Cloud Security Architect,Keyline Security Group,"San Francisco, CA",Full-time,"SOC 2 Compliance, Cloud Security, Firewall Configuration, DevSecOps, Cryptography, Amazon Web Services (AWS), Digital Forensics, Incident Response",120877,181716,Security
+Junior Test Automation Engineer,Basecamp Support Labs,"San Francisco, CA",Full-time,"Test Automation, CI/CD Pipelines, Load Testing (JMeter), Appium",56140,79395,QA & Testing
+Junior QA Analyst,Onyx Bridge Tech,Remote,Full-time,"Jira, Behavior-Driven Development, Playwright",48200,66672,QA & Testing
+Lead Security Architect,Coral Reef Software,"Bengaluru, India",Full-time,"Identity and Access Management, Application Security, Malware Analysis, Python",155631,209241,Security
+Test Automation Engineer,Faultline Technologies,"Sydney, Australia",Full-time,"CI/CD Pipelines, JavaScript, Continuous Testing, Selenium, Presentation Skills, Unit Testing, Pytest",73514,116003,QA & Testing
+Manager Security Analyst,Vertex Cloud Labs,"Toronto, ON",Full-time,"Public Key Infrastructure, Shell Scripting, Network Security, Penetration Testing, Security Auditing",113230,174643,Security
+Manager QA Lead,Basecamp Support Labs,Remote,Full-time,"Python, Test Plan Development, Load Testing (JMeter), Pytest",123203,182967,QA & Testing
+Senior Technical Support Engineer,Byteforge Labs,Remote,Contract,"SD-WAN, Customer Service, Windows Server Administration, Network Monitoring, Load Balancers (F5), Endpoint Security",78652,116870,IT Support
+Junior Desktop Support Engineer,Suretest Technologies,Remote,Internship,"VPN Configuration, IPv6, DNS Administration, Endpoint Security, Time Management, Windows Server Administration, Network Automation",41840,60548,IT Support
+Senior QA Analyst,Cobalt Robotics Group,"Austin, TX",Full-time,"Quality Assurance, Jest, Jira, Accessibility Testing, Postman, Test Automation, Jira, Exploratory Testing",83605,126530,QA & Testing
+Lead Penetration Tester,Timberline Analytics,Remote,Internship,"ISO 27001, Amazon Web Services (AWS), Network Security, Cloud Security",144125,196200,Security
+Staff Cybersecurity Engineer,Pinecrest Digital,"Sydney, Australia",Full-time,"Time Management, ISO 27001, OWASP, SOC 2 Compliance, Network Security, Linux Administration, Cloud Security",145296,204291,Security
+Senior Network Administrator,Redwood Data Systems,Remote,Full-time,"Endpoint Security, Presentation Skills, Storage Area Networks",88260,136392,IT Support
+Senior Network Administrator,Onyx Bridge Tech,"Raleigh, NC",Full-time,"Load Balancers (F5), IPv6, Linux Administration, Virtualization (VMware), Network Routing & Switching",89801,138150,IT Support
+Mid-level Manual QA Tester,Coreloop Systems,Singapore,Full-time,"Test Plan Development, SQL, Jest, Continuous Testing",66222,95838,QA & Testing
+Junior Compliance & Risk Analyst,Meridian Apps,"Austin, TX",Part-time,"Threat Modeling, Shell Scripting, Identity and Access Management, ISO 27001, DevSecOps, Zero Trust Architecture",49834,76035,Security
+Lead Technical Support Engineer,Northwind Analytics,Remote,Part-time,"Communication, Endpoint Security, IPv6",100311,141032,IT Support
+Lead Technical Support Engineer,Ticketforge Systems,"Denver, CO",Full-time,"SD-WAN, Customer Service, IPv6, Presentation Skills, Endpoint Security, Storage Area Networks, Linux Administration, VPN Configuration",102259,134507,IT Support
+Senior Network Administrator,Coral Reef Software,"Dallas, TX",Full-time,"Documentation Best Practices, IPv6, Linux Administration, Active Directory, Load Balancers (F5), VPN Configuration, SD-WAN",89212,135788,IT Support
+Staff QA Lead,Assurewave Software,Remote,Full-time,"Python, Load Testing (JMeter), Continuous Testing, Performance Testing, Accessibility Testing, Presentation Skills, Pytest",139314,198146,QA & Testing
+Senior Desktop Support Engineer,Cipher Harbor Labs,Remote,Internship,"TCP/IP, Presentation Skills, DNS Administration",80491,115095,IT Support
+Principal Cybersecurity Engineer,Vanguard Mesh Systems,"Chicago, IL",Part-time,"Cloud Security, GRC (Governance, Risk & Compliance), Public Key Infrastructure, Identity and Access Management",155635,205303,Security
+Principal Security Architect,Ticketforge Systems,"London, UK",Full-time,"Secure Code Review, TCP/IP, SOC Operations, Python, TCP/IP",176013,228727,Security
+Mid-level Penetration Tester,Vertexguard Systems,"Washington, DC",Full-time,"GDPR Compliance, SOC Operations, Network Security, Incident Response, ISO 27001, Penetration Testing, GRC (Governance, Risk & Compliance)",83748,125940,Security
+Junior Desktop Support Engineer,Circuitline IT,"Atlanta, GA",Full-time,"Load Balancers (F5), DNS Administration, IPv6, TCP/IP, Git, SD-WAN",45780,66539,IT Support
+Principal QA Lead,Precisionpath QA,Singapore,Part-time,"Selenium, API Testing, Cypress, Appium, CI/CD Pipelines, Performance Testing",152068,200572,QA & Testing
+Staff Penetration Tester,Ridgeline Security Labs,"Toronto, ON",Full-time,"Identity and Access Management, Linux Administration, Microsoft Azure, Network Security, SOC Operations, Cloud Security, HIPAA Compliance",146537,202456,Security
+Mid-level SDET,Precisionpath QA,"Washington, DC",Internship,"Performance Testing, Test Automation, Pytest, JavaScript, Test Case Design",73552,112909,QA & Testing
+Staff Penetration Tester,Fernwood Interactive,"Bengaluru, India",Full-time,"Presentation Skills, Zero Trust Architecture, Microsoft Azure, Amazon Web Services (AWS), Threat Modeling, Secure Code Review",148191,201860,Security
+Senior Help Desk Technician,Vertexguard Systems,Remote,Internship,"Presentation Skills, DNS Administration, Network Routing & Switching, Endpoint Security, Storage Area Networks, Load Balancers (F5)",71052,103879,IT Support
+Lead SOC Analyst,Cryptbridge Systems,"Denver, CO",Contract,"Presentation Skills, SIEM Tools, SOC 2 Compliance, TCP/IP, Cloud Security, Digital Forensics",132181,172878,Security
+Lead Security Engineer,Byteforge Labs,"Bengaluru, India",Full-time,"Amazon Web Services (AWS), SOC 2 Compliance, Vulnerability Assessment, VPN Configuration",139314,186364,Security
+Junior Technical Support Engineer,Netframe Solutions,"Dublin, Ireland",Full-time,"Agile Methodology, VoIP Systems, Storage Area Networks, TCP/IP",42696,67117,IT Support
+Manager QA Engineer,Bridgeline Networks,"Denver, CO",Contract,"Behavior-Driven Development, Load Testing (JMeter), Test Case Design, Appium, Quality Assurance, Accessibility Testing, Unit Testing",110272,163248,QA & Testing
+Lead Desktop Support Engineer,Crestline Digital,Remote,Full-time,"Documentation Best Practices, Storage Area Networks, DNS Administration",101261,140951,IT Support
+Lead Security Architect,Validex Systems,"Boston, MA",Full-time,"Presentation Skills, Identity and Access Management, Cloud Security, Python, Linux Administration",153319,212399,Security
+Senior Manual QA Tester,Pinecrest Digital,"Chicago, IL",Full-time,"Playwright, Test Plan Development, Quality Assurance, Pytest, Selenium, Exploratory Testing, JavaScript, Mobile Testing",84779,129334,QA & Testing
+Intern Security Analyst,Solstice Data Co,Remote,Full-time,"TCP/IP, Security Auditing, Microsoft Azure, Secure Code Review, GDPR Compliance",22557,38777,Security
+Lead Security Analyst,Signalcheck Labs,Remote,Part-time,"ISO 27001, VPN Configuration, SOC Operations, Cryptography, Public Key Infrastructure, Git, TCP/IP",131678,176124,Security
+Senior Penetration Tester,Perimeter Nine Labs,"Denver, CO",Internship,"Amazon Web Services (AWS), Cloud Security, Digital Forensics, Shell Scripting, Time Management",108122,166168,Security
+Senior Technical Support Engineer,Timberline Analytics,Remote,Full-time,"Documentation Best Practices, Network Monitoring, Load Balancers (F5), TCP/IP, Network Routing & Switching, VPN Configuration",76523,120072,IT Support
+Manager QA Engineer,Deadbolt Digital,"Sydney, Australia",Part-time,"Appium, Unit Testing, Jira, Test Automation",106854,164883,QA & Testing
+Lead SDET,Aegis Loop Technologies,Remote,Full-time,"Test Plan Development, JavaScript, Load Testing (JMeter), Behavior-Driven Development, Cypress, Playwright",133300,179854,QA & Testing
+Junior IT Support Analyst,Palisade Systems Inc,"Dublin, Ireland",Full-time,"IPv6, Linux Administration, Network Monitoring, Presentation Skills, Endpoint Security, Load Balancers (F5), SD-WAN, Documentation Best Practices",36673,53756,IT Support
+Junior IT Support Specialist,Checkframe Labs,Remote,Full-time,"SD-WAN, Customer Service, Git, Windows Server Administration, TCP/IP, VPN Configuration, IPv6, VoIP Systems",35729,58781,IT Support
+IT Support Manager,Gridline Support Co,"Berlin, Germany",Full-time,"Network Routing & Switching, Virtualization (VMware), Agile Methodology, Network Monitoring, Network Automation",108139,164095,IT Support
+Junior Application Security Engineer,Quietstone Security,Remote,Full-time,"Secure Code Review, Amazon Web Services (AWS), GRC (Governance, Risk & Compliance), Zero Trust Architecture, TCP/IP",58214,83885,Security
+Senior Technical Support Engineer,Trustline Networks,"Raleigh, NC",Full-time,"Endpoint Security, TCP/IP, DNS Administration, Linux Administration",76527,118922,IT Support
+Principal Cloud Security Architect,Systemcove Technologies,Remote,Full-time,"Public Key Infrastructure, SOC Operations, Digital Forensics, Cryptography, HIPAA Compliance",176806,225927,Security
+Senior QA Analyst,Clearbench Systems,Remote,Part-time,"Accessibility Testing, Cypress, API Testing, Presentation Skills",86455,129630,QA & Testing
+Lead Security Architect,Bridgeline Networks,"Vancouver, BC",Full-time,"Shell Scripting, VPN Configuration, Digital Forensics, Zero Trust Architecture, GDPR Compliance, Public Key Infrastructure, SOC 2 Compliance",153642,211425,Security
+QA Manager,Ticketforge Systems,"Atlanta, GA",Full-time,"Python, Regression Testing, Quality Assurance, Appium, Performance Testing, Cypress",149293,203315,QA & Testing
+Help Desk Manager,Nightwatch Security Co,"Austin, TX",Full-time,"Active Directory, Windows Server Administration, Endpoint Security, Documentation Best Practices, TCP/IP, DNS Administration, Network Automation",108062,164184,IT Support
+Lead Systems Administrator,Pinecrest Digital,"Seattle, WA",Full-time,"DNS Administration, Network Monitoring, Network Routing & Switching",114728,160153,IT Support
+Lead Test Automation Engineer,Truescope Software,Singapore,Full-time,"JavaScript, Python, Playwright, Test Case Design, Mobile Testing",134591,182727,QA & Testing
+Mid-level Manual QA Tester,Helprail Technologies,"Sydney, Australia",Full-time,"Exploratory Testing, Playwright, Test Case Design, Regression Testing, Test Plan Development",65770,91379,QA & Testing
+Manager Security Analyst,Sentinel Ridge Security,"Seattle, WA",Full-time,"DevSecOps, VPN Configuration, TCP/IP, Vulnerability Assessment",114251,173278,Security
+Lead Desktop Support Engineer,Frameworth Digital,"Raleigh, NC",Contract,"DNS Administration, Endpoint Security, Network Automation, Network Routing & Switching, Windows Server Administration",101193,134251,IT Support
+Mid-level Network Administrator,Vanguard Mesh Systems,"Vancouver, BC",Part-time,"Linux Administration, Storage Area Networks, IPv6, Load Balancers (F5), Active Directory, VoIP Systems",65086,103714,IT Support
+Senior GRC Analyst,Rigortest Software,"Atlanta, GA",Full-time,"Shell Scripting, Penetration Testing, TCP/IP, Threat Modeling, HIPAA Compliance",94880,146231,Security
+Junior SDET,Anchorpoint Systems,Remote,Internship,"Selenium, Behavior-Driven Development, Mobile Testing, Python",58584,86482,QA & Testing
+Intern Security Analyst,Endpointe Technologies,"Austin, TX",Full-time,"Shell Scripting, Firewall Configuration, Microsoft Azure, SOC 2 Compliance, Interpersonal Skills",20109,40373,Security
+Senior Manual QA Tester,Ridgeline Security Labs,"Washington, DC",Full-time,"Exploratory Testing, interpersonal skills, Test Automation",84483,131871,QA & Testing
+Lead QA Lead,Trustline Networks,"Washington, DC",Internship,"Exploratory Testing, Test Plan Development, Jira, Git, Selenium, Pytest, Jest",138208,183926,QA & Testing
+Lead Security Engineer,Quietstone Security,Remote,Full-time,"Threat Modeling, GDPR Compliance, SOC 2 Compliance, SIEM Tools, Network Security, Incident Response, Zero Trust Architecture",137584,190711,Security
+Intern QA Analyst,Patchbay Technologies,"Berlin, Germany",Full-time,"Load Testing (JMeter), Python, Accessibility Testing, Quality Assurance, Appium, Playwright",15000,31767,QA & Testing
+Junior Test Automation Engineer,Fortress Grove Inc,"Raleigh, NC",Full-time,"Performance Testing, SQL, Mobile Testing, Appium, Jest, Exploratory Testing, JavaScript",56193,79842,QA & Testing
+Junior Help Desk Technician,Northwind Analytics,Remote,Full-time,"VPN Configuration, SD-WAN, DNS Administration, Documentation Best Practices, VoIP Systems, Storage Area Networks, Customer Service, Load Balancers (F5)",40939,56364,IT Support
+Senior Cloud Security Architect,Shieldwall Technologies,"Washington, DC",Part-time,"Application Security, Zero Trust Architecture, SOC 2 Compliance, Network Security, Shell Scripting",122800,181263,Security
+Senior IT Support Analyst,Ironclad Cyber Group,"Denver, CO",Internship,"Customer Service, Storage Area Networks, IPv6, Network Monitoring",67439,107105,IT Support
+Staff Systems Administrator,Beacon Ridge Security,"Vancouver, BC",Internship,"Network Routing & Switching, Linux Administration, Load Balancers (F5), SD-WAN, Documentation Best Practices",119617,165808,IT Support
+Senior SOC Analyst,Bastion Point Systems,"Washington, DC",Internship,"Penetration Testing, DevSecOps, Linux Administration, Secure Code Review",101385,151934,Security
+Lead QA Engineer,Ticketforge Systems,"Washington, DC",Full-time,"API Testing, Jira, Test Case Design, Regression Testing,   Problem Solving , Quality Assurance",125723,170125,QA & Testing
+Lead SDET,Peaksec Technologies,"Seattle, WA",Full-time,"Jest, Jira, Playwright, Test Plan Development, SQL, Test Automation, Python",134969,181759,QA & Testing
+Lead Systems Administrator,Granite Peak Tech,"Sydney, Australia",Contract,"Documentation Best Practices, Time Management, IPv6, Endpoint Security, DNS Administration, VoIP Systems, SD-WAN",117163,160015,IT Support
+Senior Offensive Security Engineer,Quietstone Security,"Raleigh, NC",Full-time,"Problem Solving, Amazon Web Services (AWS), Malware Analysis, Cryptography",109987,169920,Security
+Lead Test Automation Engineer,Ghost Corp,"Dallas, TX",Internship,"Behavior-Driven Development, Presentation Skills, API Testing",132726,180656,QA & Testing
+Manager Cybersecurity Analyst,Amber Path Studios,"London, UK",Contract,"HIPAA Compliance, Application Security, TCP/IP, VPN Configuration",113297,171543,Security
+Intern Quality Assurance Engineer,Threadneedle Cyber,"Sydney, Australia",Internship,"Test Case Design, Test Plan Development, Pytest",17175,39487,QA & Testing
+Lead Cybersecurity Analyst,Bugtrail Technologies,"London, UK",Internship,"DevSecOps, TCP/IP, Threat Modeling, Malware Analysis, HIPAA Compliance, Application Security",132386,177687,Security
+Mid-level Security Engineer,Assurewave Software,"London, UK",Full-time,"SOC 2 Compliance, OWASP, Identity and Access Management, Microsoft Azure, Firewall Configuration, SIEM Tools, Python, ISO 27001",78795,121059,Security
+Mid-level Offensive Security Engineer,Bridgeline Networks,"Boston, MA",Full-time,"Endpoint Security, Cloud Security, HIPAA Compliance, SOC 2 Compliance, Interpersonal Skills, SIEM Tools",81161,120045,Security
+Senior IT Support Specialist,Frameworth Digital,"Chicago, IL",Full-time,"Jira, Linux Administration, Windows Server Administration",68116,107210,IT Support
+Manual QA Tester,Ridgeline Security Labs,"Bengaluru, India",Full-time,"Cypress, Postman, Test Automation, Test Plan Development, API Testing, Accessibility Testing",61905,91988,QA & Testing
+Senior Desktop Support Engineer,Bridgeline Networks,Remote,Full-time,"Network Automation, TCP/IP, VPN Configuration, IPv6, Documentation Best Practices, Windows Server Administration, SD-WAN, VoIP Systems",80828,115812,IT Support
+Senior Help Desk Technician,Nodecare Technologies,"New York, NY",Contract,"IPv6, Endpoint Security, Active Directory, Presentation Skills, SD-WAN",72026,105917,IT Support
+Senior Test Automation Engineer,Harborline Technologies,"Washington, DC",Part-time,"Performance Testing, Regression Testing, Selenium, Quality Assurance, Jira, Appium, Python",99421,157346,QA & Testing
+Mid-level QA Analyst,Nova Field Labs,"Chicago, IL",Internship,"Test Case Design, Cypress, Pytest, Load Testing (JMeter)",64168,90678,QA & Testing
+Senior Compliance & Risk Analyst,Ticketforge Systems,"Denver, CO",Part-time,"Amazon Web Services (AWS), OWASP, GDPR Compliance, TCP/IP, Public Key Infrastructure, Network Security",95018,147421,Security
+Lead Technical Support Engineer,Gridline Support Co,"Washington, DC",Full-time,"Storage Area Networks, Network Routing & Switching, Documentation Best Practices",98890,137620,IT Support
+Intern Manual QA Tester,Sentinel Ridge Security,"Berlin, Germany",Internship,"Regression Testing, JavaScript, Load Testing (JMeter), Performance Testing, Selenium, Exploratory Testing",19307,35679,QA & Testing
+Lead QA Engineer,Blueforge Cyber,"San Francisco, CA",Full-time,"Unit Testing, Python, Performance Testing, Test Automation, Playwright, Pytest, Behavior-Driven Development",121770,165054,QA & Testing
+Senior Security Architect,Redteam Ridge Labs,Remote,Internship,"DevSecOps, Linux Administration, ISO 27001, OWASP, TCP/IP",118571,184253,Security
+Mid-level Help Desk Technician,Vanguard Mesh Systems,"Dallas, TX",Full-time,"Network Monitoring, SD-WAN, Endpoint Security, Network Automation, VoIP Systems, Storage Area Networks",49942,74672,IT Support
+Lead Cybersecurity Engineer,Routewise Networks,"New York, NY",Part-time,"Security Auditing, DevSecOps, SOC Operations, GRC (Governance, Risk & Compliance), Application Security, TCP/IP, Linux Administration",142362,192819,Security
+Staff QA Lead,Lattice Works,"Raleigh, NC",Internship,"Regression Testing, Test Case Design, SQL, Accessibility Testing, JavaScript, Jest",139343,196437,QA & Testing
+Senior Network Administrator,Fernwood Interactive,Remote,Full-time,"Storage Area Networks, Documentation Best Practices, Network Monitoring",88044,134228,IT Support
+Senior QA Analyst,Frameworth Digital,Remote,Full-time,"Cypress, JavaScript, Selenium, Jest, Playwright, Appium, Pytest, Unit Testing",83424,126008,QA & Testing
+Mid-level Help Desk Technician,Solstice Data Co,Singapore,Internship,"DNS Administration, Load Balancers (F5), TCP/IP, Linux Administration, VoIP Systems, Documentation Best Practices",51791,80382,IT Support
+QA Manager,Circuitline IT,"Austin, TX",Full-time,"Appium, Cypress, Quality Assurance",122968,179932,QA & Testing
+QA Manager,Assurewave Software,"Dublin, Ireland",Full-time,"Load Testing (JMeter), API Testing, Cypress, Selenium, Appium",153766,198213,QA & Testing
+Junior SOC Analyst,Cipher Harbor Labs,Remote,Full-time,"DevSecOps, Vulnerability Assessment, GRC (Governance, Risk & Compliance)",52047,78584,Security
+Intern IT Support Analyst,Truescope Software,"Boston, MA",Full-time,"TCP/IP, Endpoint Security, Documentation Best Practices, Storage Area Networks, SD-WAN, Network Routing & Switching",15000,25481,IT Support
+Lead Quality Assurance Engineer,Meridian Apps,"Dublin, Ireland",Full-time,"Test Plan Development, Pytest, Performance Testing, Unit Testing, Bug Tracking, Regression Testing, Postman",124381,167002,QA & Testing
+Senior QA Engineer,Blueforge Cyber,"Berlin, Germany",Full-time,"CI/CD Pipelines, SQL, Bug Tracking, Agile Methodology, Selenium, Continuous Testing",92542,146635,QA & Testing
+Senior Compliance & Risk Analyst,Northwind Analytics,"Chicago, IL",Full-time,"Python,   Security Auditing , Application Security, Public Key Infrastructure, Interpersonal Skills",93728,143854,Security
+Junior IT Support Analyst,Helprail Technologies,Remote,Contract,"Documentation Best Practices, Active Directory, Interpersonal Skills, Network Routing & Switching",38996,60735,IT Support
+Senior Systems Administrator,Coral Reef Software,Remote,Full-time,"Windows Server Administration, Customer Service, Load Balancers (F5), Storage Area Networks, Linux Administration",88193,132398,IT Support
+Staff Cybersecurity Engineer,Bluepeak Software,Remote,Part-time,"Identity and Access Management, Firewall Configuration, DevSecOps, Security Auditing",146640,198621,Security
+Mid-level Offensive Security Engineer,Datastack Ventures,"San Francisco, CA",Full-time,"Vulnerability Assessment, Secure Code Review, Security Auditing, DevSecOps, Digital Forensics, Amazon Web Services (AWS), Network Security, OWASP",84602,119772,Security
+Lead QA Lead,Ghost Corp,"Atlanta, GA",Internship,"Test Case Design, Test Plan Development, Unit Testing, API Testing, Pytest, Appium, Postman",133783,186903,QA & Testing
+IT Support Manager,Onyx Bridge Tech,Remote,Full-time,"Communication, TCP/IP, Linux Administration, DNS Administration, Load Balancers (F5), Active Directory, VoIP Systems",126040,180627,IT Support
+Mid-level Offensive Security Engineer,Patchbay Technologies,Remote,Contract,"Cloud Security, Threat Modeling, OWASP, GDPR Compliance, Shell Scripting, Penetration Testing, Python, Presentation Skills",84680,119896,Security
+Junior Quality Assurance Engineer,Northwind Analytics,"Raleigh, NC",Contract,"Mobile Testing, Regression Testing, Jira, API Testing, Accessibility Testing, Quality Assurance, Python, Cypress",50183,79965,QA & Testing
+Mid-level Network Administrator,Rigortest Software,"Berlin, Germany",Part-time,"DNS Administration, Storage Area Networks, Network Routing & Switching, Linux Administration, IPv6, Agile Methodology, Windows Server Administration, Endpoint Security",64925,102973,IT Support
+Manager GRC Analyst,Sentinel Ridge Security,"Dallas, TX",Internship,"TCP/IP, Identity and Access Management, Security Auditing, Jira, DevSecOps",108139,165768,Security
+Junior SDET,Ironclad Cyber Group,"San Francisco, CA",Full-time,"Test Case Design, Jira, SQL, Postman, Mobile Testing, Load Testing (JMeter), Regression Testing, Selenium",58500,83711,QA & Testing
+Junior QA Engineer,Precisionpath QA,"Raleigh, NC",Internship,"Performance Testing, Interpersonal Skills, Mobile Testing, Regression Testing, Quality Assurance",53729,77135,QA & Testing
+Cybersecurity Analyst,Ironveil Networks,Remote,Full-time,"Agile Methodology, soc operations, Security Auditing, Zero Trust Architecture, Amazon Web Services (AWS)",75159,108663,Security
+Staff Security Engineer,Patchbay Technologies,"Berlin, Germany",Full-time,"Presentation Skills, GRC (Governance, Risk & Compliance), Secure Code Review, SOC Operations, Application Security, Vulnerability Assessment, Penetration Testing, Digital Forensics",146442,203736,Security
+Compliance & Risk Analyst,Frameworth Digital,"Sydney, Australia",Full-time,"Application Security, SOC 2 Compliance, Shell Scripting",73264,103100,Security
+Staff Test Automation Engineer,Rigortest Software,"New York, NY",Full-time,"API Testing, Test Automation, Interpersonal Skills, Selenium, SQL, Mobile Testing",136164,185935,QA & Testing
+Intern Quality Assurance Engineer,Bastion Point Systems,Remote,Full-time,"Appium, Python, Jest, Communication",17593,38858,QA & Testing
+IT Support Manager,Solstice Data Co,"Denver, CO",Full-time,"Active Directory, DNS Administration, Documentation Best Practices",107170,164664,IT Support
+Lead Cybersecurity Analyst,Cobalt Robotics Group,"San Francisco, CA",Full-time,"ISO 27001, TCP/IP, Cryptography, VPN Configuration, Identity and Access Management, Microsoft Azure, HIPAA Compliance, Digital Forensics",128893,179402,Security
+Junior Offensive Security Engineer,Pinecrest Digital,Remote,Internship,"ISO 27001, Security Auditing, Communication, Zero Trust Architecture, VPN Configuration",61899,89362,Security
+Senior GRC Analyst,Bluepeak Software,"Austin, TX",Full-time,"Malware Analysis, Firewall Configuration, Penetration Testing, Collaboration, GRC (Governance, Risk & Compliance)",97085,144810,Security
+Senior Desktop Support Engineer,Assurewave Software,Remote,Part-time,"Windows Server Administration, Time Management, VPN Configuration, Virtualization (VMware), Network Monitoring, Customer Service",75586,118204,IT Support
+Staff Cybersecurity Engineer,Cryptbridge Systems,"New York, NY",Internship,"Endpoint Security, Threat Modeling, Vulnerability Assessment, Amazon Web Services (AWS), Penetration Testing, HIPAA Compliance, Identity and Access Management, GRC (Governance, Risk & Compliance)",145753,204452,Security
+QA Manager,Ironwood Systems,Remote,Full-time,"API Testing, Continuous Testing, Load Testing (JMeter), Behavior-Driven Development, Jira, Cypress, JavaScript, SQL",136506,182812,QA & Testing
+Lead Network Administrator,Keyline Security Group,Remote,Full-time,"Network Automation, Active Directory, Load Balancers (F5), Documentation Best Practices, Storage Area Networks",118287,154836,IT Support
+Intern QA Analyst,Vertexguard Systems,"Dublin, Ireland",Full-time,"Agile Methodology, Quality Assurance, CI/CD Pipelines, Test Automation, Mobile Testing, SQL",19841,35218,QA & Testing
+Senior Application Security Engineer,Truescope Software,"Berlin, Germany",Full-time,"Penetration Testing, GDPR Compliance, SOC 2 Compliance, Threat Modeling, Zero Trust Architecture",106144,165764,Security
+Staff Penetration Tester,Bastion Point Systems,Remote,Full-time,"Digital Forensics, OWASP, Threat Modeling, HIPAA Compliance, Shell Scripting, Linux Administration",150528,204198,Security
+Intern Help Desk Technician,Nodecare Technologies,"New York, NY",Contract,"Load Balancers (F5), Presentation Skills, TCP/IP, Network Monitoring",15000,30177,IT Support
+Lead Systems Administrator,Vanguard Mesh Systems,"New York, NY",Full-time,"Network Automation, Load Balancers (F5), DNS Administration",118214,161269,IT Support
+Junior Systems Administrator,Suretest Technologies,"Raleigh, NC",Full-time,"Windows Server Administration, Active Directory, VoIP Systems, Network Monitoring, Network Routing & Switching, TCP/IP, Git, Virtualization (VMware)",48907,73818,IT Support
+Lead Security Architect,Vanguard Mesh Systems,"Sydney, Australia",Full-time,"Shell Scripting, Python, Secure Code Review, Zero Trust Architecture, Amazon Web Services (AWS)",153018,211749,Security
+Senior Compliance & Risk Analyst,Cipher Harbor Labs,"Bengaluru, India",Part-time,"SOC Operations, Cryptography, OWASP, HIPAA Compliance, ISO 27001",94537,146568,Security
+Junior Desktop Support Engineer,Circuitline IT,"Sydney, Australia",Full-time,"Network Monitoring, Network Automation, VoIP Systems, Active Directory, Agile Methodology, DNS Administration, Virtualization (VMware)",43683,65589,IT Support
+Senior Desktop Support Engineer,Byteforge Labs,Remote,Full-time,"Active Directory, Load Balancers (F5), VPN Configuration, Documentation Best Practices, SD-WAN",76426,118739,IT Support
+Lead QA Lead,Suretest Technologies,"Sydney, Australia",Full-time,"Accessibility Testing, Test Case Design, Test Automation, Exploratory Testing, Test Plan Development",135430,182118,QA & Testing
+Principal Cloud Security Architect,Aegis Loop Technologies,"Atlanta, GA",Full-time,"Problem Solving, Incident Response, Penetration Testing, SOC 2 Compliance",171734,229255,Security
+Intern Manual QA Tester,Hardwireline Support,Remote,Part-time,"API Testing, Accessibility Testing, CI/CD Pipelines, Cypress, Exploratory Testing, Playwright, Bug Tracking",16417,31299,QA & Testing
+IT Support Manager,Fieldwire IT Systems,"Atlanta, GA",Internship,"IPv6, DNS Administration, Linux Administration, Network Monitoring, VPN Configuration",108310,162792,IT Support
+Security Engineer,Coreloop Systems,"Austin, TX",Part-time,"Penetration Testing, Identity and Access Management, Endpoint Security",83560,120642,Security
+Mid-level Penetration Tester,Ironclad Cyber Group,"Dallas, TX",Full-time,"SOC Operations, Presentation Skills, Malware Analysis, DevSecOps, Cryptography, Linux Administration, Security Auditing, Network Security",82074,120057,Security
+Intern QA Engineer,Meshpoint Systems,"New York, NY",Contract,"Test Case Design, Appium, Test Automation, Playwright, Accessibility Testing",19041,37291,QA & Testing
+Junior Help Desk Technician,Streamline Cyber Co,"Sydney, Australia",Full-time,"VoIP Systems, Customer Service, Endpoint Security, DNS Administration, Network Routing & Switching, Network Monitoring, Active Directory, VPN Configuration",36458,60098,IT Support
+Junior IT Support Analyst,Lattice Works,Remote,Full-time,"Agile Methodology, Network Automation, Network Routing & Switching, IPv6, Network Monitoring",38576,58097,IT Support
+QA Manager,Keyline Security Group,"San Francisco, CA",Part-time,"Load Testing (JMeter), Bug Tracking, Git, Unit Testing, Test Plan Development, Behavior-Driven Development, Regression Testing, CI/CD Pipelines",151784,197262,QA & Testing
+Principal Security Architect,Deadbolt Digital,Remote,Contract,"Cloud Security, Digital Forensics, Cryptography, Identity and Access Management, Threat Modeling, GRC (Governance, Risk & Compliance), VPN Configuration",171791,230512,Security
+Lead Offensive Security Engineer,Datastack Ventures,"Washington, DC",Full-time,"HIPAA Compliance, Vulnerability Assessment, SOC Operations, TCP/IP, GRC (Governance, Risk & Compliance), GDPR Compliance",142648,194944,Security
+Senior Desktop Support Engineer,Solstice Data Co,"Raleigh, NC",Contract,"DNS Administration, VoIP Systems, Virtualization (VMware)",77404,121359,IT Support
+Staff Offensive Security Engineer,Clearbench Systems,"Dallas, TX",Full-time,"Network Security, Microsoft Azure, SOC 2 Compliance, Identity and Access Management, VPN Configuration, HIPAA Compliance",146734,201928,Security
+Intern SOC Analyst,Uptime Grove IT,"Atlanta, GA",Part-time,"Jira, ISO 27001, OWASP, Vulnerability Assessment, Microsoft Azure, Malware Analysis",18300,39461,Security
+Principal Security Architect,Coral Reef Software,Remote,Full-time,"Microsoft Azure, Shell Scripting, SIEM Tools, Application Security, Cloud Security, PenTest, ISO 27001",174241,225844,Security
+Help Desk Manager,Testforge Labs,"Dublin, Ireland",Full-time,"Network Routing & Switching, Storage Area Networks, Endpoint Security, Network Automation, DNS Administration, IPv6, Virtualization (VMware)",130860,180360,IT Support
+Help Desk Manager,Watchtower Data Co,Remote,Full-time,"VPN Configuration, SD-WAN, DNS Administration, Network Routing & Switching, Linux Administration, VoIP Systems, Endpoint Security, Active Directory",128855,177217,IT Support
+Junior QA Engineer,Stonewall Cyber Labs,"Washington, DC",Full-time,"JavaScript, SQL, API Testing, Regression Testing, Python, Postman, Jira, Jira",51163,79964,QA & Testing
+Intern IT Support Specialist,Checkframe Labs,Singapore,Full-time,"TCP/IP, Jira, Network Routing & Switching, Network Automation, Virtualization (VMware)",15000,27715,IT Support
+Lead Application Security Engineer,Uptime Grove IT,"Berlin, Germany",Full-time,"HIPAA Compliance, Secure Code Review, Digital Forensics, Threat Modeling, SIEM Tools, Vulnerability Assessment",137844,188100,Security
+Lead QA Lead,Ridgeline Security Labs,"New York, NY",Full-time,"SQL, Selenium, Test Case Design, Appium, Load Testing (JMeter), Regression Testing",139335,183344,QA & Testing
+Mid-level SOC Analyst,Skyline Ventures IT,"London, UK",Full-time,"Penetration Testing, Microsoft Azure, DevSecOps, Linux Administration, GDPR Compliance",76477,108008,Security
+Staff Test Automation Engineer,Systemcove Technologies,Remote,Full-time,"Performance Testing, Unit Testing, Problem Solving, Test Automation, Bug Tracking",138063,189987,QA & Testing
+Junior Security Analyst,Verityloop Digital,"Raleigh, NC",Full-time,"Problem Solving, Secure Code Review, Malware Analysis",57334,81875,Security
+Senior Quality Assurance Engineer,Endpointe Technologies,Remote,Full-time,"Pytest, Regression Testing, Jira, Test Automation, Jest",94480,140425,QA & Testing
+Junior Cybersecurity Engineer,Anchorpoint Systems,Singapore,Internship,"Firewall Configuration, Threat Modeling, OWASP",57238,89760,Security
+Junior SDET,Nodecare Technologies,Remote,Full-time,"Cypress, Python, Bug Tracking, JavaScript, Unit Testing, Performance Testing, Jest",54451,80457,QA & Testing
+Lead SDET,Fieldwire IT Systems,Remote,Full-time,"Mobile Testing, Exploratory Testing, API Testing, Python, Cypress",130633,181076,QA & Testing
+Junior QA Engineer,Cipher Harbor Labs,Remote,Part-time,"Quality Assurance, Pytest, Regression Testing, Test Plan Development, Postman",50489,74788,QA & Testing
+Staff Cybersecurity Engineer,Vertex Cloud Labs,Remote,Full-time,"SIEM Tools, SOC 2 Compliance, Linux Administration, VPN Configuration, OWASP, Secure Code Review",146581,198972,Security
+Junior IT Support Specialist,Beacon Ridge Security,Remote,Full-time,"Storage Area Networks, VPN Configuration, Virtualization (VMware), DNS Administration, Load Balancers (F5), Documentation Best Practices, SD-WAN",39100,56907,IT Support
+Staff SDET,Byteforge Labs,"New York, NY",Contract,"Jira, SQL, Jira, Test Plan Development, Jest",139851,188590,QA & Testing
+Junior Desktop Support Engineer,Sentinel Ridge Security,"San Francisco, CA",Full-time,"DNS Administration, Storage Area Networks, VoIP Systems, Windows Server Administration, Linux Administration, Endpoint Security, Documentation Best Practices, Load Balancers (F5)",41314,66861,IT Support
+Staff Cybersecurity Engineer,Blueforge Cyber,"Boston, MA",Full-time,"Git, ISO 27001, SOC Operations, Cryptography, HIPAA Compliance",142880,199875,Security
+Manager SOC Analyst,Bluepeak Software,"Austin, TX",Full-time,"Zero Trust Architecture, Security Auditing, Network Security, Malware Analysis, SOC Operations, Secure Code Review, Amazon Web Services (AWS)",114912,170429,Security
+Principal Cybersecurity Engineer,Redwood Data Systems,"New York, NY",Full-time,"Git, Malware Analysis, Vulnerability Assessment, Shell Scripting",157553,206448,Security
+Lead Security Engineer,Bridgeline Networks,Remote,Internship,"SIEM Tools, Penetration Testing, TCP/IP, Cloud Security, Secure Code Review, Malware Analysis, OWASP, Vulnerability Assessment",139427,191369,Security
+IT Support Manager,Amber Path Studios,"Washington, DC",Full-time,"Active Directory, VoIP Systems, Customer Service, Network Monitoring",125964,173295,IT Support
+Intern Security Analyst,Ironclad Cyber Group,"Denver, CO",Full-time,"Security Auditing, Public Key Infrastructure, Network Security, Cloud Security",20069,38831,Security
+Lead Security Engineer,Watchtower Data Co,Remote,Internship,"Penetration Testing, Agile Methodology, DevSecOps, Cryptography, Endpoint Security",138276,192654,Security
+Lead Cybersecurity Engineer,Anchorpoint Systems,"Chicago, IL",Full-time,"ISO 27001, Secure Code Review, Linux Administration, Zero Trust Architecture",140432,187168,Security
+Senior Technical Support Engineer,Vertexguard Systems,"Berlin, Germany",Full-time,"Presentation Skills, Windows Server Administration, Virtualization (VMware), VPN Configuration, IPv6, Linux Administration, Customer Service, Network Automation",80657,114630,IT Support
+Intern IT Support Specialist,Routewise Networks,"Denver, CO",Full-time,"Load Balancers (F5), Windows Server Administration, Presentation Skills, Documentation Best Practices, TCP/IP, Endpoint Security",15000,30381,IT Support
+Lead Offensive Security Engineer,Vanguard Mesh Systems,"Austin, TX",Part-time,"GDPR Compliance, Amazon Web Services (AWS), Network Security, Digital Forensics, Linux Administration, Vulnerability Assessment, Cloud Security",141869,195832,Security
+Senior Cybersecurity Engineer,Clearbench Systems,"Denver, CO",Contract,"Public Key Infrastructure, Shell Scripting, Cryptography, SOC Operations, GDPR Compliance, OWASP, Interpersonal Skills",110572,160380,Security
+Intern SOC Analyst,Verityloop Digital,"Seattle, WA",Full-time,"Secure Code Review, VPN Configuration, Vulnerability Assessment, Incident Response, Security Auditing",18535,44335,Security
+Senior SDET,Blueforge Cyber,"Washington, DC",Internship,"SQL, Accessibility Testing, Jira, Pytest, API Testing, Collaboration",103429,156294,QA & Testing
+Lead Technical Support Engineer,Patchbay Technologies,Remote,Full-time,"Jira, Linux Administration, Network Automation",101630,134814,IT Support
+Mid-level Cybersecurity Analyst,Basecamp Support Labs,Remote,Full-time,"Agile Methodology, VPN Configuration, Threat Modeling, Cryptography, Public Key Infrastructure",76184,114440,Security
+IT Support Manager,Bridgeline Networks,"Denver, CO",Internship,"SD-WAN, Customer Service, Load Balancers (F5), Documentation Best Practices",126225,180109,IT Support
+Staff SDET,Shieldwall Technologies,Remote,Contract,"Python, Continuous Testing, Mobile Testing",138576,193258,QA & Testing
+Junior GRC Analyst,Ticketforge Systems,"San Francisco, CA",Full-time,"Public Key Infrastructure, Microsoft Azure, Identity and Access Management, Vulnerability Assessment, Endpoint Security, Network Security, SOC Operations, VPN Configuration",55069,78320,Security
+QA Manager,Cipher Harbor Labs,"Bengaluru, India",Full-time,"Accessibility Testing, Test Plan Development, Test Case Design",154651,199443,QA & Testing
+Staff QA Lead,Anchorpoint Systems,"Boston, MA",Full-time,"Quality Assurance, Pytest, Postman, Regression Testing, Presentation Skills",139733,192665,QA & Testing
+Manager Security Analyst,Nova Field Labs,"Sydney, Australia",Full-time,"Cryptography, GRC (Governance, Risk & Compliance), ISO 27001",116765,173188,Security
+Help Desk Manager,Quietstone Security,"New York, NY",Full-time,"Endpoint Security, Windows Server Administration, DNS Administration, Documentation Best Practices, Linux Administration, SD-WAN, VPN Configuration, Network Monitoring",128192,179032,IT Support
+GRC Analyst,Vanguard Mesh Systems,Remote,Part-time,"  VPN Configuration , OWASP, SIEM Tools, Zero Trust Architecture, Communication, Amazon Web Services (AWS), SOC Operations",70347,106682,Security
+Intern IT Support Analyst,Suretest Technologies,"Boston, MA",Internship,"Communication, Documentation Best Practices, Network Routing & Switching, Virtualization (VMware), Active Directory, Windows Server Administration",16972,31732,IT Support
+Senior SOC Analyst,Quietstone Security,"Chicago, IL",Full-time,"Amazon Web Services (AWS), Cloud Security, Cryptography, Application Security, Documentation Best Practices, Linux Administration, SIEM Tools",100742,152173,Security
+Mid-level IT Support Analyst,Trustline Networks,Remote,Full-time,"VPN Configuration, VoIP Systems, Network Routing & Switching, Documentation Best Practices, Storage Area Networks",54097,80667,IT Support
+Senior Systems Administrator,Nova Field Labs,"Sydney, Australia",Full-time,"DNS Administration, Problem Solving, Documentation Best Practices, Customer Service, Load Balancers (F5)",92921,135497,IT Support
+Senior Manual QA Tester,Beacon Ridge Security,"Seattle, WA",Full-time,"Test Automation, Continuous Testing, Mobile Testing, Load Testing (JMeter), Behavior-Driven Development, Test Case Design",84196,130170,QA & Testing
+Manager Cybersecurity Analyst,Perimeter Nine Labs,Remote,Contract,"Linux Administration, Cryptography, HIPAA Compliance, Public Key Infrastructure, GRC (Governance, Risk & Compliance), Documentation Best Practices, Vulnerability Assessment",116653,169345,Security
+Staff Offensive Security Engineer,Bridgeline Networks,"Austin, TX",Full-time,"Microsoft Azure, Firewall Configuration, Cryptography, Identity and Access Management",149683,206759,Security
+Manager GRC Analyst,Consolebridge Systems,Remote,Full-time,"Secure Code Review, OWASP, GDPR Compliance, Cryptography, TCP/IP, Microsoft Azure",107309,164991,Security
+Senior Technical Support Engineer,Ironclad Cyber Group,Remote,Full-time,"Presentation Skills, Endpoint Security, VPN Configuration, Virtualization (VMware)",76873,121773,IT Support
+Lead Security Architect,Keyline Security Group,Remote,Full-time,"TCP/IP, Malware Analysis, GRC (Governance, Risk & Compliance), Public Key Infrastructure, Penetration Testing, Digital Forensics, Agile Methodology",154022,207585,Security
+Lead Application Security Engineer,Watchtower Data Co,"Austin, TX",Full-time,"Documentation Best Practices, Incident Response, GRC (Governance, Risk & Compliance), Cloud Security, linux administration, Zero Trust Architecture, SOC Operations",142281,187451,Security
+Senior Manual QA Tester,Checkframe Labs,"Atlanta, GA",Part-time,"Appium, Accessibility Testing, Test Plan Development, API Testing, Accessibility Testing",84932,132498,QA & Testing
+Staff QA Lead,Deadbolt Digital,"Washington, DC",Contract,"Playwright, Behavior-Driven Development, Cypress, Bug Tracking, Load Testing (JMeter), Regression Testing,   Postman , Test Case Design",141115,192942,QA & Testing
+QA Manager,Keyline Security Group,"Boston, MA",Full-time,"Quality Assurance, Pytest, Regression Testing, Mobile Testing, Load Testing (JMeter), Exploratory Testing, Jira",123149,180131,QA & Testing
+Principal QA Lead,Timberline Analytics,Singapore,Full-time,"Jira, Pytest, API Testing, Accessibility Testing, Postman, Regression Testing, Test Plan Development, Performance Testing",150348,196600,QA & Testing
+Intern IT Support Specialist,Consolebridge Systems,"Berlin, Germany",Full-time,"TCP/IP, Network Routing & Switching, SD-WAN, Documentation Best Practices, Endpoint Security, Linux Administration",15000,27412,IT Support
+Penetration Tester,Vertexguard Systems,"Sydney, Australia",Contract,"Network Security, Python, Shell Scripting, SIEM Tools, Linux Administration, Firewall Configuration, Identity and Access Management",81671,125333,Security
+Lead QA Engineer,Precisionpath QA,Singapore,Full-time,"Bug Tracking, Interpersonal Skills, Continuous Testing",121995,163398,QA & Testing
+Lead Penetration Tester,Northwind Analytics,"Boston, MA",Internship,"Identity and Access Management, OWASP, VPN Configuration, Application Security, Cryptography, Malware Analysis, GDPR Compliance, GRC (Governance, Risk & Compliance)",144600,197243,Security
+Staff QA Lead,Ridgeline Security Labs,"Denver, CO",Full-time,"Appium, Behavior-Driven Development, Python, Cypress, Test Plan Development, Mobile Testing, Load Testing (JMeter)",141171,197250,QA & Testing
+Staff Test Automation Engineer,Nodecare Technologies,"London, UK",Full-time,"Postman, Exploratory Testing, Regression Testing, Playwright, Behavior-Driven Development, Pytest",136374,190690,QA & Testing
+Mid-level Quality Assurance Engineer,Skyline Ventures IT,Remote,Full-time,"Regression Testing, Load Testing (JMeter), Jira, Unit Testing, Test Case Design, Problem Solving, Exploratory Testing",70540,102885,QA & Testing
+Mid-level Manual QA Tester,Northwind Analytics,"New York, NY",Full-time,"Jest, Accessibility Testing, Unit Testing",65312,95564,QA & Testing
+Junior Quality Assurance Engineer,Northwind Analytics,"Washington, DC",Full-time,"JavaScript, Mobile Testing, Test Automation, Test Case Design, Documentation Best Practices, Test Plan Development, API Testing",52021,75572,QA & Testing
+Senior SDET,Coral Reef Software,Remote,Full-time,"Bug Tracking, Test Plan Development, CI/CD Pipelines, Test Automation, API Testing, Communication",99293,154252,QA & Testing
+Staff Security Engineer,Quietstone Security,Remote,Full-time,"Microsoft Azure, Presentation Skills, SIEM Tools, GRC (Governance, Risk & Compliance), Cloud Security",148298,198159,Security
+Senior Systems Administrator,Onyx Bridge Tech,"Chicago, IL",Internship,"VPN Configuration, DNS Administration, Customer Service, SD-WAN, TCP/IP",89028,135467,IT Support
+Senior Quality Assurance Engineer,Cryptbridge Systems,"Atlanta, GA",Full-time,"Load Testing (JMeter), Performance Testing, API Testing, Appium, JavaScript, Jest, Test Case Design",93841,146130,QA & Testing
+Help Desk Manager,Terminalpoint Tech,"Sydney, Australia",Full-time,"Load Balancers (F5), Network Monitoring, Endpoint Security, Virtualization (VMware), Network Routing & Switching, Storage Area Networks, VPN Configuration",109731,164802,IT Support
+Manual QA Tester,Palisade Systems Inc,"Toronto, ON",Part-time,"API Testing, Exploratory Testing, Load Testing (JMeter), Accessibility Testing, Quality Assurance, Continuous Testing",63527,92917,QA & Testing
+Senior Help Desk Technician,Nodecare Technologies,Remote,Contract,"Endpoint Security, Documentation Best Practices, TCP/IP",69904,108337,IT Support
+Help Desk Manager,Fortress Grove Inc,"Atlanta, GA",Part-time,"Load Balancers (F5), Linux Administration, Virtualization (VMware), VoIP Systems, IPv6, SD-WAN, Customer Service, TCP/IP",107294,161229,IT Support
+Lead QA Lead,Circuitline IT,"Bengaluru, India",Full-time,"CI/CD Pipelines, Jest, Jira, Communication, Regression Testing, Playwright, Mobile Testing",134188,182131,QA & Testing
+Lead Cybersecurity Analyst,Ironclad Cyber Group,Remote,Full-time,"Endpoint Security, SOC 2 Compliance, OWASP, DevSecOps, Communication",131366,174388,Security
+QA Manager,Aegis Loop Technologies,"Atlanta, GA",Contract,"Behavior-Driven Development, Continuous Testing, CI/CD Pipelines, Documentation Best Practices",138800,198587,QA & Testing
+Senior IT Support Specialist,Byteforge Labs,"Washington, DC",Full-time,"Active Directory, Virtualization (VMware), Jira, Documentation Best Practices, SD-WAN, Endpoint Security",68945,108582,IT Support
+Staff Network Administrator,Coreloop Systems,Remote,Full-time,"Network Routing & Switching, VoIP Systems, TCP/IP, Active Directory, DNS Administration",121315,166412,IT Support
+Senior Security Architect,Argus Point Technologies,"Denver, CO",Part-time,"Shell Scripting, Firewall Configuration, OWASP, VPN Configuration, Secure Code Review, Threat Modeling, Incident Response",118054,180014,Security
+Principal Security Architect,Threadneedle Cyber,"Atlanta, GA",Contract,"Collaboration, DevSecOps, GDPR Compliance, Linux Administration, SOC 2 Compliance, Python, SOC Operations, Zero Trust Architecture",175810,225962,Security
+Help Desk Manager,Truescope Software,"Dallas, TX",Full-time,"Network Automation, Communication, Endpoint Security, Network Automation",131032,174127,IT Support
+Lead QA Engineer,Nova Field Labs,Remote,Full-time,"Cypress, Presentation Skills, Jest, Mobile Testing, Load Testing (JMeter), Accessibility Testing, Quality Assurance",122818,163314,QA & Testing
+Intern Help Desk Technician,Blueforge Cyber,"New York, NY",Full-time,"IPv6, Windows Server Administration, Collaboration, Active Directory",15775,29279,IT Support
+Junior Security Analyst,Blueforge Cyber,"Bengaluru, India",Part-time,"Security Auditing, Incident Response, Cryptography, Malware Analysis, DevSecOps, ISO 27001, VPN Configuration",53420,82870,Security
+Intern Cybersecurity Analyst,Northwind Analytics,"Boston, MA",Contract,"Linux Administration, Collaboration, Secure Code Review, Endpoint Security, OWASP, ISO 27001, VPN Configuration",19440,41799,Security
+Help Desk Manager,Granite Peak Tech,Remote,Full-time,"Network Automation, VoIP Systems, Customer Service, VPN Configuration, Network Monitoring, Linux Administration, Documentation Best Practices, Windows Server Administration",110398,158585,IT Support
+Principal Cloud Security Architect,Gridline Support Co,"Austin, TX",Full-time,"Digital Forensics, Firewall Configuration, SIEM Tools",174441,228520,Security
+Staff Network Administrator,Anchorpoint Systems,"Boston, MA",Full-time,"VPN Configuration, VoIP Systems, Interpersonal Skills, Storage Area Networks",122019,167202,IT Support
+Junior Penetration Tester,Gridline Support Co,"Boston, MA",Part-time,"GDPR Compliance, Zero Trust Architecture, TCP/IP, Incident Response, Shell Scripting, OWASP",62167,92230,Security
+Junior Compliance & Risk Analyst,Precisionpath QA,Remote,Full-time,"GDPR Compliance, Vulnerability Assessment, Cloud Security",50840,79463,Security
+Lead Offensive Security Engineer,Fortress Grove Inc,"Berlin, Germany",Part-time,"SOC Operations, Vulnerability Assessment, Network Security, Application Security, Firewall Configuration, Collaboration",141178,190030,Security
+Lead Test Automation Engineer,Truescope Software,"Raleigh, NC",Part-time,"  CI/CD Pipelines , SQL, Test Plan Development, Accessibility Testing, Cypress, Jira, Python",131227,176087,QA & Testing
+IT Support Manager,Qualitrix Systems,"Denver, CO",Internship,"Linux Administration, Network Monitoring, TCP/IP, VPN Configuration",122748,166134,IT Support
+Intern Cybersecurity Analyst,Ironveil Networks,"Toronto, ON",Full-time,"Penetration Testing, Python, GRC (Governance, Risk & Compliance)",17378,38828,Security
+Lead Security Engineer,Patchbay Technologies,Remote,Internship,"Secure Code Review, Penetration Testing, Amazon Web Services (AWS), Vulnerability Assessment, Zero Trust Architecture, SOC 2 Compliance, Digital Forensics",141698,192116,Security
+Junior Desktop Support Engineer,Harborline Technologies,Remote,Full-time,"SD-WAN, Network Automation, Storage Area Networks, Endpoint Security, Network Routing & Switching, Virtualization (VMware)",45150,66385,IT Support
+Principal Cybersecurity Engineer,Faultline Technologies,"Atlanta, GA",Full-time,"Presentation Skills, OWASP, Threat Modeling, HIPAA Compliance, Vulnerability Assessment, Endpoint Security",157658,203838,Security
+Intern QA Engineer,Meshpoint Systems,"Austin, TX",Full-time,"Appium, Postman, Performance Testing, Jira",16466,39153,QA & Testing
+Senior Security Engineer,Ironclad Cyber Group,"New York, NY",Internship,"GRC (Governance, Risk & Compliance), Network Security, Penetration Testing",105128,160169,Security
+Intern Help Desk Technician,Testforge Labs,Remote,Full-time,"Linux Administration, Documentation Best Practices, Windows Server Administration",15397,32607,IT Support
+Quality Assurance Engineer,Granite Peak Tech,"Atlanta, GA",Contract,"Jest, CI/CD Pipelines, Python, JavaScript, Test Case Design, Cypress, Pytest, Postman",69157,101929,QA & Testing
+Manager GRC Analyst,Vertex Cloud Labs,"Boston, MA",Contract,"Secure Code Review, Documentation Best Practices, Firewall Configuration, Digital Forensics, TCP/IP",111658,159273,Security
+Senior QA Engineer,Anchorpoint Systems,"San Francisco, CA",Full-time,"Load Testing (JMeter), SQL, Unit Testing, Appium, Bug Tracking, Time Management, Postman",97986,141136,QA & Testing
+Intern Security Analyst,Patchbay Technologies,"London, UK",Internship,"Penetration Testing, Documentation Best Practices, Vulnerability Assessment",19399,42055,Security
+Mid-level Technical Support Engineer,Perimeter Nine Labs,"Raleigh, NC",Full-time,"TCP/IP, SD-WAN, Windows Server Administration, Network Automation, DNS Administration",58764,88370,IT Support
+IT Support Analyst,Perimeter Nine Labs,"Seattle, WA",Part-time,"VPN Configuration, Customer Service, IPv6",53649,74024,IT Support
+Principal Security Architect,Peaksec Technologies,Remote,Full-time,"Linux Administration, SOC Operations, Network Security, DevSecOps, Endpoint Security",174402,227566,Security
+QA Manager,Nova Field Labs,Singapore,Internship,"Postman, Bug Tracking, Regression Testing, Load Testing (JMeter)",121514,176528,QA & Testing
+Senior Cybersecurity Analyst,Bluepeak Software,Remote,Part-time,"Amazon Web Services (AWS), SOC Operations, Digital Forensics, Security Auditing, Incident Response, HIPAA Compliance, Zero Trust Architecture",100949,152167,Security
+Principal Security Architect,Hardwireline Support,"Washington, DC",Internship,"Incident Response, DIGITAL FORENSICS, Zero Trust Architecture",171492,227348,Security
+Intern Quality Assurance Engineer,Signalcheck Labs,"Berlin, Germany",Full-time,"Selenium, Jira, Test Plan Development, Quality Assurance, Performance Testing, Python, Test Automation, API Testing",21311,35593,QA & Testing
+Lead QA Engineer,Qualitrix Systems,"Dallas, TX",Part-time,"Mobile Testing, Load Testing (JMeter), Behavior-Driven Development, Playwright, Jest",125547,164328,QA & Testing
+Manager GRC Analyst,Perimeter Nine Labs,"Vancouver, BC",Part-time,"SIEM Tools, Cloud Security, Git, Python, Endpoint Security, DevSecOps",106965,160465,Security
+Junior QA Analyst,Systemcove Technologies,Remote,Full-time,"Pytest, Bug Tracking, Problem Solving, Jest",48420,70380,QA & Testing
+Staff Offensive Security Engineer,Patchbay Technologies,Remote,Internship,"Identity and Access Management, SOC 2 Compliance, Security Auditing, GRC (Governance, Risk & Compliance)",151075,203214,Security
+Intern IT Support Analyst,Cipher Harbor Labs,Remote,Full-time,"Network Routing & Switching, Linux Administration, DNS Administration, Network Monitoring",15000,28606,IT Support
+Lead Security Analyst,Threadneedle Cyber,"Chicago, IL",Contract,"Linux Administration, Microsoft Azure, Threat Modeling, Cryptography, SOC 2 Compliance, Penetration Testing",127784,178111,Security
+Junior Systems Administrator,Harborline Technologies,"London, UK",Full-time,"Active Directory, Customer Service, Network Monitoring",51132,72296,IT Support
+Manager GRC Analyst,Ironveil Networks,"Toronto, ON",Full-time,"Public Key Infrastructure, Incident Response, DevSecOps, GDPR Compliance, Python, Microsoft Azure",111012,159207,Security
+Lead Security Architect,Crestline Digital,Remote,Full-time,"DevSecOps, Zero Trust Architecture, Public Key Infrastructure, Linux Administration",157909,211680,Security
+Mid-level QA Engineer,Deadbolt Digital,"Toronto, ON",Full-time,"Selenium, API Testing, SQL, Behavior-Driven Development, Appium, Cypress",71090,105824,QA & Testing
+Junior QA Analyst,Aegis Loop Technologies,"Sydney, Australia",Full-time,"Exploratory Testing, Appium, Test Case Design, Playwright, Python, Performance Testing, Test Automation, Test Plan Development",44086,67862,QA & Testing
+Help Desk Manager,Cryptbridge Systems,"Berlin, Germany",Full-time,"Active Directory, Network Routing & Switching, Time Management, VPN Configuration, Load Balancers (F5), Windows Server Administration, Documentation Best Practices, Storage Area Networks",128256,178973,IT Support
+Lead QA Lead,Anchorpoint Systems,"Chicago, IL",Contract,"Accessibility Testing, Pytest, Load Testing (JMeter), Unit Testing",139314,183450,QA & Testing
+Intern Quality Assurance Engineer,Amber Path Studios,"Bengaluru, India",Full-time,"Test Plan Development, JavaScript, Pytest",21118,36152,QA & Testing
+Mid-level GRC Analyst,Ridgeline Security Labs,Remote,Internship,"SOC 2 Compliance, SIEM Tools, Shell Scripting, GRC (Governance, Risk & Compliance), Malware Analysis",71968,107130,Security
+Junior QA Engineer,Nova Field Labs,"Raleigh, NC",Full-time,"JavaScript, Performance Testing, Load Testing (JMeter), API Testing, Documentation Best Practices",49647,73076,QA & Testing
+Principal Cybersecurity Engineer,Coral Reef Software,"Dublin, Ireland",Full-time,"Secure Code Review, Application Security, Threat Modeling, Amazon Web Services (AWS), Network Security, Penetration Testing",154481,205418,Security
+Junior Compliance & Risk Analyst,Argus Point Technologies,Singapore,Part-time,"HIPAA Compliance, Endpoint Security, Interpersonal Skills, GDPR Compliance, VPN Configuration",54927,78017,Security
+Senior QA Analyst,Ironwood Systems,"Raleigh, NC",Full-time,"Accessibility Testing, Time Management, Jira, Python, Regression Testing, Test Plan Development, Cypress",86755,128905,QA & Testing
+Staff Application Security Engineer,Bluepeak Software,"Austin, TX",Full-time,"Communication, Cryptography, Threat Modeling, TCP/IP, Python, OWASP, GDPR Compliance, Digital Forensics",143589,204001,Security
+Senior Test Automation Engineer,Redwood Data Systems,"San Francisco, CA",Internship,"Selenium, Playwright, Exploratory Testing, Continuous Testing, Appium, Accessibility Testing, Jest, API Testing",100668,153924,QA & Testing
+Principal Cloud Security Architect,Frameworth Digital,"Dublin, Ireland",Full-time,"Malware Analysis, OWASP, HIPAA Compliance, Endpoint Security, Shell Scripting",175558,227871,Security
+Junior Systems Administrator,Frameworth Digital,"Berlin, Germany",Internship,"SD-WAN, Network Routing & Switching, VPN Configuration, IPv6, DNS Administration, Linux Administration",48290,70437,IT Support
+Lead Security Engineer,Argus Point Technologies,"Bengaluru, India",Full-time,"VPN Configuration, Presentation Skills, TCP/IP, Vulnerability Assessment, SOC 2 Compliance, Security Auditing",138133,193134,Security
+Senior QA Analyst,Gridline Support Co,"Sydney, Australia",Full-time,"Agile Methodology, Load Testing (JMeter), SQL, Performance Testing, Bug Tracking, Continuous Testing",82844,131764,QA & Testing
+Junior Technical Support Engineer,Faultline Technologies,"New York, NY",Internship,"Time Management, Load Balancers (F5), Endpoint Security, Network Automation",41509,62475,IT Support
+Senior Quality Assurance Engineer,Pinecrest Digital,"London, UK",Internship,"Cypress, Mobile Testing, Playwright, Exploratory Testing, Appium, Postman",95560,143840,QA & Testing
+Help Desk Manager,Skyline Ventures IT,"San Francisco, CA",Internship,"VPN Configuration, DNS Administration, TCP/IP, SD-WAN, Customer Service, Linux Administration",121262,165463,IT Support
+Lead Security Engineer,Nova Field Labs,"San Francisco, CA",Contract,"Penetration Testing, Identity and Access Management, TCP/IP, HIPAA Compliance",142164,192274,Security
+Junior Quality Assurance Engineer,Pinecrest Digital,"Dublin, Ireland",Full-time,"Agile Methodology, Performance Testing, Regression Testing, Mobile Testing, Cypress, Behavior-Driven Development, CI/CD Pipelines, JavaScript",52120,76502,QA & Testing
+Lead Technical Support Engineer,Redteam Ridge Labs,"Dublin, Ireland",Full-time,"Time Management, Virtualization (VMware), Storage Area Networks, Linux Administration, Network Monitoring, Customer Service, SD-WAN",102391,137978,IT Support
+Lead Technical Support Engineer,Assurewave Software,"Berlin, Germany",Full-time,"SD-WAN, VPN Configuration, TCP/IP",99608,139647,IT Support
+Lead Technical Support Engineer,Consolebridge Systems,Remote,Full-time,"Network Monitoring, VoIP Systems, DNS Administration, Presentation Skills, Windows Server Administration",102341,134923,IT Support
+SOC Analyst,Amber Path Studios,Remote,Full-time,"Vulnerability Assessment, Secure Code Review, SIEM Tools, Endpoint Security,   Malware Analysis ",75097,107402,Security
+Help Desk Manager,Meridian Apps,"Bengaluru, India",Full-time,"Windows Server Administration, Documentation Best Practices, Network Monitoring",130715,180356,IT Support
+Junior Compliance & Risk Analyst,Routewise Networks,Remote,Full-time,"Cloud Security, Network Security, Incident Response",54764,73687,Security
+Senior Cybersecurity Engineer,Assurewave Software,Remote,Part-time,"Microsoft Azure, Problem Solving, VPN Configuration",110441,165479,Security
+IT Support Manager,Ridgeline Security Labs,Singapore,Full-time,"Network Monitoring, Network Automation, Customer Service, SD-WAN, Storage Area Networks",125832,178689,IT Support

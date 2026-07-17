@@ -1,0 +1,36 @@
+import { apiClient } from "@/lib/apiClient";
+
+export interface JobOut {
+  id: string;
+  title: string | null;
+  company: string | null;
+  location: string | null;
+  type: string | null;
+  source: string | null;
+  salary_min: number | null;
+  salary_max: number | null;
+}
+
+export interface JobFilters {
+  type?: string;
+  location?: string;
+  search?: string;
+  limit?: number;
+  offset?: number;
+}
+
+function toQueryString(filters: JobFilters): string {
+  const params = new URLSearchParams();
+  if (filters.type) params.set("type", filters.type);
+  if (filters.location) params.set("location", filters.location);
+  if (filters.search) params.set("search", filters.search);
+  if (filters.limit !== undefined) params.set("limit", String(filters.limit));
+  if (filters.offset !== undefined) params.set("offset", String(filters.offset));
+  const qs = params.toString();
+  return qs ? `?${qs}` : "";
+}
+
+export const jobsApi = {
+  list: (filters: JobFilters = {}) => apiClient.get<JobOut[]>(`/jobs${toQueryString(filters)}`),
+  get: (jobId: string) => apiClient.get<JobOut>(`/jobs/${jobId}`),
+};

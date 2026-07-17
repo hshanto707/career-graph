@@ -1,0 +1,37 @@
+{
+  "gnn": {
+    "Job_REQUIRES_Skill": {
+      "hits_at_k": 0.8732394366197183,
+      "mrr": 0.6510486149218544,
+      "auc_roc": 0.9268994247173179,
+      "num_test_pos": 71,
+      "num_test_neg": 71
+    },
+    "Skill_LEADS_TO_Skill": {
+      "hits_at_k": 1.0,
+      "mrr": 0.44206349206349205,
+      "auc_roc": 0.3055555555555556,
+      "num_test_pos": 6,
+      "num_test_neg": 6
+    }
+  },
+  "baseline": {
+    "Job_REQUIRES_Skill": {
+      "hits_at_k": 1.0,
+      "mrr": 0.7650234741784038,
+      "auc_roc": 0.9754017060107122,
+      "num_test_pos": 71,
+      "num_test_neg": 71
+    },
+    "Skill_LEADS_TO_Skill": {
+      "hits_at_k": 1.0,
+      "mrr": 1.0,
+      "auc_roc": 0.5,
+      "num_test_pos": 6,
+      "num_test_neg": 6
+    }
+  },
+  "comparison_table_markdown": "| Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |\n|---|---|---|---|---|---|---|\n| Job_REQUIRES_Skill | GNN (GraphSAGE) | 0.927 | 0.873 | 0.651 | 71 | 71 |\n| Job_REQUIRES_Skill | Algorithmic baseline | 0.975 | 1.000 | 0.765 | 71 | 71 |\n| Skill_LEADS_TO_Skill | GNN (GraphSAGE) | 0.306 | 1.000 | 0.442 | 6 | 6 |\n| Skill_LEADS_TO_Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 6 | 6 |",
+  "seed": 42,
+  "k": 10
+}

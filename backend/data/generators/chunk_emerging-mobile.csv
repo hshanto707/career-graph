@@ -1,0 +1,701 @@
+title,company,location,type,skills_required,salary_min,salary_max,category
+Robotics Controls Engineer,Circuitry Mechatronics,Remote,Full-time,"Computer Vision, Python, Sensor Integration, Reinforcement Learning, Microcontroller Programming, Robotics Programming, C++, Embedded C",86314,105300,Software Engineering
+3D Graphics Engineer,Northgate Software,Remote,Part-time,"3D Graphics, C++, C#",82775,109896,Software Engineering
+FPGA Engineer Intern,Skyline Robotics,"Seattle, WA",Internship,"Microcontroller Programming, VHDL, Raspberry Pi Development, C++, IoT Systems Design, RTOS (Real-Time Operating Systems)",30972,38752,DevOps & Infrastructure
+Senior Robotics Perception Engineer,Nimbus Interactive,"Atlanta, GA",Full-time,"Python, PCB Design, Computer Vision, Sensor Integration, Robotics Programming, Microcontroller Programming, Agile Methodology",131765,154871,Software Engineering
+Junior Embedded Software Engineer,Foxglove Group,"Austin, TX",Full-time,"FPGA Design, SPI/I2C Protocols, Embedded C, Arduino, IoT Systems Design, VHDL, Microcontroller Programming, RTOS (Real-Time Operating Systems)",65352,70542,DevOps & Infrastructure
+Junior Autonomous Systems Engineer,Copperfield Robotics,"San Francisco, CA",Internship,"Embedded C, Microcontroller Programming, PCB Design, RTOS (Real-Time Operating Systems), Sensor Integration, Robotics Programming",70141,84797,Software Engineering
+Robotics Perception Engineer Manager,Brightloop Forge,Remote,Full-time,"C++, Computer Vision, Python, PCB Design",135725,155130,Software Engineering
+Staff DeFi Protocol Engineer,Fenix Technologies,"San Francisco, CA",Full-time,"Web3, Solidity, Go, Decentralized Finance (DeFi), Cryptography, NFT Platforms",159670,181347,Software Engineering
+Staff IoT Firmware Engineer,Crestline Works,Remote,Part-time,"C++, IoT Systems Design, Microcontroller Programming",149472,169213,DevOps & Infrastructure
+Junior Mobile Software Engineer,Wraith Digital,"New York, NY",Part-time,"Android Development, Push Notifications, App Store Optimization, Ionic, Xamarin, Swift, Cross-platform Development, Xcode, Communication",61676,68913,Software Engineering
+Junior Virtual Reality Developer,Foxglove Robotics,"Austin, TX",Full-time,"Machine Learning, Unreal Engine, Data Visualization, Unity, C++, Sensor Integration, C#",63339,79715,Software Engineering
+Junior Blockchain Developer,Hollow Foundry,"San Francisco, CA",Internship,"Decentralized Finance (DeFi), Distributed Ledger Technology, Go, Smart Contracts, Cryptography, NFT Platforms, Jira",67927,81892,Software Engineering
+Staff iOS Developer,Ridgeback Cloud Labs,Remote,Full-time,"Push Notifications, Android Development, SwiftUI, Mobile Performance Optimization, Mobile App Architecture, Agile Methodology",158226,163665,Software Engineering
+Junior Embedded Software Engineer,Meridian Forge,"New York, NY",Full-time," FPGA Design , Arduino, SPI/I2C Protocols, Microcontroller Programming",62045,82862,DevOps & Infrastructure
+Senior AR/VR Engineer,Vantage Interactive,Remote,Full-time,"Unreal Engine, Computer Vision, Machine Learning",121433,135868,Software Engineering
+Blockchain Architect,Foxglove Robotics,Remote,Part-time,"Hyperledger Fabric, Node.js, Solidity, Cryptocurrency Systems, Web3, NFT Platforms",96510,114051,Software Engineering
+Junior React Native Developer,Protoform Solutions,Remote,Full-time,"Mobile Testing, Objective-C for iOS, Cross-platform Development, Kotlin, Mobile Performance Optimization, Mobile CI/CD, Jetpack Compose, Communication",59787,71170,Software Engineering
+Firmware Engineer,Meridian Forge,Remote,Full-time,"C++, RTOS (Real-Time Operating Systems), Arduino, IoT Systems Design, FPGA Design, SPI/I2C Protocols, Embedded C",87064,102839,DevOps & Infrastructure
+Lead Robotics Controls Engineer,Slate Cloud Labs,"San Francisco, CA",Full-time,"Microcontroller Programming, Reinforcement Learning, Machine Learning, MATLAB, Embedded C, Python, Computer Vision, RTOS (Real-Time Operating Systems)",152234,159576,Software Engineering
+Senior React Native Developer,Protoform Solutions,"Denver, CO",Contract,"Kotlin, Mobile Testing, Jetpack Compose, Objective-C for iOS, Xamarin, Flutter, Mobile App Architecture",115238,134474,Software Engineering
+Senior Mobile Developer,Fenix Systems,"New York, NY",Full-time,"In-app Purchases, Xcode, Android Studio, Objective-C for iOS, Android Development, Swift, Dart, Mobile Testing",128781,141112,Software Engineering
+Junior Flutter Developer,Crestline Works,"San Francisco, CA",Part-time,"Dart, SwiftUI, Mobile Testing, Xcode, Kotlin Multiplatform, Mobile CI/CD, Cross-platform Development",68703,75140,Software Engineering
+Senior Robotics Software Engineer,Ironwood Interactive,Remote,Internship,"Embedded C, Reinforcement Learning, Python, RTOS (Real-Time Operating Systems), PCB Design, Requirements Gathering",118455,157834,Software Engineering
+Junior XR Software Engineer,Voxel Technologies,Remote,Internship,"Sensor Integration, Unity, Computer Vision",66550,78852,Software Engineering
+Junior Cross-platform Mobile Engineer,Hollow Foundry,"San Francisco, CA",Full-time,"Mobile CI/CD, In-app Purchases, Objective-C for iOS, Mobile App Architecture, Kotlin Multiplatform, Xamarin",70592,81481,Software Engineering
+Staff AR/VR Engineer,Quantum Labs,"Denver, CO",Full-time,"Machine Learning, Augmented Reality Development, Data Visualization, Python, 3D Graphics, Computer Vision",145446,165559,Software Engineering
+Spatial Computing Engineer,Vertex Cloud Labs,"New York, NY",Full-time,"C++, Augmented Reality Development, Computer Vision, Virtual Reality Development, Data Visualization, 3D Graphics, Unreal Engine, Docker",92393,103442,Software Engineering
+Senior Blockchain Engineer,Cobalt Systems,"Tel Aviv, Israel",Full-time,"Decentralized Finance (DeFi), Cryptography, Distributed Ledger Technology",118746,144783,Software Engineering
+Senior Immersive Experience Engineer,Fenix Cloud Labs,Remote,Full-time,"Augmented Reality Development, Unity, C#, CI/CD Pipelines",109866,146616,Software Engineering
+Senior iOS Developer,Silverline Technologies,Remote,Internship,"Objective-C for iOS, Mobile CI/CD, Cross-platform Development, Xcode, iOS Development, Android Studio, Cordova, In-app Purchases, Stakeholder Management",116525,147441,Software Engineering
+Robotics Controls Engineer,Slate Works,"Chicago, IL",Full-time,"RTOS (Real-Time Operating Systems), Embedded C, Machine Learning, Reinforcement Learning, Python, MATLAB, PCB Desgin",93786,112171,Software Engineering
+Junior Embedded Software Engineer,Skyline Solutions,"London, UK",Internship," RTOS (Real-Time Operating Systems) , FPGA Design, Arduino, SPI/I2C Protocols, Raspberry Pi Development, IoT Systems Design, Microcontroller Programming, PCB Design, Stakeholder Management",64062,69899,DevOps & Infrastructure
+Junior Cross-platform Mobile Engineer,Copperfield Robotics,Remote,Full-time,"Xcode, Flutter, Mobile Testing, Kotlin, Docker",63649,81072,Software Engineering
+Junior Blockchain Engineer,Wraith Labs,"Denver, CO",Full-time,"Blockchain Development, Hyperledger Fabric, Go, Cryptography, TypeScript, Rust",65696,81250,Software Engineering
+Lead iOS Developer,Frostbyte Software,"New York, NY",Full-time,"In-app Purchases, Swift, Ionic, Requirements Gathering",138581,161031,Software Engineering
+Junior iOS Developer,Redshift Software,"Atlanta, GA",Full-time,"App Store Optimization, Kotlin, Jetpack Compose, Xcode, Kotlin Multiplatform, In-app Purchases, Xamarin, Android Development, Jira",60703,81451,Software Engineering
+Senior Mobile Developer,Vantage Cloud Labs,"San Francisco, CA",Full-time,"Cross-platform Development, Xamarin, Kotlin Multiplatform, Dart, Mobile Performance Optimization",121263,136123,Software Engineering
+Senior Blockchain Developer,Zenith Interactive,"San Francisco, CA",Full-time,"Blockchain Development, Decentralized Finance (DeFi), TypeScript, NFT Platforms, Cryptography, Hyperledger Fabric",116450,141190,Software Engineering
+Principal Cross-platform Mobile Engineer,Wraith Digital,"Denver, CO",Part-time,"Jetpack Compose, Android Development, Mobile CI/CD, Docker",170487,176390,Software Engineering
+Junior Augmented Reality Developer,Glasswing Dynamics,"Atlanta, GA",Part-time,"Unreal Engine, Virtual Reality Development, Unity, Python, Machine Learning",67585,81667,Software Engineering
+Senior Mobile Developer,Redshift Systems,"Austin, TX",Full-time,"Cordova, Mobile App Architecture, Push Notifications, Xcode, SwiftUI, Flutter",126518,143668,Software Engineering
+Android Developer Manager,Zenith Works,"Boston, MA",Contract,"Objective-C for iOS, Xamarin, Android Studio, Cross-platform Development, Kotlin Multiplatform",142063,147582,Software Engineering
+XR Software Engineer,Hollow Ventures,"Denver, CO",Full-time,"C++, Data Visualization, Machine Learning, Virtual Reality Development",85754,108141,Software Engineering
+3D Graphics Engineer Intern,Bluefin Bridge Tech,"Bangalore, India",Internship,"Unreal Engine, Python, C++, C#, Sensor Integration, 3D Graphics",27683,35409,Software Engineering
+Junior Robotics Controls Engineer,Solace Digital,"London, UK",Full-time,"C++, Microcontroller Programming, Reinforcement Learning, Computer Vision, Machine Learning, Python, PCB Design, MATLAB",67694,73634,Software Engineering
+IoT Firmware Engineer Manager,Ironwood Interactive,"London, UK",Full-time,"FPGA Design, Raspberry Pi Development, Arduino",115157,159547,DevOps & Infrastructure
+Lead Spatial Computing Engineer,Slate Systems,"Berlin, Germany",Internship,"Machine Learning, Unity, Computer Vision, Python, Virtual Reality Development, 3D Graphics, Augmented Reality Development, Data Visualization",143531,161247,Software Engineering
+Junior Embedded Software Engineer,Redshift Systems,"Austin, TX",Internship,"SPI/I2C Protocols, VHDL, Embedded C, IoT Systems Design, PCB Design",66314,75414,DevOps & Infrastructure
+Blockchain Architect,Hollow Foundry,"Toronto, ON",Full-time,"TypeScript, Web3, Cryptography, Solidity, Rust, Ethereum, Smart Contracts",86708,106775,Software Engineering
+XR Software Engineer,Ridgeback Mechatronics,"Austin, TX",Full-time,"C#, Augmented Reality Development, Unreal Engine, Sensor Integration, 3D Graphics, Communication",86552,94314,Software Engineering
+Junior Blockchain Engineer,Zenith Works,Singapore,Full-time,"Rust, Smart Contracts, Ethereum, Distributed Ledger Technology, Cryptography, Web3, Solidity, Cryptocurrency Systems, Stakeholder Management",70742,81352,Software Engineering
+Lead Web3 Developer,Cypher Labs,Remote,Full-time,"Hyperledger Fabric, TypeScript, NFT Platforms, Rust",159821,183626,Software Engineering
+Principal Motion Control Engineer,Emberline Mechatronics,"Toronto, ON",Part-time,"MATLAB, Embedded C, RTOS (Real-Time Operating Systems), Computer Vision, Python, Robotics Programming",174408,198832,Software Engineering
+Lead iOS Developer,Meridian Software,"Austin, TX",Full-time,"Mobile Performance Optimization, Cordova, Dart, Mobile CI/CD, Swift, Cross-platform Development, Xcode",151608,167399,Software Engineering
+Principal Augmented Reality Developer,Wraith Ventures,"San Francisco, CA",Full-time,"Data Visualization, Unity, Augmented Reality Development, Virtual Reality Development, C++, C#",160507,177086,Software Engineering
+React Native Developer,Protoform Solutions,"San Francisco, CA",Internship,"Mobile CI/CD, iOS Development, Ionic, Android Development, Jetpack Compose, Android Studio, Cross-platform Development, React Native",81805,110716,Software Engineering
+Senior Android Developer,Circuitry Mechatronics,Singapore,Full-time,"iOS Development, Mobile Testing, SwiftUI",120469,137272,Software Engineering
+Robotics Engineer Intern,Redshift Systems,"Sydney, Australia",Internship,"Python, MATLAB, PCB Design, Robotics Programming, Sensor Integration",27326,40442,Software Engineering
+Junior XR Software Engineer,Bluefin Bridge Tech,"New York, NY",Full-time,"Machine Learning, Unity, Computer Vision",61865,71704,Software Engineering
+Senior Autonomous Systems Engineer,Copperfield Robotics,Remote,Contract,"Computer Vision, Reinforcement Learning, Embedded C",119410,155741,Software Engineering
+Junior Flutter Developer,Nova Studios,Remote,Full-time,"React Native, In-app Purchases, Flutter, CI/CD Pipelines",61966,75859,Software Engineering
+Senior 3D Graphics Engineer,Nova Industries,Remote,Part-time,"Computer Vision, C#, Machine Learning, Sensor Integration, Agile Methodology",126642,134026,Software Engineering
+Smart Contract Engineer Manager,Basalt Forge,"San Francisco, CA",Full-time,"Ethereum, Go, Solidity, Hyperledger Fabric, Stakeholder Management",116471,145257,Software Engineering
+Senior Mobile Software Engineer,Copperfield Robotics,Remote,Internship,"Kotlin, Jetpack Compose, Android Development",113377,152607,Software Engineering
+React Native Developer,Ledgerly Foundry,"London, UK",Part-time,"In-app Purchases, Cross-platform Development, Kotlin Multiplatform, Swift, Mobile App Architecture, Ionic, Mobile Performance Optimization, App Store Optimization",85650,103694,Software Engineering
+Principal Blockchain Developer,Fenix Technologies,"Austin, TX",Contract,"Smart Contracts, NFT Platforms, TypeScript, Solidity",163435,187156,Software Engineering
+Senior Flutter Developer,Quantum Labs,"San Francisco, CA",Internship,"Mobile CI/CD, Xamarin, React Native, SwiftUI, Git",126022,131048,Software Engineering
+Lead React Native Developer,Circuitry Robotics,"San Francisco, CA",Full-time,"Android Development, Mobile CI/CD, Flutter",148556,183563,Software Engineering
+Lead Cross-platform Mobile Engineer,Ridgeback Mechatronics,"Toronto, ON",Full-time,"React Native, Ionic, Dart, Flutter, SwiftUI",140496,175098,Software Engineering
+Hardware/Firmware Engineer,Summit Foundry,"San Francisco, CA",Full-time,"PCB Design, Arduino, C++, Embedded C, Stakeholder Management",88617,102129,DevOps & Infrastructure
+IoT Firmware Engineer Intern,Silverline Technologies,Remote,Internship,"SPI/I2C Protocols, Raspberry Pi Development, VHDL, PCB Design, FPGA Design, Microcontroller Programming, C++",28447,37639,DevOps & Infrastructure
+IoT Firmware Engineer Manager,Meridian Software,"San Francisco, CA",Part-time,"Raspberry Pi Development, Arduino, PCB Design, IoT Systems Design, FPGA Design, Firmware Development, Embedded C",136807,143484,DevOps & Infrastructure
+Senior FPGA Engineer,Frostbyte Software,"New York, NY",Full-time,"Embedded C, IoT Systems Design, PCB Design, C++, SPI/I2C Protocols, Microcontroller Programming",112095,154198,DevOps & Infrastructure
+Principal iOS Developer,Ledgerly Forge,"London, UK",Full-time,"Xamarin, Mobile CI/CD, Cross-platform Development, Kotlin Multiplatform, In-app Purchases, Android Development, Android Studio, Objective-C for iOS",165577,193025,Software Engineering
+Senior Firmware Engineer,Basalt Labs,"Chicago, IL",Full-time,"C++, Firmware Development, Microcontroller Programming, VHDL, IoT Systems Design, Arduino",123282,149011,DevOps & Infrastructure
+Principal Robotics Perception Engineer,Keystone Industries,"Austin, TX",Part-time,"PCB Design, Machine Learning, Embedded C, Sensor Integration, Reinforcement Learning, Computer Vision, RTOS (Real-Time Operating Systems), Docker",152040,196380,Software Engineering
+Robotics Engineer Manager,Quantum Mechatronics,"Tel Aviv, Israel",Full-time,"Robotics Programming, Sensor Integration, MATLAB, Machine Learning, C++, Python, Cross-functional Collaboration",126027,171024,Software Engineering
+Immersive Experience Engineer,Fenix Technologies,Remote,Full-time,"Machine Learning, C++, C#, Sensor Integration, 3D Graphics",88189,102458,Software Engineering
+Mobile Developer,Cobalt Systems,Remote,Part-time,"Swift, Kotlin, Push Notifications, Android Studio",87681,112464,Software Engineering
+Embedded Software Engineer Intern,Fenix Systems,"New York, NY",Internship,"FPGA Design, RTOS (Real-Time Operating Systems), Microcontroller Programming, Raspberry Pi Development, Embedded C",25314,35571,DevOps & Infrastructure
+XR Software Engineer,Slate Works,"Denver, CO",Internship,"Data Visualization, C++, Python, Augmented Reality Development, C#, Unity, 3D Graphics",89451,113425,Software Engineering
+Junior Flutter Developer,Amberlight Dynamics,"Sydney, Australia",Full-time,"Cordova, Swift, Objective-C for iOS, Android Development, Xamarin, Mobile App Architecture, Kotlin",65249,75072,Software Engineering
+Lead Mobile Developer,Wraith Labs,"Atlanta, GA",Part-time,"SwiftUI, Mobile Performance Optimization, Xamarin, Xcode, Swift, Mobile App Architecture",146593,181738,Software Engineering
+Android Developer,Nova Labs,"San Francisco, CA",Contract,"Kotlin Multiplatform, Cross-platform Development, Mobile Performance Optimization, Xcode, In-app Purchases, React Native, Mobile CI/CD",94849,99935,Software Engineering
+Senior Flutter Developer,Solace Works,Remote,Contract,"React Native, Android Studio, SwiftUI, Cordova, Dart, Mobile App Architecture, Mobile CI/CD, Kotlin, Requirements Gathering",123724,135972,Software Engineering
+Staff React Native Developer,Silverline Works,"Seattle, WA",Full-time,"Cordova, App Store Optimization, Android Development, Cross-functional Collaboration",146043,189836,Software Engineering
+Senior Android Developer,Redshift Ventures,"New York, NY",Part-time,"React Native, Mobile App Architecture, iOS Development, Jetpack Compose, In-app Purchases, Xcode, App Store Optimization, Kotlin Multiplatform",128408,147609,Software Engineering
+Junior Mobile Developer,Brightloop Labs,Remote,Full-time,"React Native, Android Studio, Mobile Performance Optimization, Push Notifications",65278,74671,Software Engineering
+Senior Robotics Engineer,Copperfield Robotics,"New York, NY",Internship,"Python, Embedded C, MATLAB, Reinforcement Learning, C++, Microcontroller Programming, PCB Design, Requirements Gathering",113225,134227,Software Engineering
+Senior Embedded Systems Engineer,Crestline Interactive,"Austin, TX",Full-time,"Microcontroller Programming, IoT Systems Design, Raspberry Pi Development, Firmware Development, RTOS (Real-Time Operating Systems), VHDL, C++, Arduino, System Design",108507,148059,DevOps & Infrastructure
+Junior Blockchain Architect,Silverline Works,Remote,Part-time,"Solidity, Hyperledger Fabric, Blockchain Development, Cryptocurrency Systems",58597,81085,Software Engineering
+Senior Embedded Systems Engineer,Ledgerly Software,Remote,Part-time,"C++, VHDL, Arduino",114624,153676,DevOps & Infrastructure
+Robotics Software Engineer Intern,Ridgeback Mechatronics,"Atlanta, GA",Internship,"RTOS (Real-Time Operating Systems), Reinforcement Learning, Microcontroller Programming, Machine Learning, MATLAB, Requirements Gathering",31291,36924,Software Engineering
+Lead Solidity Developer,Frostbyte Studios,"Tel Aviv, Israel",Full-time,"Cryptography, NFT Platforms, Cryptocurrency Systems, Smart Contracts, Rust, Distributed Ledger Technology, Blockchain Development, Node.js",153824,163801,Software Engineering
+Junior Solidity Developer,Vertex Ventures,"London, UK",Full-time,"Hyperledger Fabric, Decentralized Finance (DeFi), Cryptocurrency Systems, TypeScript",67916,74667,Software Engineering
+Autonomous Systems Engineer,Vertex Industries,"Chicago, IL",Full-time,"MATLAB, RTOS (Real-Time Operating Systems), Python, C++, Robotics Programming, Reinforcement Learning, Machine Learning, Cross-functional Collaboration",87211,114018,Software Engineering
+Lead Spatial Computing Engineer,Cypher Labs,"Chicago, IL",Full-time,"Sensor Integration, Unity, Data Visualization, Virtual Reality Development, Machine Learning, Augmented Reality Development, Computer Vision, Git",142875,156151,Software Engineering
+Senior Hardware/Firmware Engineer,Copperfield Robotics,"Boston, MA",Internship,"PCB Design, Embedded C, Raspberry Pi Development, Microcontroller Programming, VHDL, FPGA Design, IoT Systems Design, Firmware Development, System Design",124922,154467,DevOps & Infrastructure
+Junior Android Developer,Meridian Software,"San Francisco, CA",Full-time,"Dart, Kotlin, Flutter, Mobile Testing",68319,80135,Software Engineering
+Blockchain Architect Manager,Solace Works,Remote,Full-time,"Node.js, Decentralized Finance (DeFi), Smart Contracts, NFT Platforms, Distributed Ledger Technology, Ethereum, Solidity, Agile Methodology",121499,141022,Software Engineering
+Lead 3D Graphics Engineer,Redshift Ventures,"San Francisco, CA",Internship,"3D Graphics, C++, Virtual Reality Development, C#, Unity",152474,176592,Software Engineering
+Lead Mobile Software Engineer,Ridgeback Cloud Labs,"New York, NY",Internship,"iOS Development, Kotlin Multiplatform, In-app Purchases, App Store Optimization, Cordova, Kotlin",152797,167523,Software Engineering
+Junior Robotics Controls Engineer,Redshift Ventures,"Chicago, IL",Full-time,"Reinforcement Learning, Computer Vision, Embedded C, RTOS (Real-Time Operating Systems), C++, Robotics Programming, PCB Design, System Design",62761,81541,Software Engineering
+Blockchain Developer,Crestline Collective,"Austin, TX",Full-time,"Solidity, Distributed Ledger Technology, Hyperledger Fabric",81596,110603,Software Engineering
+Senior Blockchain Engineer,Zenith Mechatronics,Remote,Internship,"Ethereum, Cryptocurrency Systems, Web3, Node.js, Blockchain Development",129449,154598,Software Engineering
+Lead React Native Developer,Zenith Mechatronics,"Berlin, Germany",Full-time,"Swift, Mobile Testing, Mobile CI/CD, In-app Purchases, Xamarin, App Store Optimization, Kotlin, Cordova",157268,182204,Software Engineering
+XR Software Engineer Manager,Basalt Cloud Labs,Remote,Internship,"Python, Augmented Reality Development, 3D Graphics, Unity, Machine Learning, Sensor Integration",127815,171074,Software Engineering
+Senior Crypto Backend Engineer,Skyline Solutions,"Bangalore, India",Internship,"Cryptocurrency Systems, Ethereum, Blockchain Development, Node.js, Cryptography, Rust",111784,135094,Software Engineering
+Junior React Native Developer,Zenith Interactive,Remote,Full-time,"Kotlin Multiplatform, Mobile Testing, Mobile CI/CD",60142,81334,Software Engineering
+React Native Developer,Nimbus Interactive,Remote,Full-time,"In-app Purchases, Flutter, App Store Optimization",91116,107159,Software Engineering
+Senior React Native Developer,Summit Interactive,"Austin, TX",Full-time,"In-app Purchases, Cordova, Xcode, SwiftUI, Mobile Testing",124188,135881,Software Engineering
+Senior Robotics Perception Engineer,Ledgerly Works,Remote,Full-time,"Embedded C, C++, RTOS (Real-Time Operating Systems), Python, Reinforcement Learning, Robotics Programming, Sensor Integration, PCB Design, Cross-functional Collaboration",120581,155218,Software Engineering
+Robotics Controls Engineer,Brightloop Forge,"Chicago, IL",Internship,"Embedded C, C++, Microcontroller Programming, MATLAB, Sensor Integration, Robotics Programming",94597,103463,Software Engineering
+Motion Control Engineer Manager,Copperfield Industries,"New York, NY",Full-time,"Computer Vision, C++, PCB Design, Sensor Integration, MATLAB, Reinforcement Learning, Embedded C, Machine Learning",137345,164351,Software Engineering
+Lead iOS Developer,Ledgerly Robotics,"Denver, CO",Contract,"Cross-platform Development, SwiftUI, Mobile App Architecture",146876,175830,Software Engineering
+Senior Web3 Developer,Emberline Mechatronics,"Seattle, WA",Contract,"Distributed Ledger Technology, Node.js, Ethereum, TypeScript, NFT Platforms, System Design",109279,156839,Software Engineering
+Principal Augmented Reality Developer,Ledgerly Foundry,"Sydney, Australia",Internship,"Computer Vision, Augmented Reality Development, Unity, C#, Unreal Engine",154219,174877,Software Engineering
+Senior React Native Developer,Starforge Ventures,"Chicago, IL",Part-time,"React Native, Dart, Ionic, Cross-platform Development",132404,146763,Software Engineering
+Principal Smart Contract Engineer,Glasswing Dynamics,"Austin, TX",Full-time,"Ethereum, Web3, Node.js",171063,197669,Software Engineering
+Senior Immersive Experience Engineer,Nova Studios,Remote,Internship,"Computer Vision, Data Visualization, Machine Learning, Unreal Engine",109237,138861,Software Engineering
+Mobile Software Engineer Manager,Basalt Labs,"Bangalore, India",Full-time,"Mobile App Architecture, Mobile Testing, Mobile CI/CD, Kotlin Multiplatform, Xcode, Communication",134364,146646,Software Engineering
+XR Software Engineer,Silverline Technologies,"Berlin, Germany",Full-time,"Machine Learning, Augmented Reality Development, Data Visualization, Virtual Reality Development, Unreal Engine, Python, 3D Graphics",88768,97068,Software Engineering
+Spatial Computing Engineer,Nova Industries,"London, UK",Contract,"Machine Learning, Sensor Integration, Unity, Data Visualization, Unreal Engine, Virtual Reality Development, Augmented Reality Development, C#",84332,108441,Software Engineering
+Lead Virtual Reality Developer,Northgate Software,Remote,Full-time,"Virtual Reality Development, Unreal Engine, Machine Learning, C++, 3D Graphics, Unity",153438,162286,Software Engineering
+Senior Mobile Software Engineer,Basalt Labs,"San Francisco, CA",Full-time,"Flutter, SwiftUI, Ionic, App Store Optimization, Kotlin, In-app Purchases, Android Development, CI/CD Pipelines",116605,146949,Software Engineering
+Senior Web3 Developer,Crestline Interactive,"Chicago, IL",Full-time,"Rust, TypeScript, Go, Cryptocurrency Systems",109859,156728,Software Engineering
+Senior Mobile Developer,Wraith Digital,"Denver, CO",Contract,"Kotlin Multiplatform, Push Notifications, Jetpack Compose, Xamarin",119171,147289,Software Engineering
+Motion Control Engineer,Ledgerly Works,"Atlanta, GA",Internship,"PCB Design, Embedded C, Python",85374,107010,Software Engineering
+Senior Immersive Experience Engineer,Copperfield Mechatronics,"Chicago, IL",Part-time,"Computer Vision, Unreal Engine, Virtual Reality Development",110062,142124,Software Engineering
+Senior Spatial Computing Engineer,Ridgeback Mechatronics,"New York, NY",Full-time,"C#, C++, Unity, Unreal Engine, 3D Graphics, Computer Vision, Data Visualization",114555,152871,Software Engineering
+Senior Embedded Software Engineer,Solace Works,"San Francisco, CA",Full-time,"Arduino, Raspberry Pi Development, IoT Systems Design, C++, Microcontroller Programming",131094,137588,DevOps & Infrastructure
+Junior Embedded Software Engineer,Frostbyte Studios,"Atlanta, GA",Internship,"FPGA Design, PCB Design, RTOS (Real-Time Operating Systems), C++, SPI/I2C Protocols, Arduino, VHDL, Raspberry Pi Development, Stakeholder Management",58812,74129,DevOps & Infrastructure
+Senior iOS Developer,Keystone Industries,"Boston, MA",Full-time,"Swift, Push Notifications, Kotlin",125800,138620,Software Engineering
+Senior Hardware/Firmware Engineer,Circuitry Robotics,"London, UK",Contract,"RTOS (Real-Time Operating Systems), Firmware Development, IoT Systems Design, FPGA Design, SPI/I2C Protocols, Embedded C, Arduino, VHDL",123809,149034,DevOps & Infrastructure
+Virtual Reality Developer Manager,Meridian Software,"Tel Aviv, Israel",Contract,"Python, C++, Computer Vision, Sensor Integration, Machine Learning, Unity, 3D Graphics, Unreal Engine",138077,163187,Software Engineering
+Lead Smart Contract Engineer,Frostbyte Studios,Remote,Full-time,"Cryptocurrency Systems, Solidity, Decentralized Finance (DeFi), Smart Contracts, Go, TypeScript, NFT Platforms, Blockchain Development",157732,167204,Software Engineering
+Immersive Experience Engineer,Skyline Systems,"New York, NY",Full-time,"Unity, Data Visualization, Sensor Integration, Python, C++, Machine Learning",90601,103072,Software Engineering
+Flutter Developer Intern,Copperfield Mechatronics,"Denver, CO",Internship,"Cross-platform Development, Flutter, Dart, Android Studio, React Native",28392,33917,Software Engineering
+Senior Mobile Software Engineer,Basalt Labs,"Austin, TX",Full-time,"Android Development, Mobile CI/CD, Swift, Xamarin, Jetpack Compose, Dart, Mobile App Architecture",123907,134937,Software Engineering
+Junior iOS Developer,Solace Digital,"Bangalore, India",Full-time,"Kotlin Multiplatform, Mobile Testing, iOS Development",62624,83724,Software Engineering
+Hardware/Firmware Engineer,Crestline Collective,"San Francisco, CA",Full-time,"C++, Embedded C, Arduino, SPI/I2C Protocols, Firmware Development, Microcontroller Programming, FPGA Design",84952,101879,DevOps & Infrastructure
+Senior Mobile Software Engineer,Nova Labs,"Atlanta, GA",Full-time,"Kotlin Multiplatform, SwiftUI, Cordova, Objective-C for iOS, Dart",126077,137141,Software Engineering
+Senior Crypto Backend Engineer,Meridian Forge,"New York, NY",Full-time,"Hyperledger Fabric, Cryptocurrency Systems, Solidity, Smart Contracts, Ethereum, Blockchain Development, Decentralized Finance (DeFi)",114913,155539,Software Engineering
+Flutter Developer,Redshift Software,Remote,Internship,"Mobile Performance Optimization, Cross-platform Development, Android Development, Cordova, Mobile App Architecture, Kotlin, Mobile CI/CD",86653,104767,Software Engineering
+Junior FPGA Engineer,Ledgerly Robotics,"Chicago, IL",Part-time,"VHDL, IoT Systems Design, Raspberry Pi Development, Embedded C, SPI/I2C Protocols, RTOS (Real-Time Operating Systems), Docker",67299,75933,DevOps & Infrastructure
+Senior iOS Developer,Brightloop Forge,"San Francisco, CA",Full-time,"Swift, App Store Optimization, Mobile Testing",108537,149100,Software Engineering
+Flutter Developer,Frostbyte Studios,Remote,Full-time,"Xcode, Mobile App Architecture, Android Development, Android Studio",93866,106604,Software Engineering
+Motion Control Engineer Intern,Summit Interactive,"Austin, TX",Internship,"Machine Learning, PCB Design, Computer Vision, Robotics Programming, Microcontroller Programming, Reinforcement Learning, Python, Jira",27433,33102,Software Engineering
+Flutter Developer,Ridgeback Cloud Labs,"Tel Aviv, Israel",Internship,"Jetpack Compose, Kotlin, Flutter, SwiftUI",88766,101346,Software Engineering
+Virtual Reality Developer Intern,Wraith Digital,"London, UK",Internship,"Python, Machine Learning, C++, Sensor Integration, Unreal Engine, Virtual Reality Development, Augmented Reality Development, Unity",28949,40425,Software Engineering
+Lead Android Developer,Fenix Systems,Remote,Full-time,"Swift, SwiftUI, iOS Development, Objective-C for iOS, Push Notifications, Android Development, Cordova",144382,166169,Software Engineering
+Junior React Native Developer,Wraith Labs,"San Francisco, CA",Full-time,"Mobile CI/CD, Ionic, Android Studio, Kotlin, Swift",66404,74705,Software Engineering
+AR/VR Engineer Intern,Meridian Software,"Atlanta, GA",Internship,"Virtual Reality Development, Sensor Integration, 3D Graphics, Python, C++, Computer Vision, Machine Learning, C#, Jira",28734,36450,Software Engineering
+Android Developer,Starforge Ventures,"San Francisco, CA",Full-time,"Jetpack Compose, Xamarin, SwiftUI, App Store Optimization, Mobile Testing, Mobile Performance Optimization, Cordova, React Native",85678,109367,Software Engineering
+IoT Firmware Engineer Intern,Meridian Forge,"Seattle, WA",Internship,"Arduino, FPGA Design, Microcontroller Programming, RTOS (Real-Time Operating Systems), Raspberry Pi Development, Firmware Development, PCB Design, C++",30525,37884,DevOps & Infrastructure
+Mobile Software Engineer,Circuitry Mechatronics,"Bangalore, India",Full-time,"App Store Optimization, Objective-C for iOS, React Native, Cordova, Mobile Performance Optimization, Android Studio, Push Notifications, Jetpack Compose",88916,102384,Software Engineering
+Lead Android Developer,Hollow Ventures,"New York, NY",Full-time,"Xamarin, Swift, iOS Development, Android Studio, Kotlin Multiplatform",148676,162951,Software Engineering
+Firmware Engineer,Brightloop Labs,"San Francisco, CA",Full-time,"C++, IoT Systems Design, Raspberry Pi Development, SPI/I2C Protocols, PCB Design, Microcontroller Programming, Arduino, FPGA Design",81472,101933,DevOps & Infrastructure
+Junior Blockchain Architect,Basalt Cloud Labs,"Austin, TX",Full-time,"Ethereum, Distributed Ledger Technology, Cryptocurrency Systems, Node.js, Rust, Cross-functional Collaboration",59059,82858,Software Engineering
+Senior IoT Firmware Engineer,Cobalt Systems,Remote,Internship,"PCB Design, RTOS (Real-Time Operating Systems), Microcontroller Programming",126298,148146,DevOps & Infrastructure
+Cross-platform Mobile Engineer Intern,Emberline Mechatronics,"Denver, CO",Internship,"Jetpack Compose, Mobile Performance Optimization, Xamarin, Swift, Cordova, Android Development, App Store Optimization, Kotlin",25603,37919,Software Engineering
+Senior Embedded Systems Engineer,Silverline Technologies,"Boston, MA",Internship,"C++, Embedded C, SPI/I2C Protocols",115715,150978,DevOps & Infrastructure
+Crypto Backend Engineer,Cobalt Systems,"Tel Aviv, Israel",Full-time,"Go, Distributed Ledger Technology, Hyperledger Fabric, Rust, Cryptography",93609,112014,Software Engineering
+Mobile Developer,Vertex Industries,"Toronto, ON",Internship,"In-app Purchases, Kotlin Multiplatform, React Native, Jetpack Compose, Xamarin, Dart, Mobile Testnig",89992,98076,Software Engineering
+Embedded Systems Engineer Manager,Hollow Ventures,"Chicago, IL",Full-time,"PCB Design, SPI/I2C Protocols, Embedded C",129472,157353,DevOps & Infrastructure
+DeFi Protocol Engineer,Basalt Labs,Remote,Full-time,"Ethereum, Web3, Smart Contracts, Solidity",80798,95534,Software Engineering
+Senior Virtual Reality Developer,Skyline Solutions,"London, UK",Full-time,"Virtual Reality Development, Computer Vision, C++, Sensor Integration, Augmented Reality Development, Pyhton, Data Visualization, 3D Graphics, System Design",118934,129221,Software Engineering
+Firmware Engineer Manager,Amberlight Dynamics,Remote,Full-time,"VHDL, IoT Systems Design, PCB Design, RTOS (Real-Time Operating Systems), SPI/I2C Protocols, FPGA Design, Raspberry Pi Development",137313,153687,DevOps & Infrastructure
+Senior Autonomous Systems Engineer,Cobalt Systems,"San Francisco, CA",Contract,"RTOS (Real-Time Operating Systems), Python, Sensor Integration, C++, MATLAB, Robotics Programming, Reinforcement Learning, PCB Design",122118,140488,Software Engineering
+Principal Embedded Software Engineer,Solace Robotics,Remote,Part-time,"Microcontroller Programming, SPI/I2C Protocols, Raspberry Pi Development, VHDL, FPGA Design, Arduino, Firmware Development, PCB Design",154027,177684,DevOps & Infrastructure
+Principal Web3 Developer,Ledgerly Software,Remote,Full-time,"Solidity, Cryptocurrency Systems, Distributed Ledger Technology, Web3, Blockchain Development, CI/CD Pipelines",154784,182767,Software Engineering
+IoT Firmware Engineer,Vertex Industries,"Tel Aviv, Israel",Internship,"Firmware Development, SPI/I2C Protocols, IoT Systems Design, RTOS (Real-Time Operating Systems), PCB Design",93608,113911,DevOps & Infrastructure
+Senior Firmware Engineer,Northgate Software,"Seattle, WA",Part-time,"PCB Design, VHDL, Firmware Development, Embedded C",108672,132729,DevOps & Infrastructure
+Junior DeFi Protocol Engineer,Zenith Foundry,"Atlanta, GA",Full-time,"Cryptocurrency Systems, Distributed Ledger Technology, Solidity, TypeScript, Blockchain Development",69159,76452,Software Engineering
+Cross-platform Mobile Engineer,Ridgeback Cloud Labs,"Denver, CO",Full-time,"iOS Development, App Store Optimization, Jetpack Compose, Stakeholder Management",81187,100572,Software Engineering
+Senior Web3 Developer,Slate Cloud Labs,"Seattle, WA",Part-time,"NFT Platforms, Distributed Ledger Technology, Ethereum, Solidity, Node.js, Cryptography, Requirements Gathering",120462,155039,Software Engineering
+Senior Spatial Computing Engineer,Fenix Technologies,"London, UK",Full-time,"Machine Learning, Computer Vision, C#, 3D Graphics, Augmented Reality Development",114792,136431,Software Engineering
+Junior DeFi Protocol Engineer,Wraith Labs,"New York, NY",Internship,"Ethereum, Web3, Node.js, TypeScript, Decentralized Finance (DeFi), Git",61841,72788,Software Engineering
+Embedded Systems Engineer,Brightloop Labs,Remote,Full-time,"IoT Systems Design, RTOS (Real-Time Operating Systems), Raspberry Pi Development, Embedded C, FPGA Design",97157,110289,DevOps & Infrastructure
+Robotics Software Engineer,Nimbus Interactive,"New York, NY",Full-time,"Python, Reinforcement Learning, C++, PCB Design, RTOS (Real-Time Operating Systems), Robotics Programming, Embedded C, Computer Vision, Requirements Gathering",96492,105040,Software Engineering
+Staff Blockchain Architect,Ledgerly Software,"San Francisco, CA",Full-time,"Hyperledger Fabric, Blockchain Development, Solidity, Decentralized Finance (DeFi), Ethereum",164303,184727,Software Engineering
+Virtual Reality Developer,Northgate Ventures,"Bangalore, India",Contract,"Virtual Reality Development, Machine Learning, C#, Unity, Python, 3D Graphics, Unreal Engine, Data Visualization",88867,107883,Software Engineering
+Junior Immersive Experience Engineer,Thornfield Bridge Tech,"Boston, MA",Full-time,"C#, Unity, Unreal Engine, Computer Vision, Machine Learning",67032,77878,Software Engineering
+Senior Blockchain Developer,Solace Works,"San Francisco, CA",Internship,"TypeScript, Blockchain Development, Smart Contracts, Decentralized Finance (DeFi), CI/CD Pipelines",128558,144078,Software Engineering
+Junior FPGA Engineer,Summit Foundry,"Berlin, Germany",Internship,"Microcontroller Programming, Raspberry Pi Development, C++, Firmware Development, SPI/I2C Protocols, VHDL, RTOS (Real-Time Operating Systems), PCB Design, Cross-functional Collaboration",59143,77574,DevOps & Infrastructure
+Robotics Software Engineer,Quantum Labs,Remote,Full-time,"MATLAB, Sensor Integration, Machine Learning, Embedded C, Reinforcement Learning, C++, Robotics Programming",86700,107811,Software Engineering
+Immersive Experience Engineer,Solace Robotics,"Toronto, ON",Full-time,"3D Graphics, C++, Virtual Reality Development, Unity, Computer Vision, C#, Unreal Engine",90454,99957,Software Engineering
+Senior Robotics Engineer,Copperfield Industries,"Seattle, WA",Full-time,"Reinforcement Learning, C++, Embedded C, PCB Design, CI/CD Pipelines",125413,155179,Software Engineering
+AR/VR Engineer Intern,Zenith Mechatronics,"New York, NY",Internship,"C#, Machine Learning, Sensor Integration, Unreal Engine, Unity",29047,37179,Software Engineering
+Mobile Software Engineer,Nova Foundry,"Boston, MA",Full-time,"Cordova, Objective-C for iOS, Swift, Mobile Testing, Flutter, Kotlin, Ionic, Android Studio",88347,109211,Software Engineering
+Solidity Developer,Aurora Interactive,"Atlanta, GA",Full-time,"Smart Contracts, NFT Platforms, Ethereum, Node.js",96389,103956,Software Engineering
+Staff AR/VR Engineer,Basalt Forge,Singapore,Internship,"Python, Machine Learning, Unreal Engine, Computer Vision, Augmented Reality Development, Data Visualization, Unity, Agile Methodology",150942,178927,Software Engineering
+Junior Robotics Controls Engineer,Hollow Ventures,"San Francisco, CA",Full-time,"RTOS (Real-Time Operating Systems), Reinforcement Learning, MATLAB, PCB Design, Sensor Integration, Robotics Programming, C++, Python",69205,77253,Software Engineering
+Senior IoT Firmware Engineer,Skyline Systems,"Boston, MA",Full-time,"VHDL, C++, IoT Systems Design, Embedded C, Raspberry Pi Development",126886,147469,DevOps & Infrastructure
+Senior Blockchain Developer,Brightloop Forge,"Austin, TX",Internship,"Cryptocurrency Systems, Go, Decentralized Finance (DeFi), TypeScript, Node.js, Cryptography",122625,143011,Software Engineering
+Junior Crypto Backend Engineer,Slate Digital,"Seattle, WA",Contract,"Go, Blockchain Development, Hyperledger Fabric, Cryptography, Decentralized Finance (DeFi), Web3, Rust, Distributed Ledger Technology",60062,69850,Software Engineering
+Junior iOS Developer,Vantage Cloud Labs,"London, UK",Internship,"SwiftUI, Kotlin, In-app Purchases, Ionic",70879,78649,Software Engineering
+Web3 Developer,Aurora Interactive,Remote,Part-time,"Cryptography, Ethereum, Blockchain Development",92361,99346,Software Engineering
+Junior Robotics Engineer,Nova Foundry,"San Francisco, CA",Full-time,"Microcontroller Programming, Computer Vision, C++, Python, Machine Learning, Reinforcement Learning, PCB Design, Robotics Programming",62626,73611,Software Engineering
+Immersive Experience Engineer,Nova Foundry,"Toronto, ON",Full-time,"Unity, Data Visualization, Machine Learning, C++, C#, Virtual Reality Development",84328,96723,Software Engineering
+Junior FPGA Engineer,Meridian Forge,"Bangalore, India",Full-time,"FPGA Design, C++, RTOS (Real-Time Operating Systems), Firmware Development",64870,70190,DevOps & Infrastructure
+Lead Motion Control Engineer,Circuitry Robotics,"London, UK",Full-time,"RTOS (Real-Time Operating Systems), Python, Robotics Programming, Reinforcement Learning, C++, Microcontroller Programming, Sensor Integration, Computer Vision, Requirements Gathering",139361,173705,Software Engineering
+Lead Autonomous Systems Engineer,Cascade Forge,"Chicago, IL",Full-time,"C++, Sensor Integration, Computer Vision, Robotics Programming, Microcontroller Programming, Python, Git",136834,176383,Software Engineering
+Android Developer,Voxel Technologies,"Sydney, Australia",Contract,"Jetpack Compose, Mobile Performance Optimization, Mobile CI/CD, Kotlin",94145,102121,Software Engineering
+Spatial Computing Engineer Manager,Wraith Digital,"New York, NY",Full-time,"3D Graphics, Data Visualization, C#, C++, Augmented Reality Development",116547,141249,Software Engineering
+Principal Robotics Software Engineer,Vertex Industries,Singapore,Full-time,"PCB Design, Robotics Programming, Machine Learning",171059,185768,Software Engineering
+Staff AR/VR Engineer,Northgate Cloud Labs,Remote,Internship,"Python, 3D Graphics, Data Visualization, Machine Learning, Unity, Git",162911,188673,Software Engineering
+Autonomous Systems Engineer Intern,Redshift Software,"Bangalore, India",Internship,"MATLAB, Machine Learning, Reinforcement Learning, Agile Methodology",24381,38226,Software Engineering
+Junior Robotics Controls Engineer,Slate Cloud Labs,"Atlanta, GA",Full-time,"Computer Vision, Machine Learning, Embedde dC, Robotics Programming, C++, Microcontroller Programming, Reinforcement Learning, MATLAB, Agile Methodology",66960,72460,Software Engineering
+Motion Control Engineer,Fenix Technologies,"Austin, TX",Full-time,"Microcontroller Programming, RTOS (Real-Time Operating Systems), Computer Vision, Reinforcement Learning, Robotics Programming, Embedded C, PCB Design, Machine Learning",90674,106609,Software Engineering
+Hardware/Firmware Engineer Manager,Nova Foundry,"Denver, CO",Full-time,"Firmware Development, C++, PCB Design, Microcontroller Programming, Embedded C, FPGA Design, Arduino, Agile Methodology",122214,163184,DevOps & Infrastructure
+Junior Web3 Developer,Onyx Interactive,"San Francisco, CA",Full-time,"Blockchain Development, Solidity, Smart Contracts, Ethereum, TypeScript, Cryptography, Distributed Ledger Technology, Go",63120,84507,Software Engineering
+Senior DeFi Protocol Engineer,Ridgeback Mechatronics,"Atlanta, GA",Internship,"Solidity, Decentralized Finance (DeFi), Ethereum, Communication",115151,141595,Software Engineering
+Senior Robotics Perception Engineer,Basalt Cloud Labs,"Boston, MA",Full-time,"Reinforcement Learning, Python, Computer Vision, Microcontroller Programming, Embedded C",125220,134792,Software Engineering
+Senior 3D Graphics Engineer,Basalt Labs,Remote,Full-time,"Sensor Integration, Unity, 3D Graphics, Virtual Reality Development, computer vision, C++, C#",118073,130132,Software Engineering
+Senior FPGA Engineer,Redshift Ventures,"Chicago, IL",Full-time,"SPI/I2C Protocols, FPGA Design, VHDL, Raspberry Pi Development, C++",111359,134577,DevOps & Infrastructure
+Solidity Developer,Copperfield Industries,"Seattle, WA",Full-time,"Cryptography, Solidity, Blockchain Development, Cryptocurrency Systems, Web3, Decentralized Finance (DeFi), Cross-functional Collaboration",85810,95513,Software Engineering
+Mobile Developer Manager,Slate Systems,Remote,Full-time,"React Native, In-app Purchases, Dart, Objective-C for iOS, Flutter, Mobile App Architecture, Stakeholder Management",121866,150481,Software Engineering
+React Native Developer Manager,Ledgerly Software,"San Francisco, CA",Contract,"Jetpack Compose, Cross-platform Development, Ionic, Xamarin, Android Development, Cordova, Swift",134650,167621,Software Engineering
+Robotics Engineer Intern,Vantage Cloud Labs,Remote,Internship,"Machine Learning, Reinforcement Learning, RTOS (Real-Time Operating Systems)",26139,33788,Software Engineering
+Senior iOS Developer,Meridian Software,"New York, NY",Part-time,"Mobile Testing, Kotlin, App Store Optimization, Flutter, React Native, Xamarin, Xcode, Dart",119371,146298,Software Engineering
+Mobile Developer,Summit Interactive,"New York, NY",Full-time,"Mobile Testing, In-app Purchases, Android Studio, Mobile CI/CD",90147,98042,Software Engineering
+Crypto Backend Engineer,Frostbyte Studios,"Chicago, IL",Internship,"Solidity, Smart Contracts, Go, Hyperledger Fabric, Decentralized Finance (DeFi), NFT Platforms",90760,109387,Software Engineering
+Senior Android Developer,Crestline Works,"Toronto, ON",Part-time,"SwiftUI, Swift, React Native, Git",112104,155122,Software Engineering
+Senior iOS Developer,Lattice Ventures,Remote,Full-time,"Xcode, Flutter, Mobile CI/CD, System Design",122332,146547,Software Engineering
+Senior React Native Developer,Quantum Mechatronics,"Seattle, WA",Full-time,"Mobile App Architecture, Mobile CI/CD, Objective-C for iOS, SwiftUI, Cross-platform Development, Jetpack Compose, Ionic, System Design",121387,143385,Software Engineering
+Blockchain Architect,Northgate Ventures,"Seattle, WA",Full-time,"Distributed Ledger Technology, TypeScript, Decentralized Finance (DeiF), Web3, Smart Contracts, NFT Platforms, Hyperledger Fabric, Go",85176,111640,Software Engineering
+Senior IoT Firmware Engineer,Solace Works,Remote,Internship,"RTOS (Real-Time Operating Systems), FPGA Design, IoT Systems Design",108989,128431,DevOps & Infrastructure
+Web3 Developer Intern,Zenith Foundry,"San Francisco, CA",Internship,"Hyperledger Fabric, Rust, Blockchain Development, Decentralized Finance (DeFi)",30663,39067,Software Engineering
+Senior iOS Developer,Frostbyte Software,"Sydney, Australia",Contract,"Flutter, Mobile Testing, App Store Optimization, Kotlin, Cross-platform Development, CI/CD Pipelines",108863,155227,Software Engineering
+Senior Firmware Engineer,Zenith Mechatronics,"San Francisco, CA",Full-time,"C++, FPGA Design, IoT Systems Design, Embedded C",115939,137344,DevOps & Infrastructure
+Lead Robotics Engineer,Basalt Forge,"Denver, CO",Full-time,"Embedded C, Machine Learning, Sensor Integration, Python, RTOS (Real-Time Operating Systems), Reinforcement Learning, Robotics Programming",153850,166418,Software Engineering
+React Native Developer Manager,Wraith Ventures,"Austin, TX",Full-time,"Xamarin, SwiftUI, Flutter, iOS Development, Kotlin, System Design",126631,140958,Software Engineering
+Robotics Software Engineer Manager,Lattice Ventures,Remote,Full-time,"PCB Design, Robotics Programming, Python, Embedded C, MATLAB, RTOS (Real-Time Operating Systems)",131661,150691,Software Engineering
+React Native Developer Intern,Zenith Foundry,"London, UK",Internship,"Push Notifications,  Android Studio , Swift",27141,34578,Software Engineering
+Mobile Developer,Copperfield Robotics,"Toronto, ON",Full-time,"Ionic, Flutter, In-app Purchases, Jetpack Compose, Android Studio, Kotlin, Swift",82215,108934,Software Engineering
+Robotics Software Engineer Manager,Ledgerly Foundry,"Chicago, IL",Full-time,"Reinforcement Learning, Microcontroller Programming, Robotics Programming, Sensor Integration, MATLAB, Computer Vision, Python",140047,145801,Software Engineering
+Blockchain Architect,Circuitry Mechatronics,"Boston, MA",Full-time,"Decentralized Finance (DeFi), Cryptography, Web3, Distributed Ledger Technology, Node.js, TypeScript, Smart Contracts",90928,105367,Software Engineering
+Senior Mobile Developer,Vertex Cloud Labs,"Boston, MA",Full-time,"Push Notifications, Mobile Performance Optimization, App Store Optimization, Jetpack Compose, In-app Purchases, Flutter, iOS Development, Xamarin, System Design",117158,140869,Software Engineering
+Senior Immersive Experience Engineer,Crestline Collective,"Berlin, Germany",Full-time,"Computer Vision, Unity, C++, Virtual Reality Development",113680,128041,Software Engineering
+Mobile Software Engineer Intern,Bluefin Labs,"New York, NY",Internship,"Flutter, Kotlin, SwiftUI, In-app Purchases, Mobile App Architecture, Xcode, Swift, Cordova",26452,34972,Software Engineering
+Hardware/Firmware Engineer,Ironwood Interactive,"San Francisco, CA",Full-time,"FPGA Design, VHDL, SPI/I2C Protocols,  Microcontroller Programming , Raspberry Pi Development, C++",93736,108850,DevOps & Infrastructure
+Android Developer,Summit Interactive,"Seattle, WA",Full-time,"App Store Optimization, Kotlin, Mobile Testing",80222,100905,Software Engineering
+Senior AR/VR Engineer,Aurora Interactive,"Chicago, IL",Contract,"Data Visualization, Unreal Engine, 3D Graphics, Augmented Reality Development, Machine Learning",116447,152087,Software Engineering
+Junior Virtual Reality Developer,Quantum Labs,"San Francisco, CA",Full-time,"Computer Vision, 3D Graphics, Unity, C#, Machine Learning",61194,84232,Software Engineering
+Junior FPGA Engineer,Crestline Collective,"Boston, MA",Full-time,"Firmware Development, Arduino, VHDL, SPI/I2C Protocols, Raspberry Pi Development, Embedded C",68401,81501,DevOps & Infrastructure
+Mobile Software Engineer,Skyline Solutions,Remote,Full-time,"Xamarin, Mobile Testing, Swift, Agile Methodology",81652,101582,Software Engineering
+Junior Robotics Controls Engineer,Basalt Forge,"Tel Aviv, Israel",Contract,"Computer Vision, RTOS (Real-Time Operating Systems), Python, C++, Machine Learning, Embedded C, Docker",58732,81318,Software Engineering
+Senior iOS Developer,Redshift Systems,"New York, NY",Full-time,"App Store Optimization, Mobile Testing, Kotlin, Dart, React Native, iOS Development, Mobile Performance Optimization",113071,155949,Software Engineering
+XR Software Engineer,Vertex Ventures,"Boston, MA",Contract,"Unreal Engine, Python, Machine Learning, Data Visualization, 3D Graphics",83553,105563,Software Engineering
+Senior Blockchain Developer,Glasswing Dynamics,"San Francisco, CA",Part-time,"Smart Contracts, NFT Platforms, Rust, Web3, Decentralized Finance (DeFi), Blockchain Development, Hyperledger Fabric, TypeScript, Requirements Gathering",113138,157984,Software Engineering
+Senior Robotics Perception Engineer,Thornfield Bridge Tech,Remote,Part-time,"Microcontroller Programming, Computer Vision, RTOS (Real-Time Operating Systems), PCB Design, Python, Embedded C",114522,147424,Software Engineering
+Senior React Native Developer,Northgate Software,"Austin, TX",Full-time,"Mobile App Architecture, Xcode, Flutter, Push Notifications, Jetpack Compose, iOS Development, Swift, Jira",130598,154782,Software Engineering
+React Native Developer,Silverline Technologies,"Seattle, WA",Internship,"Ionic, In-app Purchases, Swift",80075,105265,Software Engineering
+Cross-platform Mobile Engineer,Ledgerly Forge,"San Francisco, CA",Full-time,"Mobile CI/CD, Ionic, Cross-platform Development, Cordova, Xcode, Mobile Performance Optimization",89131,114535,Software Engineering
+Junior React Native Developer,Vertex Cloud Labs,Remote,Contract,"Cordova, Mobile Performance Optimization, Ionic",68519,74137,Software Engineering
+Cross-platform Mobile Engineer,Meridian Forge,Singapore,Full-time,"Push Notifications, Jetpack Compose, Cordova, Android Studio, Mobile App Architecture, Mobile Testing, Android Development, Cross-functional Collaboration",91328,103904,Software Engineering
+Senior Virtual Reality Developer,Skyline Robotics,"San Francisco, CA",Full-time,"3D Graphics, C++, C#, Cross-functional Collaboration",124436,144081,Software Engineering
+Robotics Engineer Manager,Slate Systems,"Austin, TX",Part-time,"Embedded C, Microcontroller Programming, Computer Vision, Docker",132589,158595,Software Engineering
+Senior Android Developer,Vantage Interactive,"New York, NY",Part-time,"Jetpack Compose, Kotlin, Cordova, Xamarin, Xcode, Push Notifications",124369,131969,Software Engineering
+DeFi Protocol Engineer Intern,Slate Systems,"Berlin, Germany",Internship,"TypeScript, Solidity, Go, Decentralized Finance (DeFi), Hyperledger Fabric, Blockchain Development, Cryptography, Cryptocurrency Systems",25036,39871,Software Engineering
+3D Graphics Engineer Intern,Skyline Systems,"Seattle, WA",Internship,"C#, Unity, Python",25692,35218,Software Engineering
+Senior XR Software Engineer,Vertex Industries,Remote,Full-time,"Unity, C++, Virtual Reality Development, Communication",109649,135503,Software Engineering
+Junior Cross-platform Mobile Engineer,Frostbyte Software,"Chicago, IL",Full-time,"Push Notifications, Objective-C for iOS, Cross-platform Development, Cordova",60680,71746,Software Engineering
+Junior Embedded Software Engineer,Basalt Forge,"Denver, CO",Full-time,"Raspberry Pi Development, Arduino, IoT Systems Design, VHDL, Microcontroller Programming, RTOS (Real-Time Operating Systems), SPI/I2C Protocols",67507,73247,DevOps & Infrastructure
+Senior Autonomous Systems Engineer,Cascade Forge,"Austin, TX",Full-time,"Robotics Programming, Computer Vision, Reinforcement Learning, MATLAB, Embedded C, RTOS (Real-Time Operating Systems), Machine Learning, Agile Methodology",132816,139711,Software Engineering
+Android Developer Intern,Vantage Cloud Labs,Remote,Internship,"Swift, App Store Optimization, SwiftUI, Mobile Testing, iOS Development, Flutter, Mobile Performance Optimization, Push Notifications",28337,41955,Software Engineering
+Lead iOS Developer,Basalt Forge,"Atlanta, GA",Full-time,"Kotlin Multiplatform, Kotlin, Jetpack Compose, Android Development, Cross-platform Development",148603,167156,Software Engineering
+Smart Contract Engineer Intern,Hollow Foundry,Remote,Internship,"Rust, Ethereum, Hyperledger Fabric, Cryptocurrency Systmes, Solidity, Decentralized Finance (DeFi), NFT Platforms",32768,41012,Software Engineering
+Robotics Software Engineer Intern,Ridgeback Mechatronics,"Toronto, ON",Internship,"MATLAB, Microcontroller Programming, Robotics Programming",31509,38485,Software Engineering
+Mobile Software Engineer,Basalt Forge,"Denver, CO",Internship,"Cross-platform Development, Xamarin, Push Notifications, Xcode, Android Development, Jetpack Compose, Swift, React Native, Stakeholder Management",97200,106703,Software Engineering
+Blockchain Architect Manager,Fenix Cloud Labs,Remote,Contract,"Ethereum, Go, Web3, Jira",122443,152465,Software Engineering
+Android Developer,Basalt Labs,"London, UK",Full-time,"Android Development, Cordova, Flutter",93616,111230,Software Engineering
+Firmware Engineer Intern,Redshift Ventures,Remote,Internship,"Firmware Development, PCB Design, Microcontroller Programming, VHDL, Stakeholder Management",29408,35869,DevOps & Infrastructure
+Senior Crypto Backend Engineer,Foxglove Robotics,"Seattle, WA",Full-time,"Decentralized Finance (DeFi), Rust, Web3, Solidity, Ethereum, Cryptography",113125,157565,Software Engineering
+Lead Smart Contract Engineer,Nova Labs,"San Francisco, CA",Part-time,"Decentralized Finance (DeFi), Smart Contracts, NFT Platforms",140275,163192,Software Engineering
+Hardware/Firmware Engineer Manager,Slate Systems,"Seattle, WA",Contract,"Embedded C, C++, PCB Design, Microcontroller Programming, Arduino, VHDL",126052,144762,DevOps & Infrastructure
+3D Graphics Engineer,Silverline Works,"Austin, TX",Full-time,"C++, C#, 3D Graphics, Virtual Reality Development, Machine Learning, Computer Vision",96688,102826,Software Engineering
+Junior Solidity Developer,Hollow Foundry,"New York, NY",Full-time,"Decentralized Finance (DeFi), Node.js, Distributed Ledger Technology, Cryptography",60471,84060,Software Engineering
+Senior Embedded Software Engineer,Ledgerly Works,"London, UK",Internship,"IoT Systems Design, FPGA Design, Microcontroller Programming, VHDL",124662,145446,DevOps & Infrastructure
+Junior 3D Graphics Engineer,Ledgerly Works,"London, UK",Full-time,"Sensor Integration, Augmented Reality Development, Machine Learning, Computer Vision, Unity",68606,74252,Software Engineering
+FPGA Engineer,Northgate Software,"San Francisco, CA",Internship,"SPI/I2C Protocols, VHDL, IoT Systems Design, PCB Design, Firmware Development, RTOS (Real-Time Operating Systems)",93931,103112,DevOps & Infrastructure
+Junior Embedded Systems Engineer,Basalt Forge,"Atlanta, GA",Full-time,"VHDL, C++, PCB Design, SPI/I2C Protocols, IoT Systems Design, Arduino, FPGA Design, Embedded C",70376,76816,DevOps & Infrastructure
+Android Developer Manager,Onyx Interactive,"Seattle, WA",Part-time,"Android Studio, In-app Purchases, Ionic, Mobile CI/CD, Swift, System Design",140216,156462,Software Engineering
+Principal Motion Control Engineer,Brightloop Forge,"New York, NY",Full-time,"MATLAB, Robotics Programming, RTOS (Real-Time Operating Systems), PCB Design",155192,183526,Software Engineering
+AR/VR Engineer Intern,Fenix Cloud Labs,"Atlanta, GA",Internship,"Unity, Unreal Engine, Computer Vision, Sensor Integration, Augmented Reality Development, Python, 3D Graphics, C#, Agile Methodology",26883,33901,Software Engineering
+Lead Robotics Software Engineer,Redshift Systems,Remote,Full-time,"Sensor Integration, Reinforcement Learning, C++",143755,163007,Software Engineering
+Lead Mobile Developer,Ledgerly Works,"Austin, TX",Full-time,"App Store Optimization, Flutter, Push Notifications, Mobile Testing, Android Studio, Xcode, Ionic",139296,184187,Software Engineering
+Senior Blockchain Developer,Vertex Cloud Labs,"Tel Aviv, Israel",Contract,"TypeScript, Nodej.s, Cryptocurrency Systems, Solidity",112694,151183,Software Engineering
+Staff iOS Developer,Ledgerly Forge,Remote,Internship,"Push Notifications, App Store Optimization, Flutter, Cross-platform Development, Objective-C for iOS, In-app Purchases, Requirements Gathering",147836,175459,Software Engineering
+Principal iOS Developer,Zenith Interactive,"London, UK",Internship,"Mobile App Architecture, iOS Development, Mobile Performance Optimization, Objective-C for iOS, Mobile CI/CD",156923,183360,Software Engineering
+Virtual Reality Developer,Frostbyte Studios,"Chicago, IL",Part-time,"Unity, Sensor Integration, Computer Vision",87092,107344,Software Engineering
+Senior Crypto Backend Engineer,Onyx Interactive,"Toronto, ON",Full-time,"Go, NFT Platforms, Ethereum, Decentralized Finance (DeFi)",112297,140353,Software Engineering
+Principal Embedded Systems Engineer,Emberline Mechatronics,Remote,Full-time,"Firmware Development, C++, IoT Systems Design, Embedded C, PCB Design, Raspberry Pi Development, Microcontroller Programming, Arduino, Jira",151373,195809,DevOps & Infrastructure
+iOS Developer,Amberlight Dynamics,Remote,Full-time,"Mobile App Architecture, Flutter, Cross-platform Development, React Native, Objective-C for iOS, iOS Development, Ionic, Requirements Gathering",81103,103692,Software Engineering
+Robotics Engineer,Foxglove Group,Remote,Part-time,"MATLAB, Sensor Integration, Embedded C, Computer Vision, C++, PCB Design, Microcontroller Programming",96342,107884,Software Engineering
+Senior Smart Contract Engineer,Solace Digital,"Seattle, WA",Full-time,"Rust, Cryptography, NFT Platforms, Hyperledger Fabric",123082,134756,Software Engineering
+Blockchain Engineer Manager,Summit Interactive,Remote,Internship,"Cryptocurrency Systems, Smart Contracts, Hyperledger Fabric, Go, Distributed Ledger Technology, Decentralized Finance (DeFi)",135185,163355,Software Engineering
+Lead Hardware/Firmware Engineer,Slate Cloud Labs,Remote,Full-time,"Raspberry Pi Development, FPGA Design, Microcontroller Programming, Embedded C, IoT Systems Design, Arduino, PCB Design, C++, CI/CD Pipelines",144306,159188,DevOps & Infrastructure
+Cross-platform Mobile Engineer,Quantum Mechatronics,"Seattle, WA",Full-time,"React Native, Mobile Performance Optimization, Kotlin Multiplatform",85868,104993,Software Engineering
+Senior Blockchain Developer,Frostbyte Studios,"Austin, TX",Full-time,"Cryptocurrency Systems, Hyperledger Fabric, Smart Contracts, TypeScript, Go, NFT Platforms, Web3, Rust, Agile Methodology",131683,156624,Software Engineering
+Mobile Developer,Ironwood Interactive,"Seattle, WA",Full-time,"Mobile CI/CD, Xcode, Flutter, Android Development, Kotlin Multiplatform, Mobile App Architecture, SwiftUI, Mobile Testing",88647,103859,Software Engineering
+Staff DeFi Protocol Engineer,Copperfield Robotics,"Berlin, Germany",Full-time,"NFT Platforms, Decentralized Finance (DeFi), Cryptocurrency Systems",142329,166806,Software Engineering
+Flutter Developer Intern,Wraith Digital,"New York, NY",Internship,"Mobile Performance Optimization, Ionic, Kotlin Multiplatform, Android Studio, React Native, Android Development, Mobile Testing, iOS Development",31640,39528,Software Engineering
+Robotics Software Engineer Intern,Nova Studios,"Chicago, IL",Internship,"Machine Learning, Computer Vision, Microcontroller Programming, Embedded C, MATLAB, Python, Robotics Programming, Reinforcement Learning",29693,38955,Software Engineering
+Senior Smart Contract Engineer,Vertex Cloud Labs,"Tel Aviv, Israel",Internship,"NFT Platforms, Solidity, TypeScript, Cryptography, Rust, Node.js",130233,157359,Software Engineering
+Robotics Perception Engineer,Copperfield Robotics,"Seattle, WA",Full-time,"Reinforcement Learning, MATLAB, Robotics Programming, C++, Microcontroller Programming, PCB Design",90320,104817,Software Engineering
+Senior XR Software Engineer,Ledgerly Works,"Toronto, ON",Full-time,"C#, Machine Learning, C++, Python, 3D Graphics, Data Visualization, Unity, Unreal Engine",126159,150552,Software Engineering
+React Native Developer,Copperfield Robotics,"Seattle, WA",Part-time,"Ionic, Xcode, Cordova",90252,100996,Software Engineering
+Junior Mobile Software Engineer,Aurora Interactive,"Sydney, Australia",Full-time,"React Native, Kotlin Multiplatform, Jetpack Compose, Objective-C for iOS",70762,82265,Software Engineering
+Embedded Systems Engineer,Slate Systems,"Berlin, Germany",Full-time,"RTOS (Real-Time Operating Systems), PCB Design, VHDL, C++, Embedded C",83697,95939,DevOps & Infrastructure
+React Native Developer Manager,Slate Digital,"New York, NY",Contract,"SwiftUI, Swift, Jetpack Compose, Dart, App Store Optimization",127926,160140,Software Engineering
+Junior Embedded Software Engineer,Fenix Systems,Remote,Full-time,"C++, PCB Design, FPGA Design, Raspberry Pi Development, VHDL, IoT Systems Design, RTOS (Real-Time Operating Systems)",64286,81065,DevOps & Infrastructure
+Junior React Native Developer,Brightloop Labs,Remote,Contract,"Cross-platform Development, Push Notifications, Xamarin, In-app Purchases, Mobile Testing,  Ionic , Agile Methodology",69663,79856,Software Engineering
+Senior Solidity Developer,Fenix Technologies,Remote,Full-time,"Solidity, Go, Rust, NFT Platforms, Ethereum, Distributed Ledger Technology",115195,135799,Software Engineering
+Senior AR/VR Engineer,Solace Digital,"Chicago, IL",Full-time,"Machine Learning, Data Visualization, C#, Sensor Integration, Computer Vision, Python, Unity",121906,137640,Software Engineering
+Augmented Reality Developer,Keystone Industries,"Toronto, ON",Full-time,"Machine Learning, Sensor Integration, Augmented Reality Development",96827,108246,Software Engineering
+Staff Robotics Controls Engineer,Northgate Ventures,"Atlanta, GA",Full-time,"Machine Learning, RTOS (Real-Time Operating Systems), MATLAB, Reinforcement Learning, Computer Vision, Sensor Integration, Microcontroller Programming, C++",161916,170713,Software Engineering
+iOS Developer,Ledgerly Forge,"Austin, TX",Contract,"Android Development, Ionic, In-app Purchases, Xamarin, Mobile Performance Optimization, Kotlin, SwiftUI, Objective-C for iOS",86039,104959,Software Engineering
+Junior Blockchain Architect,Crestline Works,"Seattle, WA",Full-time,"Hyperledger Fabric, Solidity, Rust, Cryptocurrency Systems",70572,84406,Software Engineering
+Junior Web3 Developer,Nova Labs,"San Francisco, CA",Full-time,"Distributed Ledger Technology, Go, NFT Platforms, Blockchain Development, Solidity, Ethereum, TypeScript, Cryptography",62381,82340,Software Engineering
+Lead 3D Graphics Engineer,Zenith Mechatronics,Remote,Full-time,"Unreal Engine, Data Visualization, Unity, C#, Augmented Reality Development",145193,172967,Software Engineering
+Principal Augmented Reality Developer,Ridgeback Cloud Labs,Remote,Full-time,"Unreal Engine, Virtual Reality Development, Augmented Reality Development, C#, Unity, C++, Computer Vision, Sensor Integration",156008,187727,Software Engineering
+Junior Blockchain Architect,Quantum Mechatronics,Remote,Full-time,"Decentralized Finance (DeFi), Node.js, TypeScript",69987,76729,Software Engineering
+Junior Embedded Systems Engineer,Thornfield Bridge Tech,"San Francisco, CA",Internship,"Raspberry Pi Development, Microcontroller Programming, Embedded C",66048,77693,DevOps & Infrastructure
+Lead Augmented Reality Developer,Starforge Ventures,Remote,Full-time,"Unity, Sensor Integration, C#",137654,182881,Software Engineering
+Staff Flutter Developer,Hollow Foundry,"New York, NY",Full-time,"Cordova, Ionic, Objective-C for iOS, Jetpack Compose, Requirements Gathering",160073,170169,Software Engineering
+Senior Robotics Controls Engineer,Crestline Networks,"San Francisco, CA",Full-time,"Embedded C, Reinforcement Learning, RTOS (Real-Time Operating Systems), Git",123412,149592,Software Engineering
+Lead DeFi Protocol Engineer,Foxglove Group,"Denver, CO",Full-time,"NFT Platforms, Cryptocurrency Systems, TypeScript, Node.js, Decentralized Finance (DeFi)",158779,165374,Software Engineering
+Junior Spatial Computing Engineer,Vertex Ventures,"Chicago, IL",Full-time,"Computer Vision, 3D Graphics, C++, Machine Learning, Python",70982,77557,Software Engineering
+Mobile Software Engineer,Brightloop Labs,"New York, NY",Full-time,"Android Development, Mobile Performance Optimization, Mobile App Architecture, Kotlin Multiplatform",96201,105856,Software Engineering
+XR Software Engineer,Keystone Industries,Remote,Part-time,"Augmented Reality Development, Unity, C++, Computer Vision, Data Visualization, Python, Virtual Reality Development, Docker",97498,114356,Software Engineering
+Cross-platform Mobile Engineer Manager,Brightloop Labs,"Berlin, Germany",Full-time,"Cordova, React Native, Kotlin Multiplatform, Cross-platform Development, Xamarin, Kotlin, Jetpack Compose, In-app Purchases",134897,153558,Software Engineering
+Senior 3D Graphics Engineer,Redshift Ventures,"Berlin, Germany",Internship,"C++, Sensor Integration, 3D Graphics, C#, Machine Learning, Computer Vision",130466,156749,Software Engineering
+Senior Augmented Reality Developer,Frostbyte Software,Remote,Full-time,"Virtual Reality Development, Sensor Integration, Augmented Reality Development, C#, Machine Learning, Unreal Engine, Unity, 3D Graphics",127157,133673,Software Engineering
+Embedded Software Engineer Intern,Vantage Interactive,"San Francisco, CA",Internship,"Microcontroller Programming, Firmware Development, RTOS (Real-Time Operating Systems), Raspberry Pi Development, VHDL, Embedded C, PCB Design",26692,39101,DevOps & Infrastructure
+Lead Flutter Developer,Wraith Digital,"Chicago, IL",Full-time,"Push Notifications, Mobile App Architecture, Mobile Performance Optimization, Dart, Xamarin",139015,162899,Software Engineering
+Mobile Software Engineer,Crestline Networks,"Bangalore, India",Internship,"Kotlin, Dart, Xamarin, Jetpack Compose, Swift, Ionic, Mobile CI/CD, Stakeholder Management",86628,98512,Software Engineering
+Senior iOS Developer,Protoform Solutions,"Toronto, ON",Contract,"Push Notifications, Kotlin Multiplatform, Flutter, System Design",116229,137501,Software Engineering
+Senior FPGA Engineer,Silverline Works,"London, UK",Full-time,"Raspberry Pi Development, IoT Systems Design, PCB Design, C++",111402,157057,DevOps & Infrastructure
+Senior React Native Developer,Nimbus Interactive,"New York, NY",Full-time,"Mobile Testing, Ionic, Cordova",122266,146436,Software Engineering
+Senior Blockchain Developer,Emberline Mechatronics,Remote,Full-time,"Cryptography, Ethereum, Rust, Jira",108817,151208,Software Engineering
+Senior Blockchain Architect,Northgate Software,"Denver, CO",Part-time,"Distributed Ledger Technology, Node.js, Hyperledger Fabric, Blockchain Development, Decentralized Finance (DeFi)",122063,149955,Software Engineering
+Lead Flutter Developer,Slate Cloud Labs,Singapore,Contract,"Mobile App Architecture, Mobile Performance Optimization, Swift, Dart, Cross-platform Development, In-app Purchases, SwiftUI, Android Studio",148372,181296,Software Engineering
+Virtual Reality Developer Manager,Starforge Ventures,"Atlanta, GA",Internship,"Unreal Engine, Python, Machine Learning, Virtual Reality Development, C#, 3D Graphics, Computer Vision",131485,160280,Software Engineering
+Principal Crypto Backend Engineer,Aurora Interactive,"Chicago, IL",Full-time,"Ethereum, Distributed Ledger Technology, Cryptography, Cryptocurrency Systems, Smart Contracts, Node.js, Go, Git",151142,178130,Software Engineering
+DeFi Protocol Engineer,Frostbyte Studios,Remote,Full-time,"Rust, Node.js, Distributed Ledger Technology, Ethereum, Smart Contracts, Decentralized Finance (DeFi)",84275,95043,Software Engineering
+Spatial Computing Engineer,Bluefin Bridge Tech,"Austin, TX",Full-time,"Computer Vision, Unreal Engine, Unity, 3D Graphics, Augmented Reality Development",92802,103739,Software Engineering
+Junior Flutter Developer,Skyline Collective,"Chicago, IL",Full-time,"Mobile CI/CD, Android Studio, Push Notifications",66035,73638,Software Engineering
+Flutter Developer Intern,Crestline Collective,Remote,Internship,"Xamarin, Objective-C for iOS, Mobile Performance Optimization, Kotlin Multiplatform, Cross-platform Development, Mobile Testing, Cordova, Ionic",24609,37033,Software Engineering
+Mobile Software Engineer,Copperfield Industries,Singapore,Full-time,"React Native, Cross-platform Development, iOS Development, Flutter",83416,103112,Software Engineering
+Staff Immersive Experience Engineer,Vertex Interactive,"Boston, MA",Full-time,"3D Graphics, Unreal Engine, Augmented Reality Development, Unity, Python",157949,173320,Software Engineering
+Senior Crypto Backend Engineer,Redshift Systems,Singapore,Full-time,"Rust, Web3, Hyperledger Fabric, Solidity, NFT Platforms, Decentralized Finance (DeFi), Blockchain Development",129068,137015,Software Engineering
+Motion Control Engineer Intern,Redshift Ventures,"San Francisco, CA",Internship,"Computer Vision, Microcontroller Programming, python, MATLAB, Reinforcement Learning, C++, Embedded C, Cross-functional Collaboration",27179,35743,Software Engineering
+Flutter Developer,Frostbyte Studios,Singapore,Full-time,"Swift, Mobile App Architecture, In-app Purchases, iOS Development, Mobile Performance Optimization, Agile Methodology",85449,113231,Software Engineering
+Robotics Engineer,Solace Works,Remote,Full-time,"PCB Design, Microcontroller Programming, Reinforcement Learning, MATLAB, Computer Vision",91436,108715,Software Engineering
+Lead Firmware Engineer,Ledgerly Works,"Sydney, Australia",Internship,"Embedded C, Arduino, PCB Design, IoT Systems Design, C++, Raspberry Pi Development, SPI/I2C Protocols, FPGA Design",156057,162812,DevOps & Infrastructure
+Senior Cross-platform Mobile Engineer,Vantage Cloud Labs,"Toronto, ON",Full-time,"Dart,  Android Development , React Native, Flutter",117823,156599,Software Engineering
+Robotics Software Engineer,Protoform Solutions,Remote,Full-time,"Computer Vision, Embedded C, Reinforcement Learning, Sensor Integration, Machine Learning, Robotics Programming, Stakeholder Management",89248,104780,Software Engineering
+Senior Blockchain Architect,Northgate Ventures,"San Francisco, CA",Internship,"Hyperledger Fabric, Node.js, NFT Platforms, Cryptography, Go, Agile Methodology",129028,156625,Software Engineering
+Junior React Native Developer,Meridian Forge,"San Francisco, CA",Full-time,"iOS Development, Push Notifications, Jetpack Compose, Swift, In-app Purchases, Xamarin, Ionic, Xcode, Jira",60630,82945,Software Engineering
+Junior Mobile Software Engineer,Wraith Ventures,"London, UK",Full-time,"Kotlin, Kotlin Multiplatform, In-app Purchases, App Store Optimization",61100,72530,Software Engineering
+Staff Flutter Developer,Slate Cloud Labs,Remote,Part-time,"Android Studio, Push Notifications, Mobile Testing",157262,165565,Software Engineering
+FPGA Engineer,Hollow Foundry,"Austin, TX",Part-time,"Microcontroller Programming, IoT Systems Design, C++",90659,99118,DevOps & Infrastructure
+Senior Hardware/Firmware Engineer,Ledgerly Software,"New York, NY",Full-time,"RTOS (Real-Time Operating Systems), Microcontroller Programming, Firmware Development",119117,144645,DevOps & Infrastructure
+Senior Mobile Developer,Zenith Works,"San Francisco, CA",Full-time,"Xcode, Jetpack Compose, Cordova, Mobile Performance Optimization, React Native, Swift, Mobile CI/CD, Git",111241,131680,Software Engineering
+Lead iOS Developer,Basalt Forge,"Berlin, Germany",Full-time,"Xcode, Swift, Xamarin, Objective-C for iOS, Mobile Performance Optimization, React Native, Kotlin Multiplatform, Jetpack Compose",157288,166323,Software Engineering
+Junior Robotics Controls Engineer,Nimbus Interactive,"Austin, TX",Full-time,"C++, Reinforcement Learning, Microcontroller Programming",70030,84193,Software Engineering
+Cross-platform Mobile Engineer,Vertex Industries,"New York, NY",Full-time,"Kotlin Multiplatform, Ionic, Mobile Performance Optimization, Dart, Kotlin, Xamarin",80174,101371,Software Engineering
+Principal AR/VR Engineer,Solace Digital,"Denver, CO",Full-time,"C#, Python, Augmented Reality Development, Computer Vision, Machine Learning",161168,197760,Software Engineering
+3D Graphics Engineer,Nova Industries,"London, UK",Full-time,"Python, Augmented Reality Development, C++, Unity",90546,106600,Software Engineering
+Motion Control Engineer Manager,Vantage Cloud Labs,"Bangalore, India",Full-time,"Robotics Programming, Reinforcement Learning, RTOS (Real-Time Operating Systems), PCB Design, Microcontroller Programming, MATLAB, CI/CD Pipelines",125951,161416,Software Engineering
+Autonomous Systems Engineer,Circuitry Robotics,"Tel Aviv, Israel",Full-time,"RTOS (Real-Time Operating Systems), C++, Python",80332,97191,Software Engineering
+Junior FPGA Engineer,Slate Digital,"Tel Aviv, Israel",Part-time,"Embedded C, C++, PCB Design, Microcontroller Programming, Arduino, RTOS (Real-Time Operating Systems)",64485,79773,DevOps & Infrastructure
+Motion Control Engineer Intern,Ridgeback Cloud Labs,"Chicago, IL",Internship,"MATLAB, Reinforcement Learning, Embedded C, PCB Design, Sensor Integration, Machine Learning, Microcontroller Programming",31660,41618,Software Engineering
+Blockchain Developer Intern,Frostbyte Software,"Toronto, ON",Internship,"Cryptocurrency Systems, Distributed Ledger Technology, Web3, TypeScript",29361,35668,Software Engineering
+Senior Mobile Developer,Basalt Forge,"San Francisco, CA",Full-time,"Cross-platform Development, iOS Development, Android Development, SwiftUI, Swift, Mobile Testing, Cordova",118334,147707,Software Engineering
+Senior Mobile Developer,Crestline Interactive,"Austin, TX",Full-time,"Flutter, Mobile Testing, Android Development, Cross-functional Collaboration",127827,157772,Software Engineering
+Mobile Developer Intern,Northgate Software,Remote,Internship,"iOS Development, Dart, Android Studio",26982,40685,Software Engineering
+Firmware Engineer,Crestline Interactive,"Berlin, Germany",Full-time,"SPI/I2C Protocols, Firmware Development, C++, VHDL, FPGA Design, Raspberry Pi Development",94292,106838,DevOps & Infrastructure
+Lead Android Developer,Copperfield Industries,"Toronto, ON",Full-time,"Jetpack Compose, Dart, In-app Purchases, Flutter, Mobile App Architecture, Objective-C for iOS, Cross-platform Development, Mobile Testing, Requirements Gathering",155075,177652,Software Engineering
+Senior XR Software Engineer,Vertex Interactive,"Tel Aviv, Israel",Full-time,"Sensor Integration, Augmented Reality Development, Machine Learning, Stakeholder Management",129928,150998,Software Engineering
+Robotics Perception Engineer,Redshift Software,"Atlanta, GA",Part-time,"Computer Vision, Embedded C, Reinforcement Learning, C++, Microcontroller Programming",85904,112031,Software Engineering
+Junior Augmented Reality Developer,Zenith Foundry,"Sydney, Australia",Full-time,"Augmented Reality Development, Unreal Engine, Sensor Integration, Machine Learning",67495,83034,Software Engineering
+Lead Blockchain Architect,Circuitry Mechatronics,"Austin, TX",Part-time,"Web3, TypeScript, Rust, Decentralized Finance (DeFi), Node.js, Solidity, Go",138372,179124,Software Engineering
+Junior XR Software Engineer,Northgate Cloud Labs,"San Francisco, CA",Full-time,"C#, Augmented Reality Development, Sensor Integration, CI/CD Pipelines",58606,75887,Software Engineering
+Lead iOS Developer,Slate Cloud Labs,"New York, NY",Full-time,"Xcode, Mobile Testing, Jetpack Compose, Kotlin Multiplatform",140524,167874,Software Engineering
+Lead Spatial Computing Engineer,Voxel Technologies,"Bangalore, India",Part-time,"Unity, Unreal Engine, Data Visualization, Augmented Reality Development, Python, C++, C#, Machine Learning",145511,171539,Software Engineering
+Lead Mobile Developer,Northgate Cloud Labs,Singapore,Full-time,"Flutter, iOS Development, App Store Optimization, In-app Purchases, Xcode",140818,175744,Software Engineering
+Staff FPGA Engineer,Lattice Ventures,"Seattle, WA",Full-time,"Embedded C, Firmware Development, FPGA Design, IoT Systems Design, Raspberry Pi Development, Arduino",149218,177287,DevOps & Infrastructure
+Cross-platform Mobile Engineer,Copperfield Mechatronics,"Berlin, Germany",Full-time,"Dart, Mobile CI/CD, Android Development",80018,101073,Software Engineering
+Senior Firmware Engineer,Brightloop Labs,Remote,Internship,"Raspberry Pi Development, Microcontroller Programming, SPI/I2C Protocols, RTOS (Real-Time Operating Systems), VHDL",123903,129863,DevOps & Infrastructure
+Staff DeFi Protocol Engineer,Wraith Labs,Remote,Part-time,"Decentralized Finance (DeFi), Smart Contracts, Cryptocurrency Systems, NFT Platforms",140910,181780,Software Engineering
+Senior Mobile Software Engineer,Crestline Collective,"Tel Aviv, Israel",Full-time,"Objective-C for iOS, Kotlin, Android Studio, Cross-functional Collaboration",114505,152699,Software Engineering
+Principal Flutter Developer,Nova Industries,"San Francisco, CA",Full-time,"Flutter, Mobile Performance Optimization, Swift, Kotlin, In-app Purchases, Jetpack Compose, Cordova",157087,189641,Software Engineering
+Junior Flutter Developer,Copperfield Industries,"Boston, MA",Internship,"Mobile Testing, Kotlin Multiplatform, Flutter, Xamarin, Mobile App Architecture, iOS Development, Mobile CI/CD",62436,77376,Software Engineering
+Mobile Software Engineer Intern,Skyline Systems,"San Francisco, CA",Internship,"SwiftUI, React Native, In-app Purchases, Xamarin",25244,31299,Software Engineering
+Senior Mobile Software Engineer,Meridian Forge,Remote,Full-time,"Swift, cordova, Objective-C for iOS, React Native, Jira",120071,154475,Software Engineering
+Senior React Native Developer,Skyline Collective,"Boston, MA",Full-time,"Android Development, Mobile App Architecture, App Store Optimization, Objective-C for iOS, Dart, iOS Development",121856,155021,Software Engineering
+Senior Spatial Computing Engineer,Emberline Mechatronics,"Seattle, WA",Internship,"Virtual Reality Development, Sensor Integration, Python, Data Visualization, Unreal Engine, C++, C#, Computer Vision, Agile Methodology",115281,140887,Software Engineering
+Senior Augmented Reality Developer,Northgate Software,"New York, NY",Full-time,"C#, Augmented Reality Development, Machine Learning, Unreal Engine, Computer Vision, 3D Graphics, Sensor Integration, Python",109045,133709,Software Engineering
+Senior Firmware Engineer,Skyline Systems,Remote,Internship,"IoT Systems Design, FPGA Design, SPI/I2C Protocols, Stakeholder Management",113213,135047,DevOps & Infrastructure
+Augmented Reality Developer,Crestline Works,"London, UK",Internship,"Computer Vision, Virtual Reality Development, 3D Graphics, C#, Unity, Machine Learning",94344,104304,Software Engineering
+Junior React Native Developer,Amberlight Dynamics,"London, UK",Full-time,"Mobile CI/CD, Push Notifications, In-app Purchases, Ionic, Mobile App Architecture, Xamarin, Objective-C for iOS, Swift",70703,81332,Software Engineering
+Principal Robotics Engineer,Quantum Mechatronics,"Seattle, WA",Full-time,"Sensor Integration, Python, Robotics Programming, Machine Learning, Reinforcement Learning, RTOS (Real-Time Operating Systems), System Design",153312,197740,Software Engineering
+Junior Virtual Reality Developer,Copperfield Industries,"Bangalore, India",Full-time,"C++, Sensor Integration, 3D Graphics, Data Visualization, Unreal Engine, Computer Vision, Virtual Reality Development, Augmented Reality Development",62890,74727,Software Engineering
+Staff Virtual Reality Developer,Cobalt Systems,Remote,Internship,"AUGMENTED REALITY DEVELOPMENT, Computer Vision, C++, Python, Virtual Reality Development, Unreal Engine",164568,188684,Software Engineering
+Hardware/Firmware Engineer,Skyline Collective,"Toronto, ON",Internship,"Firmware Development, FPGA Design, IoT Systems Design, C++, RTOS (Real-Time Operating Systems), PCB Design, Embedded C, Docker",93415,108493,DevOps & Infrastructure
+Senior Spatial Computing Engineer,Crestline Networks,Remote,Full-time,"C#, Augmented Reality Development,  Sensor Integration , Unity, Computer Vision, Virtual Reality Development",120766,136067,Software Engineering
+Senior Flutter Developer,Meridian Software,"Chicago, IL",Full-time,"Xcode, Objective-C for iOS, Mobile CI/CD",120011,151248,Software Engineering
+Senior Immersive Experience Engineer,Vertex Cloud Labs,"Seattle, WA",Full-time,"Unity, C++, Computer Vision, Augmented Reality Development, Machine Learning",132735,148304,Software Engineering
+Autonomous Systems Engineer,Vantage Cloud Labs,"New York, NY",Part-time,"MATLAB, Reinforcement Learning, RTOS (Real-Time Operating Systems), Robotics Programming",84886,114353,Software Engineering
+Senior Autonomous Systems Engineer,Skyline Robotics,"New York, NY",Full-time,"Sensor Integration, MATLAB, Machine Learning, Computer Vision, Python",126351,151388,Software Engineering
+Immersive Experience Engineer Intern,Copperfield Robotics,"Boston, MA",Internship,"Python, C++, Sensor Integration, Unity, Virtual Reality Development, Data Visualization, Machine Learning, Computer Vision",28132,37437,Software Engineering
+Flutter Developer,Bramblewood Dynamics,"Toronto, ON",Full-time,"SwiftUI, Mobile CI/CD, Swift, Jetpack Compose, Xamarin, Mobile Testing, Cordova",94360,106176,Software Engineering
+Senior React Native Developer,Bramblewood Dynamics,"Bangalore, India",Full-time,"Mobile Performance Optimization, Kotlin, In-app Purchases, Ionic",126362,157629,Software Engineering
+Junior Mobile Software Engineer,Copperfield Industries,Remote,Full-time,"Cross-platform Development, Xcode, Flutter, Android Studio, Kotlin Multiplatform, In-app Purchases, Mobile Testing, Mobile CI/CD",68969,75567,Software Engineering
+Senior React Native Developer,Skyline Robotics,"San Francisco, CA",Internship,"In-app Purchases, React Native, Android Development, Dart, SwiftUI, Xamarin, Cordova, Mobile Testing",114498,156657,Software Engineering
+Cross-platform Mobile Engineer,Thornfield Digital,"New York, NY",Contract,"React Native, SwiftUI, Cross-platform Development, Push Notifications, App Store Optimization",80637,107108,Software Engineering
+Principal Robotics Software Engineer,Ridgeback Cloud Labs,"Toronto, ON",Full-time,"C++, Computer Vision, Machine Learning, PCB Design, Sensor Integration, Python",169963,192869,Software Engineering
+Solidity Developer Intern,Fenix Technologies,"Boston, MA",Internship,"Ethereum, Cryptocurrency Systems, Blockchain Development, Node.js",30368,38606,Software Engineering
+Hardware/Firmware Engineer,Vantage Cloud Labs,"Chicago, IL",Contract,"PCB Design, Embedded C, Raspberry Pi Development, Microcontroller Programming, Firmware Development, IoT Systems Design, RTOS (Real-Time Operating Systems), Requirements Gathering",97248,110735,DevOps & Infrastructure
+Junior Robotics Engineer,Slate Works,"New York, NY",Full-time,"Sensor Integration, PCB Design, Robotics Programming, Machine Learning, MATLAB, C++, Embedded C, Microcontroller Programming",66919,84138,Software Engineering
+Embedded Software Engineer,Nova Industries,Remote,Full-time,"C++, PCB Design, Firmware Development, IoT Systems Design, Agile Methodology",90592,114750,DevOps & Infrastructure
+Senior iOS Developer,Zenith Works,"Seattle, WA",Part-time,"Android Studio, Push Notifications, Mobile App Architecture, Android Development, Mobile Performance Optimization, Communication",112914,141608,Software Engineering
+Android Developer,Hollow Foundry,"Chicago, IL",Full-time,"Xamarin, Jetpack Compose, Kotlin Multiplatform, Android Development, Cross-platform Development, Push Notifications",85635,113462,Software Engineering
+Lead FPGA Engineer,Vertex Industries,"Berlin, Germany",Full-time,"Arduino, Raspberry Pi Development, Firmware Development, Microcontroller Programming, PCB Design, IoT Systems Design, CI/CD Pipelines",148497,177024,DevOps & Infrastructure
+Mobile Software Engineer,Thornfield Digital,"Bangalore, India",Full-time,"iOS Development, Xcode, Kotlin, React Native, App Store Optimization, Jetpack Compose, Xamarin",86698,95165,Software Engineering
+React Native Developer,Redshift Software,"Denver, CO",Internship,"Mobile App Architecture, Swift, Cross-platform Development, Mobile Testing, Kotlin Multiplatform, Mobile Performance Optimization, Xcode, iOS Development",82732,94797,Software Engineering
+Senior Firmware Engineer,Quantum Labs,"Toronto, ON",Part-time,"Arduino, Embedded C, Microcontroller Programming, IoT Systems Design, SPI/I2C Protocols",129169,152705,DevOps & Infrastructure
+Senior Spatial Computing Engineer,Skyline Collective,"Atlanta, GA",Contract,"Data Visualization, Unreal Engine, Virtual Reality Development, 3D Graphics, Sensor Integration, C++, Python, Computer Vision",123358,153014,Software Engineering
+Junior Spatial Computing Engineer,Bluefin Labs,"London, UK",Internship,"Python, Data Visualization, Machine Learning, 3D Graphics, Virtual Reality Development, Computer Vision, Augmented Reality Development, Unreal Engine",65763,77176,Software Engineering
+Robotics Perception Engineer Manager,Northgate Cloud Labs,Remote,Internship,"Embedded C, Microcontroller Programming, Python, MATLAB, Machine Learning, C++, Computer Vision, Reinforcement Learning",136237,151811,Software Engineering
+Junior IoT Firmware Engineer,Vertex Industries,"New York, NY",Full-time,"RTOS (Real-Time Operating Systems), Raspberry Pi Development, PCB Design, IoT Systems Design, C++",63461,75643,DevOps & Infrastructure
+Mobile Developer,Zenith Mechatronics,"Seattle, WA",Full-time,"Android Development, Swift, Dart, App Store Optimization, Android Studio",88051,105829,Software Engineering
+Principal Smart Contract Engineer,Skyline Solutions,"Bangalore, India",Contract,"Ethereum, TypeScript, Blockchain Development, Hyperledger Fabric, Solidity, CI/CD Pipelines",169889,175432,Software Engineering
+Robotics Engineer,Skyline Systems,Remote,Full-time,"Microcontroller Programming, Machine Learning, Robotics Programming, Embedded C, Reinforcement Learning",87334,101398,Software Engineering
+Mobile Software Engineer Intern,Zenith Foundry,"Seattle, WA",Internship,"Mobile Performance Optimization, Kotlin, React Native, Cordova, In-app Purchases, Dart, Mobile App Architecture, Cross-platform Development",25544,32672,Software Engineering
+Senior Blockchain Architect,Onyx Interactive,"Toronto, ON",Full-time,"Rust, Cryptocurrency Systems, Web3, Smart Contracts, NFT Platforms",111508,145877,Software Engineering
+Spatial Computing Engineer Intern,Silverline Technologies,"Austin, TX",Internship,"C++, Data Visualization, C#, 3D Graphics, Unity, Sensor Integration, Augmented Reality Development, Machine Learning",24937,34420,Software Engineering
+React Native Developer,Slate Works,"London, UK",Internship,"Android Development, Mobile App Architecture, Dart, Jetpack Compose, Mobile Performance Optimization, In-app Purchases, Flutter",88261,113159,Software Engineering
+Hardware/Firmware Engineer Intern,Slate Digital,Remote,Internship,"Embedded C, C++, PCB Design, VHDL, FPGA Design, Raspberry Pi Development, System Design",31247,39621,DevOps & Infrastructure
+Principal Robotics Controls Engineer,Foxglove Group,Remote,Full-time,"Robotics Programming, Reinforcement Learning, Python, C++, PCB Design, MATLAB, Stakeholder Management",158776,171861,Software Engineering
+React Native Developer,Zenith Works,"San Francisco, CA",Internship,"Xcode, Android Development, Mobile App Architecture, Android Studio, React Native, Stakeholder Management",96702,102715,Software Engineering
+Senior React Native Developer,Lattice Ventures,"Chicago, IL",Full-time,"Mobile Performance Optimization, Mobile App Architecture, App Store Optimization, Android Development, Mobile Testing",111297,139968,Software Engineering
+Senior Smart Contract Engineer,Slate Digital,"Tel Aviv, Israel",Full-time,"TypeScript, Smart Contracts, Distributed Ledger Technology",108301,138698,Software Engineering
+Lead DeFi Protocol Engineer,Skyline Solutions,Remote,Full-time,"Decentralized Finance (DeFi), Solidity, Web3, Ethereum",148811,163479,Software Engineering
+Hardware/Firmware Engineer Intern,Zenith Mechatronics,"San Francisco, CA",Internship,"Arduino, IoT Systems Design, VHDL, C++, Embedded C, FPGA Design, RTOS (Real-Time Operating Systems), Requirements Gathernig",32592,41403,DevOps & Infrastructure
+Senior Robotics Engineer,Fenix Cloud Labs,"Toronto, ON",Contract,"Python, RTOS (Real-Time Operating Systems), PCB Design, Computer Vision, Microcontroller Programming, C++",113751,140240,Software Engineering
+Mobile Developer,Redshift Ventures,"New York, NY",Full-time,"Push Notifications, Mobile Testing, Jetpack Compose, Mobile CI/CD, Swift, Mobile App Architecture",89453,99434,Software Engineering
+Smart Contract Engineer,Summit Interactive,"Boston, MA",Full-time,"Rust, Distributed Ledger Technology, Blockchain Development, Hyperledger Fabric, Ethereum, Cryptocurrency Systems",96166,113968,Software Engineering
+Senior Augmented Reality Developer,Copperfield Industries,"London, UK",Full-time,"Python, Data Visualization, Unity, Machine Learning, Jira",122945,154968,Software Engineering
+Junior Robotics Engineer,Frostbyte Software,"Bangalore, India",Full-time,"Python, Machine Learning, Robotics Programming, PCB Design, Sensor Integration, Docker",60385,78539,Software Engineering
+Lead Robotics Controls Engineer,Vertex Ventures,"London, UK",Full-time,"RTOS (Real-Time Operating Systems), PCB Design, Robotics Programming, Embedded C, Reinforcement Learning, Computer Vision, Machine Learning, MATLAB",159017,183590,Software Engineering
+React Native Developer,Meridian Forge,"Seattle, WA",Full-time,"Swift, Objective-C for iOS, Kotlin Multiplatform, Mobile Performance Optimization, Xcode, Mobile Testing, SwiftUI, Jira",87242,97106,Software Engineering
+Junior Motion Control Engineer,Cascade Forge,"Tel Aviv, Israel",Full-time,"Microcontroller Programming, PCB Design, Machine Learning, RTOS (Real-Time Operating Systems), C++, Robotics Programming",69707,80310,Software Engineering
+Senior Spatial Computing Engineer,Cascade Forge,"Boston, MA",Part-time,"Virtual Reality Development, C++, Computer Vision, Python, Sensor Integration, Unity",126446,134711,Software Engineering
+Staff AR/VR Engineer,Basalt Cloud Labs,"Austin, TX",Full-time,"Sensor Integration, Virtual Reality Development, Data Visualization, Unity, C#, Machine Learning, Unreal Engine, Computer Vision, CI/CD Pipelines",163920,189464,Software Engineering
+Junior IoT Firmware Engineer,Thornfield Bridge Tech,"Toronto, ON",Internship,"C++, Embedded C, Microcontroller Programming, Arduino, RTOS (Real-Time Operating Systems)",60030,75237,DevOps & Infrastructure
+Embedded Software Engineer,Foxglove Robotics,"Atlanta, GA",Full-time,"Raspberry Pi Development, PCB Design, Embedded C",93160,104795,DevOps & Infrastructure
+iOS Developer,Wraith Ventures,Remote,Full-time,"Objective-C for iOS, Push Notifications, Mobile Performance Optimization, Jetpack Compose, Xamarin, SwiftUI, Kotlin Multiplatform, In-app Purchases",85150,97514,Software Engineering
+Senior Blockchain Architect,Crestline Collective,"Boston, MA",Internship,"Smart Contracts, Distributed Ledger Technology, TypeScript, Cryptography, Rust",121920,145059,Software Engineering
+Staff XR Software Engineer,Frostbyte Studios,"New York, NY",Full-time,"Computer Vision, Virtual Reality Development, Python, Augmented Reality Development, C#, Machine Learning, C++, Data Visualization",156355,173259,Software Engineering
+Lead DeFi Protocol Engineer,Starforge Ventures,Remote,Full-time,"TypeScript, Smart Contracts, Blockchain Development, Communication",158504,175777,Software Engineering
+Junior XR Software Engineer,Bluefin Bridge Tech,"New York, NY",Contract,"Computer Vision, C++, Sensor Integration, Python, 3D Graphics, Requirements Gathering",69517,78490,Software Engineering
+Senior Cross-platform Mobile Engineer,Vertex Cloud Labs,"London, UK",Full-time,"Android Studio, SwiftUI, Kotlin, Kotlin Multiplatform, Cross-platform Development, Jetpack Compose",121034,138493,Software Engineering
+Senior Autonomous Systems Engineer,Basalt Labs,Remote,Full-time,"Reinforcement Learning, C++, Robotics Programming",119180,155575,Software Engineering
+Senior Crypto Backend Engineer,Amberlight Dynamics,"Chicago, IL",Full-time,"Ethereum, Web3, Rust",109908,132966,Software Engineering
+Staff AR/VR Engineer,Quantum Mechatronics,"Atlanta, GA",Contract,"C++, 3D Graphics, Machine Learning, Computer Vision, C#, Stakeholder Management",140007,169983,Software Engineering
+Augmented Reality Developer,Circuitry Mechatronics,"Seattle, WA",Full-time,"Sensor Integration, Augmented Reality Development, 3D Graphics, Computer Vision",94113,99308,Software Engineering
+Lead Android Developer,Keystone Industries,"San Francisco, CA",Full-time,"Xamarin, Mobile CI/CD, Android Development",145466,182927,Software Engineering
+Lead Motion Control Engineer,Brightloop Forge,"Austin, TX",Contract,"Computer Vision, PCB Design, C++, Embedded C, Python, RTOS (Real-Time Operating Systems), Sensor Integration",137424,171839,Software Engineering
+Junior Robotics Engineer,Ledgerly Foundry,"Chicago, IL",Full-time,"Sensor Integration, Microcontroller Programming, Reinforcement Learning",61762,74666,Software Engineering
+Junior Immersive Experience Engineer,Fenix Cloud Labs,"Seattle, WA",Internship,"Data Visualization, C++, Unity",67333,83052,Software Engineering
+Senior DeFi Protocol Engineer,Nova Studios,"Seattle, WA",Full-time,"Decentralized Finance (DeFi), Web3, Cryptography, NFT Platforms, Smart Contracts",129525,135314,Software Engineering
+Robotics Engineer,Northgate Software,"San Francisco, CA",Full-time,"Machine Learning, Microcontroller Programming, C++, Sensor Integration, RTOS (Real-Time Operating Systems), Embedded C",95842,113896,Software Engineering
+XR Software Engineer,Nimbus Interactive,"Berlin, Germany",Full-time,"3D Graphics, Python, Virtual Reality Development, C++",94307,103042,Software Engineering
+Mobile Software Engineer,Emberline Mechatronics,"Tel Aviv, Israel",Full-time,"Jetpack Compose, Dart, Mobile CI/CD, App Store Optimization, Swift, Objective-C for iOS, Cross-platform Development",95510,106037,Software Engineering
+FPGA Engineer Intern,Cascade Forge,Singapore,Internship,"VHDL, Microcontroller Programming, IoT Systems Design, PCB Design, SPI/I2C Protocols",27040,40812,DevOps & Infrastructure
+Lead AR/VR Engineer,Silverline Technologies,"Toronto, ON",Full-time,"Augmented Reality Development, C#, C++, Machine Learning",135076,155611,Software Engineering
+Mobile Software Engineer Intern,Ledgerly Works,"Boston, MA",Internship,"Push Notifications, Flutter, SwiftUI, Swift, Dart, Cordova",25550,34551,Software Engineering
+Junior Embedded Systems Engineer,Nova Labs,Remote,Full-time,"C++, PCB Design, Firmware Development, Arduino, VHDL, Microcontroller Programming, RTOS (Real-Time Operating Systems), IoT Systems Design, Requirements Gathering",58450,72275,DevOps & Infrastructure
+Senior XR Software Engineer,Bluefin Labs,Remote,Full-time,"Augmented Reality Development, Sensor Integration, Unreal Engine, Data Visualization, C#, Virtual Reality Development, C++",111726,153189,Software Engineering
+Senior IoT Firmware Engineer,Foxglove Robotics,Remote,Full-time,"RTOS (Real-Time Operating Systems), VHDL, Arduino, SPI/I2C Protocols, Cross-functional Collaboration",108215,157069,DevOps & Infrastructure
+Mobile Developer,Zenith Interactive,Remote,Internship,"Cross-platform Development, Dart, Swift, Xcode, Jetpack Compose, Android Development,  Agile Methodology ",84701,105026,Software Engineering
+Staff DeFi Protocol Engineer,Frostbyte Studios,"Bangalore, India",Full-time,"Rust, TypeScript, Web3, Distributed Ledger Technology, Go, Solidity, NFT Platforms, Node.js, Docker",143796,167157,Software Engineering
+Robotics Software Engineer,Zenith Mechatronics,"Denver, CO",Internship,"Reinforcement Learning, MATLAB, Sensor Integration, Computer Vision",80286,96172,Software Engineering
+Lead Smart Contract Engineer,Solace Digital,"Chicago, IL",Full-time,"Web3, Smart Contracts, Blockchain Development, Hyperledger Fabric, Cryptocurrency Systems, CI/CD Pipelines",150350,173864,Software Engineering
+Junior Motion Control Engineer,Redshift Software,"Chicago, IL",Full-time,"Computer Vision, PCB Design, C++",62680,73810,Software Engineering
+Firmware Engineer,Redshift Ventures,"New York, NY",Full-time,"RTOS (Real-Time Operating Systems), FPGA Design, Microcontroller Programming, VHDL",81948,98801,DevOps & Infrastructure
+Senior Smart Contract Engineer,Copperfield Mechatronics,"London, UK",Full-time,"Ethereum, Rust, Go, Cryptocurrency Systems, Solidity, Hyperledger Fabric, Decentralized Finance (DeFi), CI/CD Pipelines",132614,146520,Software Engineering
+Principal iOS Developer,Protoform Solutions,"Bangalore, India",Full-time,"React Native, Objective-C for iOS, SwiftUI, Xcode, Android Studio",164633,184085,Software Engineering
+Robotics Software Engineer,Crestline Interactive,"New York, NY",Full-time,"Sensor Integration, Reinforcement Learning, Robotics Programming, PCB Design, Embedded C, MATLAB, Machine Learning",87906,103562,Software Engineering
+Lead Robotics Software Engineer,Aurora Interactive,"San Francisco, CA",Full-time,"Machine Learning, Reinforcement Learning, Computer Vision, RTOS (Real-Time Operating Systems)",146388,157840,Software Engineering
+Senior Robotics Controls Engineer,Slate Works,"Boston, MA",Full-time,"Embedded C, Reinforcement Learning, Sensor Integration, PCB Design, Robotics Programming",113332,132355,Software Engineering
+Senior Blockchain Architect,Skyline Solutions,"Toronto, ON",Full-time,"Ethereum, Hyperledger Fabric, Cryptocurrency Systems",112546,129271,Software Engineering
+Staff Firmware Engineer,Ledgerly Forge,"Austin, TX",Full-time,"PCB Design, IoT Systems Design, Firmware Development, VHDL",144963,176007,DevOps & Infrastructure
+Motion Control Engineer,Solace Robotics,"Bangalore, India",Full-time,"RTOS (Real-Time Operating Systems), Machine Learning, PCB Design, Robotics Programming, Microcontroller Programming, Embedded C, Sensor Integration",85529,104549,Software Engineering
+Senior Mobile Software Engineer,Skyline Robotics,Remote,Part-time,"Android Studio,  Kotlin Multiplatform , Mobile Testing, React Native, Swift, Cross-platform Development, Mobile App Architecture, Cordova",130468,147816,Software Engineering
+Junior Spatial Computing Engineer,Cypher Labs,Remote,Full-time,"Computer Vision, Data Visualization, Machine Learning, C++, Augmented Reality Development, Sensor Integration, Python",67642,76523,Software Engineering
+AR/VR Engineer Intern,Keystone Industries,"Seattle, WA",Internship,"Virtual Reality Development, C#, Data Visualization",29122,34476,Software Engineering
+iOS Developer,Ledgerly Forge,Remote,Part-time,"Mobile Performance Optimization, Kotlin, Ionic, Swift, Android Development, In-app Purchases, Mobile App Architecture, Xcode, Git",82677,108210,Software Engineering
+Mobile Developer,Frostbyte Software,Remote,Full-time,"Xcode, Mobile App Architecture, Android Studio, Cross-functional Collaboration",94545,104712,Software Engineering
+Senior Embedded Software Engineer,Hollow Foundry,"Chicago, IL",Full-time,"VHDL, IoT Systems Design, FPGA Design, PCB Design, SPI/I2C Protocols, Docker",128960,140800,DevOps & Infrastructure
+Lead 3D Graphics Engineer,Fenix Cloud Labs,"Chicago, IL",Full-time,"Computer Vision, C#, Data Visualization, C++",159779,180470,Software Engineering
+Motion Control Engineer,Onyx Interactive,"New York, NY",Part-time,"Reinforcement Learning, Sensor Integration, Machine Learning",93697,113154,Software Engineering
+AR/VR Engineer,Silverline Works,"Austin, TX",Contract,"3D Graphics, C#, Python, Unreal Engine, Augmented Reality Development, Jira",87035,112621,Software Engineering
+Mobile Developer,Hollow Ventures,"Chicago, IL",Full-time,"Jetpack Compose, Dart, Cordova",95713,114114,Software Engineering
+Junior Mobile Developer,Skyline Systems,"New York, NY",Part-time,"iOS Development, Android Studio, Swift, App Store Optimization, Push Notifications, Flutter, Xamarin, Mobile CI/CD",66204,82540,Software Engineering
+Senior Motion Control Engineer,Starforge Ventures,Remote,Full-time,"Embedded C, Python, Machine Learning, Computer Vision",121404,130933,Software Engineering
+Senior Mobile Software Engineer,Amberlight Dynamics,"Bangalore, India",Full-time,"Flutter, Mobile Testing, Android Development, Kotlin Multiplatform, Cross-platform Development, Jetpack Compose, Objective-C for iOS",118838,146918,Software Engineering
+Robotics Perception Engineer,Northgate Cloud Labs,"Seattle, WA",Contract,"RTOS (Real-Time Operating Systems), C++, Embedded C, Jira",90100,103732,Software Engineering
+Junior Robotics Software Engineer,Bluefin Labs,Remote,Full-time,"C++, Computer Vision, Robotics Programming, Machine Learning, Reinforcement Learning, Cross-functional Collaboration",62389,79860,Software Engineering
+Principal Motion Control Engineer,Silverline Technologies,"San Francisco, CA",Full-time,"Machine Learning, MATLAB, Microcontroller Programming, Sensor Integration, Reinforcement Learning, PCB Design",166128,188812,Software Engineering
+Robotics Perception Engineer,Solace Robotics,Remote,Full-time,"Microcontroller Programming, Reinforcement Learning, Computer Vision, Embedded C, Machine Learning, Sensor Integration, C++",90223,100660,Software Engineering
+Staff React Native Developer,Vertex Cloud Labs,"Chicago, IL",Part-time,"Cross-platform Development, Mobile Testing, Objective-C for iOS, Communication",153394,178607,Software Engineering
+Senior Mobile Developer,Vertex Industries,"Bangalore, India",Full-time,"Push Notifications, Jetpack Compose, Kotlin Multiplatform, SwiftUI",124316,130259,Software Engineering
+React Native Developer Intern,Copperfield Industries,"Austin, TX",Internship,"Cross-platform Development, Android Studio, In-app Purchases, Mobile App Architecture, Mobile Testnig, App Store Optimization, Ionic",26824,41973,Software Engineering
+Senior Virtual Reality Developer,Vertex Cloud Labs,"Chicago, IL",Full-time,"Unity, Computer Vision, Virtual Reality Development, Machine Learning, 3D Graphics, Augmented Reality Development",108542,138518,Software Engineering
+Senior iOS Developer,Hollow Ventures,Remote,Full-time,"Xcode, Cordova, iOS Development, Swift, Docker",113568,134154,Software Engineering
+Junior Blockchain Engineer,Zenith Works,"Austin, TX",Full-time,"Distributed Ledger Technology, Solidity, Rust, Cryptography, Web3",66803,72382,Software Engineering
+Lead Immersive Experience Engineer,Skyline Solutions,"Chicago, IL",Part-time,"Data Visualization, 3D Graphics, Unity, Computer Vision, C++, C#, Virtual Reality Development, Augmented Reality Development",158798,176736,Software Engineering
+Mobile Software Engineer,Ledgerly Robotics,Remote,Full-time,"Objective-C for iOS, Kotlin Multiplatform, In-app Purchases, Cross-platform Development",93899,112337,Software Engineering
+iOS Developer,Bramblewood Dynamics,Remote,Internship,"Push Notifications, Objective-C for iOS, Kotlin, Mobile CI/CD, Xcode, Mobile Testing, In-app Purchases, Flutter",92042,101802,Software Engineering
+Blockchain Engineer Manager,Redshift Systems,Remote,Internship,"Go, Smart Contracts, Cryptography, Node.js, Stakeholder Management",119302,151612,Software Engineering
+Senior Crypto Backend Engineer,Basalt Forge,"San Francisco, CA",Full-time,"Go, Hyperledger Fabric, Web3, Solidity, Ethereum",127064,144521,Software Engineering
+Firmware Engineer Intern,Redshift Ventures,Remote,Internship,"Arduino, RTOS (Real-Time Operating Systems), VHDL, PCB Design, IoT Systems Design, Microcontroller Programming, Embedded C",27096,38073,DevOps & Infrastructure
+Blockchain Developer,Redshift Systems,Singapore,Full-time,"Node.js, Decentralized Finance (DeFi), Cryptography",92438,104129,Software Engineering
+Junior 3D Graphics Engineer,Aurora Interactive,Remote,Full-time,"Data Visualization, Unity, Unreal Engine",62037,84547,Software Engineering
+Senior iOS Developer,Zenith Foundry,"Chicago, IL",Part-time,"iOS Development, Dart, Flutter, SwiftUI",126739,144314,Software Engineering
+Senior Autonomous Systems Engineer,Onyx Interactive,Remote,Full-time,"Python, Microcontroller Programming, Embedded C, Reinforcement Learning",109769,132602,Software Engineering
+Senior Android Developer,Basalt Forge,"Boston, MA",Internship,"In-app Purchases, React Native, Flutter, Ionic, Mobile Testing, Cross-functional Collaboration",111614,142996,Software Engineering
+Robotics Controls Engineer,Wraith Labs,"Bangalore, India",Full-time,"PCB Design, Python, Embedded C, MATLAB",90024,114370,Software Engineering
+Junior Robotics Engineer,Frostbyte Software,"Denver, CO",Full-time,"Machine Learning, Reinforcement Learning, PCB Design, Python, C++, Sensor Integration, Embedded C, JIRA",66203,72741,Software Engineering
+Hardware/Firmware Engineer Intern,Wraith Ventures,"London, UK",Internship,"Raspberry Pi Development, SPI/I2C Protocols, VHDL, Firmware Development, Arduino, RTOS (Real-Time Operating Systems)",30313,38329,DevOps & Infrastructure
+Senior Web3 Developer,Silverline Works,"New York, NY",Full-time,"Ethereum, Cryptocurrency Systems, Rust, Node.js, Hyperledger Fabric, Smart Contracts, CI/CD Pipelines",132627,151934,Software Engineering
+Staff iOS Developer,Fenix Systems,"Bangalore, India",Internship,"Android Studio, React Native, Xcode, In-app Purchases, Dart",150544,162758,Software Engineering
+Junior Robotics Software Engineer,Keystone Industries,"New York, NY",Contract,"Embedded C, MATLAB, Python",68956,76456,Software Engineering
+3D Graphics Engineer,Foxglove Group,Remote,Full-time,"Data Visualization, Computer Vision, 3D Graphics, Python, Virtual Reality Development",88862,114921,Software Engineering
+Android Developer,Vertex Ventures,Remote,Full-time,"Android Development, iOS Development, App Store Optimization, Mobile CI/CD, Swift",84976,94314,Software Engineering
+Spatial Computing Engineer Intern,Ledgerly Foundry,"San Francisco, CA",Internship,"Unreal Engine, Python, Sensor Integration, Virtual Reality Development, Unity, Augmented Reality Development",30974,40729,Software Engineering
+Flutter Developer,Crestline Collective,"Denver, CO",Full-time,"Push Notifications, Kotlin, Dart, SwiftUI, Swift, Xcode, Mobile App Architecture, Mobile Performance Optimization",92789,106887,Software Engineering
+Junior Solidity Developer,Quantum Mechatronics,Remote,Internship,"Web3, Ethereum, Decentralized Finance (DeFi), Hyperledger Fabric, Solidity, Distributed Ledger Technology, Blockchain Development",60027,78376,Software Engineering
+Principal Blockchain Engineer,Vertex Industries,"New York, NY",Contract,"Node.js, Distributed Ledger Technology, TypeScript, Solidity, Go, Rust, Hyperledger Fabric, Decentralized Finance (DeFi)",164862,174282,Software Engineering
+Lead Solidity Developer,Thornfield Bridge Tech,"New York, NY",Full-time,"NFT Platforms, Hyperledger Fabric, TypeScript, Cryptocurrency Systems",152280,173710,Software Engineering
+Android Developer,Basalt Cloud Labs,"New York, NY",Part-time,"Dart, React Native, Flutter, Mobile App Architecture, Mobile Testing, Kotlin Multiplatform",85090,108783,Software Engineering
+Flutter Developer,Bluefin Bridge Tech,"Toronto, ON",Full-time,"Jetpack Compose, Ionic, Dart, Cross-platform Development, System Design",81595,114299,Software Engineering
+Firmware Engineer Manager,Zenith Mechatronics,"Denver, CO",Full-time,"Microcontroller Programming, RTOS (Real-Time Operating Systems), Embedded C, PCB Design, SPI/I2C Protocols, IoT Systems Design",133139,142446,DevOps & Infrastructure
+Crypto Backend Engineer,Foxglove Group,"Toronto, ON",Internship,"Rust, Cryptocurrency Systems, Distributed Ledger Technology",82164,99569,Software Engineering
+Senior Cross-platform Mobile Engineer,Fenix Technologies,Remote,Full-time,"Mobile Testing, Jetpack Compose, Ionic, Communication",108553,157078,Software Engineering
+Senior FPGA Engineer,Voxel Technologies,"Tel Aviv, Israel",Full-time,"Arduino, FPGA Design, VHDL, Microcontroller Programming, C++, Firmware Development, IoT Systems Design",121810,152931,DevOps & Infrastructure
+Senior Hardware/Firmware Engineer,Ledgerly Forge,"San Francisco, CA",Contract,"Raspberry Pi Development, VHDL, SPI/I2C Protocols, IoT Systems Design",118109,146932,DevOps & Infrastructure
+Junior iOS Developer,Skyline Collective,Remote,Full-time,"Kotlin Multiplatform, Xcode, Mobile App Architecture, Mobile CI/CD, Xamarin, Mobile Testing, Cordova",58929,84985,Software Engineering
+Senior Flutter Developer,Wraith Digital,"Berlin, Germany",Full-time,"Dart, Kotlin Multiplatform, Mobile CI/CD, Kotlin, Swift, Android Development",126565,149726,Software Engineering
+AR/VR Engineer,Amberlight Dynamics,Remote,Full-time,"Augmented Reality Development, Unity, Python, C++, 3D Graphics, C#, Computer Vision",86343,108949,Software Engineering
+Lead iOS Developer,Zenith Interactive,"Boston, MA",Full-time,"Cross-platform Development, Cordova, Android Development, Jetpack Compose",137135,173230,Software Engineering
+Staff Flutter Developer,Basalt Labs,"London, UK",Full-time,"Kotlin Multiplatform, Jetpack Compose, Objective-C for iOS",149992,184164,Software Engineering
+Lead Flutter Developer,Zenith Foundry,Remote,Full-time,"React Native, Push Notifications, Mobile Testing, Cordova",143458,159491,Software Engineering
+Cross-platform Mobile Engineer,Silverline Works,"Berlin, Germany",Full-time,"Flutter, App Store Optimization, Kotlin, Docker",83293,113674,Software Engineering
+Embedded Software Engineer Intern,Voxel Technologies,"San Francisco, CA",Internship,"C++, Arduino, Firmware Development, VHDL",28075,38344,DevOps & Infrastructure
+Senior Autonomous Systems Engineer,Northgate Cloud Labs,"Toronto, ON",Full-time,"PCB Design, MATLAB, RTOS (Real-Time Operating Systems), Sensor Integration, C++, Embedded C, Python, Machine Learning",125723,150952,Software Engineering
+Junior IoT Firmware Engineer,Ledgerly Foundry,"Tel Aviv, Israel",Internship,"C++, FPGA Design, Raspberry Pi Development, SPI/I2C Protocols, VHDL, Embedded C, PCB Design, microcontroller programming",61259,82032,DevOps & Infrastructure
+Senior Mobile Developer,Thornfield Digital,"New York, NY",Internship,"Flutter, Kotlin Multiplatform, Objective-C for iOS, Mobile CI/CD, Kotlin, Cross-platform Development, In-app Purchases",131065,142158,Software Engineering
+Junior Robotics Software Engineer,Skyline Systems,Remote,Full-time,"Machine Learning, Microcontroller Programming, Reinforcement Learning, RTOS (Real-Time Operating Systems), Embedded C, Python, C++, PCB Design, System Design",66971,75207,Software Engineering
+Mobile Software Engineer Manager,Redshift Ventures,"Seattle, WA",Full-time,"Dart, Ionic, Kotlin, Objective-C for iOS, Kotlin Multiplatform, Xamarin, Mobile CI/CD",120349,139615,Software Engineering
+Staff DeFi Protocol Engineer,Ledgerly Robotics,"San Francisco, CA",Full-time,"Solidity, Cryptocurrency Systems, Decentralized Finance (DeFi), Communication",161025,186484,Software Engineering
+Staff Cross-platform Mobile Engineer,Brightloop Forge,Singapore,Internship,"Kotlin Multiplatform, Cordova, Mobile App Architecture, App Store Optimization, Xamarin, Android Studio, Cross-functional Collaboration",144684,181459,Software Engineering
+Senior Robotics Controls Engineer,Hollow Foundry,"Toronto, ON",Full-time,"C++, MATLAB, PCB Design, Reinforcement Learning, Microcontroller Programming, RTOS (Real-Time Operating Systems)",113127,148985,Software Engineering
+Principal Cross-platform Mobile Engineer,Ledgerly Forge,"Toronto, ON",Full-time,"Mobile Testing, Kotlin, Mobile CI/CD, Push Notifications",172927,185794,Software Engineering
+Senior Motion Control Engineer,Meridian Software,"Boston, MA",Full-time,"Sensor Integration, PCB Design, Reinforcement Learning, Machine Learning, Embedded C, Microcontroller Programming, MATLAB, Computer Vision, Jira",130162,142649,Software Engineering
+Junior Robotics Engineer,Northgate Software,"Seattle, WA",Full-time,"PCB Design, Sensor Integration, Robotics Programming, Machine Learning, Embedded C, RTOS (Real-Time Operating Systems)",70140,75561,Software Engineering
+Robotics Perception Engineer Manager,Brightloop Forge,"Toronto, ON",Full-time,"Python, Microcontroller Programming, C++, PCB Design, Embedded C, Sensor Integration, Robotics Programming",143323,158762,Software Engineering
+Senior Autonomous Systems Engineer,Crestline Networks,"Austin, TX",Full-time,"Microcontroller Programming, Sensor Integration, C++, MATLAB, Machine Learning, Reinforcement Learning, Robotics Programming, Computer Vision, Git",114864,152062,Software Engineering
+Senior Robotics Engineer,Zenith Interactive,Remote,Full-time,"Computer Vision, C++, Sensor Integration, Machine Learning, RTOS (Real-Time Operating Systems), Reinforcement Learning, PCB Design, Embedded C",123787,140313,Software Engineering
+Web3 Developer,Skyline Collective,"San Francisco, CA",Full-time,"Blockchain Development, Solidity, Go, Cryptography, TypeScript, Decentralized Finance (DeFi)",90902,99698,Software Engineering
+Augmented Reality Developer,Slate Works,"Toronto, ON",Contract,"Data Visualization, C#, Unity, Computer Vision, Sensor Integration",94914,100090,Software Engineering
+Junior Web3 Developer,Thornfield Bridge Tech,"New York, NY",Internship,"NFT Platforms, Distributed Ledger Technology, Smart Contracts",67390,82270,Software Engineering
+Augmented Reality Developer,Zenith Works,"New York, NY",Full-time,"Augmented Reality Development, Unity, Data Visualization, Computer Vision, Python, C++, Virtual Reality Development, 3D Graphics, System Design",95041,110040,Software Engineering
+Robotics Controls Engineer Intern,Fenix Cloud Labs,"San Francisco, CA",Internship,"Python, Sensor Integration, PCB Design, Reinforcement Learning, Embedded C, Microcontroller Programming, Robotics Programming, C++",27391,37019,Software Engineering
+Hardware/Firmware Engineer Manager,Slate Cloud Labs,"New York, NY",Full-time,"C++, Microcontroller Programming, PCB Design, Firmware Development, Arduino, SPI/I2C Protocols, Embedded C",134905,151689,DevOps & Infrastructure
+Lead Virtual Reality Developer,Zenith Interactive,Remote,Full-time,"Computer Vision, Sensor Integration, Machine Learning, 3D Graphics, Unreal Engine, System Design",139592,172346,Software Engineering
+IoT Firmware Engineer,Lattice Ventures,"Chicago, IL",Full-time,"C++, PCB Design, RTOS (Real-Time Operating Systems), Raspberry Pi Development, FPGA Design",87802,106372,DevOps & Infrastructure
+Spatial Computing Engineer,Basalt Labs,"New York, NY",Internship,"Machine Learnnig, Augmented Reality Development, Unreal Engine",90470,110609,Software Engineering
+Senior 3D Graphics Engineer,Bramblewood Dynamics,"New York, NY",Full-time,"Data Visualization, Machine Learning, Unreal Engine, 3D Graphics, Docker",129524,139023,Software Engineering
+Lead Web3 Developer,Bluefin Bridge Tech,Remote,Part-time,"Blockchain Development, Smart Contracts, Cryptocurrency Systems, Hyperledger Fabric, Solidity, Ethereum, NFT Platforms",137547,177115,Software Engineering
+Lead Augmented Reality Developer,Ledgerly Works,"Austin, TX",Full-time,"Unity, Computer Vision, Augmented Reality Development, Jira",144040,165315,Software Engineering
+Blockchain Architect,Redshift Software,"San Francisco, CA",Internship,"Distributed Ledger Technology, Rust, NFT Platforms, Decentralized Finance (DeFi), Node.js, Solidity",89849,106566,Software Engineering
+React Native Developer,Circuitry Mechatronics,"Seattle, WA",Full-time,"Push Notifications, Kotlin Multiplatform, Swift",91212,104323,Software Engineering
+Crypto Backend Engineer,Glasswing Dynamics,"Boston, MA",Full-time,"Solidity, Decentralized Finance (DeFi), Cryptography, TypeScript, Distributed Ledger Technology",93095,100778,Software Engineering
+Blockchain Developer,Hollow Foundry,"Toronto, ON",Full-time,"Blockchain Development, Web3, NFT Platforms, Cryptocurrency Systems, Hyperledger Fabric, TypeScript, Ethereum, Cryptography",86177,98237,Software Engineering
+iOS Developer Intern,Vertex Interactive,"San Francisco, CA",Internship,"Xamarin, Xcode, React Native",29679,35764,Software Engineering
+Spatial Computing Engineer,Copperfield Mechatronics,"London, UK",Full-time,"3D Graphics, Data Visualization, Sensor Integration, C#, C++, Computer Vision, Docker",92552,111852,Software Engineering
+Web3 Developer,Bramblewood Dynamics,"Austin, TX",Full-time,"Decentralized Finance (DeFi), Go, Cryptocurrency Systems, Cryptography",93025,113848,Software Engineering
+Motion Control Engineer,Ridgeback Cloud Labs,"San Francisco, CA",Full-time,"Embedded C, Machine Learning, PCB Design, Microcontroller Programming, Sensor Integration",95093,101525,Software Engineering
+Robotics Perception Engineer Intern,Ledgerly Works,"Chicago, IL",Internship,"Embedded C, Reinforcement Learning, Machine Learning",26270,41394,Software Engineering
+FPGA Engineer,Foxglove Robotics,"Tel Aviv, Israel",Full-time,"Embedded C, Firmware Development, C++, VHDL",97268,108227,DevOps & Infrastructure
+Web3 Developer Intern,Frostbyte Software,"Seattle, WA",Internship,"Hyperledger Fabric, Distributed Ledger Technology, Blockchain Development, Node.js, Rust",28737,39544,Software Engineering
+Senior Hardware/Firmware Engineer,Skyline Systems,Remote,Internship,"PCB Design, Microcontroller Programming, SPI/I2C Protocols, Firmware Development, FPGA Design, C++",122172,128100,DevOps & Infrastructure
+Firmware Engineer,Fenix Technologies,"Denver, CO",Internship,"Firmware Development, FPGA Design, Microcontroller Programming, PCB Design, IoT Systems Design, Arduino, C++, Raspberry Pi Development",90432,101556,DevOps & Infrastructure
+Junior Embedded Systems Engineer,Vertex Cloud Labs,Singapore,Full-time,"PCB Design, Arduino, SPI/I2C Protocols, FPGA Design, Microcontroller Programming, C++, Raspberry Pi Development",70332,82903,DevOps & Infrastructure
+Robotics Software Engineer,Skyline Systems,"New York, NY",Internship,"MATLAB, Sensor Integration, Robotics Programming, System Design",92955,107710,Software Engineering
+Augmented Reality Developer Intern,Bramblewood Dynamics,Remote,Internship,"C++, C#, Machine Learning, Virtual Reality Development, 3D Graphics, Augmented Reality Development, Communication",30730,36850,Software Engineering
+Mobile Software Engineer,Voxel Technologies,"Austin, TX",Full-time,"iOS Development, App Store Optimization, Push Notifications, Xamarin, Cross-platform Development, Requirements Gathering",81167,97275,Software Engineering
+Senior Robotics Controls Engineer,Wraith Digital,"Sydney, Australia",Full-time,"Microcontroller Programming, Machine Learning, PCB Design, CI/CD Pipelines",127681,151433,Software Engineering
+Solidity Developer Intern,Zenith Foundry,"Denver, CO",Internship,"Distributed Ledger Technology, Web3, NFT Platforms, Cryptocurrency Systems, Go",31204,40948,Software Engineering
+Senior Robotics Software Engineer,Zenith Interactive,Remote,Full-time,"Robotics Programming, Reinforcement Learning, Computer Vision, Embedded C, Microcontroller Programming, C++, MATLAB, Machine Learning",117886,144926,Software Engineering
+Robotics Engineer,Vantage Cloud Labs,Remote,Full-time,"Reinforcement Learning, Sensor Integration, MATLAB, PCB Design, Machine Learning, Microcontroller Programming, Docker",83225,109207,Software Engineering
+Robotics Software Engineer Manager,Vertex Industries,Remote,Full-time,"PCB Design, Embedded C, Microcontroller Programming, Computer Vision, RTOS (Real-Time Operating Systems), Robotics Programming, Reinforcement Learning, Sensor Integration",116253,146894,Software Engineering
+Senior Mobile Developer,Vertex Ventures,"Denver, CO",Full-time,"Flutter, Mobile App Architecture, Mobile CI/CD, SwiftUI, Ionic, Kotlin, Android Studio, React Native",129490,139197,Software Engineering
+AR/VR Engineer,Protoform Solutions,"Berlin, Germany",Part-time,"Sensor Integration, Computer Vision, Unreal Engine, Data Visualization, C#",95697,106850,Software Engineering
+Senior Motion Control Engineer,Nova Industries,"Austin, TX",Full-time,"Embedded C, RTOS (Real-Time Operating Systems), Machine Learning, Reinforcement Learning, Robotics Programming",110311,140753,Software Engineering
+Junior Immersive Experience Engineer,Ledgerly Foundry,"Chicago, IL",Full-time,"Computer Vision, Unreal Engine, Sensor Integration, C#, Unity, C++, Virtual Reality Development, 3D Graphics",70542,82291,Software Engineering
+Junior Web3 Developer,Brightloop Forge,Remote,Full-time,"TypeScript, Solidity, Smart Contracts, NFT Platforms, Web3, Blockchain Development, Node.js, Distributed Ledger Technology, Jira",61403,80420,Software Engineering
+Senior Virtual Reality Developer,Northgate Software,Singapore,Full-time,"Machine Learning, Unreal Engine, Virtual Reality Development, Unity, C#",129312,150047,Software Engineering
+Solidity Developer,Cascade Forge,"San Francisco, CA",Full-time,"TypeScript, Rust, Decentralized Finance (DeFi), NFT Platforms, Node.js, Distributed Ledger Technolgoy, Ethereum, Blockchain Development",92870,105478,Software Engineering
+Junior Cross-platform Mobile Engineer,Solace Works,"Bangalore, India",Internship,"Cordova, Dart, Android Development",68185,74308,Software Engineering
+3D Graphics Engineer,Wraith Digital,"Tel Aviv, Israel",Full-time,"C++, Python, Machine Learning, Computer Vision, Sensor Integration, Data Visualization, C#, Augmented Reality Development, CI/CD Pipelines",92062,102618,Software Engineering
+Principal Autonomous Systems Engineer,Hollow Ventures,"Tel Aviv, Israel",Full-time,"Embedded C, RTOS (Real-Time Operating Systems), MATLAB",158508,177853,Software Engineering
+Junior React Native Developer,Quantum Labs,"Seattle, WA",Full-time,"Cordova, Mobile CI/CD, Xcode",67383,75190,Software Engineering
+Immersive Experience Engineer,Basalt Forge,Remote,Contract,"C++, Machine Learning, Virtual Reality Development, Data Visualization, Unreal Engine, Augmented Reality Development, C#, Stakeholder Management",93720,102193,Software Engineering
+Immersive Experience Engineer,Copperfield Industries,"San Francisco, CA",Full-time,"Virtual Reality Development, Computer Vision, C++, Machine Learning, Unreal Engine, Data Visualization",90029,101853,Software Engineering
+Motion Control Engineer,Wraith Ventures,"San Francisco, CA",Full-time,"C++, RTOS (Real-Time Operating Systems), Microcontroller Programming",86097,97037,Software Engineering
+3D Graphics Engineer,Meridian Software,"San Francisco, CA",Full-time,"Machine Learning, Unreal Engine, Sensor Integration, C#, Computer Vision, Data Visualization, Unity, Augmented Reality Development",96954,106453,Software Engineering
+Lead Mobile Software Engineer,Redshift Software,"London, UK",Part-time,"React Native, Mobile CI/CD, Push Notifications, Xamarin, Xcode, iOS Development, Android Development, System Design",156560,164143,Software Engineering
+Junior Augmented Reality Developer,Starforge Ventures,"San Francisco, CA",Contract,"3D Graphics, C++, Virtual Reality Development, Stakeholder Management",66097,80515,Software Engineering
+AR/VR Engineer,Cypher Labs,"New York, NY",Internship,"Data Visualization, C++, Unity, 3D Graphics, Python, Jira",91196,97788,Software Engineering
+React Native Developer Intern,Ledgerly Foundry,"Austin, TX",Internship,"Xamarin, React Native, Push Notifications, Ionic, Swift, In-app Purchases",32857,38429,Software Engineering
+Senior IoT Firmware Engineer,Fenix Technologies,Singapore,Part-time,"PCB Design, Microcontroller Programming, IoT Systems Design",128324,139266,DevOps & Infrastructure
+Senior Smart Contract Engineer,Meridian Forge,"San Francisco, CA",Internship,"TypeScript, Cryptocurrency Systems, Cryptography, Distributed Ledger Technology, CI/CD Pipelines",123712,129972,Software Engineering
+Senior Robotics Controls Engineer,Copperfield Mechatronics,"London, UK",Full-time,"Computer Vision, Embedded C, Machine Learning, Python",131702,156230,Software Engineering
+Junior IoT Firmware Engineer,Glasswing Dynamics,"Seattle, WA",Full-time,"Firmware Development, SPI/I2C Protocols, Embedded C, FPGA Design, VHDL",68166,78222,DevOps & Infrastructure
+Junior Blockchain Engineer,Vantage Interactive,"London, UK",Contract,"TypeScript, Go, Ethereum, Blockchain Development, Distributed Ledger Technology, Agile Methodology",70173,79555,Software Engineering
+Lead Blockchain Architect,Nova Foundry,"Berlin, Germany",Full-time,"Node.js, Blockchain Development, Rust, Solidity, Hyperledger Fabric, Git",146376,170779,Software Engineering
+Web3 Developer Intern,Fenix Technologies,"Bangalore, India",Internship,"Distributed Ledger Technology, TypeScript, Blockchain Development, Cryptography, Go, Hyperledger Fabric",32465,41331,Software Engineering
+Mobile Software Engineer Intern,Redshift Ventures,"Chicago, IL",Internship,"Swift, Dart, Jetpack Compose, Stakeholder Management",24067,37940,Software Engineering
+Senior Robotics Engineer,Bluefin Labs,"San Francisco, CA",Contract,"MATLAB, Embedded C, Robotics Programming, C++, Machine Learning, RTOS (Real-Time Operating Systems), Sensor Integration, Microcontroller Programming",112885,146013,Software Engineering
+Robotics Perception Engineer,Frostbyte Studios,Remote,Full-time,"Python, Robotics Programming, PCB Design, Sensor Integration",89517,94873,Software Engineering
+Robotics Software Engineer Intern,Crestline Networks,"Berlin, Germany",Internship,"C++, RTOS (Real-Time Operating Systems), Microcontroller Programming, MATLAB, PCB Design, Embedded C, Machine Learning",32436,42000,Software Engineering
+Motion Control Engineer,Onyx Interactive,"Denver, CO",Full-time,"Machine Learning, RTOS (Real-Time Operating Systems), Sensor Integration, Reinforcement Learning, Robotics Programming, Python, MATLAB, Embedded C",81818,98448,Software Engineering
+AR/VR Engineer,Fenix Technologies,Remote,Full-time,"Data Visualization, 3D Graphics, Computer Vision, Python, C++, Sensor Integration",88466,108739,Software Engineering
+Embedded Software Engineer Intern,Ironwood Interactive,Remote,Internship,"PCB Design, Arduino, RTOS (Real-Time Operating Systems), FPGA Design, SPI/I2C Protocols, Raspberry Pi Development, VHDL, IoT Systems Design",32424,40647,DevOps & Infrastructure
+Junior Embedded Systems Engineer,Basalt Forge,"Toronto, ON",Internship,"C++, VHDL, Firmware Development, Embedded C, RTOS (Real-Time Operating Systems), PCB Design, SPI/I2C Protocols, Arduino",64524,74598,DevOps & Infrastructure
+iOS Developer,Crestline Collective,"New York, NY",Part-time,"App Store Optimization, Kotlin Multiplatform, React Native, Cordova, In-app Purchases, Flutter, Jetpack Compose",83851,111307,Software Engineering
+Junior 3D Graphics Engineer,Cascade Forge,"Tel Aviv, Israel",Full-time,"Python, Computer Vision, Virtual Reality Development, 3D Graphics",66780,76374,Software Engineering
+Flutter Developer,Copperfield Mechatronics,Remote,Full-time,"Cordova, Mobile App Architecture, Dart, Mobile Performance Optimization, Ionic, Swift, App Store Optimization, Objective-C for iOS",96437,104495,Software Engineering
+Embedded Software Engineer,Vantage Interactive,"Denver, CO",Full-time,"PCB Design, SPI/I2C Protocols, VHDL, Microcontroller Programming, IoT Systems Design, Raspberry Pi Development",89730,105178,DevOps & Infrastructure
+Mobile Developer,Fenix Systems,"San Francisco, CA",Full-time,"Kotlin, SwiftUI, Mobile CI/CD, Objective-C for iOS, Push Notifications",87372,94502,Software Engineering
+Lead DeFi Protocol Engineer,Vertex Industries,Remote,Internship,"Smart Contracts, Go, Cryptocurrency Systems, Solidity, Cryptography, Web3",139851,167849,Software Engineering
+Senior Embedded Software Engineer,Bluefin Bridge Tech,Remote,Full-time,"IoT Systems Design, SPI/I2C Protocols, Embedded C, Firmware Development, PCB Design, FPGA Design",121545,140492,DevOps & Infrastructure
+Junior Motion Control Engineer,Redshift Software,"Seattle, WA",Full-time,"MATLAB, Sensor Integration, Computer Vision, Robotics Programming, PCB Design, RTOS (Real-Time Operating Systems), Microcontroller Programming",69345,81820,Software Engineering
+Principal Firmware Engineer,Quantum Labs,"New York, NY",Full-time,"Embedded C, Raspberry Pi Development, IoT Systems Design, Arduino, RTOS (Real-Time Operating Systems), SPI/I2C Protocols, CI/CD Pipelines",152790,190817,DevOps & Infrastructure
+Junior Smart Contract Engineer,Crestline Networks,"New York, NY",Contract,"Go, Cryptography, Ethereum, Blockchain Development, TypeScript, Hyperledger Fabric, Solidity, Smart Contracts",67955,84781,Software Engineering
+Junior 3D Graphics Engineer,Amberlight Dynamics,Remote,Contract,"Computer Vision, 3D Graphics, Augmented Reality Development",60201,83871,Software Engineering
+Flutter Developer,Thornfield Bridge Tech,Remote,Contract,"Xamarin, Push Notifications, iOS Development, Kotlin, App Store Optimization, Android Studio, Swift, React Native",91028,105721,Software Engineering
+Senior Cross-platform Mobile Engineer,Crestline Works,"Sydney, Australia",Part-time,"SwiftUI, Objective-C for iOS, Swift, Dart, Android Development, Push Notifications, Android Studio, Xcode",130899,145516,Software Engineering
+Senior Virtual Reality Developer,Northgate Ventures,"San Francisco, CA",Full-time,"3D Graphics, Virtual Reality Development, Sensor Integration, Python, Stakeholder Management",123913,133036,Software Engineering
+Junior Cross-platform Mobile Engineer,Zenith Mechatronics,"Boston, MA",Full-time,"Kotlin Multiplatform, Kotlin, Xamarin, Cordova, Cross-platform Development, Mobile App Architecture",68526,78782,Software Engineering
+Principal Web3 Developer,Redshift Software,"San Francisco, CA",Full-time,"Cryptography, Smart Contracts, Go, TypeScript, Stakeholder Management",171550,191168,Software Engineering
+Hardware/Firmware Engineer Manager,Vertex Interactive,Singapore,Internship,"Arduino, Raspberry Pi Development, SPI/I2C Protocols, FPGA Design, IoT Systems Design",138682,161578,DevOps & Infrastructure
+Senior Android Developer,Ledgerly Software,"Sydney, Australia",Contract,"Mobile App Architecture, Cordova, Xamarin, Mobile Testing",122189,146599,Software Engineering
+Senior Robotics Software Engineer,Zenith Interactive,"Tel Aviv, Israel",Full-time,"MATLAB, PCB Design, Reinforcement Learning, RTOS (Real-Time Operating Systems), Robotics Programming",124892,156516,Software Engineering
+Senior Android Developer,Vertex Cloud Labs,"London, UK",Internship,"Kotlin, Android Studio, App Store Optimization, Ionic, Mobile Performance Optimization",132870,152985,Software Engineering
+Senior Blockchain Developer,Nova Studios,Singapore,Full-time,"Cryptocurrency Systems, Web3, Solidity, Ethereum, NFT Platforms, Hyperledger Fabric, Decentralized Finance (DeFi)",129115,150719,Software Engineering
+Lead XR Software Engineer,Thornfield Bridge Tech,Remote,Part-time,"Unreal Engine, C#, Unity, 3D Graphics, Virtual Reality Development, Communication",140969,161218,Software Engineering
+iOS Developer,Bluefin Bridge Tech,"New York, NY",Full-time,"iOS Development, Swift, Xcode",97014,108338,Software Engineering
+Smart Contract Engineer Manager,Foxglove Robotics,"Austin, TX",Full-time,"Blockchain Development, Node.js, Decentralized Finance (DeFi), Smart Contracts, Solidity, TypeScript, Go",122915,154383,Software Engineering
+Robotics Engineer Manager,Ironwood Interactive,"New York, NY",Internship,"C++, Microcontroller Programming, Sensor Integration, Py",121577,144755,Software Engineering
+Junior Flutter Developer,Nova Foundry,Remote,Contract,"Kotlin, Android Studio, Mobile App Architecture, Push Notifications",65154,76938,Software Engineering
+Lead Hardware/Firmware Engineer,Vertex Ventures,Remote,Full-time,"VHDL, RTOS (Real-Time Operating Systems), FPGA Design, Microcontroller Programming, Firmware Development, IoT Systems Design, Raspberry Pi Development, Arduino, System Design",143314,164445,DevOps & Infrastructure
+Principal Blockchain Architect,Slate Systems,Remote,Internship,"NFT Platforms, Cryptocurrency Systems, Hyperledger Fabric, Rust, Web3, Blockchain Development, Decentralized Finance (DeFi)",161976,196531,Software Engineering
+Senior FPGA Engineer,Fenix Cloud Labs,"Seattle, WA",Full-time,"Microcontroller Programming, C++, IoT Systems Design, SPI/I2C Protocols, Communication",124473,155660,DevOps & Infrastructure
+Solidity Developer Manager,Starforge Ventures,"Atlanta, GA",Full-time,"Solidity, Rust, Ethereum, Go, Cross-functional Collaboration",131100,158681,Software Engineering
+DeFi Protocol Engineer Manager,Zenith Mechatronics,"New York, NY",Full-time,"Rust, Node.js, Cryptocurrency Systems",142443,169948,Software Engineering
+React Native Developer,Hollow Foundry,"San Francisco, CA",Full-time,"Android Studio, In-app Purchases, React Native, Communication",80695,111425,Software Engineering
+Junior Autonomous Systems Engineer,Solace Robotics,"Denver, CO",Full-time,"Robotics Programming, Computer Vision, Embedded C, Machine Learning, Microcontroller Programming, RTOS (Real-Time Operating Systems), MATLAB",68066,75828,Software Engineering
+Senior Blockchain Developer,Bramblewood Dynamics,"San Francisco, CA",Full-time,"Web3, Distributed Ledger Technology, TypeScript, Smart Contracts, NFT Platforms, CI/CD Pipelines",117076,146573,Software Engineering
+Senior Embedded Software Engineer,Vertex Interactive,"Austin, TX",Full-time,"Embedded C, Microcontroller Programming, IoT Systems Design, SPI/I2C Protocols, RTOS (Real-Time Operating Systems), C++, Raspberry Pi Development, VHDL, Requirements Gathering",124782,142661,DevOps & Infrastructure
+Senior Autonomous Systems Engineer,Brightloop Labs,"Toronto, ON",Internship,"Reinforcement Learning, Robotics Programming, C++, Machine Learning, Computer Vision, Microcontroller Programming, MATLAB",116856,154758,Software Engineering
+Junior Virtual Reality Developer,Wraith Labs,"Austin, TX",Full-time,"3D Graphics, Data Visualization, Augmented Reality Development, Machine Learning",70631,83605,Software Engineering
+Senior Robotics Engineer,Skyline Systems,"Chicago, IL",Internship,"MATLAB, RTOS (Real-Time Operating Systems), Sensor Integration, CI/CD Pipelines",124615,144242,Software Engineering
+Principal Crypto Backend Engineer,Skyline Solutions,Remote,Part-time,"Hyperledger Fabric, Distributed Ledger Technology, Cryptocurrency Systems",158198,177942,Software Engineering
+Robotics Perception Engineer,Basalt Labs,"Sydney, Australia",Internship,"C++, Robotics Programming, Reinforcement Learning, Computer Vision, Python, Sensor Integration",80635,100948,Software Engineering
+Junior Robotics Engineer,Keystone Industries,"Berlin, Germany",Full-time,"RTOS (Real-Time Operating Systems), PCB Design, PYTHON, Machine Learning, MATLAB, Embedded C, Sensor Integration, C++",71448,80959,Software Engineering
+Senior Web3 Developer,Zenith Foundry,"Boston, MA",Part-time,"Blockchain Development, Web3, Ethereum, Distributed Ledger Technology, Node.js, Cryptography, Hyperledger Fabric, Git",111297,129485,Software Engineering
+Web3 Developer,Chainforge Forge,Remote,Full-time,"Smart Contracts, Decentralized Finance (DeFi), Web3, Cryptography, Ethereum, Hyperledger Fabric, Solidity, TypeScript, Requirements Gathering",88198,113085,Software Engineering
+Principal Embedded Software Engineer,Zenith Interactive,"San Francisco, CA",Full-time,"Raspberry Pi Development, Microcontroller Programming, Firmware Development",172050,178693,DevOps & Infrastructure
+Senior Spatial Computing Engineer,Quantum Labs,"Seattle, WA",Full-time,"Computer Vision, C++, Unity, Virtual Reality Development, Unreal Engine, Sensor Integration, Augmented Reality Development, Python",132255,147462,Software Engineering
+Lead Cross-platform Mobile Engineer,Circuitry Robotics,"Atlanta, GA",Full-time,"SwiftUI, Cordova, Android Development, Objective-C for iOS, Push Notifications, Android Studio, Dart, Mobile Performance Optimization",146754,157034,Software Engineering
+Hardware/Firmware Engineer,Skyline Solutions,"Denver, CO",Full-time,"RTOS (Real-Time Operating Systems), C++, VHDL",82085,111071,DevOps & Infrastructure
+Firmware Engineer Intern,Solace Digital,"London, UK",Internship,"FPGA Design, Embedded C, SPI/I2C Protocols, Raspberry Pi Development, PCB Design, C++, IoT Systems Design, VHDL",28272,34448,DevOps & Infrastructure
+Senior Hardware/Firmware Engineer,Zenith Mechatronics,"Boston, MA",Contract,"RTOS (Real-Time Operating Systems), VHDL, Raspberry Pi Development, Firmware Development, SPI/I2C Protocols, Microcontroller Programming, Arduino, C++",109342,145680,DevOps & Infrastructure
+Firmware Engineer Manager,Summit Interactive,"San Francisco, CA",Full-time,"SPI/I2C Protocols, Embedded C, PCB Design, Firmware Development, FPGA Design, VHDL, IoT Systems Design",133073,158398,DevOps & Infrastructure
+Staff Android Developer,Lattice Ventures,"San Francisco, CA",Internship,"Push Notifications, Swift, iOS Development, Ionic",150795,174137,Software Engineering
+Lead Embedded Software Engineer,Slate Digital,"Bangalore, India",Full-time,"SPI/I2C Protocols, Embedded C, Firmware Development, FPGA Design, IoT Systems Design, C++, Microcontroller Programming, VHDL",144222,155032,DevOps & Infrastructure
+Blockchain Architect Manager,Meridian Software,"Sydney, Australia",Full-time,"Blockchain Development, Distributed Ledger Technology, Solidity, Rust, NFT Platforms, Cryptocurrency Systems, Web3, Git",119727,156325,Software Engineering
+Senior Hardware/Firmware Engineer,Bramblewood Dynamics,"Sydney, Australia",Internship,"RTOS (Real-Time Operating Systems), Arduino, IoT Systems Design",123542,131040,DevOps & Infrastructure
+Crypto Backend Engineer Intern,Skyline Collective,"Sydney, Australia",Internship,"Distributed Ledger Technology, Blockchain Development, Go, Web3",29204,39399,Software Engineering
+Senior Embedded Software Engineer,Voxel Technologies,"Austin, TX",Full-time,"IoT Systems Design, RTOS (Real-Time Operating Systems), Embedded C, Raspberry Pi Development, PCB Design, System Design",120206,144754,DevOps & Infrastructure
+Solidity Developer,Cascade Forge,Remote,Full-time,"NFT Platforms, Web3, Cryptocurrency Systems",85029,106517,Software Engineering
+Senior Robotics Software Engineer,Nova Foundry,"Toronto, ON",Full-time,"MATLAB, PCB Design, Python, RTOS (Real-Time Operating Systems), Embedded C, C++",127491,155794,Software Engineering
