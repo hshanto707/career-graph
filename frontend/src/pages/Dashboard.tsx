@@ -141,7 +141,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           <StatCard
             title="Job Readiness Score"
-            value={`${job_readiness_score}%`}
+            value={`${Math.round(job_readiness_score)}%`}
             subtitle="Based on market demand"
             icon={<Target className="h-5 w-5" />}
           />
@@ -265,7 +265,7 @@ export default function Dashboard() {
                           />
                         </div>
                         <span className="text-sm text-muted-foreground w-8">
-                          {item.demand_score}%
+                          {Math.round(item.demand_score)}%
                         </span>
                       </div>
                     </div>

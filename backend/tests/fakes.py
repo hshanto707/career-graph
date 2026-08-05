@@ -94,6 +94,13 @@ class FakeGraphService:
         limit = int(filters.get("limit", 50))
         return [dict(j) for j in jobs[:limit]]
 
+    def list_job_titles(self, search: str | None = None, limit: int = 50) -> list[str]:
+        titles = {j["title"] for j in self._jobs.values() if j.get("title")}
+        if search:
+            needle = search.lower()
+            titles = {t for t in titles if needle in t.lower()}
+        return sorted(titles)[:limit]
+
     def get_job_required_skills(self, job_id: str) -> list[dict[str, Any]]:
         return [dict(s) for s in self._job_skills.get(job_id, [])]
 
@@ -191,6 +198,19 @@ class FakeGraphService:
     def get_skill_node(self, normalized_name: str) -> dict[str, Any] | None:
         node = self._skills.get(normalized_name)
         return dict(node) if node else None
+
+    def list_skill_names(self, search: str | None = None, limit: int = 50) -> list[str]:
+        names = {sk["name"] for sk in self._skills.values() if sk.get("name")}
+        names |= {
+            skill["name"]
+            for skills in self._job_skills.values()
+            for skill in skills
+            if skill.get("name")
+        }
+        if search:
+            needle = search.lower()
+            names = {n for n in names if needle in n.lower()}
+        return sorted(names)[:limit]
 
     # ------------------------------------------------------------------ #
     # Market

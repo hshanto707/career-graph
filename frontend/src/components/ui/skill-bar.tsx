@@ -30,7 +30,7 @@ export function SkillBar({
           )}
         </span>
         {showValue && (
-          <span className="text-muted-foreground">{value}%</span>
+          <span className="text-muted-foreground">{Math.round(value)}%</span>
         )}
       </div>
       <div className="h-2 bg-muted rounded-full overflow-hidden">

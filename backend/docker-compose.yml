@@ -1,8 +1,12 @@
-version: "3.9"
-
 # Self-contained compose file for the backend/ scaffold: Postgres + Neo4j +
 # the FastAPI service, plus an optional local Ollama LLM provider.
 # Bring the whole stack up with: docker compose up -d
+
+# Pinned so this project's containers/volumes never collide with another
+# unrelated project that also happens to have a folder named "backend" --
+# without this, Compose falls back to naming everything after the current
+# directory, which caused a real cross-project Postgres volume collision.
+name: careergraph-backend
 
 services:
   postgres:

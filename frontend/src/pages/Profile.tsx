@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useAuth } from '@/hooks/useAuth';
 import { useProfile } from '@/hooks/useProfile';
+import { formatExperienceDateRange } from '@/lib/experienceDates';
 
 export default function Profile() {
   const { user } = useAuth();
@@ -150,7 +151,7 @@ export default function Profile() {
                     <div key={index} className="border-l-2 border-primary pl-4 py-1">
                       <h3 className="font-medium text-foreground">{exp.title}</h3>
                       <p className="text-sm text-muted-foreground">
-                        {exp.company} · {exp.duration}
+                        {exp.company} · {formatExperienceDateRange(exp)}
                       </p>
                       {exp.description && (
                         <p className="text-sm text-muted-foreground mt-2">{exp.description}</p>

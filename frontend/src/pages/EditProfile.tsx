@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Check, X, Plus, Trash2 } from 'lucide-react';
@@ -9,13 +9,25 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Combobox } from '@/components/ui/combobox';
 import { useProfile, useUpdateProfile, useAddSkill } from '@/hooks/useProfile';
+import { useSkillSuggestions, useJobTitleSuggestions } from '@/hooks/useSuggestions';
 import type { ExperienceItem, SkillEntry } from '@/lib/api/profile';
+import { MONTH_NAMES, EXPERIENCE_YEAR_OPTIONS } from '@/lib/experienceDates';
+import { COMMON_MAJORS } from '@/lib/majors';
 import { toast } from '@/hooks/use-toast';
 
 const CURRENT_YEAR = new Date().getFullYear();
 const MIN_GRAD_YEAR = CURRENT_YEAR - 10;
 const MAX_GRAD_YEAR = CURRENT_YEAR + 10;
+/** Ascending so the picker reads chronologically -- most students are
+ * choosing a future or near-future graduation year. */
+const GRADUATION_YEAR_OPTIONS = Array.from(
+  { length: MAX_GRAD_YEAR + 1 - MIN_GRAD_YEAR },
+  (_, i) => MIN_GRAD_YEAR + i
+);
 
 const profileFormSchema = z.object({
   major: z.string().trim().max(200, 'Major is too long').optional().or(z.literal('')),
@@ -47,9 +59,15 @@ export default function EditProfile() {
   const [newSkillYears, setNewSkillYears] = useState(0);
   const [skillError, setSkillError] = useState<string | null>(null);
 
+  const { suggestions: skillSuggestions, isLoading: skillSuggestionsLoading } =
+    useSkillSuggestions(newSkillName);
+  const { suggestions: roleSuggestions, isLoading: roleSuggestionsLoading } =
+    useJobTitleSuggestions(newRole);
+
   const {
-    register,
+    control,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -72,6 +90,12 @@ export default function EditProfile() {
 
   const skills: SkillEntry[] = useMemo(() => profile?.skills ?? [], [profile]);
 
+  const watchedGraduationYear = watch('graduationYear');
+  const graduationYearLabel =
+    watchedGraduationYear != null && watchedGraduationYear < CURRENT_YEAR
+      ? 'Graduation Year'
+      : 'Expected Graduation Year';
+
   const handleAddRole = () => {
     const trimmed = newRole.trim();
     if (!trimmed || targetRoles.includes(trimmed)) return;
@@ -84,12 +108,44 @@ export default function EditProfile() {
   };
 
   const handleAddExperience = () => {
-    setExperience((prev) => [...prev, { title: '', company: '', duration: '', description: '' }]);
+    const now = new Date();
+    setExperience((prev) => [
+      ...prev,
+      {
+        title: '',
+        company: '',
+        start_month: now.getMonth() + 1,
+        start_year: now.getFullYear(),
+        end_month: null,
+        end_year: null,
+        is_current: false,
+        description: '',
+      },
+    ]);
   };
 
-  const handleExperienceChange = (index: number, field: keyof ExperienceItem, value: string) => {
+  const handleExperienceChange = <K extends keyof ExperienceItem>(
+    index: number,
+    field: K,
+    value: ExperienceItem[K]
+  ) => {
     setExperience((prev) =>
       prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
+    );
+  };
+
+  const handleExperienceCurrentToggle = (index: number, isCurrent: boolean) => {
+    setExperience((prev) =>
+      prev.map((item, i) =>
+        i === index
+          ? {
+              ...item,
+              is_current: isCurrent,
+              end_month: isCurrent ? null : item.end_month,
+              end_year: isCurrent ? null : item.end_year,
+            }
+          : item
+      )
     );
   };
 
@@ -143,6 +199,17 @@ export default function EditProfile() {
   };
 
   const onSubmit = async (values: ProfileFormValues) => {
+    const incompleteIndex = experience.findIndex(
+      (exp) => !exp.is_current && (exp.end_month == null || exp.end_year == null)
+    );
+    if (incompleteIndex !== -1) {
+      toast({
+        title: 'Missing end date',
+        description: `Set an end date for experience #${incompleteIndex + 1}, or check "I currently work here".`,
+        variant: 'destructive',
+      });
+      return;
+    }
     try {
       await updateProfile.mutateAsync({
         major: values.major || null,
@@ -211,17 +278,47 @@ export default function EditProfile() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
               <Label htmlFor="major">Major</Label>
-              <Input id="major" {...register('major')} placeholder="e.g. Computer Science" />
+              <Controller
+                control={control}
+                name="major"
+                render={({ field }) => (
+                  <Combobox
+                    id="major"
+                    value={field.value ?? ''}
+                    onChange={field.onChange}
+                    options={COMMON_MAJORS.filter((m) =>
+                      m.toLowerCase().includes((field.value ?? '').trim().toLowerCase())
+                    )}
+                    placeholder="e.g. Computer Science"
+                  />
+                )}
+              />
               {errors.major && (
                 <p className="text-sm text-destructive">{errors.major.message}</p>
               )}
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="graduationYear">Expected Graduation Year</Label>
-              <Input
-                id="graduationYear"
-                type="number"
-                {...register('graduationYear')}
+              <Label htmlFor="graduationYear">{graduationYearLabel}</Label>
+              <Controller
+                control={control}
+                name="graduationYear"
+                render={({ field }) => (
+                  <Select
+                    value={field.value != null ? String(field.value) : ''}
+                    onValueChange={(v) => field.onChange(Number(v))}
+                  >
+                    <SelectTrigger id="graduationYear" aria-label={graduationYearLabel}>
+                      <SelectValue placeholder="Year" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {GRADUATION_YEAR_OPTIONS.map((year) => (
+                        <SelectItem key={year} value={String(year)}>
+                          {year}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
               />
               {errors.graduationYear && (
                 <p className="text-sm text-destructive">{errors.graduationYear.message}</p>
@@ -265,13 +362,15 @@ export default function EditProfile() {
           <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-end">
             <div className="space-y-1.5 flex-1 w-full sm:w-auto">
               <Label htmlFor="newSkillName">Skill name</Label>
-              <Input
+              <Combobox
                 id="newSkillName"
                 value={newSkillName}
-                onChange={(e) => {
-                  setNewSkillName(e.target.value);
+                onChange={(value) => {
+                  setNewSkillName(value);
                   setSkillError(null);
                 }}
+                options={skillSuggestions}
+                isLoading={skillSuggestionsLoading}
                 placeholder="e.g. Python"
               />
             </div>
@@ -334,12 +433,16 @@ export default function EditProfile() {
           )}
 
           <div className="flex gap-3">
-            <Input
-              value={newRole}
-              onChange={(e) => setNewRole(e.target.value)}
-              placeholder="e.g. Data Analyst"
-              aria-label="New target role"
-            />
+            <div className="flex-1">
+              <Combobox
+                value={newRole}
+                onChange={setNewRole}
+                options={roleSuggestions}
+                isLoading={roleSuggestionsLoading}
+                placeholder="e.g. Data Analyst"
+                aria-label="New target role"
+              />
+            </div>
             <Button type="button" onClick={handleAddRole} variant="outline" className="gap-2">
               <Plus className="h-4 w-4" />
               Add
@@ -351,7 +454,14 @@ export default function EditProfile() {
         <div className="stat-card">
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title mb-0">Experience</h2>
-            <Button type="button" variant="outline" size="sm" onClick={handleAddExperience} className="gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={handleAddExperience}
+              aria-label="Add experience"
+              className="gap-2"
+            >
               <Plus className="h-4 w-4" />
               Add
             </Button>
@@ -386,19 +496,99 @@ export default function EditProfile() {
                       placeholder="Company"
                       aria-label={`Experience ${index + 1} company`}
                     />
-                    <Input
-                      value={exp.duration}
-                      onChange={(e) => handleExperienceChange(index, 'duration', e.target.value)}
-                      placeholder="Duration (e.g. Jun 2024 - Aug 2024)"
-                      aria-label={`Experience ${index + 1} duration`}
-                    />
-                    <Input
-                      value={exp.description ?? ''}
-                      onChange={(e) => handleExperienceChange(index, 'description', e.target.value)}
-                      placeholder="Description"
-                      aria-label={`Experience ${index + 1} description`}
-                    />
                   </div>
+
+                  <div className="space-y-1.5">
+                    <Label className="text-xs text-muted-foreground">Start Date</Label>
+                    <div className="grid grid-cols-2 gap-3">
+                      <Select
+                        value={String(exp.start_month)}
+                        onValueChange={(v) => handleExperienceChange(index, 'start_month', Number(v))}
+                      >
+                        <SelectTrigger aria-label={`Experience ${index + 1} start month`}>
+                          <SelectValue placeholder="Month" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {MONTH_NAMES.map((month, i) => (
+                            <SelectItem key={month} value={String(i + 1)}>
+                              {month}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <Select
+                        value={String(exp.start_year)}
+                        onValueChange={(v) => handleExperienceChange(index, 'start_year', Number(v))}
+                      >
+                        <SelectTrigger aria-label={`Experience ${index + 1} start year`}>
+                          <SelectValue placeholder="Year" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {EXPERIENCE_YEAR_OPTIONS.map((year) => (
+                            <SelectItem key={year} value={String(year)}>
+                              {year}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <Checkbox
+                      id={`experience-${index}-current`}
+                      checked={exp.is_current}
+                      onCheckedChange={(checked) => handleExperienceCurrentToggle(index, checked === true)}
+                    />
+                    <Label htmlFor={`experience-${index}-current`} className="text-sm font-normal cursor-pointer">
+                      I currently work here
+                    </Label>
+                  </div>
+
+                  {!exp.is_current && (
+                    <div className="space-y-1.5">
+                      <Label className="text-xs text-muted-foreground">End Date</Label>
+                      <div className="grid grid-cols-2 gap-3">
+                        <Select
+                          value={exp.end_month != null ? String(exp.end_month) : ''}
+                          onValueChange={(v) => handleExperienceChange(index, 'end_month', Number(v))}
+                        >
+                          <SelectTrigger aria-label={`Experience ${index + 1} end month`}>
+                            <SelectValue placeholder="Month" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {MONTH_NAMES.map((month, i) => (
+                              <SelectItem key={month} value={String(i + 1)}>
+                                {month}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <Select
+                          value={exp.end_year != null ? String(exp.end_year) : ''}
+                          onValueChange={(v) => handleExperienceChange(index, 'end_year', Number(v))}
+                        >
+                          <SelectTrigger aria-label={`Experience ${index + 1} end year`}>
+                            <SelectValue placeholder="Year" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {EXPERIENCE_YEAR_OPTIONS.map((year) => (
+                              <SelectItem key={year} value={String(year)}>
+                                {year}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  )}
+
+                  <Input
+                    value={exp.description ?? ''}
+                    onChange={(e) => handleExperienceChange(index, 'description', e.target.value)}
+                    placeholder="Description"
+                    aria-label={`Experience ${index + 1} description`}
+                  />
                 </div>
               ))}
             </div>

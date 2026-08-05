@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareerGraph — Research Contribution &amp; Model Design</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg:            #f5f4ef;
+    --bg-elevated:   #ffffff;
+    --surface:       #ffffff;
+    --surface-2:     #edece5;
+    --border:        #dcdad0;
+    --ink:           #1c1e1a;
+    --ink-dim:       #55584f;
+    --ink-faint:     #8c8f83;
+    --accent:        #a9720f;
+    --accent-ink:    #6e4a08;
+    --series-gnn:      #2a78d6;
+    --series-baseline: #eb6834;
+    --good:          #157a55;
+    --good-bg:       #e2f0e7;
+    --warn:          #b2431f;
+    --warn-bg:       #f6e6dd;
+    --rule:          #cfccbf;
+    --shadow: 0 1px 2px rgba(30,28,20,0.06), 0 8px 24px -12px rgba(30,28,20,0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --bg:            #12161d;
+      --bg-elevated:   #171c25;
+      --surface:       #1a2029;
+      --surface-2:     #1f2631;
+      --border:        #2b3341;
+      --ink:           #edf0f4;
+      --ink-dim:       #a4acb9;
+      --ink-faint:     #6b7484;
+      --accent:        #e7ab3d;
+      --accent-ink:    #f4c66b;
+      --series-gnn:      #3987e5;
+      --series-baseline: #d95926;
+      --good:          #4fbf8f;
+      --good-bg:       #16281f;
+      --warn:          #e17b52;
+      --warn-bg:       #2c1c14;
+      --rule:          #2b3341;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg:            #12161d;
+    --bg-elevated:   #171c25;
+    --surface:       #1a2029;
+    --surface-2:     #1f2631;
+    --border:        #2b3341;
+    --ink:           #edf0f4;
+    --ink-dim:       #a4acb9;
+    --ink-faint:     #6b7484;
+    --accent:        #e7ab3d;
+    --accent-ink:    #f4c66b;
+    --series-gnn:      #3987e5;
+    --series-baseline: #d95926;
+    --good:          #4fbf8f;
+    --good-bg:       #16281f;
+    --warn:          #e17b52;
+    --warn-bg:       #2c1c14;
+    --rule:          #2b3341;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 32px -14px rgba(0,0,0,0.55);
+  }
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg:            #f5f4ef;
+    --bg-elevated:   #ffffff;
+    --surface:       #ffffff;
+    --surface-2:     #edece5;
+    --border:        #dcdad0;
+    --ink:           #1c1e1a;
+    --ink-dim:       #55584f;
+    --ink-faint:     #8c8f83;
+    --accent:        #a9720f;
+    --accent-ink:    #6e4a08;
+    --series-gnn:      #2a78d6;
+    --series-baseline: #eb6834;
+    --good:          #157a55;
+    --good-bg:       #e2f0e7;
+    --warn:          #b2431f;
+    --warn-bg:       #f6e6dd;
+    --rule:          #cfccbf;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Serif", serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .sans {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .mono {
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1, h2, h3, h4 { text-wrap: balance; margin: 0; font-weight: 600; }
+
+  /* ---------- progress + nav ---------- */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: var(--accent); z-index: 100; transition: width 80ms linear;
+  }
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px 10px;
+    background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+    pointer-events: none;
+  }
+  #topbar .brand {
+    font-family: inherit; font-weight: 700; font-size: 14px; letter-spacing: 0.02em;
+    color: var(--ink-dim); pointer-events: auto;
+  }
+  #topbar .brand b { color: var(--ink); }
+  nav#dots {
+    position: fixed; right: 22px; top: 50%; transform: translateY(-50%);
+    z-index: 90; display: flex; flex-direction: column; gap: 12px;
+  }
+  nav#dots a {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ink-faint); opacity: 0.5; display: block;
+    text-decoration: none; transition: all 160ms ease; position: relative;
+  }
+  nav#dots a.active { background: var(--accent); opacity: 1; transform: scale(1.35); }
+  nav#dots a .tip {
+    position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+    white-space: nowrap; font-size: 11px; color: var(--ink-dim);
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 3px 8px; border-radius: 5px; opacity: 0; pointer-events: none;
+    transition: opacity 120ms ease; box-shadow: var(--shadow);
+  }
+  nav#dots a:hover .tip { opacity: 1; }
+  @media (max-width: 860px) { nav#dots { display: none; } }
+
+  /* ---------- section shell ---------- */
+  section {
+    min-height: 100vh;
+    padding: 108px 8vw 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  section.tight { min-height: auto; padding-top: 96px; padding-bottom: 88px; }
+  .wrap { max-width: 1080px; margin: 0 auto; width: 100%; }
+  .wrap.wide { max-width: 1240px; }
+
+  .eyebrow {
+    font-family: inherit; font-style: italic; letter-spacing: 0.02em;
+    color: var(--accent-ink); font-size: 15px; margin-bottom: 10px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .eyebrow .idx { font-family: ui-monospace, monospace; font-style: normal; font-size: 12px; color: var(--ink-faint); }
+
+  .kicker {
+    font-size: clamp(28px, 3.6vw, 46px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    font-family: inherit;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-dim);
+    max-width: 66ch;
+    margin-top: 18px;
+  }
+  .lede.narrow { max-width: 60ch; }
+
+  p.body-text { font-size: 17px; line-height: 1.7; color: var(--ink-dim); max-width: 68ch; }
+  a.inline { color: var(--accent-ink); }
+
+  /* ---------- stat tiles ---------- */
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 44px; }
+  @media (max-width: 760px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat { background: var(--surface); padding: 22px 20px; }
+  .stat .n { font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums; font-size: 30px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .stat .l { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 12.5px; color: var(--ink-faint); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ---------- cards ---------- */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px 22px 24px; box-shadow: var(--shadow);
+  }
+  .card .tag {
+    font-family: -apple-system, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--good); background: var(--good-bg); display: inline-block; padding: 3px 9px; border-radius: 20px; margin-bottom: 12px;
+  }
+  .card h3 { font-size: 18.5px; line-height: 1.3; margin-bottom: 8px; }
+  .card p { font-family: -apple-system, sans-serif; font-size: 14.5px; line-height: 1.55; color: var(--ink-dim); margin: 0; }
+
+  /* ---------- tables ---------- */
+  .table-scroll { overflow-x: auto; margin-top: 24px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); box-shadow: var(--shadow); }
+  table { border-collapse: collapse; width: 100%; font-family: -apple-system, sans-serif; font-size: 14px; min-width: 640px; }
+  table.wide-min { min-width: 920px; }
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  thead th {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-faint);
+    background: var(--surface-2); position: sticky; top: 0;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num, th.num { font-family: ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  td.us { color: var(--ink); font-weight: 600; }
+  .check { color: var(--good); font-weight: 700; }
+  .cross { color: var(--ink-faint); }
+  .partial { color: var(--accent-ink); font-weight: 600; }
+
+  /* ---------- diagram: architecture ---------- */
+  .tiers { display: flex; flex-direction: column; gap: 10px; margin-top: 40px; }
+  .tier {
+    border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+    padding: 18px 22px; box-shadow: var(--shadow);
+  }
+  .tier .tier-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); font-family: -apple-system, sans-serif; margin-bottom: 8px; }
+  .tier .tier-body { font-family: -apple-system, sans-serif; font-size: 14.5px; color: var(--ink-dim); display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px; padding: 5px 11px; font-size: 13px; color: var(--ink); }
+  .chip.accent { border-color: color-mix(in oklab, var(--accent) 55%, var(--border)); color: var(--accent-ink); }
+  .connector { display: flex; justify-content: center; }
+  .connector svg { display: block; }
+
+  /* ---------- agent roster ---------- */
+  .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 28px; }
+  .agent {
+    border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; background: var(--surface);
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .agent .glyph {
+    font-family: ui-monospace, monospace; font-size: 12px; color: var(--bg);
+    background: var(--ink-dim); width: 26px; height: 26px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+  }
+  .agent.algo .glyph { background: var(--series-gnn); }
+  .agent.llm .glyph { background: var(--accent); }
+  .agent h4 { font-family: -apple-system, sans-serif; font-size: 14.5px; font-weight: 700; }
+  .agent p { font-family: -apple-system, sans-serif; font-size: 13.2px; color: var(--ink-dim); margin: 4px 0 0; line-height: 1.5; }
+  .agent code { font-family: ui-monospace, monospace; font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+
+  /* ---------- pipeline diagram ---------- */
+  .pipeline { display: flex; align-items: stretch; gap: 0; margin-top: 40px; overflow-x: auto; padding-bottom: 8px; }
+  .pstep { min-width: 168px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 15px; box-shadow: var(--shadow); }
+  .pstep .k { font-family: -apple-system, sans-serif; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .pstep .v { font-family: -apple-system, sans-serif; font-size: 14px; font-weight: 700; margin-top: 4px; line-height: 1.3; }
+  .pstep .d { font-family: -apple-system, sans-serif; font-size: 12px; color: var(--ink-dim); margin-top: 6px; line-height: 1.4; }
+  .parr { display: flex; align-items: center; padding: 0 10px; color: var(--ink-faint); flex-shrink: 0; }
+
+  /* ---------- callouts ---------- */
+  .callout { border-radius: 12px; padding: 20px 24px; margin-top: 28px; border: 1px solid; }
+  .callout.warn { background: var(--warn-bg); border-color: color-mix(in oklab, var(--warn) 40%, var(--warn-bg)); }
+  .callout.good { background: var(--good-bg); border-color: color-mix(in oklab, var(--good) 40%, var(--good-bg)); }
+  .callout .cl-label { font-family: -apple-system, sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; margin-bottom: 8px; }
+  .callout.warn .cl-label { color: var(--warn); }
+  .callout.good .cl-label { color: var(--good); }
+  .callout p { font-family: -apple-system, sans-serif; font-size: 14.5px; line-height: 1.65; color: var(--ink); margin: 0 0 8px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ---------- chart ---------- */
+  .chart-block { margin-top: 44px; }
+  .legend { display: flex; gap: 22px; font-family: -apple-system, sans-serif; font-size: 13px; color: var(--ink-dim); margin-bottom: 18px; }
+  .legend .sw { display: inline-flex; align-items: center; gap: 7px; }
+  .legend .dot { width: 10px; height: 10px; border-radius: 3px; }
+  .charts-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 820px) { .charts-row { grid-template-columns: 1fr; } }
+  .metric-chart { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); padding: 18px 18px 12px; box-shadow: var(--shadow); }
+  .metric-chart .mc-title { font-family: -apple-system, sans-serif; font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+  .metric-chart .mc-sub { font-family: -apple-system, sans-serif; font-size: 11.5px; color: var(--ink-faint); margin-bottom: 14px; }
+  .plot { position: relative; height: 190px; margin: 0 4px; }
+  .gridline { position: absolute; left: -4px; right: 0; border-top: 1px dashed var(--border); }
+  .gridline span { position: absolute; left: -30px; top: -7px; font-family: ui-monospace, monospace; font-size: 10px; color: var(--ink-faint); }
+  .groups { position: absolute; left: 6px; right: 0; bottom: 0; top: 0; display: flex; justify-content: space-around; align-items: flex-end; }
+  .bargroup { display: flex; align-items: flex-end; gap: 6px; height: 100%; }
+  .bar { width: 22px; border-radius: 4px 4px 2px 2px; position: relative; align-self: flex-end; }
+  .bar.gnn { background: var(--series-gnn); }
+  .bar.base { background: var(--series-baseline); }
+  .bar .val { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); font-family: ui-monospace, monospace; font-size: 10px; color: var(--ink-dim); white-space: nowrap; }
+  .xlabels { display: flex; justify-content: space-around; margin-top: 8px; font-family: -apple-system, sans-serif; font-size: 11px; color: var(--ink-faint); text-align: center; }
+  .xlabels > div { flex: 1; }
+
+  /* ---------- footnote / source line ---------- */
+  .src { font-family: -apple-system, sans-serif; font-size: 12px; color: var(--ink-faint); margin-top: 12px; }
+  .src code { font-family: ui-monospace, monospace; }
+
+  /* ---------- timeline (TDD phases) ---------- */
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 32px; }
+  @media (max-width: 760px) { .phases { grid-template-columns: repeat(2, 1fr); } }
+  .phase { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 16px; position: relative; }
+  .phase .pn { font-family: ui-monospace, monospace; font-size: 11px; color: var(--accent-ink); }
+  .phase h4 { font-family: -apple-system, sans-serif; font-size: 14px; margin-top: 4px; }
+  .phase p { font-family: -apple-system, sans-serif; font-size: 12.5px; color: var(--ink-dim); margin: 6px 0 0; line-height: 1.5; }
+
+  /* ---------- closing ---------- */
+  .recap { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 36px; }
+  .recap .item { display: flex; gap: 14px; }
+  .recap .num { font-family: ui-monospace, monospace; font-size: 20px; color: var(--accent-ink); flex-shrink: 0; width: 30px; }
+  .recap h4 { font-family: -apple-system, sans-serif; font-size: 14.5px; }
+  .recap p { font-family: -apple-system, sans-serif; font-size: 13px; color: var(--ink-dim); margin: 4px 0 0; line-height: 1.5; }
+
+  .end-cover { text-align: center; }
+  .end-cover .kicker { font-size: clamp(30px, 5vw, 54px); }
+
+  ::selection { background: color-mix(in oklab, var(--accent) 35%, transparent); }
+</style>
+</head>
+<body data-palette="#2a78d6,#eb6834">
+
+<div id="progress"></div>
+<div id="topbar" class="sans">
+  <div class="brand"><b>CareerGraph</b> — Thesis Research Review</div>
+</div>
+<nav id="dots" aria-label="Section navigation"></nav>
+
+<!-- ============================================================ -->
+<section id="s-cover">
+  <div class="wrap end-cover">
+    <div class="eyebrow" style="justify-content:center;"><span class="idx">CAPSTONE — CSE 498A</span></div>
+    <h1 class="kicker">CareerGraph</h1>
+    <p class="lede" style="margin-left:auto;margin-right:auto;text-align:center;">
+      An agent-based knowledge-graph platform for student career guidance —
+      what makes it a research contribution, and exactly how the custom
+      GNN model is designed, trained, and evaluated.
+    </p>
+    <div class="stat-row" style="margin-top:56px;">
+      <div class="stat"><div class="n mono">9,380</div><div class="l">Jobs in the live graph</div></div>
+      <div class="stat"><div class="n mono">434</div><div class="l">Normalized skills</div></div>
+      <div class="stat"><div class="n mono">7</div><div class="l">Specialized agents</div></div>
+      <div class="stat"><div class="n mono">290</div><div class="l">Passing tests, 3 suites</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-problem" class="tight">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">01</span> The gap</div>
+    <h2 class="kicker">Career guidance tools tell students <em>what</em> they lack.<br>Almost none tell them <em>how to get there</em> — grounded in real demand.</h2>
+    <p class="lede">
+      Students struggle to align their skills with real job-market demand.
+      Generic advising is disconnected from live data; when tools do use
+      data or AI, they typically stop at diagnosis. Three recent systems
+      define the state of the art this thesis was benchmarked against:
+    </p>
+    <div class="card-grid" style="margin-top:36px;">
+      <div class="card">
+        <span class="tag" style="background:var(--surface-2);color:var(--ink-dim);">Weichselbraun et al., 2022</span>
+        <h3>CareerCoach</h3>
+        <p>Knowledge graph (734K edges) + course recommender, deployed at 3 Swiss/German firms. No persistent student model — every session starts stateless.</p>
+      </div>
+      <div class="card">
+        <span class="tag" style="background:var(--surface-2);color:var(--ink-dim);">Ladkat &amp; Bharati, 2025</span>
+        <h3>MAS + LLM Career Planning</h3>
+        <p>Four-agent LLM pipeline on local Ollama, full plan in &lt;20s. Every recommendation is an LLM generation — no connection to real job postings.</p>
+      </div>
+      <div class="card">
+        <span class="tag" style="background:var(--surface-2);color:var(--ink-dim);">José-García et al., 2022</span>
+        <h3>C3-IoC</h3>
+        <p>Deployed UK IT placement tool; asymmetric skill-gap metric + Louvain clustering. Diagnostic only — shows the gap, never a path to close it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-contrib">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">02</span> Research contribution</div>
+    <h2 class="kicker">Five things no prior system in this comparison set does together.</h2>
+    <p class="lede narrow">Each of the three papers above solves part of the problem. CareerGraph's contribution is integrating all three capabilities — persistent state, ordered pathing, and market grounding — behind one architecture, plus two specific mechanisms none of them have.</p>
+
+    <div class="card-grid" style="margin-top:36px;">
+      <div class="card">
+        <span class="tag">Contribution 1</span>
+        <h3>Persistent, proficiency-weighted student node</h3>
+        <p>Students are first-class Neo4j nodes with <code style="font-family:ui-monospace,monospace;">HAS_SKILL&nbsp;{proficiency:&nbsp;0–10,&nbsp;years}</code> edges — not a session-scoped free-text blob. No comparator persists a proficiency-typed student profile at the graph level.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Contribution 2</span>
+        <h3>Ordered roadmap via prerequisite graph traversal</h3>
+        <p><code style="font-family:ui-monospace,monospace;">LEADS_TO&nbsp;{difficulty_jump}</code> edges + BFS + Kahn's topological sort produce a step-by-step acquisition sequence, not just a ranked gap list. Structurally absent from all three comparators.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Contribution 3</span>
+        <h3>LLM as a decoupled, optional explainability layer</h3>
+        <p>Four algorithmic agents compute every score deterministically; the LLM only narrates a result that already exists. It cannot hallucinate a gap score or fabricate a prerequisite — and the system runs fully with zero LLM configured.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Contribution 4</span>
+        <h3>Continuous skill-normalization pipeline</h3>
+        <p>Synonym map + rapidfuzz fuzzy matching (≥90 similarity) resolves surface-form variation without a fine-tuned NER model — directly answers the ~45% entity-linking miss rate reported by Weichselbraun et al.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Contribution 5</span>
+        <h3>Live, re-ingestible knowledge base</h3>
+        <p>A single admin endpoint re-ingests any CSV job corpus on demand. Unlike C3-IoC (frozen 2018–19) or an LLM's training cutoff, market intelligence reflects whatever was most recently ingested.</p>
+      </div>
+      <div class="card" style="background:var(--good-bg);border-color:color-mix(in oklab, var(--good) 35%, var(--border));">
+        <span class="tag" style="background:var(--surface);">Positioning</span>
+        <h3>Correctness and explainability are independent guarantees</h3>
+        <p>Because the LLM sits strictly downstream of deterministic algorithms, a bad LLM day degrades wording, never numbers. This is a design property none of the three comparators can claim.</p>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="wide-min">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>CareerCoach<br>(2022)</th>
+            <th>Ladkat &amp; Bharati<br>(2025)</th>
+            <th>C3-IoC<br>(2022)</th>
+            <th>CareerGraph</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Knowledge graph for skill modeling</td><td class="check">✓</td><td class="cross">✗</td><td class="partial">Partial</td><td class="us check">✓</td></tr>
+          <tr><td>Persistent student graph node</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="us check">✓</td></tr>
+          <tr><td>Skill proficiency weighting</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="us check">✓</td></tr>
+          <tr><td>Ordered learning roadmap</td><td class="cross">✗</td><td class="partial">✓ (LLM-generated)</td><td class="cross">✗</td><td class="us check">✓ (graph-derived)</td></tr>
+          <tr><td>Market-grounded recommendations</td><td class="partial">✓ (courses)</td><td class="cross">✗</td><td class="partial">✓ (job matching)</td><td class="us check">✓ (jobs + trends)</td></tr>
+          <tr><td>Multi-agent architecture</td><td class="cross">✗</td><td class="check">✓</td><td class="cross">✗</td><td class="us check">✓</td></tr>
+          <tr><td>LLM-optional graceful degradation</td><td>n/a</td><td class="cross">✗</td><td>n/a</td><td class="us check">✓</td></tr>
+          <tr><td>Fuzzy skill normalization</td><td class="partial">Partial (45% miss)</td><td class="cross">✗</td><td class="cross">✗</td><td class="us check">✓</td></tr>
+          <tr><td>Live re-ingestible knowledge base</td><td class="cross">✗</td><td class="cross">✗</td><td class="cross">✗</td><td class="us check">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Full dimension-by-dimension comparisons for all three papers: <code>docs/research-contribution.md</code>.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-headtohead" class="tight">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">03</span> Head-to-head, the parts that matter most</div>
+    <h2 class="kicker">Where each prior system's stated limitation is what CareerGraph was built to close.</h2>
+
+    <div class="table-scroll">
+      <table class="wide-min">
+        <thead><tr><th style="width:22%;">vs. CareerCoach</th><th>Their limitation</th><th>CareerGraph's answer</th></tr></thead>
+        <tbody>
+          <tr><td class="us">Skill gap formula</td><td>Binary present/absent, no proficiency weighting.</td><td><code>must×0.7 + nice×0.3 + proficiency_bonus</code> — rewards depth, not just presence.</td></tr>
+          <tr><td class="us">Learning path</td><td>Recommends courses but cannot order them.</td><td>PathFinderAgent: BFS + topological sort over <code>LEADS_TO</code> → an ordered sequence.</td></tr>
+          <tr><td class="us">Skill normalization</td><td>~45% entity-linking miss rate; needs manual review.</td><td>Synonym map + rapidfuzz ≥90 threshold, zero manual correction step.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-scroll">
+      <table class="wide-min">
+        <thead><tr><th style="width:22%;">vs. Ladkat &amp; Bharati</th><th>Their limitation</th><th>CareerGraph's answer</th></tr></thead>
+        <tbody>
+          <tr><td class="us">Grounding</td><td>All demand signals come from LLM training data.</td><td>Skill demand computed from actual <code>REQUIRES</code> edge counts across 9,380 job nodes.</td></tr>
+          <tr><td class="us">Transparency</td><td>Outputs are LLM generations — non-reproducible, non-auditable.</td><td>Deterministic Jaccard / BFS / topological-sort agents; LLM is an optional wrapper on top.</td></tr>
+          <tr><td class="us">Dependency</td><td>Cannot function without a running Ollama instance (16GB RAM + GPU).</td><td>LLM optional by design (NFR-02) — every feature returns a valid structured response with zero LLM configured.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-scroll">
+      <table class="wide-min">
+        <thead><tr><th style="width:22%;">vs. C3-IoC</th><th>Their limitation</th><th>CareerGraph's answer</th></tr></thead>
+        <tbody>
+          <tr><td class="us">Actionability</td><td>Diagnostic only — shows the gap, not a path to close it.</td><td>PathFinderAgent + <code>TEACHES</code> edges generate a week-by-week roadmap with attached courses.</td></tr>
+          <tr><td class="us">Knowledge currency</td><td>Frozen at 2018–19 job ads and O*NET 2019.</td><td>IngestionAgent re-ingests any CSV corpus on demand — no architectural change required.</td></tr>
+          <tr><td class="us">Skill representation</td><td>Surface-form dictionary matching only.</td><td>Synonym + fuzzy resolution captures semantically equivalent phrasing exact matching misses.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-architecture">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">04</span> System design</div>
+    <h2 class="kicker">Three tiers, seven agents, one orchestrator.</h2>
+    <p class="lede narrow">A React frontend talks REST+JWT to a FastAPI backend. The backend's Intelligence Engine dispatches to seven single-responsibility agents; a dual-database layer keeps ACID user data in PostgreSQL separate from the semantic graph in Neo4j.</p>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-label">Presentation</div>
+        <div class="tier-body">
+          <span class="chip">React 18 + TypeScript</span><span class="chip">Vite</span><span class="chip">TanStack Query</span><span class="chip">shadcn/ui</span>
+        </div>
+      </div>
+      <div class="connector"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M9 0v14M2 8l7 8 7-8" stroke="var(--ink-faint)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="tier">
+        <div class="tier-label">Application — FastAPI · Python 3.11 · 13 REST endpoints / 8 resource groups</div>
+        <div class="tier-body">
+          <span class="chip accent">EngineOrchestrator</span>
+          <span class="chip">IngestionAgent</span><span class="chip">NormalizationAgent</span>
+          <span class="chip">SkillGapAgent</span><span class="chip">RecommendationAgent</span>
+          <span class="chip">PathFinderAgent</span><span class="chip">MarketAgent</span>
+          <span class="chip accent">ReasoningAgent (optional)</span>
+        </div>
+      </div>
+      <div class="connector"><svg width="18" height="20" viewBox="0 0 18 20"><path d="M9 0v14M2 8l7 8 7-8" stroke="var(--ink-faint)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="tier">
+        <div class="tier-label">Data — dual database</div>
+        <div class="tier-body">
+          <span class="chip">PostgreSQL 15 — users, auth, profiles (ACID)</span>
+          <span class="chip">Neo4j 5 — skills, jobs, prerequisites, courses (graph traversal)</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:18px;margin-top:48px;">The seven agents</h3>
+    <div class="agent-grid">
+      <div class="agent algo"><div class="glyph">IN</div><div><h4>IngestionAgent</h4><p>Parses &amp; validates CSV job postings; drops malformed rows without aborting the batch.</p></div></div>
+      <div class="agent algo"><div class="glyph">NM</div><div><h4>NormalizationAgent</h4><p>Synonym match → fuzzy match (rapidfuzz ≥90) → flag-for-review. Writes <code>Job</code>/<code>Skill</code>/<code>REQUIRES</code> into Neo4j.</p></div></div>
+      <div class="agent algo"><div class="glyph">SG</div><div><h4>SkillGapAgent</h4><p>Weighted readiness score: <code>must×0.7 + nice×0.3 + proficiency_bonus</code>.</p></div></div>
+      <div class="agent algo"><div class="glyph">RC</div><div><h4>RecommendationAgent</h4><p>Jaccard exact overlap (80%) + <code>LEADS_TO</code> partial-credit reachability (20%).</p></div></div>
+      <div class="agent algo"><div class="glyph">PF</div><div><h4>PathFinderAgent</h4><p>BFS over <code>LEADS_TO</code> from missing skills → Kahn's topological sort → ordered roadmap + attached courses.</p></div></div>
+      <div class="agent algo"><div class="glyph">MK</div><div><h4>MarketAgent</h4><p>Aggregates <code>REQUIRES</code> edge counts per skill; normalizes to a 0–100 demand score.</p></div></div>
+      <div class="agent llm"><div class="glyph">RS</div><div><h4>ReasoningAgent <span style="font-weight:400;color:var(--ink-faint);">(optional)</span></h4><p>Wraps any of the above in a plain-English explanation via Claude / GPT-4o / Ollama — template fallback when unconfigured.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-gnn-why">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">05</span> The custom AI model</div>
+    <h2 class="kicker">A trained GraphSAGE link predictor — separate from, and never touched by, the LLM.</h2>
+    <p class="lede">
+      The hand-tuned algorithmic agents above are formulas a human designed.
+      The GNN is the <strong style="color:var(--ink);">learned</strong> alternative: a
+      2-layer heterogeneous <strong style="color:var(--ink);">GraphSAGE</strong> network
+      learns a numeric embedding for every Student / Skill / Job / Course / Category
+      node by repeatedly aggregating neighbor information, then predicts whether an
+      edge should exist by comparing two embeddings. It is trained and evaluated as
+      <strong style="color:var(--ink);">link prediction</strong> on two relations:
+    </p>
+    <div class="card-grid" style="margin-top:28px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));">
+      <div class="card">
+        <h3 class="mono" style="font-size:16px;">(Job) –REQUIRES→ (Skill)</h3>
+        <p>Does this job posting require this skill? — the model's primary, most heavily-tested task.</p>
+      </div>
+      <div class="card">
+        <h3 class="mono" style="font-size:16px;">(Skill) –LEADS_TO→ (Skill)</h3>
+        <p>Is this skill a natural prerequisite toward that one? — evaluated on synthetic placeholder edges (see limitations, §07).</p>
+      </div>
+    </div>
+    <div class="callout good" style="margin-top:32px;">
+      <div class="cl-label">Why this is a legitimate thesis-level contribution</div>
+      <p>The literature review surveys knowledge-graph embedding approaches for this exact problem: de Groot et al. use Node2Vec for career-path link prediction; Vultureanu-Albisi et al. use TransE+GAT with knowledge distillation; Fettach et al. use TA-DistMult for temporal demand forecasting. None evaluate a personalized, per-student gap score with an apples-to-apples comparison against a hand-tuned baseline on identical held-out edges. That comparison — not a novel architecture — is the contribution here.</p>
+      <p>The GNN sits <strong>alongside</strong>, never inside, the LLM layer: the LLM is a pluggable, non-trained narration component; the GNN is the actual trained, structured-output-only model. Keeping them separate is itself a stated design decision.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-gnn-data" class="tight">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">06</span> Graph construction</div>
+    <h2 class="kicker">Built by the real ingestion pipeline — not a toy generator.</h2>
+    <p class="lede narrow">The training graph is produced by running the same <code>IngestionAgent</code> → <code>NormalizationAgent</code> code the live API uses, against the current 10,000-row job corpus — so the logic being evaluated is the production logic.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Node type</th><th class="num">Count</th><th>Edge type</th><th class="num">Count</th></tr></thead>
+        <tbody>
+          <tr><td>Student</td><td class="num">3</td><td class="mono">HAS_SKILL</td><td class="num">11</td></tr>
+          <tr><td>Skill</td><td class="num">434</td><td class="mono">REQUIRES</td><td class="num">54,288</td></tr>
+          <tr><td>Job</td><td class="num">9,380</td><td class="mono">LEADS_TO <span style="color:var(--warn);font-family:-apple-system,sans-serif;font-size:11px;">(synthetic)</span></td><td class="num">388</td></tr>
+          <tr><td>Course</td><td class="num">30</td><td class="mono">TEACHES</td><td class="num">37</td></tr>
+          <tr><td>Category</td><td class="num">14</td><td class="mono">IN_CATEGORY</td><td class="num">9,380</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Exported from <code>backend/data/kaggle_jobs.csv</code> (10,000 rows) · <code>onet_skills.csv</code> (518 skills) · <code>synonyms.json</code> (215 aliases). Retrained &amp; re-evaluated at this scale 2026-07-18; 9,380 distinct jobs (not 10,000) because some posting IDs collapse to the same normalized job identity — consistent with the ingestion pipeline's own dedup behavior.</p>
+
+    <div class="callout warn" style="margin-top:28px;">
+      <div class="cl-label">Stated honestly — <code style="font-family:ui-monospace,monospace;">LEADS_TO</code> has no real data source yet</div>
+      <p>Nothing in the ingestion pipeline produces genuine skill-prerequisite pairs — no dataset defines "Python leads to Machine Learning" style progressions. <code style="font-family:ui-monospace,monospace;">LEADS_TO</code> edges are synthesized by a placeholder heuristic (same-category skills chained alphabetically) purely so the link-prediction task has something to train on for that relation. This is documented explicitly as a stand-in, tracked as Future Work — not presented as real curriculum data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-gnn-arch">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">07</span> Model architecture, layer by layer</div>
+    <h2 class="kicker">Embedding table → two rounds of message passing → dot-product decoder.</h2>
+
+    <div class="pipeline">
+      <div class="pstep">
+        <div class="k">Input</div>
+        <div class="v">Learned embedding table</div>
+        <div class="d">One <code style="font-family:ui-monospace,monospace;">nn.Embedding</code> table per node type — no rich numeric features exist in the schema yet, so every node starts as a vector the model tunes during training.</div>
+      </div>
+      <div class="parr">→</div>
+      <div class="pstep">
+        <div class="k">Layer 1</div>
+        <div class="v">HeteroConv + SAGEConv</div>
+        <div class="d">Every node averages its neighbors' vectors across every relation, forward <em>and</em> reverse (so a Skill also learns from the Jobs requiring it). ReLU non-linearity.</div>
+      </div>
+      <div class="parr">→</div>
+      <div class="pstep">
+        <div class="k">Layer 2</div>
+        <div class="v">HeteroConv + SAGEConv</div>
+        <div class="d">Repeats layer 1 — final vectors absorb information from neighbors-of-neighbors (2 hops). This is the "SAmple &amp; aggreGatE" in GraphSAGE.</div>
+      </div>
+      <div class="parr">→</div>
+      <div class="pstep">
+        <div class="k">Decoder</div>
+        <div class="v">Dot product</div>
+        <div class="d">Score(u,v) = embedding(u)·embedding(v) — deliberately the simplest possible decoder, so predictive power comes from the encoder, not decoder complexity.</div>
+      </div>
+      <div class="parr">→</div>
+      <div class="pstep">
+        <div class="k">Loss / inference</div>
+        <div class="v">BCEWithLogits → sigmoid</div>
+        <div class="d">Raw dot product is a logit during training (numerically stable); sigmoid converts it to a 0–1 score at inference.</div>
+      </div>
+    </div>
+
+    <div class="stat-row" style="margin-top:40px;">
+      <div class="stat"><div class="n mono">2</div><div class="l">Message-passing layers</div></div>
+      <div class="stat"><div class="n mono">64</div><div class="l">Hidden dimension</div></div>
+      <div class="stat"><div class="n mono">32</div><div class="l">Output embedding dimension</div></div>
+      <div class="stat"><div class="n mono">5</div><div class="l">Node types (heterogeneous)</div></div>
+    </div>
+    <p class="src">Sizes kept deliberately small given current graph scale — over-parameterizing would memorize rather than generalize. <code>ml/model.py</code>.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-gnn-train">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">08</span> Training procedure</div>
+    <h2 class="kicker">Leakage-safe split, honest negative sampling, 60 epochs, full-batch.</h2>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th style="width:26%;">Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td class="us">1. Edge split</td><td>Each target relation (<code>REQUIRES</code>, <code>LEADS_TO</code>) split 80 / 10 / 10 into train / val / test — <em>per edge</em>, not per node. Deterministic (seed = 42), independently unit-tested (<code>ml/tests/test_split.py</code>).</td></tr>
+          <tr><td class="us">2. Leakage prevention</td><td>Held-out val/test edges are removed from the graph entirely before training — not just excluded from the loss. Message passing only ever sees train-split positives, so the model can't "see" a held-out edge's structure even indirectly.</td></tr>
+          <tr><td class="us">3. Negative sampling</td><td>For every real edge, one fake edge is sampled and checked against the <strong>full</strong> positive set (train+val+test combined) — so a "negative" can never secretly be a held-out real edge.</td></tr>
+          <tr><td class="us">4. Optimization</td><td>60 epochs, Adam optimizer, learning rate 0.01. Full-batch: encode the whole graph once per epoch, score every train edge (pos + neg) via the dot-product decoder, backpropagate <code>BCEWithLogitsLoss</code> summed across both relations.</td></tr>
+          <tr><td class="us">5. Checkpointing</td><td>Weights, architecture config, node-ID↔index mapping, and full per-epoch loss history saved to <code>ml/checkpoints/gnn_link_predictor.pt</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stat-row" style="margin-top:36px;">
+      <div class="stat"><div class="n mono">1.3843 → 0.0310</div><div class="l">Train loss, epoch 1 → 60</div></div>
+      <div class="stat"><div class="n mono">0.7222 → 0.9367</div><div class="l">Val AUC, epoch 1 → peak (ep. 50)</div></div>
+      <div class="stat"><div class="n mono">0.9352</div><div class="l">Val AUC at epoch 60 (mild dip)</div></div>
+      <div class="stat"><div class="n mono">~30s</div><div class="l">Full pipeline wall-clock (CPU)</div></div>
+    </div>
+    <p class="src">No early stopping is used (deliberately kept simple at this scale) — the small epoch-50→60 dip is a mild overfitting signal noted honestly, not hidden.</p>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-gnn-eval">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">09</span> Evaluation — fair, identical test sets</div>
+    <h2 class="kicker">GNN vs. the production algorithmic baseline, on the exact same held-out edges.</h2>
+    <p class="lede narrow">
+      <strong style="color:var(--ink);">AUC-ROC</strong> — probability a random real edge outscores a random fake one (0.5 = chance, 1.0 = perfect).
+      <strong style="color:var(--ink);">Hits@10</strong> — fraction of real edges ranking in the top 10 against negative candidates.
+      <strong style="color:var(--ink);">MRR</strong> — mean of 1÷rank across real edges; rewards the very best rank, not just top-10.
+    </p>
+
+    <div class="callout good">
+      <div class="cl-label">The fairness guarantee</div>
+      <p>The identical <code style="font-family:ui-monospace,monospace;">splits</code> object is passed to both <code style="font-family:ui-monospace,monospace;">evaluate_gnn()</code> and <code style="font-family:ui-monospace,monospace;">evaluate_baseline()</code> in one function call — neither model can get an easier test set. The baseline itself is not a strawman: it reuses <code style="font-family:ui-monospace,monospace;">RecommendationAgent</code>'s exact production Jaccard / <code>LEADS_TO</code>-reachability formulas, imported directly, not reimplemented.</p>
+    </div>
+
+    <div class="chart-block">
+      <div class="legend">
+        <span class="sw"><span class="dot" style="background:var(--series-gnn);"></span>GNN (GraphSAGE)</span>
+        <span class="sw"><span class="dot" style="background:var(--series-baseline);"></span>Algorithmic baseline</span>
+      </div>
+      <div class="charts-row">
+
+        <div class="metric-chart">
+          <div class="mc-title">AUC-ROC</div>
+          <div class="mc-sub">0.5 = chance · 1.0 = perfect</div>
+          <div class="plot">
+            <div class="gridline" style="bottom:0%;"><span>0</span></div>
+            <div class="gridline" style="bottom:25%;"><span>.25</span></div>
+            <div class="gridline" style="bottom:50%;"><span>.50</span></div>
+            <div class="gridline" style="bottom:75%;"><span>.75</span></div>
+            <div class="gridline" style="bottom:100%;"><span>1.0</span></div>
+            <div class="groups">
+              <div class="bargroup">
+                <div class="bar gnn" style="height:93.5%;"><span class="val">.935</span></div>
+                <div class="bar base" style="height:96.1%;"><span class="val">.961</span></div>
+              </div>
+              <div class="bargroup">
+                <div class="bar gnn" style="height:68.5%;"><span class="val">.685</span></div>
+                <div class="bar base" style="height:50.0%;"><span class="val">.500</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="xlabels"><div>REQUIRES</div><div>LEADS_TO</div></div>
+        </div>
+
+        <div class="metric-chart">
+          <div class="mc-title">Hits@10</div>
+          <div class="mc-sub">real edge lands in top 10</div>
+          <div class="plot">
+            <div class="gridline" style="bottom:0%;"><span>0</span></div>
+            <div class="gridline" style="bottom:25%;"><span>.25</span></div>
+            <div class="gridline" style="bottom:50%;"><span>.50</span></div>
+            <div class="gridline" style="bottom:75%;"><span>.75</span></div>
+            <div class="gridline" style="bottom:100%;"><span>1.0</span></div>
+            <div class="groups">
+              <div class="bargroup">
+                <div class="bar gnn" style="height:1.8%;"><span class="val">.018</span></div>
+                <div class="bar base" style="height:11.6%;"><span class="val">.116</span></div>
+              </div>
+              <div class="bargroup">
+                <div class="bar gnn" style="height:53.8%;"><span class="val">.538</span></div>
+                <div class="bar base" style="height:100%;"><span class="val">1.00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="xlabels"><div>REQUIRES</div><div>LEADS_TO</div></div>
+        </div>
+
+        <div class="metric-chart">
+          <div class="mc-title">MRR</div>
+          <div class="mc-sub">mean reciprocal rank</div>
+          <div class="plot">
+            <div class="gridline" style="bottom:0%;"><span>0</span></div>
+            <div class="gridline" style="bottom:25%;"><span>.25</span></div>
+            <div class="gridline" style="bottom:50%;"><span>.50</span></div>
+            <div class="gridline" style="bottom:75%;"><span>.75</span></div>
+            <div class="gridline" style="bottom:100%;"><span>1.0</span></div>
+            <div class="groups">
+              <div class="bargroup">
+                <div class="bar gnn" style="height:1.3%;"><span class="val">.013</span></div>
+                <div class="bar base" style="height:6.7%;"><span class="val">.067</span></div>
+              </div>
+              <div class="bargroup">
+                <div class="bar gnn" style="height:42.7%;"><span class="val">.427</span></div>
+                <div class="bar base" style="height:100%;"><span class="val">1.00</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="xlabels"><div>REQUIRES</div><div>LEADS_TO</div></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="table-scroll" style="margin-top:28px;">
+      <table>
+        <thead><tr><th>Edge type</th><th>Model</th><th class="num">AUC-ROC</th><th class="num">Hits@10</th><th class="num">MRR</th><th class="num">#test pos / neg</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2" style="vertical-align:middle;">REQUIRES</td><td>GNN</td><td class="num">0.935</td><td class="num">0.018</td><td class="num">0.013</td><td class="num">5,429 / 5,429</td></tr>
+          <tr><td>Baseline</td><td class="num">0.961</td><td class="num">0.116</td><td class="num">0.067</td><td class="num">5,429 / 5,429</td></tr>
+          <tr><td rowspan="2" style="vertical-align:middle;">LEADS_TO</td><td>GNN</td><td class="num">0.685</td><td class="num">0.538</td><td class="num">0.427</td><td class="num">39 / 39</td></tr>
+          <tr><td>Baseline</td><td class="num">0.500</td><td class="num">1.000</td><td class="num">1.000</td><td class="num">39 / 39</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-gnn-honest" class="tight">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">10</span> Reading the result honestly</div>
+    <h2 class="kicker">The baseline still wins on REQUIRES, at 10×+ scale. That's the finding — stated, not hidden.</h2>
+
+    <div class="callout warn">
+      <div class="cl-label">What the numbers actually say</div>
+      <p><strong>REQUIRES:</strong> AUC-ROC narrowed to a near-tie (0.961 baseline vs 0.935 GNN), but Hits@10/MRR did not (0.116 vs 0.018, 0.067 vs 0.013). The candidate pool grew from 71 negatives to 5,429, which mechanically makes Hits@10 far stricter for both models — but more importantly, the Jaccard/co-occurrence baseline directly reuses ground-truth job-skill co-occurrence structure, and that advantage did not erode with scale the way the literature precedent (GNNs overtaking baselines "at scale") predicted it might.</p>
+      <p><strong>LEADS_TO:</strong> the GNN's AUC-ROC rose substantially (0.306 → 0.685) with more skill-taxonomy structure to learn from — real progress. But the baseline still wins Hits@10/MRR outright (1.00/1.00) because it directly reconstructs the deterministic alphabetical-chain heuristic that generated the synthetic edges — tautological reconstruction, not generalization, and expected given <code style="font-family:ui-monospace,monospace;">LEADS_TO</code> is still placeholder data.</p>
+    </div>
+
+    <div class="callout good">
+      <div class="cl-label">What this section of the pipeline does prove</div>
+      <p>The full pipeline — export → leakage-safe split → negative sampling → train → checkpoint → evaluate → fair head-to-head comparison — is built correctly, reproducible (fixed seeds throughout), and now demonstrated at the intended thesis scale (9,380 jobs / 434 skills), not a small fixture. The defensible claim: <em>the machinery is correct and proven at full scale; at this scale, a hand-tuned algorithmic baseline is a genuinely strong, hard-to-beat competitor for this specific graph and task — and the value delivered is the rigorous, reproducible comparison infrastructure that proved that, not a foregone "GNN wins" conclusion.</em></p>
+    </div>
+
+    <h3 style="font-size:16px;margin-top:36px;">Two limitations, stated together</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th style="width:22%;">Limitation</th><th>Detail</th><th>What would resolve it</th></tr></thead>
+        <tbody>
+          <tr><td class="us">Baseline still wins on REQUIRES</td><td>Even at full 10k-job / 434-skill scale, this GNN configuration does not outperform the hand-tuned Jaccard baseline.</td><td>Richer input node features (e.g. text embeddings of job descriptions) instead of learned-from-scratch embedding tables — or acceptance that the baseline is genuinely strong here.</td></tr>
+          <tr><td class="us"><code style="font-family:ui-monospace,monospace;">LEADS_TO</code> has no real data source</td><td>No dataset defines genuine skill-prerequisite pairs; still a documented alphabetical-chain placeholder (now 39 test edges vs. 6 previously).</td><td>Real curriculum/progression data — e.g. derived from course ordering or co-occurrence-plus-difficulty heuristics.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-degradation">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">11</span> How it's wired into the live system</div>
+    <h2 class="kicker">The GNN is optional infrastructure — the exact same pattern as the pluggable LLM.</h2>
+    <p class="lede narrow">Neither trained component is a single point of failure. The system — and its test suite — is designed to keep working correctly even if the model checkpoint were deleted or torch were never installed.</p>
+
+    <div class="agent-grid" style="margin-top:32px;">
+      <div class="agent algo"><div class="glyph">01</div><div><h4>Never raises on construction</h4><p>No checkpoint on disk, or torch not installed → <code>is_available = False</code> with a human-readable <code>unavailable_reason</code>, not a crash.</p></div></div>
+      <div class="agent algo"><div class="glyph">02</div><div><h4>Returns <code>None</code>, never crashes</h4><p><code>score_requires()</code> / <code>score_leads_to()</code> return <code>None</code> when unavailable or for a node never seen at training time.</p></div></div>
+      <div class="agent algo"><div class="glyph">03</div><div><h4>Fallback helper built in</h4><p><code>score_requires_with_fallback()</code> returns <code>(score, source)</code> — <code>source</code> tells the caller whether the number came from <code>"gnn"</code> or <code>"algorithmic"</code>.</p></div></div>
+      <div class="agent algo"><div class="glyph">04</div><div><h4>Verified by test</h4><p><code>test_gnn_recommendation_agent.py</code> (plain backend env, no torch) + a torch-env test asserting graceful fallback with no checkpoint.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-rigor">
+  <div class="wrap wide">
+    <div class="eyebrow"><span class="idx">12</span> Engineering rigor</div>
+    <h2 class="kicker">TDD from line one — 290 passing tests across three independent suites.</h2>
+
+    <div class="phases">
+      <div class="phase"><div class="pn">Phase 1</div><h4>Foundation</h4><p>Requirements, design, DB schema &amp; Alembic migrations.</p></div>
+      <div class="phase"><div class="pn">Phase 2</div><h4>Intelligence Engine</h4><p>Write agent tests (red) → implement (green) → refactor.</p></div>
+      <div class="phase"><div class="pn">Phase 3</div><h4>API Layer</h4><p>Write router tests (red) → implement REST API (green) → refactor.</p></div>
+      <div class="phase"><div class="pn">Phase 4</div><h4>Frontend</h4><p>React UI components → integration + testing against the now-stable API contract.</p></div>
+    </div>
+
+    <div class="stat-row" style="margin-top:40px;">
+      <div class="stat"><div class="n mono">183</div><div class="l">Backend tests (pytest)</div></div>
+      <div class="stat"><div class="n mono">80</div><div class="l">Frontend tests (vitest)</div></div>
+      <div class="stat"><div class="n mono">27</div><div class="l">ML pipeline tests</div></div>
+      <div class="stat"><div class="n mono">0</div><div class="l">Skipped / failing</div></div>
+    </div>
+
+    <h3 style="font-size:16px;margin-top:40px;">Security &amp; correctness controls</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Control</th><th>Implementation</th></tr></thead>
+        <tbody>
+          <tr><td class="us">Authentication</td><td>JWT (HS256, 24h expiry); 11 of 13 endpoints require a valid Bearer token.</td></tr>
+          <tr><td class="us">Password storage</td><td>bcrypt, cost factor ≥ 12 — never plaintext or reversibly encrypted.</td></tr>
+          <tr><td class="us">Injection safety</td><td>Zero string-interpolated SQL or Cypher — every query is parameterized, including free-text skill search.</td></tr>
+          <tr><td class="us">Graceful degradation</td><td>Both the LLM layer and the GNN layer return valid, structured responses with the feature simply absent — never a 500.</td></tr>
+          <tr><td class="us">Performance</td><td>&lt; 2s response time target for recommendation / gap-analysis queries up to 1,000 jobs (NFR-01).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section id="s-close">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">13</span> Summary</div>
+    <h2 class="kicker">What to take away.</h2>
+
+    <div class="recap">
+      <div class="item"><div class="num">01</div><div><h4>Novelty is integration, not invention</h4><p>Three prior systems each solve part of this problem well. CareerGraph's contribution is combining persistent state, ordered pathing, and market grounding in one coherent, tested architecture.</p></div></div>
+      <div class="item"><div class="num">02</div><div><h4>Correctness and explanation are decoupled</h4><p>Every score is computed deterministically before the LLM ever sees it — the model can rephrase a result, never invent one.</p></div></div>
+      <div class="item"><div class="num">03</div><div><h4>The GNN is a rigorous comparison, honestly reported</h4><p>A hand-tuned baseline still wins on REQUIRES at full scale — reported plainly, with the leakage-safe, fair-comparison methodology that makes that finding trustworthy.</p></div></div>
+      <div class="item"><div class="num">04</div><div><h4>Two named, scoped limitations</h4><p><code style="font-family:ui-monospace,monospace;">LEADS_TO</code> is synthetic placeholder data; the dataset is realistic-scale but not real-world. Both have a concrete path to resolution, not hand-waving.</p></div></div>
+      <div class="item"><div class="num">05</div><div><h4>Built, not just designed</h4><p>290 passing tests, a live 9,380-job / 434-skill knowledge graph, a trained &amp; checkpointed model — every number in this deck is measured, not projected.</p></div></div>
+    </div>
+
+    <div class="callout warn" style="margin-top:44px;">
+      <div class="cl-label">Future work</div>
+      <p>1) A real <code style="font-family:ui-monospace,monospace;">LEADS_TO</code> data source — curriculum ordering or co-occurrence-plus-difficulty heuristics, replacing the alphabetical-chain placeholder. 2) Richer node input features (e.g. text embeddings of job descriptions) to test whether the GNN can close the REQUIRES gap. 3) Multi-seed evaluation (mean ± spread) to confirm the REQUIRES finding isn't split-fragile — lower priority now that it held up across a 71→5,429 test-edge scale-up rather than reversing.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+    var dotsNav = document.getElementById('dots');
+    var labels = {
+      's-cover': 'Cover',
+      's-problem': 'The gap',
+      's-contrib': 'Contribution',
+      's-headtohead': 'Head-to-head',
+      's-architecture': 'Architecture',
+      's-gnn-why': 'GNN — why',
+      's-gnn-data': 'GNN — data',
+      's-gnn-arch': 'GNN — architecture',
+      's-gnn-train': 'GNN — training',
+      's-gnn-eval': 'GNN — evaluation',
+      's-gnn-honest': 'GNN — honest read',
+      's-degradation': 'Graceful fallback',
+      's-rigor': 'Engineering rigor',
+      's-close': 'Summary'
+    };
+    sections.forEach(function (sec) {
+      var a = document.createElement('a');
+      a.href = '#' + sec.id;
+      var tip = document.createElement('span');
+      tip.className = 'tip';
+      tip.textContent = labels[sec.id] || sec.id;
+      a.appendChild(tip);
+      a.dataset.target = sec.id;
+      dotsNav.appendChild(a);
+    });
+    var dotEls = Array.prototype.slice.call(dotsNav.querySelectorAll('a'));
+
+    function onScroll() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      document.getElementById('progress').style.width = pct + '%';
+
+      var mid = scrollTop + window.innerHeight * 0.4;
+      var current = sections[0].id;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop <= mid) current = sections[i].id;
+      }
+      dotEls.forEach(function (d) {
+        d.classList.toggle('active', d.dataset.target === current);
+      });
+    }
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>

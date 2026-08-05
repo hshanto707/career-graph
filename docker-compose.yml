@@ -1,4 +1,8 @@
-version: "3.9"
+# Pinned so this project's containers/volumes never collide with another
+# unrelated project that also happens to have a folder with the same name as
+# this repo -- without this, Compose falls back to naming everything after
+# the current directory.
+name: careergraph
 
 services:
   postgres:

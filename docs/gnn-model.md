@@ -29,15 +29,25 @@ prediction task has something to train/evaluate on. This is clearly marked
 in the module docstring as a stand-in for real curriculum/prerequisite data
 (tracked as Future Work).
 
-Exported graph (from the current seed data):
+Exported graph (from `backend/data/kaggle_jobs.csv`, the 10,000-row synthetic
+dataset, `onet_skills.csv` at 518 skills, `synonyms.json` at 215 aliases —
+retrained/re-evaluated 2026-07-18, actual `ml/export_graph.py` output):
 
 | Node type | Count | Edge type | Count |
 |---|---|---|---|
 | Student | 3 | (Student)-HAS_SKILL->(Skill) | 11 |
-| Skill | 75 | (Job)-REQUIRES->(Skill) | 714 |
-| Job | 165 | (Skill)-LEADS_TO->(Skill) | 56 (synthetic) |
+| Skill | 434 | (Job)-REQUIRES->(Skill) | 54,288 |
+| Job | 9,380 | (Skill)-LEADS_TO->(Skill) | 388 (synthetic) |
 | Course | 30 | (Course)-TEACHES->(Skill) | 37 |
-| Category | 8 | (Job)-IN_CATEGORY->(Category) | 165 |
+| Category | 14 | (Job)-IN_CATEGORY->(Category) | 9,380 |
+
+(9,380 distinct Job nodes rather than the full 10,000 rows because some
+posting ids collapse to the same normalized job identity — consistent with
+the dedup behavior already exercised by the ingestion pipeline's own test
+suite; 54,288 REQUIRES edges is in the same ballpark as the 55,428
+skill-edge figure separately reported for raw ingestion in
+`docs/build-status.md`, the small difference coming from this export path's
+own node/edge bookkeeping rather than a discrepancy in the underlying data.)
 
 ## Architecture
 
@@ -84,19 +94,24 @@ python ml/evaluate.py                     # metrics + baseline comparison table
 pytest ml/tests/                          # 27 tests, all executable with the above installed
 ```
 
-## Actual results (this sandbox, seed data, 60 epochs, seed=42)
+## Actual results (10,000-row dataset, 60 epochs, seed=42, retrained 2026-07-18)
 
-Training loss: `1.39 → 0.016` over 60 epochs (learns; not a full
-convergence claim on this small synthetic dataset — see caveats below).
+Training loss: `1.3843 → 0.0310` over 60 epochs (epoch 1 val_auc 0.7222,
+peaking at 0.9367 at epoch 50, epoch 60 val_auc 0.9352 — a slight dip after
+the peak, consistent with the model starting to overfit the train split by
+epoch 60 rather than still under-fitting). Full 60-epoch run, including
+graph export/build, took **~30 seconds wall-clock** on this machine
+(full-batch training over a ~9.4k-Job graph is still cheap for this model
+size).
 
 Evaluation (`ml/evaluate.py` output, `ml/results/evaluation_report.json`):
 
 | Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |
 |---|---|---|---|---|---|---|
-| Job-REQUIRES->Skill | GNN (GraphSAGE) | 0.927 | 0.873 | 0.651 | 71 | 71 |
-| Job-REQUIRES->Skill | Algorithmic baseline | 0.975 | 1.000 | 0.765 | 71 | 71 |
-| Skill-LEADS_TO->Skill | GNN (GraphSAGE) | 0.306 | 1.000 | 0.442 | 6 | 6 |
-| Skill-LEADS_TO->Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 6 | 6 |
+| Job-REQUIRES->Skill | GNN (GraphSAGE) | 0.935 | 0.018 | 0.013 | 5,429 | 5,429 |
+| Job-REQUIRES->Skill | Algorithmic baseline | 0.961 | 0.116 | 0.067 | 5,429 | 5,429 |
+| Skill-LEADS_TO->Skill | GNN (GraphSAGE) | 0.685 | 0.538 | 0.427 | 39 | 39 |
+| Skill-LEADS_TO->Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 39 | 39 |
 
 Both models are scored via `evaluate.py` on **the identical `splits` object**
 (built once, passed to both `evaluate_gnn` and `evaluate_baseline`) — the
@@ -104,25 +119,46 @@ correctness requirement test-plan.md #6 calls out explicitly.
 
 ### Honest read of these numbers
 
-On REQUIRES, the Jaccard/job-similarity baseline currently **beats** the
-GNN on this seed dataset — expected and documented, not hidden: 165 jobs /
-75 skills is far too small/dense for a learned encoder to out-generalize a
-strong collaborative-filtering baseline, and the baseline directly reuses
-the ground-truth co-occurrence structure. On LEADS_TO (only 56 synthetic
-edges, 6 test positives), both models are noisy for the same reason —
-6 test edges is not a statistically meaningful sample.
+**At 10x+ the previous scale, the algorithmic baseline still wins on
+REQUIRES, on all three metrics** — this is the honest result, not the
+hoped-for one. AUC-ROC is close (0.961 baseline vs 0.935 GNN) but Hits@10
+and MRR are not (0.116 vs 0.018, 0.067 vs 0.013). Two things matter for
+reading this correctly, not just "the GNN lost again":
+1. The much larger candidate pool (5,429 negatives vs 71 previously) makes
+   Hits@10/MRR mechanically harder for *both* models — a top-10 hit out of
+   ~5,400 candidates is a much stricter bar than out of 71 — so the raw
+   Hits@10 numbers are not comparable to the old small-fixture run.
+2. The Jaccard/co-occurrence baseline still directly reuses the
+   ground-truth job-skill co-occurrence structure regardless of scale;
+   scaling up the graph didn't erode that advantage the way the
+   literature-review precedent (Node2Vec/GNN approaches overtaking
+   baselines "at scale") predicted it might. With this architecture
+   (60 epochs, hidden=64/out=32, full-batch, no richer input features than
+   a learned embedding table) and this particular synthetic dataset, the
+   GNN does **not** overtake the baseline on REQUIRES — that expectation
+   from §9 of `docs/gnn-defense-guide.md` did not pan out and is corrected
+   there.
 
-**These are pipeline-correctness numbers, not thesis-defense numbers.**
-Per `test-plan.md`'s documented decision: "full-scale (10k-job) metrics are
-the ones reported in the thesis, seed-data runs are for pipeline
-correctness only." The full pipeline (export → split → negative-sample →
-train → checkpoint → evaluate → baseline-compare) is proven correct and
-reproducible end-to-end; re-running it unchanged against the real
-10,000+-job Kaggle dataset once available (see `docs/data-sources.md`) is
-the only remaining step for thesis-grade numbers, and would give the GNN
-enough graph structure to plausibly out-generalize the baseline (the
-literature-review precedents this project follows all show that pattern at
-scale, not at n=165).
+On LEADS_TO, the picture changed with scale but is still not a clean win:
+the GNN's AUC-ROC rose substantially (0.306 → 0.685), i.e. it now separates
+real from fake LEADS_TO pairs meaningfully better than chance, likely
+because 434 skills across 14 categories gives the encoder real neighborhood
+structure to learn from instead of 75 skills in 8 categories. But the
+baseline still wins Hits@10/MRR outright (1.000/1.000) because it directly
+reconstructs the deterministic alphabetical-chain heuristic via depth-1/2
+reachability over the train edges — that's tautological, not generalization,
+and is expected given `LEADS_TO` is still synthetic placeholder data (see
+above). The test-positive count for LEADS_TO grew from 6 to **39**, which is
+a real improvement in statistical meaningfulness (still a modest sample, but
+no longer "a single flipped comparison swings AUC by ~0.17").
+
+**Bottom line:** the full pipeline (export → split → negative-sample →
+train → checkpoint → evaluate → baseline-compare) has now been proven
+correct and reproducible at the intended 10k-job/500+-skill thesis scale,
+not just on the small fixture. The honest headline finding is that the
+algorithmic baseline remains competitive-to-better than this GNN
+configuration on REQUIRES even at scale, and LEADS_TO is more measurable
+than before but still evaluates a synthetic, non-real relation.
 
 ## Baseline comparison methodology (`ml/baseline.py`)
 
@@ -161,12 +197,16 @@ mirrors the `LLMProvider` fallback pattern exactly:
 - `ml/tests/test_graph_build.py`, `ml/tests/test_split.py` — pure Python,
   **runnable in any environment** (only need `pytest` + the same deps
   `backend/requirements.txt` already has: rapidfuzz, neo4j driver,
-  pydantic). Actually run in this sandbox: **19 passed**.
+  pydantic).
 - `ml/tests/test_gnn_pipeline_requires_torch.py` — needs
   `ml/requirements.txt` installed; auto-skips (not fails) if torch/PyG/
-  sklearn aren't importable. Actually run in this sandbox (torch installed):
-  **8 passed**, covering test-plan.md GNN #1–#4, #7, #8, plus
+  sklearn aren't importable, covering test-plan.md GNN #1–#4, #7, #8, plus
   reproducibility and mismatched-checkpoint edge cases.
+- Full run, `ml/.venv` with torch/torch_geometric/scikit-learn actually
+  installed (2026-07-18): **`ml/tests` — 27 passed, 0 skipped** (all
+  torch-dependent tests actually executed, not skipped, in ~170s wall-clock
+  — the previous report's "19 passed, 1 skipped"/"8 passed" figures were
+  from an environment where torch import failed).
 - `backend/tests/test_gnn_recommendation_agent.py` — runs in the plain
   backend suite (173 backend tests total, all passing), covering the
   fallback contract (test-plan.md GNN #8).

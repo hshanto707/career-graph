@@ -36,19 +36,24 @@ For each, some real edges are hidden from the model during training (the **test 
 
 The graph is built by running the **real** `IngestionAgent` → `NormalizationAgent` pipeline (the same production code the backend API uses) against the seed/demo dataset, not a separate toy generator — this matters because it means the graph-construction logic being evaluated is the actual system logic, not a simplified stand-in.
 
-**Honest caveat #1 — data scale.** At the time this model was last trained, the graph was built from the *original small seed fixture* (165 jobs, 75 skills, 3 demo students, 30 courses), not the 10,000-row synthetic dataset generated afterward. **This is the single most important thing to say proactively in the defense**: the pipeline is fully built, tested, and proven correct, but the reported numbers below are from the small fixture and need to be re-run against the 10k-row dataset before being called final thesis numbers. (See §9 "What to do before defense.")
+**Honest caveat #1 — data scale (resolved 2026-07-18).** The model has now been retrained and re-evaluated against the 10,000-row synthetic dataset (`backend/data/kaggle_jobs.csv`, 518-skill `onet_skills.csv`, 215-alias `synonyms.json`) rather than the original small seed fixture (165 jobs / 75 skills). The results in §8 below are from that retrain. This does **not** mean the dataset is real-world data — it's still synthetic, generated data at realistic target scale, not an actual Kaggle export or real O*NET/ESCO taxonomy — that separate caveat still stands (see `docs/build-status.md` gap #1).
 
 **Honest caveat #2 — `LEADS_TO` has no real data source.** Nothing in the ingestion pipeline ever produces genuine skill-prerequisite edges (no dataset defines "Python leads to Machine Learning" style progressions). `LEADS_TO` edges are **synthesized** by a placeholder heuristic (skills in the same O*NET category are chained alphabetically) purely so the link-prediction task has *something* to train/evaluate on for that edge type. This is explicitly documented as a stand-in, tracked as Future Work. If asked "where does your prerequisite graph come from," the honest answer is: it doesn't exist as real data yet — this is the model correctly learning to predict a synthetic, heuristic ordering, not a validated pedagogical curriculum.
 
-Graph size actually exported and trained on:
+Graph size actually exported and trained on (10,000-row dataset, retrained 2026-07-18):
 
 | Node type | Count | Edge type | Count |
 |---|---|---|---|
 | Student | 3 | `HAS_SKILL` | 11 |
-| Skill | 75 | `REQUIRES` | 714 |
-| Job | 165 | `LEADS_TO` (synthetic) | 56 |
+| Skill | 434 | `REQUIRES` | 54,288 |
+| Job | 9,380 | `LEADS_TO` (synthetic) | 388 |
 | Course | 30 | `TEACHES` | 37 |
-| Category | 8 | `IN_CATEGORY` | 165 |
+| Category | 14 | `IN_CATEGORY` | 9,380 |
+
+(For reference, the previous small-fixture run this document quoted before
+retraining was: Student 3, Skill 75, Job 165, Course 30, Category 8;
+`HAS_SKILL` 11, `REQUIRES` 714, `LEADS_TO` 56, `TEACHES` 37, `IN_CATEGORY`
+165.)
 
 ---
 
@@ -75,7 +80,7 @@ Graph size actually exported and trained on:
 4. **Training loop.** 60 epochs, Adam optimizer, learning rate 0.01. Each epoch: encode the whole graph once (2 rounds of message passing), score every training edge (positive and negative) with the dot-product decoder, compute binary cross-entropy loss summed across both target edge types, backpropagate, update weights. Validation AUC is computed every epoch on the held-out validation split (not used for training) purely to monitor progress — it does not affect training itself in this basic version (no early stopping was implemented, deliberately kept simple given the small scale).
 5. **Checkpoint.** The trained weights, architecture config, node-ID-to-index mapping, and full training history (loss per epoch) are saved to `ml/checkpoints/gnn_link_predictor.pt` — this is what a "trained model" concretely means here: a file containing tuned numbers, not a live service.
 
-**What actually happened when trained:** loss went from **1.39 → 0.016** over 60 epochs — the model is clearly learning to separate real from fake edges on the training data (this is a "does it learn at all" sanity signal, not itself a generalization claim — that's what the held-out test metrics in §7 are for).
+**What actually happened when trained (10k-row dataset, 2026-07-18):** loss went from **1.3843 → 0.0310** over 60 epochs; validation AUC rose from 0.7222 (epoch 1) to a peak of 0.9367 (epoch 50), settling at 0.9352 by epoch 60 — the model is clearly learning to separate real from fake edges on the training data (this is a "does it learn at all" sanity signal, not itself a generalization claim — that's what the held-out test metrics in §7 are for). The slight val-AUC dip between epoch 50 and 60 is a mild overfitting signal, not a reason to add many more epochs at this configuration. The full 60-epoch run (including graph export/build) took **~30 seconds wall-clock**.
 
 ---
 
@@ -95,33 +100,39 @@ Graph size actually exported and trained on:
 
 ---
 
-## 8. Actual results (small seed graph — see honest caveat in §4 and §9)
+## 8. Actual results (10,000-row dataset, retrained 2026-07-18 — see §4)
 
 | Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |
 |---|---|---|---|---|---|---|
-| Job→REQUIRES→Skill | GNN (GraphSAGE) | 0.927 | 0.873 | 0.651 | 71 | 71 |
-| Job→REQUIRES→Skill | Algorithmic baseline | 0.975 | 1.000 | 0.765 | 71 | 71 |
-| Skill→LEADS_TO→Skill | GNN (GraphSAGE) | 0.306 | 1.000 | 0.442 | 6 | 6 |
-| Skill→LEADS_TO→Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 6 | 6 |
+| Job→REQUIRES→Skill | GNN (GraphSAGE) | 0.935 | 0.018 | 0.013 | 5,429 | 5,429 |
+| Job→REQUIRES→Skill | Algorithmic baseline | 0.961 | 0.116 | 0.067 | 5,429 | 5,429 |
+| Skill→LEADS_TO→Skill | GNN (GraphSAGE) | 0.685 | 0.538 | 0.427 | 39 | 39 |
+| Skill→LEADS_TO→Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 39 | 39 |
+
+(Previous small-fixture numbers, superseded by the above: REQUIRES GNN
+0.927/0.873/0.651 vs baseline 0.975/1.000/0.765 on 71/71 test edges;
+LEADS_TO GNN 0.306/1.000/0.442 vs baseline 0.500/1.000/1.000 on 6/6 test
+edges.)
 
 ### How to talk about these numbers honestly (this is the actual defense answer)
 
-**The baseline currently wins on REQUIRES, and both models are near-meaningless on LEADS_TO.** Do not hide this — state it proactively, then explain *why*, which is the more impressive part:
+**The baseline still wins on REQUIRES at 10x-plus scale — the literature-precedent hope that scale would close or reverse the gap did not pan out for this configuration.** Do not hide this — state it proactively, then explain *why*, which is the more informative part:
 
-1. **Why the baseline wins at this scale:** 165 jobs / 75 skills is a small, dense graph. A Jaccard/co-occurrence baseline directly reuses the ground-truth structure (two jobs are "similar" precisely because they share required skills — that's almost the definition of the task). A learned encoder has to *discover* that pattern from noisy embeddings with only 60 epochs of training on ~570 training edges. At this scale, hand-crafted structural similarity is a very strong, hard-to-beat baseline — this is expected and is exactly what the literature review's precedents predict (Node2Vec/GNN approaches consistently show their advantage emerging at scale — thousands to hundreds of thousands of edges — not at n=165).
-2. **Why LEADS_TO numbers are close to meaningless:** only **6 test positive edges** exist for that relation. Six data points cannot support a statistically reliable AUC-ROC estimate (a single flipped comparison swings AUC by ~0.17). This is a sample-size problem, not a model-quality problem, and is compounded by `LEADS_TO` being synthetic/heuristic data in the first place (§4).
-3. **What this section of the pipeline *does* prove:** the full pipeline — graph export, leakage-safe splitting, negative sampling, training, checkpointing, evaluation, and a fair head-to-head comparison — is built correctly, runs end-to-end, and is reproducible (fixed seeds throughout). That is the defensible claim right now: **"the machinery is correct and proven; the current numbers are a pipeline-correctness demonstration on a small fixture, not yet the thesis's final scaled result."**
+1. **REQUIRES at scale:** AUC-ROC narrowed to a near-tie (0.961 baseline vs 0.935 GNN), but Hits@10/MRR did not (0.116 vs 0.018, 0.067 vs 0.013). Two things explain this without excusing it: (a) the candidate pool grew from 71 negatives to 5,429 negatives, which mechanically makes Hits@10 far stricter for *both* models — the raw Hits@10 numbers are not comparable across the two runs; (b) the Jaccard/co-occurrence baseline still directly reuses the ground-truth job-skill co-occurrence structure regardless of graph size, and that advantage did not erode with scale the way the literature precedent predicted. Said plainly: **at this scale, with this architecture (60 epochs, hidden=64/out=32, embedding-table-only inputs), the GNN does not overtake the baseline on REQUIRES.** That is a real, useful finding, not a failure to hide.
+2. **LEADS_TO at scale:** the test-positive count grew from 6 to **39** (more statistically meaningful, though still modest), and the GNN's AUC-ROC rose substantially (0.306 → 0.685) — it now discriminates real from fake LEADS_TO pairs meaningfully better than chance, plausibly because 434 skills across 14 categories gives the encoder real neighborhood structure to learn versus 75 skills in 8 categories before. But the baseline still wins Hits@10/MRR outright (1.000/1.000) because it directly reconstructs the deterministic alphabetical-chain heuristic via depth-1/2 reachability over train edges — that's tautological reconstruction of a known synthetic rule, not generalization, and is expected given `LEADS_TO` is still placeholder data (§4).
+3. **What this section of the pipeline *does* prove:** the full pipeline — graph export, leakage-safe splitting, negative sampling, training, checkpointing, evaluation, and a fair head-to-head comparison — is built correctly, runs end-to-end, and is reproducible (fixed seeds throughout), now demonstrated at the intended thesis scale (9,380 jobs / 434 skills), not just a small fixture. The defensible claim is: **"the machinery is correct, proven, and now run at full scale; at this scale, the hand-tuned algorithmic baseline is still competitive-to-better than this GNN configuration on REQUIRES, and LEADS_TO remains an evaluation of synthetic placeholder data even with a larger, more meaningful test set."**
 
-If an examiner pushes on "so does the GNN actually help or not" — the honest, prepared answer is: *"On this small fixture, no — the algorithmic baseline wins, which is itself an expected and informative result consistent with the literature. The full evaluation infrastructure is built to re-run unchanged against the real 10,000-job dataset, where the literature's precedents (and general link-prediction scaling behavior) predict the GNN should close or reverse this gap, because a learned encoder generalizes to unseen skill/job combinations in ways a purely lexical Jaccard-overlap score structurally cannot. That re-run is the next step, not yet done."*
+If an examiner pushes on "so does the GNN actually help or not" — the honest, prepared answer is: *"At the full 10k-job / 434-skill scale, no — the algorithmic baseline still wins on REQUIRES, on all three metrics, which contradicts what the literature precedent would predict and is worth stating plainly rather than downplaying. AUC-ROC is close (0.96 vs 0.94), but the baseline's Jaccard/co-occurrence signal remains a genuinely strong, hard-to-beat approach for this task and this dataset. On LEADS_TO, the GNN's AUC-ROC improved a lot with scale (0.31 → 0.69), showing it can learn real structure there, but that relation is still synthetic placeholder data, so I wouldn't over-read even the improved numbers. The honest conclusion is that a hand-tuned structural-similarity baseline is a legitimately strong competitor for this graph and task, and the value of the GNN work is the rigorous, reproducible comparison infrastructure that proved that — not a foregone 'GNN wins' conclusion."*
 
 ---
 
 ## 9. What to do before defense (in priority order)
 
-1. **Retrain and re-evaluate against the 10,000-row dataset** generated after this model was last trained (`backend/data/kaggle_jobs.csv`, 518-skill taxonomy). This requires no new code — `ml/graph_build.py`/`export_graph.py` need to point at the real ingested 10k-job graph instead of the small seed fixture, then `python ml/train_gnn.py && python ml/evaluate.py` re-run as-is. This is the single highest-value action: it turns "pipeline-correctness numbers" into "thesis-defense numbers," and per the literature precedent, is where the GNN has a real chance to outperform the baseline.
-2. **Decide and document a real (even if simple) `LEADS_TO` data source** — e.g., derive prerequisite pairs from course curricula order, or from co-occurrence-plus-difficulty heuristics — rather than the current alphabetical-within-category placeholder, so that edge type's evaluation is meaningful rather than a small-sample artifact.
-3. **Re-run with the environment properly installed** (`ml/requirements.txt`: torch, torch_geometric, scikit-learn) — confirmed installable and previously run successfully (torch 2.13.0, torch_geometric 2.8.0, scikit-learn 1.9.0), but must be re-verified in whatever machine will run the final numbers.
-4. Optionally: run 2-3 different seeds and report mean ± spread for the metrics, to preempt "how do you know this isn't just luck on one random split" — the split/training code is already seed-parameterized, so this is a rerun, not new code.
+1. **DONE (2026-07-18): retrained and re-evaluated against the 10,000-row dataset** (`backend/data/kaggle_jobs.csv`, 518-skill `onet_skills.csv`, 215-alias `synonyms.json`). No new code was needed — `ml/graph_build.py`/`export_graph.py` already pointed at `backend/data/`, so re-running `python ml/export_graph.py && python ml/train_gnn.py --epochs 60 && python ml/evaluate.py` picked up the new scale automatically. Result: the hoped-for "GNN overtakes baseline at scale" outcome did **not** materialize for REQUIRES with this configuration (see §8) — this is now the reported, final-for-this-configuration thesis number, not a placeholder.
+2. **Still open: decide and document a real (even if simple) `LEADS_TO` data source** — e.g., derive prerequisite pairs from course curricula order, or from co-occurrence-plus-difficulty heuristics — rather than the current alphabetical-within-category placeholder. Test-positive count did grow from 6 to 39 with the larger skill taxonomy, which helps statistical meaningfulness, but the relation itself is still synthetic.
+3. **DONE: environment properly installed and re-verified** (`ml/requirements.txt`: torch 2.13.0, torch_geometric 2.8.0, scikit-learn 1.9.0) — installed cleanly into a fresh `ml/.venv` on 2026-07-18, `ml/tests` ran 27/27 passed with no skips (previously some torch-dependent tests auto-skipped in environments without torch).
+4. Optionally, still open: run 2-3 different seeds and report mean ± spread for the metrics, to preempt "how do you know this isn't just luck on one random split" — the split/training code is already seed-parameterized, so this is a rerun, not new code. Given the REQUIRES result held up across a much larger split (5,429 vs 71 test edges) rather than reversing, this is lower priority than it was before the retrain — the finding looks stable, not scale-fragile.
+5. Optionally: given loss was still meaningfully decreasing through most of epoch 60 (with a slight val-AUC dip after epoch 50), a longer run or a learning-rate schedule could be tried, but is not expected to change the qualitative REQUIRES conclusion given the baseline's structural advantage is architectural, not a training-budget artifact.
 
 ---
 
@@ -153,10 +164,10 @@ A: It's a full GNN — the embeddings are not static/precomputed (like plain Nod
 A: Held-out validation/test edges are excluded from the message-passing graph itself, not just from the loss — unit tested explicitly (`ml/tests/test_split.py`) to assert the three splits never overlap, and negative samples are checked against the full positive set so a "negative" can never secretly be a held-out real edge.
 
 **Q: Your GNN loses to the baseline — doesn't that mean it failed?**
-A: No — it means the baseline is strong at this data scale, which is an expected, literature-consistent result, and the comparison methodology (identical test edges, real production baseline logic, reproducible seeds) is exactly what makes that an honest, informative finding rather than a hidden failure. The pipeline is built to be re-run at 10x-plus the current scale, which is where a learned encoder is expected to start winning.
+A: No. It was retrained and re-evaluated at the full 10,000-job/434-skill scale (2026-07-18) specifically to test whether more scale would close the gap, and it didn't for REQUIRES: the baseline still wins on AUC-ROC (0.961 vs 0.935), Hits@10 (0.116 vs 0.018), and MRR (0.067 vs 0.013). That's a real, honestly-reported result, not a hidden failure — the comparison methodology (identical test edges, real production baseline logic, reproducible seeds, now at 5,429 test edges instead of 71) is exactly what makes it a trustworthy finding. The takeaway is that a hand-tuned Jaccard/co-occurrence baseline is a genuinely strong, hard-to-beat approach for this specific graph and task, at this scale, with this GNN configuration — not that the GNN pipeline is broken. On LEADS_TO the GNN's AUC-ROC did improve substantially with scale (0.306 → 0.685), so the picture isn't "the GNN never helps," it's task- and metric-dependent.
 
 **Q: What's the biggest limitation of this work?**
-A: Two, stated together: (1) the dataset it was evaluated on is small and (until retrained) synthetic-at-small-scale rather than the newly generated 10k-row synthetic dataset or real-world data, and (2) the `LEADS_TO` (skill-prerequisite) relation has no real data source at all yet — it's a documented placeholder heuristic. Both are explicitly tracked, not hidden, and neither requires new architecture to fix — just more/better data and a rerun.
+A: Two, stated together: (1) even at the full 10,000-job/434-skill scale, this GNN configuration does not outperform the hand-tuned algorithmic baseline on the REQUIRES task — the dataset is realistic in scale but still synthetic, generated data, not real-world data, and (2) the `LEADS_TO` (skill-prerequisite) relation has no real data source at all yet — it's a documented placeholder heuristic, now with 39 test edges instead of 6 but still not a real prerequisite graph. Neither requires new architecture to fix outright — (1) would need either richer input features than learned embedding tables or acceptance that the baseline is simply strong here, and (2) needs real curriculum/progression data.
 
 **Q: Could this scale to a real production system?**
 A: Yes, structurally — the architecture (embedding tables + 2-layer SAGEConv + dot-product decoder) scales to graphs far larger than the current one; the main real-world addition needed would be richer input node features (e.g., text embeddings of job descriptions) rather than learned-from-scratch embedding tables, to help the model generalize to nodes it has few training edges for.

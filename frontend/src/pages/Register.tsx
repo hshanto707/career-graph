@@ -8,20 +8,21 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { ApiError, NetworkError } from "@/lib/apiClient";
 
-const loginSchema = z.object({
+const registerSchema = z.object({
+  name: z.string().trim().min(1, "Name is required."),
   email: z
     .string()
     .trim()
     .min(1, "Email is required.")
     .email("Enter a valid email address."),
-  password: z.string().trim().min(1, "Password is required."),
+  password: z.string().trim().min(8, "Password must be at least 8 characters."),
 });
 
-type LoginFormValues = z.infer<typeof loginSchema>;
+type RegisterFormValues = z.infer<typeof registerSchema>;
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
-  const { login, isAuthenticated } = useAuth();
+  const { register: registerUser, isAuthenticated } = useAuth();
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -29,13 +30,13 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormValues>({
-    resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "" },
+  } = useForm<RegisterFormValues>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: { name: "", email: "", password: "" },
   });
 
-  // Already-authenticated user navigating to "/" goes straight to the
-  // dashboard instead of seeing the login form again.
+  // Already-authenticated user navigating to "/register" goes straight to the
+  // dashboard instead of seeing the registration form again.
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/dashboard", { replace: true });
@@ -46,12 +47,16 @@ export default function Login() {
     return <Navigate to="/dashboard" replace />;
   }
 
-  const onSubmit = async (values: LoginFormValues) => {
+  const onSubmit = async (values: RegisterFormValues) => {
     if (isSubmitting) return; // guards against double-submit races
     setSubmitError(null);
     setIsSubmitting(true);
     try {
-      await login({ email: values.email, password: values.password });
+      await registerUser({
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      });
       navigate("/dashboard");
     } catch (err) {
       if (err instanceof NetworkError) {
@@ -59,7 +64,9 @@ export default function Login() {
           "Couldn't reach the server. Please check your connection and try again.",
         );
       } else if (err instanceof ApiError) {
-        setSubmitError(err.message || "Invalid email or password.");
+        setSubmitError(
+          err.message || "Could not create your account. Please try again.",
+        );
       } else {
         setSubmitError("Something went wrong. Please try again.");
       }
@@ -125,7 +132,7 @@ export default function Login() {
         </p>
       </div>
 
-      {/* Right panel - Login */}
+      {/* Right panel - Register */}
       <div className="flex-1 flex items-center justify-center p-6 md:p-8">
         <div className="w-full max-w-md space-y-6 md:space-y-8">
           {/* Mobile header */}
@@ -145,10 +152,10 @@ export default function Login() {
 
           <div className="space-y-2 text-center lg:text-left">
             <h2 className="text-xl md:text-2xl font-bold text-foreground">
-              Welcome back
+              Create your account
             </h2>
             <p className="text-sm md:text-base text-muted-foreground">
-              Sign in to access your personalized career dashboard
+              Sign up to access your personalized career dashboard
             </p>
           </div>
 
@@ -165,6 +172,29 @@ export default function Login() {
                 {submitError}
               </div>
             )}
+
+            <div className="space-y-2">
+              <label
+                htmlFor="name"
+                className="text-sm font-medium text-foreground"
+              >
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                autoComplete="name"
+                placeholder="Jane Student"
+                aria-invalid={Boolean(errors.name)}
+                className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring text-sm md:text-base"
+                {...register("name")}
+              />
+              {errors.name && (
+                <p className="text-xs text-destructive">
+                  {errors.name.message}
+                </p>
+              )}
+            </div>
 
             <div className="space-y-2">
               <label
@@ -199,7 +229,7 @@ export default function Login() {
               <input
                 id="password"
                 type="password"
-                autoComplete="current-password"
+                autoComplete="new-password"
                 placeholder="••••••••"
                 aria-invalid={Boolean(errors.password)}
                 className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring text-sm md:text-base"
@@ -208,6 +238,11 @@ export default function Login() {
               {errors.password && (
                 <p className="text-xs text-destructive">
                   {errors.password.message}
+                </p>
+              )}
+              {!errors.password && (
+                <p className="text-xs text-muted-foreground">
+                  Must be at least 8 characters.
                 </p>
               )}
             </div>
@@ -219,12 +254,12 @@ export default function Login() {
             >
               {isSubmitting ? (
                 <>
-                  Signing in...
+                  Creating account...
                   <Loader2 className="ml-2 h-4 w-4 md:h-5 md:w-5 animate-spin" />
                 </>
               ) : (
                 <>
-                  Sign In
+                  Create Account
                   <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </>
               )}
@@ -232,12 +267,12 @@ export default function Login() {
           </form>
 
           <p className="text-center text-xs md:text-sm text-muted-foreground">
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <Link
-              to="/register"
+              to="/"
               className="font-medium text-foreground underline underline-offset-4"
             >
-              Sign up
+              Sign in
             </Link>
           </p>
         </div>

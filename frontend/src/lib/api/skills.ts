@@ -38,4 +38,12 @@ export const skillsApi = {
     apiClient.get<GapAnalysisResponse>(
       `/skills/gap${targetJobId ? `?target_job_id=${encodeURIComponent(targetJobId)}` : ""}`
     ),
+  /** GET /skills?search= — distinct skill-name suggestions, used by the
+   * skill-name Combobox on Edit Profile. */
+  search: (query?: string, limit = 20) => {
+    const params = new URLSearchParams();
+    if (query) params.set("search", query);
+    params.set("limit", String(limit));
+    return apiClient.get<string[]>(`/skills?${params.toString()}`);
+  },
 };

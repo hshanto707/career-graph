@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class SkillEntry(BaseModel):
@@ -15,8 +15,24 @@ class SkillEntry(BaseModel):
 class ExperienceItem(BaseModel):
     title: str
     company: str
-    duration: str
+    start_month: int = Field(ge=1, le=12)
+    start_year: int = Field(ge=1950, le=2100)
+    end_month: int | None = Field(default=None, ge=1, le=12)
+    end_year: int | None = Field(default=None, ge=1950, le=2100)
+    is_current: bool = False
     description: str = ""
+
+    @model_validator(mode="after")
+    def _validate_end_date(self) -> "ExperienceItem":
+        if self.is_current:
+            self.end_month = None
+            self.end_year = None
+            return self
+        if self.end_month is None or self.end_year is None:
+            raise ValueError("end_month and end_year are required unless is_current is true")
+        if (self.end_year, self.end_month) < (self.start_year, self.start_month):
+            raise ValueError("End date must not be before the start date")
+        return self
 
 
 class ProfileUpdate(BaseModel):

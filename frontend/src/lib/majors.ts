@@ -1,0 +1,36 @@
+// Static list of common majors for the Edit Profile major Combobox. Unlike
+// skills/target-roles, `major` doesn't feed the skill-gap/recommendation
+// algorithms, so a curated static list (no backend taxonomy) is enough --
+// free-text entry is still allowed for anything not listed.
+export const COMMON_MAJORS = [
+  'Computer Science',
+  'Information Technology',
+  'Software Engineering',
+  'Data Science',
+  'Computer Engineering',
+  'Electrical Engineering',
+  'Mechanical Engineering',
+  'Civil Engineering',
+  'Chemical Engineering',
+  'Industrial Engineering',
+  'Business Administration',
+  'Accounting',
+  'Finance',
+  'Marketing',
+  'Economics',
+  'Mathematics',
+  'Statistics',
+  'Physics',
+  'Chemistry',
+  'Biology',
+  'Psychology',
+  'Nursing',
+  'Communications',
+  'Graphic Design',
+  'Political Science',
+  'Sociology',
+  'English',
+  'History',
+  'Architecture',
+  'Environmental Science',
+] as const;

@@ -114,17 +114,17 @@ describe("EditProfile page", () => {
     await waitFor(() => expect(screen.getByText(/no skills added yet/i)).toBeInTheDocument());
   });
 
-  it("blocks save and shows an inline error for an invalid graduation year", async () => {
+  it("shows 'Graduation Year' once a past year is selected, and 'Expected Graduation Year' for the current/future default", async () => {
     renderEditProfile();
     await waitFor(() => expect(screen.getByDisplayValue("Computer Science")).toBeInTheDocument());
 
-    fireEvent.change(screen.getByLabelText(/expected graduation year/i), { target: { value: "1899" } });
-    fireEvent.click(screen.getByRole("button", { name: /save changes/i }));
+    expect(screen.getByText(/expected graduation year/i)).toBeInTheDocument();
 
-    await waitFor(() =>
-      expect(screen.getByText(/graduation year must be/i)).toBeInTheDocument()
-    );
-    expect(mockedUpdate).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByLabelText(/expected graduation year/i));
+    fireEvent.click(await screen.findByRole("option", { name: "2020" }));
+
+    expect(screen.getByText(/^graduation year$/i)).toBeInTheDocument();
+    expect(screen.queryByText(/expected graduation year/i)).not.toBeInTheDocument();
   });
 
   it("saves valid changes via PUT /profile and navigates back to the view", async () => {
@@ -159,5 +159,79 @@ describe("EditProfile page", () => {
     await waitFor(() => expect(mockedUpdate).toHaveBeenCalled());
     expect(mockedUpdate.mock.calls[0][0].skills).toEqual([]);
     expect(mockedUpdate.mock.calls[0][0].target_roles).toEqual([]);
+  });
+
+  it("adds an experience entry with structured start/end dates and saves it", async () => {
+    mockedUpdate.mockResolvedValue(BASE_PROFILE);
+
+    renderEditProfile();
+    await waitFor(() => expect(screen.getByDisplayValue("Computer Science")).toBeInTheDocument());
+
+    fireEvent.click(screen.getByRole("button", { name: /add experience/i }));
+
+    fireEvent.change(screen.getByLabelText(/experience 1 title/i), { target: { value: "Intern" } });
+    fireEvent.change(screen.getByLabelText(/experience 1 company/i), { target: { value: "Acme" } });
+
+    fireEvent.click(screen.getByLabelText(/experience 1 start month/i));
+    fireEvent.click(await screen.findByRole("option", { name: "June" }));
+    fireEvent.click(screen.getByLabelText(/experience 1 start year/i));
+    fireEvent.click(await screen.findByRole("option", { name: "2024" }));
+
+    fireEvent.click(screen.getByLabelText(/experience 1 end month/i));
+    fireEvent.click(await screen.findByRole("option", { name: "August" }));
+    fireEvent.click(screen.getByLabelText(/experience 1 end year/i));
+    fireEvent.click(await screen.findByRole("option", { name: "2024" }));
+
+    fireEvent.click(screen.getByRole("button", { name: /save changes/i }));
+
+    await waitFor(() => expect(mockedUpdate).toHaveBeenCalled());
+    expect(mockedUpdate.mock.calls[0][0].experience).toEqual([
+      {
+        title: "Intern",
+        company: "Acme",
+        start_month: 6,
+        start_year: 2024,
+        end_month: 8,
+        end_year: 2024,
+        is_current: false,
+        description: "",
+      },
+    ]);
+  });
+
+  it("checking 'I currently work here' hides and clears the end date", async () => {
+    mockedUpdate.mockResolvedValue(BASE_PROFILE);
+
+    renderEditProfile();
+    await waitFor(() => expect(screen.getByDisplayValue("Computer Science")).toBeInTheDocument());
+
+    fireEvent.click(screen.getByRole("button", { name: /add experience/i }));
+    fireEvent.change(screen.getByLabelText(/experience 1 title/i), { target: { value: "Intern" } });
+    fireEvent.change(screen.getByLabelText(/experience 1 company/i), { target: { value: "Acme" } });
+
+    expect(screen.getByLabelText(/experience 1 end month/i)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByLabelText(/currently work here/i));
+    expect(screen.queryByLabelText(/experience 1 end month/i)).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /save changes/i }));
+
+    await waitFor(() => expect(mockedUpdate).toHaveBeenCalled());
+    expect(mockedUpdate.mock.calls[0][0].experience[0]).toMatchObject({
+      is_current: true,
+      end_month: null,
+      end_year: null,
+    });
+  });
+
+  it("blocks save when an experience entry is missing an end date and isn't marked current", async () => {
+    renderEditProfile();
+    await waitFor(() => expect(screen.getByDisplayValue("Computer Science")).toBeInTheDocument());
+
+    fireEvent.click(screen.getByRole("button", { name: /add experience/i }));
+    fireEvent.click(screen.getByRole("button", { name: /save changes/i }));
+
+    await waitFor(() => expect(mockedUpdate).not.toHaveBeenCalled());
+    expect(screen.queryByText("Profile Page")).not.toBeInTheDocument();
   });
 });

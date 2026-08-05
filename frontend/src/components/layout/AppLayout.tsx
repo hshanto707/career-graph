@@ -42,10 +42,10 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
     <>
       <div className="p-4 md:p-6 border-b border-border">
         <h1 className="text-base md:text-lg font-bold text-foreground">
-          Career Intelligence
+          CareerGraph
         </h1>
         <p className="text-xs text-muted-foreground mt-1">
-          Labor Market Platform
+          Job Market Platform
         </p>
       </div>
 
@@ -101,7 +101,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       {/* Mobile Header */}
       <header className="md:hidden sticky top-0 z-40 bg-card border-b border-border px-4 py-3 flex items-center justify-between">
         <div>
-          <h1 className="text-base font-bold text-foreground">Career Intelligence</h1>
+          <h1 className="text-base font-bold text-foreground">CareerGraph</h1>
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild>

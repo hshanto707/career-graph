@@ -147,6 +147,20 @@ class GraphService:
             result = session.run(query, **params)
             return [dict(record) for record in result]
 
+    def list_job_titles(self, search: str | None = None, limit: int = 50) -> list[str]:
+        """Distinct, sorted Job titles, optionally filtered by a case-insensitive
+        substring match. Backs target-role autocomplete suggestions."""
+        query = """
+        MATCH (j:Job)
+        WHERE j.title IS NOT NULL AND ($search IS NULL OR toLower(j.title) CONTAINS toLower($search))
+        RETURN DISTINCT j.title AS title
+        ORDER BY j.title
+        LIMIT $limit
+        """
+        with self._driver.session() as session:
+            result = session.run(query, search=search, limit=limit)
+            return [record["title"] for record in result]
+
     def get_job_required_skills(self, job_id: str) -> list[dict[str, Any]]:
         query = """
         MATCH (j:Job {id: $job_id})-[r:REQUIRES]->(sk:Skill)
@@ -191,6 +205,20 @@ class GraphService:
         with self._driver.session() as session:
             result = session.run(query, skill_ids=skill_ids)
             return [dict(record) for record in result]
+
+    def list_skill_names(self, search: str | None = None, limit: int = 50) -> list[str]:
+        """Distinct, sorted Skill names, optionally filtered by a case-insensitive
+        substring match. Backs skill-name autocomplete suggestions."""
+        query = """
+        MATCH (s:Skill)
+        WHERE s.name IS NOT NULL AND ($search IS NULL OR toLower(s.name) CONTAINS toLower($search))
+        RETURN DISTINCT s.name AS name
+        ORDER BY s.name
+        LIMIT $limit
+        """
+        with self._driver.session() as session:
+            result = session.run(query, search=search, limit=limit)
+            return [record["name"] for record in result]
 
     # ------------------------------------------------------------------ #
     # Market (MarketAgent)
@@ -249,14 +277,14 @@ class GraphService:
                 """
                 MATCH (j:Job {id: $job_id})
                 MERGE (sk:Skill {normalized_name: $normalized_name})
-                ON CREATE SET sk.name = $raw_name, sk.category = $category
-                SET sk.flagged_for_review = $flagged
+                SET sk.name = $normalized_name,
+                    sk.category = coalesce(sk.category, $category),
+                    sk.flagged_for_review = $flagged
                 MERGE (j)-[r:REQUIRES]->(sk)
                 SET r.importance = $importance
                 """,
                 job_id=job["id"],
                 normalized_name=skill["normalized_name"],
-                raw_name=skill.get("raw_name", skill["normalized_name"]),
                 category=skill.get("category"),
                 flagged=bool(skill.get("flagged", False)),
                 importance=skill.get("importance", "nice"),
@@ -306,6 +334,7 @@ class GraphService:
                 """
                 MATCH (c:Course {id: $id})
                 MERGE (sk:Skill {normalized_name: $skill_name})
+                SET sk.name = $skill_name
                 MERGE (c)-[:TEACHES]->(sk)
                 """,
                 id=course["id"],

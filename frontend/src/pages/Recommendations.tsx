@@ -177,7 +177,7 @@ export default function Recommendations() {
                                 getMatchColor(job.match_percentage)
                               )}
                             >
-                              {job.match_percentage}%
+                              {Math.round(job.match_percentage)}%
                             </div>
                           </div>
                         </div>
@@ -197,7 +197,7 @@ export default function Recommendations() {
                             getMatchColor(job.match_percentage)
                           )}
                         >
-                          {job.match_percentage}%
+                          {Math.round(job.match_percentage)}%
                         </div>
                         <p className="text-xs text-muted-foreground mt-1">Match</p>
                       </div>
@@ -250,13 +250,13 @@ export default function Recommendations() {
                             </span>{' '}
                             This skill appears in {skill.demand_count} job listing
                             {skill.demand_count === 1 ? '' : 's'} for your target roles,
-                            with a demand score of {skill.demand_score}%.
+                            with a demand score of {Math.round(skill.demand_score)}%.
                           </p>
                         </div>
                       </div>
                       <div className="text-center shrink-0">
                         <div className={cn('match-score', getMatchColor(skill.demand_score))}>
-                          {skill.demand_score}%
+                          {Math.round(skill.demand_score)}%
                         </div>
                         <p className="text-xs text-muted-foreground mt-1">Demand</p>
                       </div>

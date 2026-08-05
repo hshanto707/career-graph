@@ -1,4 +1,4 @@
-// Mock data for the Labor Market Intelligence Platform
+// Mock data for the Job Market Intelligence Platform
 
 export interface Student {
   id: string;

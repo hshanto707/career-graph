@@ -32,7 +32,7 @@
 |---|---|---|
 | Backend (pytest) | **173 passed, 0 failed** | `cd backend && .venv/bin/python -m pytest -q` |
 | Frontend (vitest) | **69 passed, 0 failed, 13 test files** | `cd frontend && npm run test -- --run` |
-| ML pipeline tests (pytest, pure-Python parts) | **19 passed, 1 skipped** | `pytest ml/tests -q` |
+| ML pipeline tests (pytest, torch installed) | **27 passed, 0 skipped** | `ml/.venv/bin/python -m pytest ml/tests -q` |
 
 Backend breakdown by file: `test_health.py` 10, `test_auth.py` 25,
 `test_data_layer.py` 13, `test_ingestion.py` 28, `test_algorithmic_agents.py`
@@ -42,9 +42,13 @@ Sanity checks also run in this pass:
 - `import main` (backend FastAPI entrypoint, `backend/main.py`) — **succeeds**.
 - `npm run build` (frontend) — **succeeds** (505 KB main bundle, single chunk —
   a real but minor perf note, not a blocker).
-- `import torch` in the backend venv — **fails** (`ModuleNotFoundError`); the
-  one ml test that needs the real torch/PyG stack auto-skips rather than
-  failing, which is why the ml suite shows 1 skipped, not 20 passed.
+- `import torch` in the backend venv — still **fails** (`ModuleNotFoundError`),
+  by design (`ml/requirements.txt` is deliberately kept separate from
+  `backend/requirements.txt` so the API never needs torch to run). A
+  dedicated `ml/.venv` was created and `pip install -r ml/requirements.txt`
+  succeeded (torch 2.13.0, torch_geometric 2.8.0, scikit-learn 1.9.0), which
+  is why `ml/tests` now runs all 27 tests instead of auto-skipping the
+  torch-dependent ones.
 
 ## What remains before this is truly demo/thesis-ready
 
@@ -83,21 +87,26 @@ Ranked by priority:
    needs a real key configured and at least a manual smoke test of
    `explain_gap`/`narrate_recommendations`/`write_roadmap`/`summarize_market`
    against the real API.
-4. **GNN training on the real ingested graph, in a properly-equipped
-   environment.** The current checkpoint and evaluation numbers
-   (`ml/checkpoints/gnn_link_predictor.pt`, `ml/results/evaluation_report.json`)
-   are real outputs, not placeholders — but they come from a *previous*
-   session that had `torch`/`torch_geometric` installed, and they were
-   trained on the tiny synthetic seed graph (165 jobs, 75 skills, 6
-   `LEADS_TO` test edges — too small for a defensible thesis result). This
-   environment does not have torch installed at all right now. Before the
-   thesis Evaluation chapter can be called final: (a) install
-   `ml/requirements.txt` in an environment with torch/PyTorch Geometric, (b)
-   re-run the full pipeline against the real ingested graph from gap #1, and
-   (c) address the fact that `LEADS_TO` edges currently have no real data
-   source — they're synthesized by an alphabetical same-category heuristic
-   in `ml/graph_build.py`, which is fine for pipeline-correctness testing but
-   not for a real prerequisite-graph result.
+4. **GNN training on the real ingested graph — DONE 2026-07-18.** A dedicated
+   `ml/.venv` was created (`torch` 2.13.0, `torch_geometric` 2.8.0,
+   `scikit-learn` 1.9.0 all installed cleanly), and the full pipeline was
+   re-run end-to-end against the 10,000-row `kaggle_jobs.csv` /
+   518-skill `onet_skills.csv` graph: export (9,380 Job nodes, 434 Skill
+   nodes, 54,288 REQUIRES edges, 388 synthetic LEADS_TO edges) → train
+   (60 epochs, loss 1.3843 → 0.0310, ~30s wall-clock) → evaluate. The
+   checkpoint (`ml/checkpoints/gnn_link_predictor.pt`) and evaluation report
+   (`ml/results/evaluation_report.json`) are now current for the 10k-scale
+   dataset, not the old 165-job fixture. Headline finding, reported honestly
+   in `docs/gnn-model.md`/`docs/gnn-defense-guide.md`: the algorithmic
+   baseline still wins on REQUIRES at this scale (AUC-ROC 0.961 vs 0.935,
+   Hits@10 0.116 vs 0.018, MRR 0.067 vs 0.013, 5,429 test edges each) — the
+   literature-precedent expectation that scale would flip this did not hold
+   for this configuration. LEADS_TO's GNN AUC-ROC improved markedly with
+   scale (0.306 → 0.685) though the relation is still synthetic placeholder
+   data (now 39 test edges instead of 6). Remaining open item: `LEADS_TO`
+   still has no real data source — it's synthesized by an alphabetical
+   same-category heuristic in `ml/graph_build.py`, fine for pipeline
+   correctness but not a real prerequisite-graph result.
 5. **Smaller open items, lower priority but still real:** no self-registration
    UI exists (login-only — either build it or explicitly document seeded
    demo credentials as the intended demo path); no rate-limit/lockout policy

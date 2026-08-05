@@ -45,6 +45,15 @@ from app.services.graph_service import GraphService
 router = APIRouter(prefix="/skills", tags=["skills"])
 
 
+@router.get("")
+def list_skills(
+    search: str | None = Query(default=None),
+    limit: int = Query(default=50, ge=1, le=100),
+    graph_service: GraphService = Depends(get_graph_service),
+):
+    return envelope(data=graph_service.list_skill_names(search=search, limit=limit))
+
+
 @router.get("/market")
 def skill_market(
     current: CurrentUser = Depends(get_current_user),

@@ -1,5 +1,6 @@
 # CareerGraph — System Design Document
-### Agent-Based Labor Market Intelligence Platform for Student Career Guidance
+
+### Agent-Based Job Market Intelligence Platform for Student Career Guidance
 
 > **Version:** 3.0 | **Date:** April 2026
 > **Stack:** React · FastAPI · Neo4j · PostgreSQL · Multi-Agent Intelligence Engine · Pluggable LLM
@@ -44,7 +45,7 @@
 
 ## 1. Executive Summary
 
-CareerGraph is a full-stack, agent-based platform that helps university students navigate career transitions by combining **graph-based reasoning** with **AI-driven insights**. The system ingests real labor market data from Kaggle job datasets and O*NET skill taxonomies, models it as a knowledge graph in Neo4j, and runs a multi-agent Intelligence Engine to produce personalized, explainable recommendations.
+CareerGraph is a full-stack, agent-based platform that helps university students navigate career transitions by combining **graph-based reasoning** with **AI-driven insights**. The system ingests real jobmarket data from Kaggle job datasets and O\*NET skill taxonomies, models it as a knowledge graph in Neo4j, and runs a multi-agent Intelligence Engine to produce personalized, explainable recommendations.
 
 The Intelligence Engine is the core contribution of this project. It is composed of four types of agents:
 
@@ -56,6 +57,7 @@ The Intelligence Engine is the core contribution of this project. It is composed
 The LLM is a configurable enhancement. Removing it degrades the system gracefully — algorithmic agents continue to produce scored, structured results independently.
 
 **Core user journeys:**
+
 - Student registers and declares their skills and target roles
 - SkillGapAgent scores their readiness against live market data using weighted graph intersection
 - PathFinderAgent traverses the skill prerequisite graph (BFS + topological sort) to generate an ordered learning roadmap
@@ -64,7 +66,8 @@ The LLM is a configurable enhancement. Removing it degrades the system gracefull
 - Dashboard surfaces market-wide skill demand trends and readiness KPIs
 
 **One-line pitch:**
-> *CareerGraph helps students understand what skills they need to get hired by aligning their profiles with real labor market demand using a knowledge graph and explainable agent-based reasoning.*
+
+> _CareerGraph helps students understand what skills they need to get hired by aligning their profiles with real jobmarket demand using a knowledge graph and explainable agent-based reasoning._
 
 ---
 
@@ -79,7 +82,7 @@ graph LR
     subgraph IS["This Project IS"]
         Y1[Graph-based skill reasoning]:::yes
         Y2[Explainable recommendations]:::yes
-        Y3[Real labor market data]:::yes
+        Y3[Real jobmarket data]:::yes
         Y4[Modular agent architecture]:::yes
         Y5[Pluggable LLM providers]:::yes
         Y6[Skill gap analysis with roadmap]:::yes
@@ -473,7 +476,7 @@ erDiagram
     users ||--|| student_profiles : "has one"
 ```
 
-> **Why PostgreSQL for user data?** Auth and profile data is relational with strict uniqueness constraints and ACID requirements. Neo4j stores the *semantic* skill graph for traversal — both stores are synchronized on every profile update.
+> **Why PostgreSQL for user data?** Auth and profile data is relational with strict uniqueness constraints and ACID requirements. Neo4j stores the _semantic_ skill graph for traversal — both stores are synchronized on every profile update.
 
 ### 7.2 Neo4j — Knowledge Graph Schema
 
@@ -499,16 +502,16 @@ graph LR
     JOB -->|IN_CATEGORY| CATEGORY
 ```
 
-> **Key change from v2:** `(Course)-[:TEACHES]->(Skill)` is the natural subject-verb-object direction. A course *teaches* a skill, not the reverse.
+> **Key change from v2:** `(Course)-[:TEACHES]->(Skill)` is the natural subject-verb-object direction. A course _teaches_ a skill, not the reverse.
 
-> **NormalizationAgent** adds the `normalized_name` property to every Skill node and uses `rapidfuzz` fuzzy matching against the O*NET/ESCO skill taxonomy to resolve synonyms before graph insertion.
+> **NormalizationAgent** adds the `normalized_name` property to every Skill node and uses `rapidfuzz` fuzzy matching against the O\*NET/ESCO skill taxonomy to resolve synonyms before graph insertion.
 
 **Node counts:**
 | Node | Demo Seed | Target (Kaggle) |
 |------|-----------|-----------------|
 | Student | 3 | — |
 | Job | 50 | 10,000+ |
-| Skill | 80 | 500+ (O*NET) |
+| Skill | 80 | 500+ (O\*NET) |
 | Course | 30 | 30 |
 | Category | 7 | 20+ |
 
@@ -574,6 +577,7 @@ graph LR
 ```
 
 **Envelope — all responses:**
+
 ```json
 { "success": true,  "data": { ... }, "message": "Optional message" }
 { "success": false, "error": "NOT_FOUND", "message": "Job xyz does not exist" }
@@ -765,6 +769,7 @@ graph TB
 ```
 
 **The `complete()` contract — every provider returns a validated Pydantic model:**
+
 ```python
 class LLMProvider(ABC):
     @abstractmethod
@@ -1234,6 +1239,7 @@ graph TB
 ```
 
 **Startup sequence:**
+
 ```
 1. docker-compose up -d                        # PostgreSQL + Neo4j (+ Ollama optional)
 2. alembic upgrade head                         # PG schema migrations
@@ -1395,4 +1401,4 @@ classDiagram
 
 ---
 
-*End of System Design Document — Version 3.0*
+_End of System Design Document — Version 3.0_

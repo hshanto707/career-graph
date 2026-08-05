@@ -33,4 +33,12 @@ function toQueryString(filters: JobFilters): string {
 export const jobsApi = {
   list: (filters: JobFilters = {}) => apiClient.get<JobOut[]>(`/jobs${toQueryString(filters)}`),
   get: (jobId: string) => apiClient.get<JobOut>(`/jobs/${jobId}`),
+  /** GET /jobs/titles?search= — distinct job-title suggestions, used by the
+   * target-role Combobox on Edit Profile. */
+  titles: (query?: string, limit = 20) => {
+    const params = new URLSearchParams();
+    if (query) params.set("search", query);
+    params.set("limit", String(limit));
+    return apiClient.get<string[]>(`/jobs/titles?${params.toString()}`);
+  },
 };

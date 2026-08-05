@@ -213,6 +213,114 @@ def test_add_skill_appears_in_profile_and_graph_service(client_with_fake_graph, 
     assert any(s["name"] == "Python" for s in graph_skills)
 
 
+def test_profile_experience_round_trip_with_structured_dates(client_with_fake_graph):
+    client = client_with_fake_graph
+    token = _register_and_login(client, "erin@example.com")
+
+    resp = client.put(
+        "/profile",
+        json={
+            "experience": [
+                {
+                    "title": "Intern",
+                    "company": "Acme",
+                    "start_month": 6,
+                    "start_year": 2024,
+                    "end_month": 8,
+                    "end_year": 2024,
+                    "is_current": False,
+                    "description": "Built things.",
+                }
+            ]
+        },
+        headers=_auth_headers(token),
+    )
+    assert resp.status_code == 200, resp.text
+    entry = resp.json()["data"]["experience"][0]
+    assert entry["start_month"] == 6
+    assert entry["start_year"] == 2024
+    assert entry["end_month"] == 8
+    assert entry["end_year"] == 2024
+    assert entry["is_current"] is False
+
+    refetch = client.get("/profile", headers=_auth_headers(token))
+    assert refetch.json()["data"]["experience"][0]["company"] == "Acme"
+
+
+def test_profile_experience_currently_working_clears_end_date(client_with_fake_graph):
+    client = client_with_fake_graph
+    token = _register_and_login(client, "frank@example.com")
+
+    resp = client.put(
+        "/profile",
+        json={
+            "experience": [
+                {
+                    "title": "Engineer",
+                    "company": "Globex",
+                    "start_month": 1,
+                    "start_year": 2025,
+                    "end_month": 12,
+                    "end_year": 2025,
+                    "is_current": True,
+                }
+            ]
+        },
+        headers=_auth_headers(token),
+    )
+    assert resp.status_code == 200, resp.text
+    entry = resp.json()["data"]["experience"][0]
+    assert entry["is_current"] is True
+    assert entry["end_month"] is None
+    assert entry["end_year"] is None
+
+
+def test_profile_experience_requires_end_date_unless_current(client_with_fake_graph):
+    client = client_with_fake_graph
+    token = _register_and_login(client, "grace@example.com")
+
+    resp = client.put(
+        "/profile",
+        json={
+            "experience": [
+                {
+                    "title": "Engineer",
+                    "company": "Globex",
+                    "start_month": 1,
+                    "start_year": 2025,
+                    "is_current": False,
+                }
+            ]
+        },
+        headers=_auth_headers(token),
+    )
+    assert resp.status_code == 422
+
+
+def test_profile_experience_rejects_end_date_before_start_date(client_with_fake_graph):
+    client = client_with_fake_graph
+    token = _register_and_login(client, "heidi@example.com")
+
+    resp = client.put(
+        "/profile",
+        json={
+            "experience": [
+                {
+                    "title": "Engineer",
+                    "company": "Globex",
+                    "start_month": 6,
+                    "start_year": 2024,
+                    "end_month": 1,
+                    "end_year": 2024,
+                    "is_current": False,
+                }
+            ]
+        },
+        headers=_auth_headers(token),
+    )
+    assert resp.status_code == 422
+
+
 def _decode_user_id(client, token: str) -> str:
     resp = client.get("/auth/me", headers=_auth_headers(token))
     assert resp.status_code == 200
@@ -295,6 +403,31 @@ def test_get_job_by_id_404(client_with_fake_graph):
     assert body["error"] == "NOT_FOUND"
 
 
+def test_job_titles_search_filters_and_dedupes(client_with_fake_graph):
+    client = client_with_fake_graph
+
+    resp = client.get("/jobs/titles?search=data")
+    assert resp.status_code == 200
+    titles = resp.json()["data"]
+    assert titles == ["Data Analyst Intern"]
+
+
+def test_job_titles_empty_search_returns_full_sorted_list(client_with_fake_graph):
+    client = client_with_fake_graph
+
+    resp = client.get("/jobs/titles")
+    assert resp.status_code == 200
+    titles = resp.json()["data"]
+    assert titles == sorted(titles)
+    assert set(titles) == {"Junior Backend Engineer", "Data Analyst Intern"}
+
+
+def test_job_titles_no_auth_required(client_with_fake_graph):
+    client = client_with_fake_graph
+    resp = client.get("/jobs/titles")
+    assert resp.status_code == 200
+
+
 # ==================================================================== #
 # 3 -- GET /skills/market matches MarketAgent
 # ==================================================================== #
@@ -312,6 +445,31 @@ def test_skills_market_matches_market_agent(client_with_fake_graph, fake_graph):
     expected_demand = {sd.skill_name: sd.demand_score for sd in expected.skill_demand}
 
     assert api_demand == expected_demand
+
+
+def test_skills_list_search_filters_and_dedupes(client_with_fake_graph):
+    client = client_with_fake_graph
+
+    resp = client.get("/skills?search=sql")
+    assert resp.status_code == 200
+    names = resp.json()["data"]
+    assert names == ["SQL"]
+
+
+def test_skills_list_empty_search_returns_full_sorted_list(client_with_fake_graph):
+    client = client_with_fake_graph
+
+    resp = client.get("/skills")
+    assert resp.status_code == 200
+    names = resp.json()["data"]
+    assert names == sorted(names)
+    assert set(names) == {"Python", "SQL", "Docker", "Excel"}
+
+
+def test_skills_list_no_auth_required(client_with_fake_graph):
+    client = client_with_fake_graph
+    resp = client.get("/skills")
+    assert resp.status_code == 200
 
 
 # ==================================================================== #

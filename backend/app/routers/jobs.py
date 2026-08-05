@@ -41,6 +41,15 @@ def list_jobs(
     return envelope(data=[JobOut(**j).model_dump() for j in page])
 
 
+@router.get("/titles")
+def list_job_titles(
+    search: str | None = Query(default=None),
+    limit: int = Query(default=50, ge=1, le=100),
+    graph_service: GraphService = Depends(get_graph_service),
+):
+    return envelope(data=graph_service.list_job_titles(search=search, limit=limit))
+
+
 @router.get("/{job_id}")
 def get_job(
     job_id: str,

@@ -31,7 +31,16 @@ const FULL_PROFILE: ProfileOut = {
   ],
   target_roles: ["Data Analyst", "ML Engineer"],
   experience: [
-    { title: "Intern", company: "Acme", duration: "Jun 2024 - Aug 2024", description: "Built things." },
+    {
+      title: "Intern",
+      company: "Acme",
+      start_month: 6,
+      start_year: 2024,
+      end_month: 8,
+      end_year: 2024,
+      is_current: false,
+      description: "Built things.",
+    },
   ],
   updated_at: "2026-01-01T00:00:00Z",
 };
@@ -86,6 +95,7 @@ describe("Profile page", () => {
     expect(screen.getByText("Data Analyst")).toBeInTheDocument();
     expect(screen.getByText("ML Engineer")).toBeInTheDocument();
     expect(screen.getByText("Intern")).toBeInTheDocument();
+    expect(screen.getByText(/June 2024 - August 2024/)).toBeInTheDocument();
 
     // No hardcoded mock student data (e.g. from lib/mockData.ts) present.
     expect(screen.getAllByText("Alex Chen").length).toBeGreaterThan(0); // real authenticated user, not mock

@@ -50,7 +50,7 @@ export function JobCard({ job, onClick }: JobCardProps) {
           </div>
         </div>
         <div className={cn('match-score shrink-0', getMatchColor(job.matchPercentage))}>
-          {job.matchPercentage}%
+          {Math.round(job.matchPercentage)}%
         </div>
       </div>
     </div>

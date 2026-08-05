@@ -9,7 +9,11 @@ export interface SkillEntry {
 export interface ExperienceItem {
   title: string;
   company: string;
-  duration: string;
+  start_month: number;
+  start_year: number;
+  end_month: number | null;
+  end_year: number | null;
+  is_current: boolean;
   description?: string;
 }
 

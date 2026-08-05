@@ -33,7 +33,7 @@ function renderLogin() {
 }
 
 function fillForm(email: string, password: string) {
-  fireEvent.change(screen.getByLabelText(/university email/i), { target: { value: email } });
+  fireEvent.change(screen.getByLabelText(/email/i), { target: { value: email } });
   fireEvent.change(screen.getByLabelText(/password/i), { target: { value: password } });
 }
 

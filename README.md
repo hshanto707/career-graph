@@ -1,6 +1,6 @@
 # CareerGraph
 
-**Agent-Based Labor Market Intelligence Platform for Student Career Guidance**
+**Agent-Based Job Market Intelligence Platform for Student Career Guidance**
 
 > Capstone Project — April 2026
 

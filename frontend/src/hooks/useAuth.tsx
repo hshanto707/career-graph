@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { authApi, type LoginPayload, type UserOut } from "@/lib/api/auth";
+import { authApi, type LoginPayload, type RegisterPayload, type UserOut } from "@/lib/api/auth";
 import { AUTH_STORAGE_KEY, clearStoredAuth, type StoredAuth } from "@/lib/apiClient";
 
 interface AuthContextValue {
@@ -15,7 +15,9 @@ interface AuthContextValue {
   user: UserOut | null;
   isAuthenticated: boolean;
   isLoggingIn: boolean;
+  isRegistering: boolean;
   login: (payload: LoginPayload) => Promise<void>;
+  register: (payload: RegisterPayload) => Promise<void>;
   logout: () => void;
 }
 
@@ -46,6 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(initial.token);
   const [user, setUser] = useState<UserOut | null>(initial.user);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
 
   // If apiClient clears storage out-of-band (global 401 handler), reflect
   // that in this context's state too so the UI re-renders as logged out.
@@ -71,6 +74,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  const register = useCallback(async (payload: RegisterPayload) => {
+    setIsRegistering(true);
+    try {
+      const result = await authApi.register(payload);
+      persistAuth(result.token, result.user);
+      setToken(result.token);
+      setUser(result.user);
+    } finally {
+      setIsRegistering(false);
+    }
+  }, []);
+
   const logout = useCallback(() => {
     clearStoredAuth();
     setToken(null);
@@ -83,10 +98,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       isAuthenticated: Boolean(token),
       isLoggingIn,
+      isRegistering,
       login,
+      register,
       logout,
     }),
-    [token, user, isLoggingIn, login, logout]
+    [token, user, isLoggingIn, isRegistering, login, register, logout]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
