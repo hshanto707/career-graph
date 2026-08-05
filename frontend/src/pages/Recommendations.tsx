@@ -167,9 +167,20 @@ export default function Recommendations() {
                     <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between sm:block">
-                          <h3 className="font-semibold text-foreground text-sm md:text-base">
-                            {job.title ?? 'Untitled role'}
-                          </h3>
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <h3 className="font-semibold text-foreground text-sm md:text-base">
+                              {job.title ?? 'Untitled role'}
+                            </h3>
+                            {job.match_source === 'gnn' && (
+                              <span
+                                className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-medium"
+                                title="This ranking was refined by our trained GraphSAGE model, not just rule-based matching."
+                              >
+                                <Sparkles className="h-2.5 w-2.5" />
+                                AI-ranked
+                              </span>
+                            )}
+                          </div>
                           <div className="sm:hidden text-center shrink-0">
                             <div
                               className={cn(

@@ -1,5 +1,10 @@
 # CareerGraph — Build Status (Final Verification Pass)
 
+> **Superseded by `docs/current-status.md` (2026-08-05, updated 2026-08-06)**
+> — this snapshot is kept for history but several items below are now
+> stale (live DB integration is done, self-registration UI exists, the GNN
+> is now wired into a live request path). Read `current-status.md` first.
+>
 > Date: 2026-07-16. Companion to `features-todo.md` (per-item checklist) and
 > `project-roadmap.md` (updated current-state section). This document is the
 > honest scoreboard: what was built, what actually passes, and what remains

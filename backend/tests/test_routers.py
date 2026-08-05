@@ -742,3 +742,75 @@ class TestOrchestratorLLMFallback:
         finally:
             client.app.dependency_overrides.pop(get_graph_service, None)
             client.app.dependency_overrides.pop(get_orchestrator_dep, None)
+
+
+class _StubGNNAgent:
+    """Duck-typed GNNRecommendationAgent stand-in -- avoids a torch
+    dependency in the plain backend test env. Mirrors the one in
+    test_algorithmic_agents.py, used here to prove the *orchestrator*
+    wiring (get_default_gnn_agent seam, match_source in the API response),
+    not just RecommendationAgent.rank_jobs in isolation."""
+
+    def __init__(self, scores: dict[tuple[str, str], float] | None = None, available: bool = True):
+        self._scores = scores or {}
+        self.is_available = available
+
+    def score_leads_to(self, from_skill, to_skill):
+        return self._scores.get((from_skill, to_skill))
+
+
+class TestOrchestratorGNNWiring:
+    """Milestone 1 (docs/current-status.md): the trained GNN must actually
+    influence a live GET /recommendations/jobs response, not just exist as
+    untested standalone code. Uses a stub agent (via the same
+    gnn_agent= constructor seam llm_provider= already has) so this runs
+    without torch installed."""
+
+    def test_gnn_available_surfaces_in_job_recommendations(self, fake_graph):
+        fake_graph.upsert_student_node("student-1", skills=[{"name": "Python"}], target_roles=[])
+        stub = _StubGNNAgent(scores={("Python", "Machine Learning"): 0.8})
+        orchestrator = EngineOrchestrator(fake_graph, gnn_agent=stub)
+
+        results = orchestrator.get_job_recommendations("student-1")
+
+        assert results  # fake_graph seeds job-1/job-2
+        sources = {r["match_source"] for r in results}
+        assert "gnn" in sources  # at least one job was actually reranked
+
+    def test_gnn_unavailable_all_jobs_stay_algorithmic(self, fake_graph):
+        fake_graph.upsert_student_node("student-1", skills=[{"name": "Python"}], target_roles=[])
+        stub = _StubGNNAgent(available=False)
+        orchestrator = EngineOrchestrator(fake_graph, gnn_agent=stub)
+
+        results = orchestrator.get_job_recommendations("student-1")
+
+        assert results
+        assert all(r["match_source"] == "algorithmic" for r in results)
+
+    def test_gnn_wiring_end_to_end_via_http(self, client, fake_graph):
+        """Same shape as the LLM-fallback HTTP test above: the real
+        GET /recommendations/jobs route, with the orchestrator's GNN seam
+        overridden to a stub, actually returns match_source per job."""
+        from app.core.deps import get_orchestrator as get_orchestrator_dep
+
+        stub = _StubGNNAgent(scores={("Python", "Machine Learning"): 0.8})
+        client.app.dependency_overrides[get_graph_service] = lambda: fake_graph
+        client.app.dependency_overrides[get_orchestrator_dep] = lambda: EngineOrchestrator(
+            fake_graph, gnn_agent=stub
+        )
+        try:
+            token = _register_and_login(client, "gnn-check@example.com")
+            client.put(
+                "/profile",
+                headers=_auth_headers(token),
+                json={"skills": [{"name": "Python", "proficiency": 5, "years": 1}]},
+            )
+            resp = client.get("/recommendations/jobs", headers=_auth_headers(token))
+            assert resp.status_code == 200
+            jobs = resp.json()["data"]
+            assert jobs
+            for job in jobs:
+                assert job["match_source"] in ("gnn", "algorithmic")
+        finally:
+            client.app.dependency_overrides.pop(get_graph_service, None)
+            client.app.dependency_overrides.pop(get_orchestrator_dep, None)

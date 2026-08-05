@@ -158,6 +158,87 @@ def test_inference_ranks_known_positive_above_negatives(tmp_path):
     assert pos_score >= median
 
 
+def test_encoder_forward_pass_is_cached_across_score_calls(tmp_path, monkeypatch):
+    """The recommendation reranker calls `score_requires`/`score_leads_to`
+    many times per request (once per candidate skill pair) -- if `encode()`
+    (a full graph forward pass) reran on every call, scoring a rerank pool
+    would take seconds-to-minutes instead of milliseconds. Assert the
+    encoder only runs once regardless of how many scores are requested."""
+    import sys as _sys
+
+    BACKEND_ROOT = ML_ROOT.parent / "backend"
+    if str(BACKEND_ROOT) not in _sys.path:
+        _sys.path.insert(0, str(BACKEND_ROOT))
+
+    checkpoint_path = tmp_path / "ckpt.pt"
+    train(epochs=2, seed=1, checkpoint_path=checkpoint_path)
+
+    from app.engine.algorithmic.gnn_recommendation_agent import GNNRecommendationAgent
+    from model import HeteroSAGEEncoder
+
+    agent = GNNRecommendationAgent(checkpoint_path=checkpoint_path)
+    assert agent.is_available
+
+    raw_graph = build_synthetic_career_graph()
+    splits = prepare_splits(raw_graph, seed=1)
+    test_pos = splits[("Job", "REQUIRES", "Skill")]["test"]
+    assert len(test_pos) >= 3
+
+    call_count = 0
+    original_forward = HeteroSAGEEncoder.forward
+
+    def counting_forward(self, *args, **kwargs):
+        nonlocal call_count
+        call_count += 1
+        return original_forward(self, *args, **kwargs)
+
+    monkeypatch.setattr(HeteroSAGEEncoder, "forward", counting_forward)
+
+    for job_id, skill_name in test_pos[:3]:
+        agent.score_requires(job_id, skill_name)
+
+    assert call_count == 1
+
+
+def test_inference_never_writes_to_disk(tmp_path, monkeypatch):
+    """Regression test: `_build_message_passing_edge_index` used to call
+    `export_graph.export()`, which writes a .pt cache file to disk as a
+    side effect meant for its offline CLI use -- an unwanted side effect
+    for a live inference call, and one that hard-crashed
+    GET /recommendations/jobs once ml/ was mounted read-only in the
+    deployed container (RuntimeError: Read-only file system), silently
+    breaking the agent's own documented graceful-degradation contract. This
+    asserts `export_graph.export` is never called by the scoring path at
+    all -- inference must build the in-memory graph directly."""
+    import sys as _sys
+
+    BACKEND_ROOT = ML_ROOT.parent / "backend"
+    if str(BACKEND_ROOT) not in _sys.path:
+        _sys.path.insert(0, str(BACKEND_ROOT))
+
+    checkpoint_path = tmp_path / "ckpt.pt"
+    train(epochs=2, seed=1, checkpoint_path=checkpoint_path)
+
+    from app.engine.algorithmic.gnn_recommendation_agent import GNNRecommendationAgent
+
+    agent = GNNRecommendationAgent(checkpoint_path=checkpoint_path)
+    assert agent.is_available
+
+    import export_graph
+
+    def _export_must_not_be_called(*args, **kwargs):
+        raise AssertionError("inference must not call export_graph.export() (writes to disk)")
+
+    monkeypatch.setattr(export_graph, "export", _export_must_not_be_called)
+
+    raw_graph = build_synthetic_career_graph()
+    splits = prepare_splits(raw_graph, seed=1)
+    job_id, skill_name = splits[("Job", "REQUIRES", "Skill")]["test"][0]
+
+    # Must not raise -- proves the scoring path never touches export().
+    agent.score_requires(job_id, skill_name)
+
+
 def test_gnn_agent_falls_back_gracefully_with_no_checkpoint(tmp_path):
     """test-plan.md GNN #8 -- mirrors the LLM-fallback pattern. Runs even
     without torch installed (this specific test doesn't need it), but lives

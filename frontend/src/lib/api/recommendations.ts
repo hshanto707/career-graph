@@ -6,6 +6,10 @@ export interface JobRecommendationOut {
   match_percentage: number;
   matched_skills: string[];
   why_recommended: string;
+  /** "gnn" when the trained GraphSAGE model contributed to this job's
+   * ranking, "algorithmic" otherwise (GNN unavailable, or this job fell
+   * outside the rerank pool). */
+  match_source: "gnn" | "algorithmic";
 }
 
 export interface SkillRecommendationOut {

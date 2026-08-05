@@ -16,6 +16,15 @@ openai==1.58.1
 python-dotenv==1.0.1
 python-multipart==0.0.20
 
+# --- GNN inference (app/engine/algorithmic/gnn_recommendation_agent.py) ---
+# Same versions as ml/requirements.txt -- the backend loads the checkpoint
+# ml/train_gnn.py produces and must use a matching torch/PyG build to
+# deserialize it. GNNRecommendationAgent still degrades gracefully (never
+# raises) if these ever go missing/mismatched in another deployment target.
+torch==2.13.0
+torch_geometric==2.8.0
+scikit-learn==1.9.0
+
 # --- Testing ---
 pytest==8.3.4
 pytest-asyncio==0.25.0

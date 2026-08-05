@@ -100,19 +100,22 @@ retraining was: Student 3, Skill 75, Job 165, Course 30, Category 8;
 
 ---
 
-## 8. Actual results (10,000-row dataset, retrained 2026-07-18 — see §4)
+## 8. Actual results (10,000-row dataset, retrained 2026-08-06 — see §4)
 
 | Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |
 |---|---|---|---|---|---|---|
-| Job→REQUIRES→Skill | GNN (GraphSAGE) | 0.935 | 0.018 | 0.013 | 5,429 | 5,429 |
+| Job→REQUIRES→Skill | GNN (GraphSAGE) | 0.937 | 0.014 | 0.012 | 5,429 | 5,429 |
 | Job→REQUIRES→Skill | Algorithmic baseline | 0.961 | 0.116 | 0.067 | 5,429 | 5,429 |
-| Skill→LEADS_TO→Skill | GNN (GraphSAGE) | 0.685 | 0.538 | 0.427 | 39 | 39 |
+| Skill→LEADS_TO→Skill | GNN (GraphSAGE) | 0.679 | 0.538 | 0.296 | 39 | 39 |
 | Skill→LEADS_TO→Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 39 | 39 |
 
-(Previous small-fixture numbers, superseded by the above: REQUIRES GNN
-0.927/0.873/0.651 vs baseline 0.975/1.000/0.765 on 71/71 test edges;
-LEADS_TO GNN 0.306/1.000/0.442 vs baseline 0.500/1.000/1.000 on 6/6 test
-edges.)
+(Re-run from the identical source data as the 2026-07-18 checkpoint, as a
+reproducibility check before wiring the model into a live request path --
+see §10. Numbers move by noise-level amounts run-to-run at fixed seed 42,
+same qualitative conclusion. Previous small-fixture numbers, superseded by
+both of the above: REQUIRES GNN 0.927/0.873/0.651 vs baseline
+0.975/1.000/0.765 on 71/71 test edges; LEADS_TO GNN 0.306/1.000/0.442 vs
+baseline 0.500/1.000/1.000 on 6/6 test edges.)
 
 ### How to talk about these numbers honestly (this is the actual defense answer)
 
@@ -136,16 +139,28 @@ If an examiner pushes on "so does the GNN actually help or not" — the honest, 
 
 ---
 
-## 10. How it's wired into the live system (graceful degradation)
+## 10. How it's wired into the live system (retrieve-then-rerank, graceful degradation)
 
-**File:** `backend/app/engine/algorithmic/gnn_recommendation_agent.py`.
+**As of 2026-08-06, this is no longer just standalone inference code — the trained model actually influences a real `GET /recommendations/jobs` response.** Earlier builds had `gnn_recommendation_agent.py` fully implemented and unit-tested in isolation, but nothing ever called it — `EngineOrchestrator` had zero references to the GNN. That gap is now closed:
 
-The GNN is **optional infrastructure**, following the exact same design pattern as the pluggable LLM providers:
-- If no checkpoint file exists, or torch isn't installed, constructing the agent never raises an error — it just reports `is_available = False` with a human-readable `unavailable_reason`.
-- Scoring methods return `None` (never crash) if unavailable, or if a candidate node wasn't seen during training (e.g., a brand-new skill added after training).
-- A `score_requires_with_fallback()` helper lets any caller pass an algorithmic score to fall back to, and get back `(score, source)` where `source` tells you whether the number came from `"gnn"` or `"algorithmic"`.
+**Files:** `backend/app/engine/algorithmic/gnn_recommendation_agent.py` (inference), `backend/app/engine/algorithmic/recommendation_agent.py` (integration), `backend/app/engine/orchestrator.py` (wiring).
 
-**Why this matters for the defense:** it means the GNN is a genuine enhancement layer, not a single point of failure — the whole system (including its test suite) is designed to keep working correctly even if the model were deleted, un-trained, or simply not present in a given deployment. This mirrors the system's overall design philosophy (stated in `system-design.md`) that the LLM is also optional and the system degrades gracefully without it.
+**The integration is a retrieve-then-rerank architecture**, a standard, explainable pattern in real recommender systems:
+1. `RecommendationAgent.rank_jobs` first scores **every** job in the catalog (9,380 of them) with the cheap, pure-Python Jaccard/LEADS_TO-BFS algorithm — no model inference, this is the retrieval stage.
+2. The top 50 candidates by that algorithmic score are then **reranked** by the GNN: for each of a job's still-missing required skills, `score_leads_to` is queried against every skill the student already owns, using the trained model's learned notion of skill-progression plausibility — not limited to the synthetic, hand-authored `LEADS_TO` edges the BFS-based partial score is otherwise capped at. The blend is `0.6*exact + 0.15*partial + 0.25*gnn` for reranked jobs (vs. `0.8*exact + 0.2*partial` for the pure-algorithmic path).
+3. Bounding the model-inference stage to a small top-N pool — rather than scoring all 9,380 jobs with the GNN — is what keeps this tractable; it also matches how retrieve-then-rerank systems work in production recommender literature.
+4. Every job in the API response carries a `match_source` field (`"gnn"` or `"algorithmic"`), so a defense demo can point at a specific real recommendation and say concretely "this one, the model reranked."
+
+**Graceful degradation is preserved end to end**, following the exact same design pattern as the pluggable LLM providers:
+- If no checkpoint file exists, or torch isn't installed, constructing `GNNRecommendationAgent` never raises — it just reports `is_available = False` with a human-readable `unavailable_reason`, and `rank_jobs` silently skips the rerank stage (every job stays `"algorithmic"`, scores identical to the pre-integration behavior).
+- Scoring methods return `None` (never crash) for a candidate node unseen during training (e.g., a brand-new skill added after training) — that missing skill just contributes 0 to `gnn_score`, not an error.
+- `GNNRecommendationAgent` is a process-wide cached singleton (`get_default_gnn_agent()`) — `EngineOrchestrator` is rebuilt on every request, and reloading the checkpoint from disk (a `torch.load` deserialization) on every single API call would be a real, unnecessary cost; the model loads once per process and the encoder's forward pass is itself cached per-agent-instance so a 50-job rerank pool costs one graph encode, not fifty.
+
+**Deployment note:** the backend Docker image now installs `torch`/`torch_geometric`/`scikit-learn` (previously deliberately excluded to keep the API lightweight — see `ml/requirements.txt`'s original rationale, still accurate for *why* the code stays degradable), and `docker-compose.yml` mounts `../ml` and `./data` into the container so the checkpoint and its dependencies (`model.py`, `export_graph.py`, `graph_build.py`) resolve at the same repo-relative paths the code already expected.
+
+**A real bug the live-container test caught:** the inference path was calling `export_graph.export()` to rebuild the message-passing graph, which — as a side effect meant for its offline CLI use — unconditionally writes a `.pt` cache file to disk. With `ml/` mounted read-only in the container (deliberately, so the running app can't mutate training artifacts), this crashed `GET /recommendations/jobs` with a 500 (`RuntimeError: ... Read-only file system`) — silently breaking the agent's own documented "never raise" graceful-degradation contract the moment it was actually exercised end-to-end. Fixed by building the in-memory `HeteroData` directly (`to_hetero_data(build_synthetic_career_graph())`) instead of the disk-writing wrapper; inference never needed the persisted file. **The lesson for the defense:** the fallback contract was correctly *unit-tested* (missing checkpoint, corrupt checkpoint, torch not installed), but the first real HTTP round-trip against a production-shaped deployment (read-only mount) still found a gap none of those unit tests could have caught — a concrete, honest example of why live verification matters beyond a green test suite.
+
+**Why this matters for the defense:** the GNN is a genuine enhancement layer, not a single point of failure — the system (including its test suite, e.g. `TestOrchestratorGNNWiring` in `backend/tests/test_routers.py`) is designed to keep working correctly even if the model were deleted, un-trained, or simply not present in a given deployment, while *also* actually being present and influencing real output in the deployed demo. This mirrors the system's overall design philosophy (stated in `system-design.md`) that the LLM is also optional and the system degrades gracefully without it — the GNN just went one step further than the LLM currently has (see `docs/current-status.md` Milestone 2): it's both gracefully-optional *and* actually turned on.
 
 ---
 
@@ -169,6 +184,9 @@ A: No. It was retrained and re-evaluated at the full 10,000-job/434-skill scale 
 **Q: What's the biggest limitation of this work?**
 A: Two, stated together: (1) even at the full 10,000-job/434-skill scale, this GNN configuration does not outperform the hand-tuned algorithmic baseline on the REQUIRES task — the dataset is realistic in scale but still synthetic, generated data, not real-world data, and (2) the `LEADS_TO` (skill-prerequisite) relation has no real data source at all yet — it's a documented placeholder heuristic, now with 39 test edges instead of 6 but still not a real prerequisite graph. Neither requires new architecture to fix outright — (1) would need either richer input features than learned embedding tables or acceptance that the baseline is simply strong here, and (2) needs real curriculum/progression data.
 
+**Q: Does the GNN actually affect what a real user sees, or is it just an offline experiment?**
+A: It actually affects live output. `GET /recommendations/jobs` runs a retrieve-then-rerank pipeline: every job is scored algorithmically first, then the top 50 candidates are rescored by the trained model, and the API response marks each job `match_source: "gnn"` or `"algorithmic"` so it's directly inspectable which recommendations the model influenced. This wasn't always true — for most of the build, the checkpoint and evaluation report existed but `EngineOrchestrator` never called the inference code at all. That gap was identified and closed as its own milestone (see `docs/current-status.md`).
+
 **Q: Could this scale to a real production system?**
 A: Yes, structurally — the architecture (embedding tables + 2-layer SAGEConv + dot-product decoder) scales to graphs far larger than the current one; the main real-world addition needed would be richer input node features (e.g., text embeddings of job descriptions) rather than learned-from-scratch embedding tables, to help the model generalize to nodes it has few training edges for.
 
@@ -187,6 +205,10 @@ A: Yes, structurally — the architecture (embedding tables + 2-layer SAGEConv +
 | Baseline adapter (reuses production `RecommendationAgent`) | `ml/baseline.py` |
 | Trained checkpoint | `ml/checkpoints/gnn_link_predictor.pt` |
 | Evaluation report (raw numbers) | `ml/results/evaluation_report.json` |
-| Live-system integration (graceful fallback) | `backend/app/engine/algorithmic/gnn_recommendation_agent.py` |
+| GNN inference (graceful fallback) | `backend/app/engine/algorithmic/gnn_recommendation_agent.py` |
+| Retrieve-then-rerank integration | `backend/app/engine/algorithmic/recommendation_agent.py` (`rank_jobs`) |
+| Orchestrator wiring + `match_source` | `backend/app/engine/orchestrator.py` (`get_job_recommendations`) |
+| GNN wiring tests (no torch needed, stub agent) | `backend/tests/test_algorithmic_agents.py` (rerank tests), `backend/tests/test_routers.py::TestOrchestratorGNNWiring` |
 | Tests (pure-Python, run anywhere) | `ml/tests/test_graph_build.py`, `ml/tests/test_split.py` |
+| Encoder-caching test (torch required) | `ml/tests/test_gnn_pipeline_requires_torch.py::test_encoder_forward_pass_is_cached_across_score_calls` |
 | Tests (need torch installed) | `ml/tests/test_gnn_pipeline_requires_torch.py` |

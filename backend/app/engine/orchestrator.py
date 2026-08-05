@@ -27,6 +27,7 @@ import logging
 from typing import Any
 
 from app.core.config import Settings, get_settings
+from app.engine.algorithmic.gnn_recommendation_agent import get_default_gnn_agent
 from app.engine.algorithmic.market_agent import DemandData, MarketAgent
 from app.engine.algorithmic.path_finder_agent import LearningPath, PathFinderAgent
 from app.engine.algorithmic.recommendation_agent import RankedJob, RecommendationAgent
@@ -56,6 +57,7 @@ class EngineOrchestrator:
         graph_service: Any,
         settings: Settings | None = None,
         llm_provider: LLMProvider | None = None,
+        gnn_agent: Any = None,
     ):
         """
         Args:
@@ -70,6 +72,15 @@ class EngineOrchestrator:
                 tests use to simulate "LLM configured but raises after
                 retries" (B6 #5) without touching real environment/factory
                 plumbing.
+            gnn_agent: a `GNNRecommendationAgent` (or duck-typed stub) to
+                use instead of the process-wide default. This is the seam
+                tests use to simulate "GNN available/unavailable" without
+                needing a real torch install or checkpoint. Defaults to
+                `get_default_gnn_agent()` -- a process-wide cached
+                singleton, since `EngineOrchestrator` is built fresh on
+                every request (`app/core/deps.py::get_orchestrator`) and
+                reloading the checkpoint from disk on every single API call
+                would be a real, unnecessary cost.
         """
         self.graph = graph_service
         self.settings = settings or get_settings()
@@ -80,6 +91,7 @@ class EngineOrchestrator:
         self.recommendation_agent = RecommendationAgent()
         self.path_finder_agent = PathFinderAgent()
         self.market_agent = MarketAgent()
+        self.gnn_agent = gnn_agent if gnn_agent is not None else get_default_gnn_agent()
 
     # ------------------------------------------------------------------ #
     # LLM configuration / ReasoningAgent construction
@@ -265,7 +277,9 @@ class EngineOrchestrator:
         student_skills = self.graph.get_student_skills(student_id)
         all_jobs = self.graph.get_all_jobs_with_requires()
         leads_to = self.graph.get_leads_to_graph()
-        ranked = self.recommendation_agent.rank_jobs(student_skills, all_jobs, leads_to)
+        ranked = self.recommendation_agent.rank_jobs(
+            student_skills, all_jobs, leads_to, gnn_agent=self.gnn_agent
+        )
         top20 = ranked[:20]
 
         narratives = self._recommendation_narratives(top20)
@@ -279,6 +293,7 @@ class EngineOrchestrator:
                     "match_percentage": round(r.final_score * 100, 2),
                     "matched_skills": r.matched_skills,
                     "why_recommended": narratives.get(r.job_id) or self._template_why_recommended(r),
+                    "match_source": r.score_source,
                 }
             )
         return results

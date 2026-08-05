@@ -259,6 +259,112 @@ def test_recommendation_duplicate_skills_not_double_counted():
 
 
 # ==================================================================== #
+# RecommendationAgent — GNN rerank stage
+# ==================================================================== #
+
+
+class _StubGNNAgent:
+    """Duck-typed stand-in for GNNRecommendationAgent -- avoids a torch
+    dependency in the plain backend test env. `scores` maps
+    (from_skill, to_skill) -> plausibility; anything else is None (mirrors
+    "unseen at training time")."""
+
+    def __init__(self, scores: dict[tuple[str, str], float], available: bool = True):
+        self._scores = scores
+        self.is_available = available
+
+    def score_leads_to(self, from_skill, to_skill):
+        return self._scores.get((from_skill, to_skill))
+
+
+def test_gnn_absent_leaves_ranking_identical_to_pure_algorithmic():
+    """No gnn_agent supplied -- default behavior unchanged, every job stays
+    'algorithmic'."""
+    agent = RecommendationAgent()
+    student = [_student_skill("Python")]
+    jobs = [_job("j1", "Job", ["Python", "Machine Learning"])]
+
+    baseline = agent.rank_jobs(student, jobs)
+    with_none = agent.rank_jobs(student, jobs, gnn_agent=None)
+
+    assert baseline[0].final_score == with_none[0].final_score
+    assert with_none[0].score_source == "algorithmic"
+    assert with_none[0].gnn_score is None
+
+
+def test_gnn_unavailable_degrades_to_algorithmic_only():
+    agent = RecommendationAgent()
+    student = [_student_skill("Python")]
+    jobs = [_job("j1", "Job", ["Python", "Machine Learning"])]
+    stub = _StubGNNAgent(scores={}, available=False)
+
+    ranked = agent.rank_jobs(student, jobs, gnn_agent=stub)
+    assert ranked[0].score_source == "algorithmic"
+    assert ranked[0].gnn_score is None
+
+
+def test_gnn_rerank_boosts_score_for_learned_skill_progression():
+    """A job needs 'Machine Learning', which the student doesn't have and
+    no LEADS_TO edge in the algorithmic graph connects to -- so partial_score
+    is 0 -- but the GNN has learned Python plausibly leads to it. The
+    reranked job's final_score must reflect that (source flips to 'gnn',
+    gnn_score > 0), and it must outrank a job with an identical algorithmic
+    profile but no learned signal."""
+    agent = RecommendationAgent()
+    student = [_student_skill("Python")]
+    jobs = [
+        _job("with-signal", "ML Job", ["Python", "Machine Learning"]),
+        _job("no-signal", "Other Job", ["Python", "Woodworking"]),
+    ]
+    stub = _StubGNNAgent(scores={("Python", "Machine Learning"): 0.9})
+
+    ranked = agent.rank_jobs(student, jobs, gnn_agent=stub)
+    with_signal = next(r for r in ranked if r.job_id == "with-signal")
+    no_signal = next(r for r in ranked if r.job_id == "no-signal")
+
+    assert with_signal.score_source == "gnn"
+    assert with_signal.gnn_score == 0.9
+    assert no_signal.score_source == "gnn"  # still reranked (in pool), just scores 0
+    assert no_signal.gnn_score == 0.0
+    assert with_signal.final_score > no_signal.final_score
+
+
+def test_gnn_rerank_pool_size_bounds_which_jobs_get_rescored():
+    """Only the top `gnn_rerank_pool_size` algorithmic candidates get a GNN
+    score -- a job far down the ranking (e.g. zero exact/partial match)
+    stays 'algorithmic' even when the GNN is available."""
+    agent = RecommendationAgent()
+    student = [_student_skill("Python")]
+    jobs = [
+        _job("top", "Exact Match", ["Python"]),
+        _job("bottom", "No Match", ["Woodworking"]),
+    ]
+    stub = _StubGNNAgent(scores={("Python", "Woodworking"): 0.5})
+
+    ranked = agent.rank_jobs(student, jobs, gnn_agent=stub, gnn_rerank_pool_size=1)
+    top = next(r for r in ranked if r.job_id == "top")
+    bottom = next(r for r in ranked if r.job_id == "bottom")
+
+    assert top.score_source == "gnn"
+    assert bottom.score_source == "algorithmic"
+    assert bottom.gnn_score is None
+
+
+def test_gnn_missing_required_skills_score_zero_not_skipped():
+    """A job with no unmatched required skills (student already has
+    everything) contributes gnn_score 0.0, not None -- no missing skills to
+    ask the GNN about, which is a defined zero, not an error."""
+    agent = RecommendationAgent()
+    student = [_student_skill("Python")]
+    jobs = [_job("j1", "Job", ["Python"])]
+    stub = _StubGNNAgent(scores={})
+
+    ranked = agent.rank_jobs(student, jobs, gnn_agent=stub)
+    assert ranked[0].gnn_score == 0.0
+    assert ranked[0].score_source == "gnn"
+
+
+# ==================================================================== #
 # PathFinderAgent
 # ==================================================================== #
 

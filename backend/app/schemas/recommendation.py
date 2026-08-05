@@ -10,6 +10,11 @@ class JobRecommendationOut(BaseModel):
     match_percentage: float
     matched_skills: list[str] = Field(default_factory=list)
     why_recommended: str
+    # "gnn" when the trained GraphSAGE model contributed a rerank score for
+    # this job, "algorithmic" when it's Jaccard/LEADS_TO-only (GNN
+    # unavailable, or this job fell outside the rerank pool). See
+    # RecommendationAgent.rank_jobs's module docstring.
+    match_source: str = "algorithmic"
 
 
 class SkillRecommendationOut(BaseModel):

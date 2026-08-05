@@ -1,16 +1,16 @@
 {
   "gnn": {
     "Job_REQUIRES_Skill": {
-      "hits_at_k": 0.017867010499171117,
-      "mrr": 0.01286365347207908,
-      "auc_roc": 0.9349614123153319,
+      "hits_at_k": 0.013998894824092835,
+      "mrr": 0.012332362902112764,
+      "auc_roc": 0.9368274102624747,
       "num_test_pos": 5429,
       "num_test_neg": 5429
     },
     "Skill_LEADS_TO_Skill": {
       "hits_at_k": 0.5384615384615384,
-      "mrr": 0.426601466348081,
-      "auc_roc": 0.685404339250493,
+      "mrr": 0.29592179035404115,
+      "auc_roc": 0.6791584483892176,
       "num_test_pos": 39,
       "num_test_neg": 39
     }
@@ -31,7 +31,7 @@
       "num_test_neg": 39
     }
   },
-  "comparison_table_markdown": "| Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |\n|---|---|---|---|---|---|---|\n| Job_REQUIRES_Skill | GNN (GraphSAGE) | 0.935 | 0.018 | 0.013 | 5429 | 5429 |\n| Job_REQUIRES_Skill | Algorithmic baseline | 0.961 | 0.116 | 0.067 | 5429 | 5429 |\n| Skill_LEADS_TO_Skill | GNN (GraphSAGE) | 0.685 | 0.538 | 0.427 | 39 | 39 |\n| Skill_LEADS_TO_Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 39 | 39 |",
+  "comparison_table_markdown": "| Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |\n|---|---|---|---|---|---|---|\n| Job_REQUIRES_Skill | GNN (GraphSAGE) | 0.937 | 0.014 | 0.012 | 5429 | 5429 |\n| Job_REQUIRES_Skill | Algorithmic baseline | 0.961 | 0.116 | 0.067 | 5429 | 5429 |\n| Skill_LEADS_TO_Skill | GNN (GraphSAGE) | 0.679 | 0.538 | 0.296 | 39 | 39 |\n| Skill_LEADS_TO_Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 39 | 39 |",
   "seed": 42,
   "k": 10
 }

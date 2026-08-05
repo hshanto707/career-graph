@@ -44,6 +44,7 @@ const sampleJob = {
   match_percentage: 78,
   matched_skills: ["Python", "SQL"],
   why_recommended: "Strong match with your Python and SQL skills.",
+  match_source: "algorithmic" as const,
 };
 
 const sampleSkill = {
@@ -82,6 +83,21 @@ describe("Recommendations page", () => {
     });
     expect(screen.getByRole("tab", { name: /skills/i })).toBeInTheDocument();
     expect(screen.getByRole("tab", { name: /courses/i })).toBeInTheDocument();
+  });
+
+  it("shows an AI-ranked badge only for jobs the GNN reranked", async () => {
+    mockedJobs.mockResolvedValue([
+      { ...sampleJob, job_id: "job-gnn", title: "GNN Job", match_source: "gnn" as const },
+      { ...sampleJob, job_id: "job-algo", title: "Algo Job", match_source: "algorithmic" as const },
+    ]);
+    mockedSkills.mockResolvedValue([]);
+    mockedCourses.mockResolvedValue([]);
+
+    renderPage();
+
+    await waitFor(() => expect(screen.getByText("GNN Job")).toBeInTheDocument());
+    expect(screen.getByText("Algo Job")).toBeInTheDocument();
+    expect(screen.getAllByText(/ai-ranked/i)).toHaveLength(1);
   });
 
   it("isolates failures: a failing courses section does not break jobs/skills", async () => {

@@ -48,6 +48,7 @@ class GNNRecommendationAgent:
         self._target_edge_types: list[tuple[str, str, str]] | None = None
         self._message_passing_edge_types: list[tuple[str, str, str]] | None = None
         self._edge_index_dict: Any = None
+        self._z_dict: Any = None
         self._unavailable_reason: str | None = None
         self._load()
 
@@ -125,14 +126,28 @@ class GNNRecommendationAgent:
 
         import torch
 
-        edge_index_dict = self._build_message_passing_edge_index()
+        z_dict = self._get_z_dict()
         with torch.no_grad():
-            z_dict = self._model.encode(edge_index_dict)
             edge_label_index = torch.tensor(
                 [[src_index[src_id]], [dst_index[dst_id]]], dtype=torch.long
             )
             logit = self._model.decode(z_dict, src_type, dst_type, edge_label_index)
             return float(torch.sigmoid(logit).item())
+
+    def _get_z_dict(self):
+        """Node embeddings from one encoder forward pass, cached for the
+        lifetime of this agent instance. `_score_edge` is called many times
+        per recommendation request (once per candidate skill pair) -- without
+        this cache, every single call would re-run the full graph encoder,
+        which is the difference between scoring a rerank pool in
+        milliseconds vs. minutes."""
+        if self._z_dict is None:
+            import torch
+
+            edge_index_dict = self._build_message_passing_edge_index()
+            with torch.no_grad():
+                self._z_dict = self._model.encode(edge_index_dict)
+        return self._z_dict
 
     def _build_message_passing_edge_index(self):
         """Rebuild the message-passing graph from the exported HeteroData.
@@ -149,9 +164,17 @@ class GNNRecommendationAgent:
 
         if str(ML_ROOT) not in sys.path:
             sys.path.insert(0, str(ML_ROOT))
-        from export_graph import export
+        # Deliberately NOT `export_graph.export()` -- that helper always
+        # writes its HeteroData to disk (a CLI/offline-pipeline concern, see
+        # ml/export_graph.py's own docstring), which is both an unwanted
+        # side effect for a live inference call and fails outright if ml/
+        # is mounted read-only in a deployment (as it is in
+        # backend/docker-compose.yml). Build the same in-memory graph
+        # directly instead.
+        from export_graph import to_hetero_data
+        from graph_build import build_synthetic_career_graph
 
-        hetero_data, node_indices = export(output_path=ML_ROOT / "data" / "career_graph.pt")
+        hetero_data, node_indices = to_hetero_data(build_synthetic_career_graph())
 
         # Every message-passing relation is forward-or-reverse of one of the
         # real exported edge types -- mirrors train_gnn.build_training_graph
@@ -168,6 +191,22 @@ class GNNRecommendationAgent:
 
         self._edge_index_dict = edge_index_dict
         return edge_index_dict
+
+
+_default_agent: GNNRecommendationAgent | None = None
+
+
+def get_default_gnn_agent() -> GNNRecommendationAgent:
+    """Process-wide cached singleton. `EngineOrchestrator` is constructed
+    fresh on every request (see `app/core/deps.py::get_orchestrator`) --
+    without this cache, the checkpoint (a `torch.load` deserialization plus
+    rebuilding the model) would reload from disk on every single API call,
+    not just recommendation requests. The checkpoint is static between
+    deploys/retrains, so one load per process is correct and safe."""
+    global _default_agent
+    if _default_agent is None:
+        _default_agent = GNNRecommendationAgent()
+    return _default_agent
 
 
 def score_requires_with_fallback(

@@ -1,0 +1,750 @@
+<title>CareerGraph — The Seven Agents</title>
+<meta name="description" content="A working guide to CareerGraph's seven-agent intelligence engine: motive, mechanism, and code, agent by agent.">
+<style>
+:root{
+  --bg:#eef2f3; --surface:#ffffff; --surface-2:#f4f7f8; --border:#d3dbde;
+  --ink:#16232a; --ink-dim:#55707c; --ink-faint:#8296a0;
+  --accent:#0d7a6c; --accent-strong:#095a50; --accent-soft:#d9efeb;
+  --warn:#a2591a; --warn-soft:#f6e6d3;
+  --code-bg:#0f1a1d; --code-ink:#dbe9e6; --code-dim:#7fa89e; --code-str:#c9a86a; --code-kw:#7fb8d9;
+  --radius:3px;
+  --serif: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+  --sans: 'Avenir Next', 'Century Gothic', Futura, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b1013; --surface:#121a1e; --surface-2:#171f23; --border:#28353b;
+    --ink:#e6edec; --ink-dim:#9db3b0; --ink-faint:#6d858a;
+    --accent:#54cdb8; --accent-strong:#7fe0cd; --accent-soft:#132824;
+    --warn:#e4a565; --warn-soft:#2b2114;
+    --code-bg:#080f11; --code-ink:#d9ece7; --code-dim:#5f8a80; --code-str:#d3b479; --code-kw:#8fc7e6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1013; --surface:#121a1e; --surface-2:#171f23; --border:#28353b;
+  --ink:#e6edec; --ink-dim:#9db3b0; --ink-faint:#6d858a;
+  --accent:#54cdb8; --accent-strong:#7fe0cd; --accent-soft:#132824;
+  --warn:#e4a565; --warn-soft:#2b2114;
+  --code-bg:#080f11; --code-ink:#d9ece7; --code-dim:#5f8a80; --code-str:#d3b479; --code-kw:#8fc7e6;
+}
+:root[data-theme="light"]{
+  --bg:#eef2f3; --surface:#ffffff; --surface-2:#f4f7f8; --border:#d3dbde;
+  --ink:#16232a; --ink-dim:#55707c; --ink-faint:#8296a0;
+  --accent:#0d7a6c; --accent-strong:#095a50; --accent-soft:#d9efeb;
+  --warn:#a2591a; --warn-soft:#f6e6d3;
+  --code-bg:#0f1a1d; --code-ink:#dbe9e6; --code-dim:#7fa89e; --code-str:#c9a86a; --code-kw:#7fb8d9;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--serif);
+  font-size:16px; line-height:1.6;
+}
+::selection{background:var(--accent-soft); color:var(--ink);}
+a{color:var(--accent-strong);}
+a:focus-visible, button:focus-visible, .navlink:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+h1,h2,h3,h4{font-family:var(--sans); font-weight:700; text-wrap:balance; color:var(--ink); margin:0;}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+/* ---------- shell layout ---------- */
+.shell{display:flex; min-height:100vh; max-width:1400px; margin:0 auto;}
+nav.rail{
+  position:sticky; top:0; align-self:flex-start; height:100vh;
+  width:250px; flex:none; border-right:1px solid var(--border);
+  padding:28px 18px; overflow-y:auto;
+}
+.brand{font-family:var(--sans); font-weight:700; font-size:18px; letter-spacing:-.01em;}
+.brand small{display:block; font-family:var(--mono); font-weight:400; font-size:11px; color:var(--ink-faint); letter-spacing:.08em; margin-top:4px; text-transform:uppercase;}
+.rail-group{margin-top:26px;}
+.rail-group h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin-bottom:8px;}
+.navlink{
+  display:flex; align-items:baseline; gap:8px; padding:6px 8px; margin:0 -8px;
+  border-radius:var(--radius); text-decoration:none; color:var(--ink-dim);
+  font-family:var(--sans); font-size:13.5px; font-weight:500;
+  border-left:2px solid transparent;
+}
+.navlink:hover{color:var(--ink); background:var(--surface-2);}
+.navlink .tag{font-family:var(--mono); font-size:10px; color:var(--ink-faint);}
+
+main{flex:1; min-width:0; padding:44px 56px 120px;}
+@media (max-width:900px){
+  .shell{flex-direction:column;}
+  nav.rail{position:relative; height:auto; width:auto; border-right:none; border-bottom:1px solid var(--border);}
+  main{padding:32px 22px 90px;}
+}
+
+/* ---------- hero / overview ---------- */
+.hero{max-width:70ch;}
+.hero h1{font-size:34px; line-height:1.15; margin-top:10px;}
+.hero p.lede{font-size:17.5px; color:var(--ink-dim); margin-top:16px; max-width:62ch;}
+.tier-legend{display:flex; gap:22px; flex-wrap:wrap; margin-top:26px;}
+.tier-chip{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:13px; color:var(--ink-dim);}
+.dot{width:9px; height:9px; border-radius:50%; flex:none;}
+.dot.ingest{background:#7a90c9;}
+.dot.algo{background:var(--accent);}
+.dot.reason{background:var(--warn);}
+
+figure.diagram{margin:40px 0 0; padding:22px 20px 14px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);}
+figure.diagram svg{width:100%; height:auto; display:block; color:var(--ink-dim);}
+figcaption{font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); margin-top:10px; padding-top:10px; border-top:1px dotted var(--border);}
+
+/* ---------- section / agent card ---------- */
+section.stage{margin-top:70px; padding-top:6px;}
+.stage-head{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:26px;}
+.stage-head .idx{font-family:var(--mono); font-size:13px; color:var(--ink-faint);}
+.stage-head h2{font-size:22px;}
+.stage-head .count{font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); margin-left:auto;}
+
+.agent{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:28px 30px 30px; margin-bottom:26px;
+}
+.agent + .agent{margin-top:26px;}
+.agent-top{display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap;}
+.agent-top h3{font-size:21px;}
+.filepath{
+  font-family:var(--mono); font-size:12.5px; color:var(--accent-strong); background:var(--accent-soft);
+  padding:3px 8px; border-radius:var(--radius); white-space:nowrap;
+}
+.badge{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+  padding:3px 7px; border-radius:var(--radius); border:1px solid var(--border); color:var(--ink-dim);
+}
+.badge.llm{border-color:var(--warn); color:var(--warn);}
+.badge.pure{border-color:var(--accent); color:var(--accent-strong);}
+
+.agent h4.label{
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-faint); margin:24px 0 8px;
+}
+.agent h4.label:first-of-type{margin-top:20px;}
+.agent p{margin:0 0 10px; max-width:74ch;}
+.agent ul{margin:6px 0 10px; padding-left:20px;}
+.agent li{margin-bottom:5px; max-width:70ch;}
+
+code.inline{font-family:var(--mono); font-size:.92em; background:var(--surface-2); border:1px solid var(--border); padding:1px 5px; border-radius:var(--radius);}
+
+.codeblock{
+  background:var(--code-bg); color:var(--code-ink); border-radius:var(--radius);
+  overflow-x:auto; margin:10px 0 16px; border:1px solid #00000030;
+}
+.codeblock .ref{
+  font-family:var(--mono); font-size:11px; color:var(--code-dim); padding:8px 14px;
+  border-bottom:1px solid #ffffff14; letter-spacing:.03em;
+}
+.codeblock pre{margin:0; padding:14px 16px; font-family:var(--mono); font-size:12.5px; line-height:1.62; white-space:pre;}
+.codeblock .c{color:var(--code-dim);}
+.codeblock .s{color:var(--code-str);}
+.codeblock .k{color:var(--code-kw);}
+.codeblock .n{color:var(--code-ink);}
+
+.formula{
+  font-family:var(--mono); font-size:13px; background:var(--surface-2); border-left:3px solid var(--accent);
+  padding:10px 14px; margin:10px 0 16px; border-radius:0 var(--radius) var(--radius) 0; white-space:pre-wrap; color:var(--ink);
+}
+
+.example{
+  background:var(--surface-2); border:1px dashed var(--border); border-radius:var(--radius);
+  padding:12px 16px; margin:10px 0 16px; font-size:14.5px;
+}
+.example .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-strong); display:block; margin-bottom:6px;}
+
+table.data{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; margin:10px 0 16px;}
+table.data th, table.data td{border:1px solid var(--border); padding:7px 10px; text-align:left; font-variant-numeric:tabular-nums;}
+table.data th{background:var(--surface-2); font-weight:600; color:var(--ink-dim); font-family:var(--sans); font-size:11.5px; text-transform:uppercase; letter-spacing:.05em;}
+.tablewrap{overflow-x:auto;}
+
+.callout{
+  border:1px solid var(--warn); background:var(--warn-soft); border-radius:var(--radius);
+  padding:12px 16px; margin:14px 0; font-size:14.5px;
+}
+.callout .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--warn); display:block; margin-bottom:6px;}
+
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+.footer-note{margin-top:70px; padding-top:22px; border-top:1px solid var(--border); font-size:13px; color:var(--ink-faint); font-family:var(--sans); max-width:70ch;}
+
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto !important;}}
+html{scroll-behavior:smooth;}
+</style>
+
+<div class="shell">
+  <nav class="rail" aria-label="Agent index">
+    <div class="brand">CareerGraph<small>Intelligence Engine · 7 Agents</small></div>
+
+    <div class="rail-group">
+      <h4>Orientation</h4>
+      <a class="navlink" href="#overview">Overview &amp; pipeline</a>
+    </div>
+
+    <div class="rail-group">
+      <h4><span class="dot ingest" style="display:inline-block;margin-right:5px;"></span>Ingestion tier</h4>
+      <a class="navlink" href="#ingestion">1 · IngestionAgent</a>
+      <a class="navlink" href="#normalization">2 · NormalizationAgent</a>
+    </div>
+
+    <div class="rail-group">
+      <h4><span class="dot algo" style="display:inline-block;margin-right:5px;"></span>Algorithmic tier</h4>
+      <a class="navlink" href="#skillgap">3 · SkillGapAgent</a>
+      <a class="navlink" href="#recommendation">4 · RecommendationAgent</a>
+      <a class="navlink" href="#pathfinder">5 · PathFinderAgent</a>
+      <a class="navlink" href="#market">6 · MarketAgent</a>
+    </div>
+
+    <div class="rail-group">
+      <h4><span class="dot reason" style="display:inline-block;margin-right:5px;"></span>Reasoning tier</h4>
+      <a class="navlink" href="#reasoning">7 · ReasoningAgent</a>
+    </div>
+
+    <div class="rail-group">
+      <h4>Extra</h4>
+      <a class="navlink" href="#gnn">GNN rerank (bonus)</a>
+      <a class="navlink" href="#orchestrator">EngineOrchestrator</a>
+      <a class="navlink" href="#results">Results &amp; test status</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="eyebrow">backend/app/engine — architecture walkthrough</div>
+      <h1>The seven agents behind CareerGraph</h1>
+      <p class="lede">CareerGraph turns a pile of job postings into a live skill graph, then uses seven small, single-purpose agents to move a student from "here's my resume" to "here's exactly what to learn next, and why." Two agents build the graph, four score and rank against it with plain deterministic Python, and one optional agent narrates the results in English. This page walks through each one — its motive, its mechanism, its actual code, and why removing it would break something specific.</p>
+
+      <div class="tier-legend">
+        <div class="tier-chip"><span class="dot ingest"></span>Ingestion tier — builds the graph from raw data</div>
+        <div class="tier-chip"><span class="dot algo"></span>Algorithmic tier — pure Python, zero LLM, deterministic</div>
+        <div class="tier-chip"><span class="dot reason"></span>Reasoning tier — optional LLM narration layer</div>
+      </div>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 980 330" role="img" aria-label="Pipeline: raw CSV flows through IngestionAgent and NormalizationAgent into the Neo4j graph; four algorithmic agents read that graph independently and feed EngineOrchestrator; EngineOrchestrator optionally calls ReasoningAgent to narrate the result before it reaches the API response; GNNRecommendationAgent optionally reranks RecommendationAgent's candidate pool.">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <!-- stage 1: ingestion -->
+          <rect x="16" y="24" width="140" height="46" rx="3" fill="none" stroke="currentColor"/>
+          <text x="86" y="43" text-anchor="middle" font-family="var(--sans)" font-size="12" fill="currentColor">kaggle_jobs.csv</text>
+          <text x="86" y="58" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--ink-faint)">raw postings</text>
+
+          <line x1="156" y1="47" x2="196" y2="47" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="198" y="14" width="168" height="66" rx="3" fill="none" stroke="var(--accent-strong)" stroke-width="1.4"/>
+          <text x="282" y="38" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12.5" fill="var(--accent-strong)">IngestionAgent</text>
+          <text x="282" y="54" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--ink-faint)">validate + parse rows</text>
+          <text x="282" y="68" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">ingestion_agent.py</text>
+
+          <line x1="366" y1="47" x2="406" y2="47" stroke="currentColor" marker-end="url(#arrow)"/>
+          <text x="386" y="38" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">clean records</text>
+
+          <rect x="408" y="14" width="188" height="66" rx="3" fill="none" stroke="var(--accent-strong)" stroke-width="1.4"/>
+          <text x="502" y="35" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12.5" fill="var(--accent-strong)">NormalizationAgent</text>
+          <text x="502" y="51" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--ink-faint)">synonym + fuzzy match</text>
+          <text x="502" y="65" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">normalization_agent.py</text>
+
+          <line x1="502" y1="80" x2="502" y2="112" stroke="currentColor" marker-end="url(#arrow)"/>
+          <text x="516" y="100" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">MERGE writes</text>
+
+          <!-- graph -->
+          <rect x="392" y="114" width="220" height="42" rx="3" fill="var(--accent-soft)" stroke="var(--accent-strong)"/>
+          <text x="502" y="140" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12.5" fill="var(--accent-strong)">Neo4j knowledge graph</text>
+
+          <!-- fan out to 4 algorithmic agents -->
+          <line x1="502" y1="156" x2="502" y2="176" stroke="currentColor"/>
+          <line x1="130" y1="176" x2="874" y2="176" stroke="currentColor"/>
+          <line x1="130" y1="176" x2="130" y2="196" stroke="currentColor" marker-end="url(#arrow)"/>
+          <line x1="378" y1="176" x2="378" y2="196" stroke="currentColor" marker-end="url(#arrow)"/>
+          <line x1="626" y1="176" x2="626" y2="196" stroke="currentColor" marker-end="url(#arrow)"/>
+          <line x1="874" y1="176" x2="874" y2="196" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <g font-family="var(--sans)" font-weight="700" font-size="11.5" fill="var(--accent-strong)">
+            <rect x="46" y="198" width="168" height="40" rx="3" fill="none" stroke="var(--accent-strong)"/>
+            <text x="130" y="222" text-anchor="middle">SkillGapAgent</text>
+
+            <rect x="294" y="198" width="168" height="40" rx="3" fill="none" stroke="var(--accent-strong)"/>
+            <text x="378" y="216" text-anchor="middle">RecommendationAgent</text>
+            <text x="378" y="230" text-anchor="middle" font-family="var(--mono)" font-weight="400" font-size="9" fill="var(--warn)">+ optional GNN rerank</text>
+
+            <rect x="542" y="198" width="168" height="40" rx="3" fill="none" stroke="var(--accent-strong)"/>
+            <text x="626" y="222" text-anchor="middle">PathFinderAgent</text>
+
+            <rect x="790" y="198" width="168" height="40" rx="3" fill="none" stroke="var(--accent-strong)"/>
+            <text x="874" y="222" text-anchor="middle">MarketAgent</text>
+          </g>
+
+          <!-- converge to orchestrator -->
+          <line x1="130" y1="238" x2="130" y2="256" stroke="currentColor"/>
+          <line x1="378" y1="238" x2="378" y2="256" stroke="currentColor"/>
+          <line x1="626" y1="238" x2="626" y2="256" stroke="currentColor"/>
+          <line x1="874" y1="238" x2="874" y2="256" stroke="currentColor"/>
+          <line x1="130" y1="256" x2="874" y2="256" stroke="currentColor"/>
+          <line x1="502" y1="256" x2="502" y2="272" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="382" y="274" width="240" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="502" y="296" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="currentColor">EngineOrchestrator</text>
+
+          <line x1="502" y1="308" x2="502" y2="322" stroke="currentColor" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+          <rect x="700" y="272" width="200" height="36" rx="3" fill="none" stroke="var(--warn)" stroke-dasharray="4,3"/>
+          <text x="800" y="291" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="11.5" fill="var(--warn)">ReasoningAgent</text>
+          <text x="800" y="303" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="var(--warn)">optional · LLM narration</text>
+          <line x1="622" y1="291" x2="698" y2="291" stroke="var(--warn)" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+          <text x="502" y="325" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">API response to student</text>
+        </svg>
+        <figcaption>Two ingestion agents build the graph once. Four algorithmic agents read it fresh on every request, run in parallel, and never call an LLM. EngineOrchestrator merges their output and — only if a provider key is configured — asks ReasoningAgent to narrate it; if that call fails for any reason, the orchestrator silently falls back to a template sentence instead of a 500.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="tier-ingest">
+      <div class="stage-head">
+        <span class="idx">Tier 1</span>
+        <h2>Ingestion agents — build the graph</h2>
+        <span class="count">2 agents · zero LLM · run once per data load</span>
+      </div>
+
+      <article class="agent" id="ingestion">
+        <div class="agent-top">
+          <div>
+            <h3>1 · IngestionAgent</h3>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge pure">pure python</span>
+            <span class="filepath">backend/app/engine/ingestion/ingestion_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>Real job-posting exports are messy: blank titles, a salary_max lower than salary_min, a <code class="inline">skills_required</code> cell that's just empty. Nothing downstream — not the graph, not any agent — should have to defend itself against malformed rows. IngestionAgent's whole job is to be the one place that absorbs that mess, so every other agent can assume clean input.</p>
+
+        <h4 class="label">Mechanism</h4>
+        <p>It reads a CSV (from a path, an uploaded file, or raw bytes/text — all three are duck-typed through <code class="inline">_read_text</code>), checks the header contains the required columns, then validates row by row. A bad row is <em>dropped and logged</em>, never allowed to abort the whole run — one malformed posting shouldn't cost you the other 9,999.</p>
+
+        <div class="codeblock">
+          <div class="ref">ingestion_agent.py:98–136 — per-row validation</div>
+<pre><span class="k">def</span> <span class="n">_validate_row</span>(<span class="n">self</span>, <span class="n">row</span>: <span class="n">dict</span>) -> <span class="n">tuple</span>[<span class="n">dict</span> | <span class="k">None</span>, <span class="n">str</span> | <span class="k">None</span>]:
+    <span class="n">title</span> = (<span class="n">row</span>.get(<span class="s">"title"</span>) <span class="k">or</span> <span class="s">""</span>).strip()
+    <span class="c"># ... company, location, type, skills_raw pulled the same way</span>
+    <span class="k">if not</span> <span class="n">title</span>:
+        <span class="k">return</span> <span class="k">None</span>, <span class="s">"missing title"</span>
+    <span class="c"># ...</span>
+    <span class="n">skills</span> = <span class="n">self</span>.<span class="n">_parse_skills</span>(<span class="n">skills_raw</span>)
+    <span class="k">if not</span> <span class="n">skills</span>:
+        <span class="k">return</span> <span class="k">None</span>, <span class="s">"skills_required had no usable entries"</span>
+    <span class="k">if</span> <span class="n">salary_min</span> <span class="k">is not</span> <span class="k">None</span> <span class="k">and</span> <span class="n">salary_max</span> <span class="k">is not</span> <span class="k">None</span> <span class="k">and</span> <span class="n">salary_min</span> > <span class="n">salary_max</span>:
+        <span class="k">return</span> <span class="k">None</span>, <span class="s">"salary_min greater than salary_max"</span>
+    <span class="c"># otherwise: build and return the clean record dict</span></pre>
+        </div>
+
+        <p>Every drop reason gets collected into an <code class="inline">IngestionStats</code> object (<code class="inline">rows_read</code>, <code class="inline">rows_dropped</code>, <code class="inline">drop_reasons</code>) rather than swallowed silently — so an ingestion run is auditable: "9,412 read, 32 dropped, 18 for missing skills, 14 for bad salary range."</p>
+
+        <div class="example">
+          <span class="tag">worked example</span>
+          Row: <code class="inline">skills_required = "Python, python, SQL, "</code> → <code class="inline">_parse_skills</code> lowercases for dedup but keeps first-seen casing, drops the trailing empty chunk → result: <code class="inline">["Python", "SQL"]</code>. A duplicate entered in different casing collapses to one skill instead of inflating the posting's skill count.
+        </div>
+
+        <h4 class="label">Why necessary</h4>
+        <p>Without it, <code class="inline">NormalizationAgent</code> (or worse, <code class="inline">GraphService</code> itself) would need its own ad-hoc validation scattered through graph-write code — and a single bad row from a 10,000-row CSV could crash an entire ingestion job instead of costing one dropped record.</p>
+      </article>
+
+      <article class="agent" id="normalization">
+        <div class="agent-top">
+          <div><h3>2 · NormalizationAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge pure">pure python + rapidfuzz</span>
+            <span class="filepath">backend/app/engine/ingestion/normalization_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>Job postings describe the same skill a dozen different ways — "ReactJS", "React.js", "React" — and a graph that treats those as three different <code class="inline">Skill</code> nodes can't match a student who lists "React" against a job requiring "ReactJS". Every downstream agent (gap analysis, recommendations, market demand) depends on skill names being canonical, or their set-intersection logic silently under-counts matches.</p>
+
+        <h4 class="label">Mechanism — a three-step resolution ladder</h4>
+        <ul>
+          <li><strong>Exact synonym match</strong> — case-insensitive lookup in <code class="inline">synonyms.json</code> (e.g. <code class="inline">"reactjs" → "React"</code>).</li>
+          <li><strong>Fuzzy match</strong> — if no synonym hit, <code class="inline">rapidfuzz.process.extract</code> scores the raw name against the full O*NET/ESCO taxonomy using <code class="inline">WRatio</code>; anything scoring ≥ 90 is accepted as that canonical name. Ties at the same top score are broken alphabetically — deterministic, not "whatever the library iterates first."</li>
+          <li><strong>Unmatched</strong> — kept as-is and flagged for manual review, rather than silently discarded.</li>
+        </ul>
+
+        <div class="codeblock">
+          <div class="ref">normalization_agent.py:188–203 — deterministic fuzzy tie-break</div>
+<pre><span class="k">def</span> <span class="n">_fuzzy_match</span>(<span class="n">self</span>, <span class="n">raw_name</span>: <span class="n">str</span>) -> <span class="n">str</span> | <span class="k">None</span>:
+    <span class="n">matches</span> = <span class="n">process</span>.<span class="n">extract</span>(
+        <span class="n">raw_name</span>, <span class="n">self</span>.<span class="n">_onet_canonical_names</span>,
+        <span class="n">scorer</span>=<span class="n">fuzz</span>.<span class="n">WRatio</span>, <span class="n">score_cutoff</span>=<span class="n">self</span>.<span class="n">_fuzzy_threshold</span>, <span class="n">limit</span>=<span class="k">None</span>,
+    )
+    <span class="k">if not</span> <span class="n">matches</span>: <span class="k">return</span> <span class="k">None</span>
+    <span class="n">top_score</span> = <span class="n">max</span>(<span class="n">score</span> <span class="k">for</span> <span class="n">_</span>, <span class="n">score</span>, <span class="n">_</span> <span class="k">in</span> <span class="n">matches</span>)
+    <span class="n">tied</span> = <span class="n">sorted</span>(<span class="n">name</span> <span class="k">for</span> <span class="n">name</span>, <span class="n">score</span>, <span class="n">_</span> <span class="k">in</span> <span class="n">matches</span> <span class="k">if</span> <span class="n">score</span> == <span class="n">top_score</span>)
+    <span class="k">return</span> <span class="n">tied</span>[<span class="n">0</span>]  <span class="c"># alphabetically-first canonical name, not library order</span></pre>
+        </div>
+
+        <p>It also derives <strong>must vs. nice</strong> importance from list position — the first half of a posting's (deduplicated) skill list is <code class="inline">"must"</code>, the rest is <code class="inline">"nice"</code> — and writes everything to Neo4j via <code class="inline">GraphService.ingest_job_posting</code>, which is MERGE-based end to end, so re-running the same CSV twice never duplicates a Job or Skill node.</p>
+
+        <div class="two-col">
+          <div class="example">
+            <span class="tag">job_id key</span>
+            <code class="inline">slug(company)::slug(title)</code> — a documented collision caveat: two distinct postings from the same company with the same title collapse into one Job node. Acceptable at capstone scale; production would add a source row id.
+          </div>
+          <div class="example">
+            <span class="tag">importance rule</span>
+            <code class="inline">must_count = max(1, ceil(len(skills) / 2))</code> — first <code class="inline">must_count</code> skills (by original listing order) are "must", the rest "nice".
+          </div>
+        </div>
+
+        <h4 class="label">Why necessary</h4>
+        <p>Skip normalization and <code class="inline">RecommendationAgent</code>'s Jaccard set-intersection (<a href="#recommendation">below</a>) becomes near-useless: "React" and "ReactJS" are different strings, so a perfectly-qualified student would show 0% overlap against a job that happens to spell the skill differently.</p>
+      </article>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="tier-algo">
+      <div class="stage-head">
+        <span class="idx">Tier 2</span>
+        <h2>Algorithmic agents — score against the live graph</h2>
+        <span class="count">4 agents · pure Python · zero LLM · re-run on every request</span>
+      </div>
+
+      <article class="agent" id="skillgap">
+        <div class="agent-top">
+          <div><h3>3 · SkillGapAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge pure">deterministic</span>
+            <span class="filepath">backend/app/engine/algorithmic/skill_gap_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>Answers the single question a student opens the app to ask: <em>"how ready am I for this specific job, and what exactly is missing?"</em> A flat percentage ("you match 40% of skills") hides the difference between missing one deal-breaking requirement and missing five optional nice-to-haves — this agent weights that difference explicitly instead of treating every skill as equally important.</p>
+
+        <h4 class="label">Mechanism</h4>
+        <p>Required skills are split into <code class="inline">must</code> and <code class="inline">nice</code> buckets (that label already arrived from ingestion — this agent trusts it, defaulting anything missing to <code class="inline">"nice"</code> so unclassified data can never inflate the higher-weighted bucket). Each bucket's match ratio is weighted, then a small proficiency bonus differentiates two students who match an identical skill set but know those skills to different depths.</p>
+
+        <div class="formula">readiness_score = (must_matched / must_total) × 0.7
+                + (nice_matched / nice_total) × 0.3
+                × 100
+              + proficiency_bonus   (capped so total ≤ 100)</div>
+
+        <div class="codeblock">
+          <div class="ref">skill_gap_agent.py:154–172 — the weighted score, zero-division safe</div>
+<pre><span class="n">must_ratio</span> = (<span class="n">must_matched</span> / <span class="n">must_total</span>) <span class="k">if</span> <span class="n">must_total</span> <span class="k">else</span> <span class="n">0.0</span>
+<span class="n">nice_ratio</span> = (<span class="n">nice_matched</span> / <span class="n">nice_total</span>) <span class="k">if</span> <span class="n">nice_total</span> <span class="k">else</span> <span class="n">0.0</span>
+<span class="n">base_score</span> = (<span class="n">must_ratio</span> * <span class="n">MUST_WEIGHT</span> + <span class="n">nice_ratio</span> * <span class="n">NICE_WEIGHT</span>) * <span class="n">100.0</span>
+
+<span class="c"># proficiency_bonus: matched skills only, scaled 0-10 → up to 2.0 pts each,</span>
+<span class="c"># averaged over ALL required skills (not just matched) so it can't dominate</span>
+<span class="n">readiness_score</span> = <span class="n">min</span>(<span class="n">base_score</span> + <span class="n">proficiency_bonus</span>, <span class="n">MAX_READINESS_SCORE</span>)</pre>
+        </div>
+
+        <div class="example">
+          <span class="tag">worked example</span>
+          Job needs 4 must-have + 2 nice-to-have skills. Student matches 3/4 must, 1/2 nice, at proficiency 8/10 average on matched skills.<br>
+          <code class="inline">base_score = (3/4 × 0.7 + 1/2 × 0.3) × 100 = (0.525 + 0.15) × 100 = 67.5</code><br>
+          <code class="inline">proficiency_bonus ≈ (4 matched × 0.8 × 2.0) / 6 required ≈ 1.07</code><br>
+          → <strong>readiness_score ≈ 68.6</strong> — a student who knows those same 4 skills at proficiency 2/10 instead lands closer to 67.8. Same skill set, different depth, different score.
+        </div>
+
+        <h4 class="label">Why necessary</h4>
+        <p>Without the must/nice split, a job requiring "Python, SQL, Docker, Kubernetes" (all must-have) and one requiring "Python, SQL, Excel, PowerPoint" (Python/SQL must, the rest nice) would treat a student who only knows Python+SQL identically — even though they're much closer to job-ready for the second posting than the first.</p>
+      </article>
+
+      <article class="agent" id="recommendation">
+        <div class="agent-top">
+          <div><h3>4 · RecommendationAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge pure">deterministic</span>
+            <span class="filepath">backend/app/engine/algorithmic/recommendation_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>Ranks all ~9,380 live jobs for a student — not just against the one target role SkillGapAgent evaluates, but across the whole catalog, so the student sees roles they're a good fit for even if they never thought to search for them. A pure exact-match score would miss "close" jobs entirely: someone who knows Python is a real candidate for a Machine Learning role even without that exact skill listed yet.</p>
+
+        <h4 class="label">Mechanism — two blended signals</h4>
+        <p><strong>Exact score</strong> is plain Jaccard similarity over skill sets. <strong>Partial score</strong> gives credit for skills the student doesn't have yet but is one or two <code class="inline">LEADS_TO</code> hops away from — BFS outward from the student's known skills, direct edges worth full credit, one-hop-removed worth half.</p>
+
+        <div class="formula">exact_score   = |student ∩ job| / |student ∪ job|
+partial_score = Σ(depth==1 ? 1.0 : depth==2 ? 0.5 : 0) over unmatched job skills
+                / |job skills|
+final_score   = exact_score × 0.8 + partial_score × 0.2</div>
+
+        <div class="codeblock">
+          <div class="ref">recommendation_agent.py:107–129 — multi-source BFS for partial credit</div>
+<pre><span class="k">def</span> <span class="n">_reachable_within_depth</span>(<span class="n">start_nodes</span>, <span class="n">adjacency</span>, <span class="n">max_depth</span>):
+    <span class="c"># BFS from every student skill simultaneously; visited-set makes it</span>
+    <span class="c"># cycle-safe and returns the SHORTEST depth to each reachable skill</span>
+    <span class="n">depths</span> = {}
+    <span class="n">visited</span> = <span class="n">set</span>(<span class="n">start_nodes</span>)
+    <span class="n">queue</span> = <span class="n">deque</span>((<span class="n">n</span>, <span class="n">0</span>) <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">start_nodes</span>)
+    <span class="k">while</span> <span class="n">queue</span>:
+        <span class="n">node</span>, <span class="n">depth</span> = <span class="n">queue</span>.popleft()
+        <span class="k">if</span> <span class="n">depth</span> >= <span class="n">max_depth</span>: <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="k">in</span> <span class="n">adjacency</span>.get(<span class="n">node</span>, ()):
+            <span class="k">if</span> <span class="n">neighbor</span> <span class="k">not</span> <span class="k">in</span> <span class="n">visited</span>:
+                <span class="n">visited</span>.add(<span class="n">neighbor</span>); <span class="n">depths</span>[<span class="n">neighbor</span>] = <span class="n">depth</span> + <span class="n">1</span>
+                <span class="n">queue</span>.append((<span class="n">neighbor</span>, <span class="n">depth</span> + <span class="n">1</span>))
+    <span class="k">return</span> <span class="n">depths</span></pre>
+        </div>
+
+        <div class="example">
+          <span class="tag">worked example</span>
+          Student knows only <code class="inline">Python</code>. Graph has <code class="inline">Python --LEADS_TO--> Machine Learning</code>. Job requires <code class="inline">{Machine Learning, SQL}</code>.<br>
+          <code class="inline">exact_score = |{}| / |{Python, ML, SQL}| = 0</code> — plain set overlap sees nothing.<br>
+          <code class="inline">partial_score</code>: "Machine Learning" is depth-1 reachable (credit 1.0), "SQL" isn't reachable (credit 0) → <code class="inline">1.0 / 2 = 0.5</code><br>
+          → <strong>final_score = 0 × 0.8 + 0.5 × 0.2 = 0.10</strong> — a real, if modest, signal where exact matching alone would have scored this job identically to one requiring nothing the student is remotely close to.
+        </div>
+
+        <p>Ties are broken deterministically by <code class="inline">job_id</code> ascending — re-running the same request always returns the same order.</p>
+
+        <h4 class="label">Why necessary</h4>
+        <p>Exact-match-only recommendation is brittle at the edges of a student's skill set — it can't tell "one skill away from qualified" from "completely unrelated field," which is exactly the distinction that makes a recommendation feel like guidance rather than a keyword search.</p>
+      </article>
+
+      <article class="agent" id="pathfinder">
+        <div class="agent-top">
+          <div><h3>5 · PathFinderAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge pure">deterministic</span>
+            <span class="filepath">backend/app/engine/algorithmic/path_finder_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>A list of missing skills tells a student <em>what</em> they lack; it doesn't tell them <em>what order to learn it in</em>. If "Machine Learning" requires "Python" as a prerequisite, showing both as an unordered todo-list invites a student to start with the harder one. PathFinderAgent turns "missing skills" into an actual ordered roadmap.</p>
+
+        <h4 class="label">Mechanism</h4>
+        <p><code class="inline">LEADS_TO</code> points prerequisite → advanced skill, so building a path <em>to</em> a missing skill means walking backward first (advanced → its prerequisites) to discover the full ancestor chain, then running a topological sort (Kahn's algorithm) forward over just that induced subgraph to get one linear, prerequisite-first order.</p>
+
+        <div class="codeblock">
+          <div class="ref">path_finder_agent.py:161–182 — cycle-safe topological sort</div>
+<pre><span class="k">while</span> <span class="n">remaining</span>:
+    <span class="n">zero_in_degree</span> = <span class="n">sorted</span>(<span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">remaining</span> <span class="k">if</span> <span class="n">in_degree</span>[<span class="n">n</span>] == <span class="n">0</span>)
+    <span class="k">if</span> <span class="n">zero_in_degree</span>:
+        <span class="n">node</span> = <span class="n">zero_in_degree</span>[<span class="n">0</span>]
+    <span class="k">else</span>:
+        <span class="c"># cycle detected (bad ingestion data): force-pick the</span>
+        <span class="c"># lexicographically smallest remaining node so we always terminate</span>
+        <span class="n">node</span> = <span class="n">sorted</span>(<span class="n">remaining</span>)[<span class="n">0</span>]
+    <span class="n">ordered</span>.append(<span class="n">node</span>); <span class="n">remaining</span>.remove(<span class="n">node</span>)
+    <span class="c"># decrement in-degree of node's forward neighbors, track edge difficulty...</span></pre>
+        </div>
+
+        <p>Every milestone also gets a <code class="inline">weeks_estimate = BASE_WEEKS(2) + max incoming difficulty_jump</code> — a documented v1 proxy, not real historical learning-time data — and any <code class="inline">TEACHES</code> courses already resolved by <code class="inline">GraphService</code> for that skill.</p>
+
+        <h4 class="label">Why necessary</h4>
+        <p>The cycle-handling detail matters in practice: <code class="inline">LEADS_TO</code> edges in this dataset are synthesized by a same-category alphabetical heuristic (<code class="inline">ml/graph_build.py</code>), not hand-curated — a naive Kahn's-algorithm implementation would silently hang the moment ingestion produces even one accidental A→B→A loop. The deterministic force-pick guarantees the roadmap endpoint always returns, even against imperfect data.</p>
+      </article>
+
+      <article class="agent" id="market">
+        <div class="agent-top">
+          <div><h3>6 · MarketAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge pure">deterministic</span>
+            <span class="filepath">backend/app/engine/algorithmic/market_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>Backs "what's actually in demand right now" — the Dashboard's market widget and the standalone Market page. Without it, skill recommendations would have no grounding in the labor market: a student would have no way to tell "SQL" is asked for in 61% of postings while "COBOL" appears in 0.3%.</p>
+
+        <h4 class="label">Mechanism</h4>
+        <p>Counts how many distinct jobs require each skill (deduped per-job first, so one job listing a skill twice can't inflate its count), then normalizes against the corpus max — the single most-required skill in <em>this</em> dataset always scores exactly 100, everything else scaled relative to it. That keeps the score meaningful whether the dataset is a 50-job demo seed or the full 10k-row Kaggle export.</p>
+
+        <div class="formula">demand_score(skill) = (skill's REQUIRES count / max REQUIRES count across all skills) × 100</div>
+
+        <div class="callout">
+          <span class="tag">documented open decision — trend without time-series data</span>
+          The Neo4j schema has no snapshot/history node yet, so a true "demand delta over time" isn't possible in v1. If a caller supplies a prior ingestion snapshot, <code class="inline">trend = current_count − previous_count</code>; if not — the common case, only one ingestion run exists — <code class="inline">trend</code> is explicitly <code class="inline">None</code>, never a fabricated <code class="inline">0</code> that would read as "flat" instead of "unknown."
+        </div>
+
+        <h4 class="label">Why necessary</h4>
+        <p>This is the only agent with visibility across the <em>entire</em> job catalog rather than one student/job pair — it's what turns "learn Docker" from a generic suggestion into "learn Docker, which shows up in more postings than any other skill in this dataset right now."</p>
+      </article>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="tier-reason">
+      <div class="stage-head">
+        <span class="idx">Tier 3</span>
+        <h2>Reasoning agent — narrates the numbers</h2>
+        <span class="count">1 agent · optional · pluggable LLM (Claude / OpenAI / Ollama)</span>
+      </div>
+
+      <article class="agent" id="reasoning">
+        <div class="agent-top">
+          <div><h3>7 · ReasoningAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge llm">llm-backed</span>
+            <span class="filepath">backend/app/engine/reasoning/reasoning_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Motive</h4>
+        <p>A readiness score of 68.6% and a list of missing skill names is correct, but it isn't <em>encouraging</em> or explanatory the way a human career coach would be. ReasoningAgent's entire job is to take output the other six agents already computed and put it into plain, supportive English — never to compute or second-guess a number itself.</p>
+
+        <h4 class="label">Mechanism — validated, schema-locked output</h4>
+        <p>Every one of its four methods follows the identical shape: build a prompt that explicitly tells the model <em>"do not invent or change any score,"</em> call <code class="inline">LLMProvider.complete()</code> with a Pydantic schema, and return whatever validated object comes back untouched. Raw LLM text can never reach a caller — it's forced through <code class="inline">GapExplanation</code>, <code class="inline">RecommendationNarratives</code>, <code class="inline">RoadmapPlan</code>, or <code class="inline">MarketSummary</code> first.</p>
+
+        <div class="codeblock">
+          <div class="ref">reasoning_agent.py:96–103 — the system prompt for explain_gap()</div>
+<pre><span class="n">_GAP_SYSTEM_PROMPT</span> = (
+    <span class="s">"You are a supportive career coach for a university student. You are given "</span>
+    <span class="s">"an already-computed skill-gap analysis (readiness score, matched skills, "</span>
+    <span class="s">"missing skills) for a specific target job. Do not invent or change any "</span>
+    <span class="s">"score or skill list -- only explain it in plain, encouraging English and "</span>
+    <span class="s">"estimate how many weeks it would realistically take to learn each missing "</span>
+    <span class="s">"skill. Respond with JSON only, matching the required schema exactly."</span>
+)</pre>
+        </div>
+
+        <table class="data">
+          <tr><th>Method</th><th>Consumes</th><th>Produces</th></tr>
+          <tr><td>explain_gap()</td><td>SkillGapAgent's GapResult</td><td>explanation + encouragement + weeks-per-skill</td></tr>
+          <tr><td>narrate_recommendations()</td><td>RecommendationAgent's ranked jobs</td><td>1–2 sentence "why recommended" per job</td></tr>
+          <tr><td>write_roadmap()</td><td>PathFinderAgent's LearningPath</td><td>week-range + concrete goal per milestone</td></tr>
+          <tr><td>summarize_market()</td><td>MarketAgent's DemandData</td><td>3 trend bullets + summary + highlight skills</td></tr>
+        </table>
+
+        <h4 class="label">Why "necessary" is a stronger claim than it looks</h4>
+        <p>It's the only one of the seven agents explicitly designed to be <strong>removable without breaking anything</strong> — per system-design.md §9.1: "removing it never breaks the system." <code class="inline">EngineOrchestrator</code> (below) wraps every call to it in a try/except and falls back to a real, written-out template sentence, not a blank field. As of this session's <code class="inline">docker-compose.yml</code>, <code class="inline">LLM_PROVIDER=none</code> in the live environment, so in practice every narrative a user currently sees is the template path — a real, working degradation, not a stub.</p>
+      </article>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="gnn">
+      <div class="stage-head">
+        <span class="idx">Bonus</span>
+        <h2>The GNN rerank stage — a learned signal bolted onto Agent 4</h2>
+        <span class="count">GNNRecommendationAgent · optional · torch/PyG</span>
+      </div>
+
+      <article class="agent">
+        <div class="agent-top">
+          <div><h3>GNNRecommendationAgent</h3></div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <span class="badge llm">torch, optional</span>
+            <span class="filepath">backend/app/engine/algorithmic/gnn_recommendation_agent.py</span>
+          </div>
+        </div>
+
+        <h4 class="label">Not the 8th agent — a plug-in for Agent 4</h4>
+        <p>System-design.md counts seven agents; this isn't an eighth. It's a swappable inference layer that <code class="inline">RecommendationAgent.rank_jobs()</code> can optionally call, using the exact same graceful-degradation contract as the LLM provider: if torch isn't installed, or no trained checkpoint exists on disk, <code class="inline">is_available</code> is <code class="inline">False</code> and every scoring method returns <code class="inline">None</code> instead of raising. Callers must treat <code class="inline">None</code> as "fall back to the pure algorithmic path" — never as an error.</p>
+
+        <div class="callout">
+          <span class="tag">a live, working-tree discrepancy worth knowing about</span>
+          <code class="inline">docs/current-status.md</code> (dated 2026-08-05) describes this integration as the single biggest missing piece: <em>"EngineOrchestrator has zero references to GNN anywhere."</em> The code on disk right now tells a different story — <code class="inline">recommendation_agent.py</code> already accepts a <code class="inline">gnn_agent</code> parameter and blends its score in, and <code class="inline">orchestrator.py:280–282</code> passes <code class="inline">self.gnn_agent</code> into <code class="inline">rank_jobs()</code> on every recommendation request. The doc is stale relative to the working tree (both files show as modified/uncommitted in <code class="inline">git status</code>) — the wiring described as "not done" has, in fact, been done since that doc was last written.
+        </div>
+
+        <h4 class="label">Mechanism — retrieve-then-rerank, not score-everything</h4>
+        <p><code class="inline">rank_jobs()</code> always computes the cheap algorithmic scores over <em>every</em> job first (the retrieval stage). Only the top 50 candidates by algorithmic score (<code class="inline">GNN_RERANK_POOL_SIZE</code>) get rescored by the model — bounding the expensive inference step instead of running it against a 9,000+ job catalog on every request.</p>
+
+        <div class="formula">// once a job is in the rerank pool:
+final_score = exact_score × 0.6 + partial_score × 0.15 + gnn_score × 0.25
+// jobs outside the pool keep score_source = "algorithmic"; reranked jobs get score_source = "gnn"</div>
+
+        <div class="codeblock">
+          <div class="ref">gnn_recommendation_agent.py:70–98 — load-or-degrade, never crash</div>
+<pre><span class="k">def</span> <span class="n">_load</span>(<span class="n">self</span>) -> <span class="k">None</span>:
+    <span class="k">if not</span> <span class="n">self</span>.<span class="n">_checkpoint_path</span>.exists():
+        <span class="n">self</span>.<span class="n">_unavailable_reason</span> = <span class="s">f"no checkpoint found at {self._checkpoint_path}"</span>
+        <span class="k">return</span>
+    <span class="k">try</span>:
+        <span class="k">import</span> <span class="n">torch</span>
+    <span class="k">except</span> <span class="n">ImportError</span>:
+        <span class="n">self</span>.<span class="n">_unavailable_reason</span> = <span class="s">"torch is not installed (see ml/requirements.txt)"</span>
+        <span class="k">return</span>
+    <span class="k">try</span>:
+        <span class="c"># load checkpoint, rebuild LinkPredictor, model.eval()</span>
+        <span class="n">self</span>.<span class="n">_model</span> = <span class="n">model</span>
+    <span class="k">except</span> <span class="n">Exception</span> <span class="k">as</span> <span class="n">exc</span>:
+        <span class="n">self</span>.<span class="n">_model</span> = <span class="k">None</span>  <span class="c"># any load failure degrades, never crashes the request</span>
+        <span class="n">self</span>.<span class="n">_unavailable_reason</span> = <span class="s">f"failed to load checkpoint: {exc}"</span></pre>
+        </div>
+
+        <p>Node embeddings from the graph encoder are computed once per process and cached (<code class="inline">_get_z_dict</code>) — without that cache, scoring a 50-job rerank pool would re-run the full GraphSAGE encoder for every single candidate skill pair, the documented difference between milliseconds and minutes.</p>
+
+        <h4 class="label">Trained results (ml/results/evaluation_report.json, seed=42)</h4>
+        <div class="tablewrap">
+        <table class="data">
+          <tr><th>Edge type</th><th>Model</th><th>AUC-ROC</th><th>Hits@10</th><th>MRR</th><th>#test pos/neg</th></tr>
+          <tr><td>Job –REQUIRES→ Skill</td><td>GNN (GraphSAGE)</td><td>0.937</td><td>0.014</td><td>0.012</td><td>5,429 / 5,429</td></tr>
+          <tr><td>Job –REQUIRES→ Skill</td><td>Algorithmic baseline</td><td>0.961</td><td>0.116</td><td>0.067</td><td>5,429 / 5,429</td></tr>
+          <tr><td>Skill –LEADS_TO→ Skill</td><td>GNN (GraphSAGE)</td><td>0.679</td><td>0.538</td><td>0.296</td><td>39 / 39</td></tr>
+          <tr><td>Skill –LEADS_TO→ Skill</td><td>Algorithmic baseline</td><td>0.500</td><td>1.000</td><td>1.000</td><td>39 / 39</td></tr>
+        </table>
+        </div>
+        <p style="font-size:13.5px; color:var(--ink-dim);">Read honestly: on <code class="inline">REQUIRES</code>, the deterministic baseline actually out-scores the GNN on this synthetic dataset — expected, since the baseline exploits exact structure the synthetic generator itself used. The more favorable result is <code class="inline">LEADS_TO</code> (0.679 AUC vs. a coin-flip 0.5 baseline), though it's evaluated against only 39 heuristically-synthesized positive edges, which is why <code class="inline">RecommendationAgent</code> only uses <code class="inline">score_leads_to</code> for its rerank blend, not <code class="inline">score_requires</code>.</p>
+      </article>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="orchestrator">
+      <div class="stage-head">
+        <span class="idx">Conductor</span>
+        <h2>EngineOrchestrator — how the seven agents become one API</h2>
+        <span class="count">backend/app/engine/orchestrator.py</span>
+      </div>
+
+      <p style="max-width:74ch;">No agent talks to another agent directly. <code class="inline">EngineOrchestrator</code> is the single place that fetches graph data (via <code class="inline">GraphService</code>), calls the relevant algorithmic agent(s), and then decides whether to ask <code class="inline">ReasoningAgent</code> to narrate the result — every narrative method follows the identical four-step shape described in its own docstring:</p>
+
+      <ol style="max-width:70ch;">
+        <li>Run the relevant algorithmic agent(s) — always, deterministically, zero network calls.</li>
+        <li>Check whether <code class="inline">Settings.LLM_PROVIDER</code> is configured.</li>
+        <li>If yes, call <code class="inline">ReasoningAgent</code>. If that raises for <em>any</em> reason — bad key, timeout, malformed output after retries, anything — catch it and fall back to a template.</li>
+        <li>If no LLM is configured, skip straight to the template. <strong>An LLM failure must never propagate as a 500.</strong></li>
+      </ol>
+
+      <div class="codeblock">
+        <div class="ref">orchestrator.py:176–198 — the try-LLM-then-template pattern, in practice</div>
+<pre><span class="k">def</span> <span class="n">_gap_narrative</span>(<span class="n">self</span>, <span class="n">gap_result</span>: <span class="n">GapResult</span>) -> <span class="n">dict</span>:
+    <span class="n">ra</span> = <span class="n">self</span>.<span class="n">_reasoning_agent</span>()
+    <span class="k">if</span> <span class="n">ra</span> <span class="k">is not</span> <span class="k">None</span>:
+        <span class="k">try</span>:
+            <span class="n">explanation</span> = <span class="n">ra</span>.explain_gap({<span class="s">"readiness_score"</span>: <span class="n">gap_result</span>.readiness_score, ...})
+            <span class="k">return</span> {<span class="s">"explanation"</span>: <span class="n">explanation</span>.explanation, ...}
+        <span class="k">except</span> <span class="n">Exception</span>:
+            <span class="n">logger</span>.warning(<span class="s">"ReasoningAgent.explain_gap() failed; falling back to template narrative."</span>)
+    <span class="k">return</span> <span class="n">self</span>.<span class="n">_template_gap_narrative</span>(<span class="n">gap_result</span>)  <span class="c"># real, written-out copy — never blank</span></pre>
+      </div>
+
+      <p style="max-width:74ch;">One route worth noting: <code class="inline">get_dashboard()</code> deliberately calls <em>zero</em> narrative methods — it's "purely algorithmic," so a broken LLM key can never affect the Dashboard page at all. And <code class="inline">compute_gap_analysis()</code> is the single method both <code class="inline">POST /gap-analysis</code> and <code class="inline">GET /skills/gap</code> call, guaranteeing the two routes always report an identical readiness score for the same (student, job) pair — a real bug class this design closes off by construction rather than by convention.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="results">
+      <div class="stage-head">
+        <span class="idx">Status</span>
+        <h2>Results — what's actually verified right now</h2>
+        <span class="count">docs/current-status.md, 2026-08-05</span>
+      </div>
+
+      <div class="two-col">
+        <div class="example">
+          <span class="tag">test scoreboard</span>
+          Backend (pytest): <strong>182 passed, 1 failed</strong> (pre-existing, unrelated CORS-origin test, not agent logic)<br>
+          Frontend (vitest): <strong>80 passed, 0 failed</strong> across 14 files<br>
+          <code class="inline">backend/tests/test_algorithmic_agents.py</code> and <code class="inline">test_gnn_recommendation_agent.py</code> cover the seven agents + the GNN plug-in directly.
+        </div>
+        <div class="example">
+          <span class="tag">confirmed live, this session</span>
+          Skill Gap Analysis end-to-end against real data: readiness 18%, 1/7 matched, roadmap generated. Recommendations, market demand, and dashboard all rank/render from the live 9,380-job Neo4j graph via the real agents — not mocked fixtures.
+        </div>
+      </div>
+
+      <p style="max-width:74ch;">The honest gap, per the same doc: the trained GNN checkpoint predates several reseeds of the live graph and should be retrained before being treated as a defense-ready result, and <code class="inline">LLM_PROVIDER=none</code> in the live environment means every narrative a real user has seen so far is the template path described above, not a live Claude/OpenAI call.</p>
+    </section>
+
+    <div class="footer-note">
+      Every code excerpt above is reproduced from the files cited next to it — read the full source at the paths shown for anything abbreviated with <code class="inline"># ...</code>. Line numbers reflect the working tree at the time this page was generated and will drift as the code evolves.
+    </div>
+  </main>
+</div>

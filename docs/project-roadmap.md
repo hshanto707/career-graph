@@ -1,5 +1,11 @@
 # CareerGraph — Project Roadmap (Implementation, Custom AI Model, Thesis)
 
+> **For current state and the remaining path to defense, see
+> `docs/current-status.md` (2026-08-05, updated 2026-08-06)** — the
+> "Context / current state" section below is dated 2026-07-16 and now
+> stale in several places. This doc's Part A/B/C breakdown and phasing
+> table remain useful as historical planning context.
+>
 > Companion to `system-design.md` (architecture spec), `methodology.md` / `capstone-proposal.md` / `research-contribution.md` / `literature-review.md` (thesis chapters already drafted). This document is the **execution plan** — what still needs to be built, module by module, and how it maps to the thesis and to a custom-trained AI model. Nothing here overrides the existing thesis docs; it sequences the work needed to make them true.
 
 ---

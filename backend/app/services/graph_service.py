@@ -139,8 +139,9 @@ class GraphService:
         MATCH (j:Job)
         {where}
         RETURN j.id AS id, j.title AS title, j.company AS company,
-               j.location AS location, j.type AS type
-        ORDER BY j.id
+               j.location AS location, j.type AS type,
+               j.source AS source, j.salary_min AS salary_min, j.salary_max AS salary_max
+        ORDER BY j.title, j.company, j.id
         LIMIT $limit
         """
         with self._driver.session() as session:

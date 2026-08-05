@@ -68,6 +68,17 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+      # app/engine/algorithmic/gnn_recommendation_agent.py resolves the ml/
+      # checkpoint + model.py at a repo-relative path (REPO_ROOT/"ml",
+      # where REPO_ROOT is one level above /app) -- mounted at /ml so that
+      # resolution holds true inside the container, not just on the host.
+      - ../ml:/ml:ro
+      # ml/graph_build.py (used by gnn_recommendation_agent.py to rebuild
+      # the message-passing graph for inference) independently resolves
+      # backend/data at ITS OWN repo-relative path (REPO_ROOT/"backend"/"data"
+      # from graph_build.py's location under /ml) -- mounted at /backend/data
+      # to satisfy that same-repo-layout assumption without touching its code.
+      - ./data:/backend/data:ro
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       postgres:
