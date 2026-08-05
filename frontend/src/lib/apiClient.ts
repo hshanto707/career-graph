@@ -123,7 +123,7 @@ export async function apiRequest<T = unknown>(
     throw new NetworkError();
   }
 
-  if (response.status === 401) {
+  if (response.status === 401 && !skipAuth) {
     clearStoredAuth();
     redirectToLogin();
     throw new ApiError("UNAUTHORIZED", "Your session has expired. Please log in again.", 401);

@@ -108,6 +108,7 @@ export default function Dashboard() {
     skills_matched,
     total_required_skills,
     missing_high_demand_skills,
+    matched_market_skills,
     market_demand,
   } = data;
 
@@ -122,7 +123,8 @@ export default function Dashboard() {
   }
 
   const isMissing = (skillName: string) => missing_high_demand_skills.includes(skillName);
-  const ownedSkills = market_demand.filter((s) => !isMissing(s.skill_name));
+  const isOwned = (skillName: string) => (matched_market_skills ?? []).includes(skillName);
+  const ownedSkills = market_demand.filter((s) => isOwned(s.skill_name));
   const missingSkills = market_demand.filter((s) => isMissing(s.skill_name));
   const hasNoMissingSkills = missing_high_demand_skills.length === 0;
 
@@ -238,7 +240,7 @@ export default function Dashboard() {
                 <p className="text-sm text-muted-foreground">No market demand data available yet.</p>
               ) : (
                 market_demand.map((item, index) => {
-                  const owned = !isMissing(item.skill_name);
+                  const owned = isOwned(item.skill_name);
                   return (
                     <div
                       key={item.skill_name}

@@ -1,0 +1,46 @@
+# Override for running the Playwright E2E suite against a real stack.
+#
+# Usage: docker compose -p careergraph-e2e -f docker-compose.yml -f docker-compose.e2e.yml up -d --build --wait
+#
+# Data is ephemeral (tmpfs) so `docker compose ... down -v` always leaves a
+# clean slate for the next run -- this stack is not meant to persist data
+# between test runs the way the dev stack does.
+#
+# Ports are remapped off the defaults (5432/7474/7687/8000/80) so this stack
+# can run alongside a dev stack that's already using those ports. The
+# frontend image bakes VITE_API_BASE_URL in at build time (see Dockerfile's
+# ARG), so its build.args below must stay in sync with the api port mapping.
+services:
+  postgres:
+    container_name: careergraph_e2e_postgres
+    ports: !override ["5433:5432"]
+    volumes: !reset []
+    tmpfs:
+      - /var/lib/postgresql/data
+    restart: "no"
+
+  neo4j:
+    container_name: careergraph_e2e_neo4j
+    ports: !override ["7475:7474", "7688:7687"]
+    volumes: !reset []
+    tmpfs:
+      - /data
+      - /logs
+    restart: "no"
+
+  api:
+    container_name: careergraph_e2e_api
+    ports: !override ["8001:8000"]
+    environment:
+      # The built frontend is served on :8080 here (not the dev-server's
+      # :5173), so CORS needs to allow that origin instead of the default.
+      FRONTEND_URL: http://localhost:8080
+    restart: "no"
+
+  frontend:
+    container_name: careergraph_e2e_frontend
+    build:
+      args:
+        VITE_API_BASE_URL: http://localhost:8001
+    ports: !override ["8080:80"]
+    restart: "no"

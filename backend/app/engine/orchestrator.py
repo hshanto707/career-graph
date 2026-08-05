@@ -501,10 +501,26 @@ class EngineOrchestrator:
             sd["skill_name"] for sd in market_top_skills if sd["skill_name"].strip().lower() in missing_names
         ]
 
+        # "Skills You Have" in the dashboard's Skill Gap Analysis widget must
+        # reflect the student's *actual* HAS_SKILL edges -- not merely "not
+        # flagged as missing for the current target job". A market-top skill
+        # the student never listed, but that also isn't required by their
+        # target job (or no target job is set at all), is neither matched nor
+        # missing and must not be silently presented as owned.
+        student_skill_names = {
+            s["name"].strip().lower()
+            for s in self.graph.get_student_skills(student_id)
+            if s.get("name")
+        }
+        matched_market_skills = [
+            sd["skill_name"] for sd in market_top_skills if sd["skill_name"].strip().lower() in student_skill_names
+        ]
+
         return {
             "job_readiness_score": round(gap_result.readiness_score),
             "skills_matched": total_matched,
             "total_required_skills": total_required,
             "missing_high_demand_skills": missing_high_demand,
+            "matched_market_skills": matched_market_skills,
             "market_demand": market_top_skills,
         }

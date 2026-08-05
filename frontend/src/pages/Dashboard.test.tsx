@@ -25,6 +25,7 @@ const FULL_PAYLOAD: DashboardStatsOut = {
   skills_matched: 5,
   total_required_skills: 8,
   missing_high_demand_skills: ["React", "AWS", "Docker"],
+  matched_market_skills: ["Python"],
   market_demand: [
     { skill_name: "Python", demand_count: 120, demand_score: 95, trend: null },
     { skill_name: "React", demand_count: 100, demand_score: 88, trend: null },
@@ -96,6 +97,7 @@ describe("Dashboard", () => {
       skills_matched: 0,
       total_required_skills: 0,
       missing_high_demand_skills: [],
+      matched_market_skills: [],
       market_demand: [],
     });
 
@@ -129,6 +131,7 @@ describe("Dashboard", () => {
       skills_matched: 8,
       total_required_skills: 8,
       missing_high_demand_skills: [],
+      matched_market_skills: ["Python"],
       market_demand: [
         { skill_name: "Python", demand_count: 120, demand_score: 95, trend: null },
       ],

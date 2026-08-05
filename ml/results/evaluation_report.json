@@ -1,37 +1,37 @@
 {
   "gnn": {
     "Job_REQUIRES_Skill": {
-      "hits_at_k": 0.8732394366197183,
-      "mrr": 0.6510486149218544,
-      "auc_roc": 0.9268994247173179,
-      "num_test_pos": 71,
-      "num_test_neg": 71
+      "hits_at_k": 0.017867010499171117,
+      "mrr": 0.01286365347207908,
+      "auc_roc": 0.9349614123153319,
+      "num_test_pos": 5429,
+      "num_test_neg": 5429
     },
     "Skill_LEADS_TO_Skill": {
-      "hits_at_k": 1.0,
-      "mrr": 0.44206349206349205,
-      "auc_roc": 0.3055555555555556,
-      "num_test_pos": 6,
-      "num_test_neg": 6
+      "hits_at_k": 0.5384615384615384,
+      "mrr": 0.426601466348081,
+      "auc_roc": 0.685404339250493,
+      "num_test_pos": 39,
+      "num_test_neg": 39
     }
   },
   "baseline": {
     "Job_REQUIRES_Skill": {
-      "hits_at_k": 1.0,
-      "mrr": 0.7650234741784038,
-      "auc_roc": 0.9754017060107122,
-      "num_test_pos": 71,
-      "num_test_neg": 71
+      "hits_at_k": 0.11641186222140357,
+      "mrr": 0.06739307997373946,
+      "auc_roc": 0.9608560801011302,
+      "num_test_pos": 5429,
+      "num_test_neg": 5429
     },
     "Skill_LEADS_TO_Skill": {
       "hits_at_k": 1.0,
       "mrr": 1.0,
       "auc_roc": 0.5,
-      "num_test_pos": 6,
-      "num_test_neg": 6
+      "num_test_pos": 39,
+      "num_test_neg": 39
     }
   },
-  "comparison_table_markdown": "| Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |\n|---|---|---|---|---|---|---|\n| Job_REQUIRES_Skill | GNN (GraphSAGE) | 0.927 | 0.873 | 0.651 | 71 | 71 |\n| Job_REQUIRES_Skill | Algorithmic baseline | 0.975 | 1.000 | 0.765 | 71 | 71 |\n| Skill_LEADS_TO_Skill | GNN (GraphSAGE) | 0.306 | 1.000 | 0.442 | 6 | 6 |\n| Skill_LEADS_TO_Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 6 | 6 |",
+  "comparison_table_markdown": "| Edge Type | Model | AUC-ROC | Hits@10 | MRR | #test_pos | #test_neg |\n|---|---|---|---|---|---|---|\n| Job_REQUIRES_Skill | GNN (GraphSAGE) | 0.935 | 0.018 | 0.013 | 5429 | 5429 |\n| Job_REQUIRES_Skill | Algorithmic baseline | 0.961 | 0.116 | 0.067 | 5429 | 5429 |\n| Skill_LEADS_TO_Skill | GNN (GraphSAGE) | 0.685 | 0.538 | 0.427 | 39 | 39 |\n| Skill_LEADS_TO_Skill | Algorithmic baseline | 0.500 | 1.000 | 1.000 | 39 | 39 |",
   "seed": 42,
   "k": 10
 }

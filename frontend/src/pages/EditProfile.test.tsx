@@ -6,6 +6,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { AUTH_STORAGE_KEY } from "@/lib/apiClient";
 import EditProfile from "@/pages/EditProfile";
 import { profileApi, type ProfileOut } from "@/lib/api/profile";
+import { jobsApi, type JobOut } from "@/lib/api/jobs";
 
 vi.mock("@/lib/api/profile", async () => {
   const actual = await vi.importActual<typeof import("@/lib/api/profile")>("@/lib/api/profile");
@@ -20,9 +21,34 @@ vi.mock("@/lib/api/profile", async () => {
   };
 });
 
+vi.mock("@/lib/api/jobs", async () => {
+  const actual = await vi.importActual<typeof import("@/lib/api/jobs")>("@/lib/api/jobs");
+  return {
+    ...actual,
+    jobsApi: {
+      ...actual.jobsApi,
+      get: vi.fn(),
+      list: vi.fn(),
+    },
+  };
+});
+
 const mockedGet = vi.mocked(profileApi.get);
 const mockedUpdate = vi.mocked(profileApi.update);
 const mockedAddSkill = vi.mocked(profileApi.addOrUpdateSkill);
+const mockedJobGet = vi.mocked(jobsApi.get);
+const mockedJobList = vi.mocked(jobsApi.list);
+
+const TARGET_JOB: JobOut = {
+  id: "job-1",
+  title: "Data Analyst",
+  company: "Acme Corp",
+  location: "Remote",
+  type: "Full-time",
+  source: null,
+  salary_min: null,
+  salary_max: null,
+};
 
 const BASE_PROFILE: ProfileOut = {
   id: "p1",
@@ -30,7 +56,7 @@ const BASE_PROFILE: ProfileOut = {
   major: "Computer Science",
   graduation_year: 2026,
   skills: [{ name: "Python", proficiency: 8, years: 3 }],
-  target_roles: ["Data Analyst"],
+  target_roles: ["job-1"],
   experience: [],
   updated_at: "2026-01-01T00:00:00Z",
 };
@@ -61,7 +87,11 @@ describe("EditProfile page", () => {
     mockedGet.mockReset();
     mockedUpdate.mockReset();
     mockedAddSkill.mockReset();
+    mockedJobGet.mockReset();
+    mockedJobList.mockReset();
     mockedGet.mockResolvedValue(BASE_PROFILE);
+    mockedJobGet.mockResolvedValue(TARGET_JOB);
+    mockedJobList.mockResolvedValue([]);
   });
 
   it("pre-fills the form with current profile data", async () => {
@@ -70,7 +100,7 @@ describe("EditProfile page", () => {
     await waitFor(() => expect(screen.getByDisplayValue("Computer Science")).toBeInTheDocument());
     expect(screen.getByDisplayValue("2026")).toBeInTheDocument();
     expect(screen.getByText(/Python/)).toBeInTheDocument();
-    expect(screen.getByText("Data Analyst")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText("Data Analyst — Acme Corp")).toBeInTheDocument());
   });
 
   it("adds a skill via the skills endpoint and shows it without a full reload, rejecting duplicates", async () => {
@@ -140,7 +170,7 @@ describe("EditProfile page", () => {
     const payload = mockedUpdate.mock.calls[0][0];
     expect(payload.major).toBe("Data Science");
     expect(payload.graduation_year).toBe(2026);
-    expect(payload.target_roles).toEqual(["Data Analyst"]);
+    expect(payload.target_roles).toEqual(["job-1"]);
 
     await waitFor(() => expect(screen.getByText("Profile Page")).toBeInTheDocument());
   });

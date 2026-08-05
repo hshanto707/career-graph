@@ -19,7 +19,7 @@
 // manual AbortController/request-id bookkeeping is needed here.
 
 import { useEffect, useState } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueries } from "@tanstack/react-query";
 import { jobsApi, type JobOut } from "@/lib/api/jobs";
 
 export const JOBS_PAGE_SIZE = 10;
@@ -89,5 +89,30 @@ export function useJobs(filters: UseJobsFilters) {
     hasNextPage: Boolean(query.hasNextPage),
     fetchNextPage: query.fetchNextPage,
     isSearchPending: (filters.search ?? "") !== debouncedSearch,
+  };
+}
+
+/** Resolves a student's `target_roles` (a list of Job ids) into displayable
+ * jobs, one lookup per id. A stale/unresolvable id (e.g. a deleted job, or
+ * legacy data that predates target roles being stored as ids) resolves to
+ * `null` -- callers fall back to showing the raw id so the chip stays
+ * removable rather than disappearing silently. */
+export function useTargetRoleJobs(jobIds: string[]) {
+  const results = useQueries({
+    queries: jobIds.map((id) => ({
+      queryKey: ["job", id],
+      queryFn: () => jobsApi.get(id),
+      retry: false,
+    })),
+  });
+
+  const jobsById = new Map<string, JobOut | null>();
+  jobIds.forEach((id, index) => {
+    jobsById.set(id, results[index]?.data ?? null);
+  });
+
+  return {
+    jobsById,
+    isLoading: results.some((r) => r.isLoading),
   };
 }

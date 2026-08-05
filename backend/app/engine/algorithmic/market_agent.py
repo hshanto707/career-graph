@@ -99,7 +99,7 @@ class MarketAgent:
         for job in all_jobs or []:
             seen_in_job: set[str] = set()
             for skill in job.get("required_skills", []) or []:
-                name = skill.get("name", "")
+                name = skill.get("name") or ""
                 key = _normalize_name(name)
                 if not key or key in seen_in_job:
                     continue

@@ -11,4 +11,5 @@ class DashboardStatsOut(BaseModel):
     skills_matched: int
     total_required_skills: int
     missing_high_demand_skills: list[str] = Field(default_factory=list)
+    matched_market_skills: list[str] = Field(default_factory=list)
     market_demand: list[SkillDemandOut] = Field(default_factory=list)

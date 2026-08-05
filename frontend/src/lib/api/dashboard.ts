@@ -6,6 +6,7 @@ export interface DashboardStatsOut {
   skills_matched: number;
   total_required_skills: number;
   missing_high_demand_skills: string[];
+  matched_market_skills: string[];
   market_demand: SkillDemandOut[];
 }
 

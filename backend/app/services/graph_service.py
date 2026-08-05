@@ -176,7 +176,8 @@ class GraphService:
         MATCH (j:Job)
         OPTIONAL MATCH (j)-[r:REQUIRES]->(sk:Skill)
         RETURN j.id AS job_id, j.title AS title,
-               collect({name: sk.name, importance: r.importance}) AS required_skills
+               [x IN collect({name: sk.name, importance: r.importance}) WHERE x.name IS NOT NULL]
+                 AS required_skills
         """
         with self._driver.session() as session:
             result = session.run(query)

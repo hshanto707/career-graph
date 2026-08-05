@@ -33,3 +33,18 @@ export function useJobTitleSuggestions(query: string) {
 
   return { suggestions: data ?? [], isLoading: isFetching };
 }
+
+/** Full job records (id + title + company) matching a search string, used by
+ * the target-role picker on Edit Profile -- unlike `useJobTitleSuggestions`,
+ * this carries the `id` a target role must actually be stored as. */
+export function useJobSearchSuggestions(query: string) {
+  const debounced = useDebouncedValue(query, SUGGESTIONS_DEBOUNCE_MS);
+
+  const { data, isFetching } = useQuery({
+    queryKey: ["job-search-suggestions", debounced],
+    queryFn: () => jobsApi.list({ search: debounced || undefined, limit: 20 }),
+    placeholderData: (previous) => previous,
+  });
+
+  return { suggestions: data ?? [], isLoading: isFetching };
+}

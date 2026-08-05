@@ -160,7 +160,7 @@ class RecommendationAgent:
 
             matched_names = [
                 s.get("name", "") for s in required
-                if _normalize_name(s.get("name", "")) in student_names
+                if s.get("name") and _normalize_name(s.get("name", "")) in student_names
             ]
 
             ranked.append(

@@ -12,9 +12,17 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Combobox } from '@/components/ui/combobox';
+import { JobCombobox, type JobOption } from '@/components/ui/job-combobox';
 import { useProfile, useUpdateProfile, useAddSkill } from '@/hooks/useProfile';
-import { useSkillSuggestions, useJobTitleSuggestions } from '@/hooks/useSuggestions';
+import { useSkillSuggestions, useJobSearchSuggestions } from '@/hooks/useSuggestions';
+import { useTargetRoleJobs } from '@/hooks/useJobs';
 import type { ExperienceItem, SkillEntry } from '@/lib/api/profile';
+import type { JobOut } from '@/lib/api/jobs';
+
+function formatJobLabel(job: Pick<JobOut, 'title' | 'company'>): string {
+  const title = job.title ?? 'Untitled role';
+  return job.company ? `${title} — ${job.company}` : title;
+}
 import { MONTH_NAMES, EXPERIENCE_YEAR_OPTIONS } from '@/lib/experienceDates';
 import { COMMON_MAJORS } from '@/lib/majors';
 import { toast } from '@/hooks/use-toast';
@@ -50,8 +58,13 @@ export default function EditProfile() {
   const updateProfile = useUpdateProfile();
   const addSkill = useAddSkill();
 
+  // `targetRoles` holds Job ids -- the backend resolves a student's target
+  // role by matching this value against Job.id, so it must never be a raw
+  // typed title (see the target-role picker below, which only ever commits
+  // an id from an actual search result).
   const [targetRoles, setTargetRoles] = useState<string[]>([]);
-  const [newRole, setNewRole] = useState('');
+  const [roleQuery, setRoleQuery] = useState('');
+  const [selectedRoleJob, setSelectedRoleJob] = useState<JobOption | null>(null);
   const [experience, setExperience] = useState<ExperienceItem[]>([]);
 
   const [newSkillName, setNewSkillName] = useState('');
@@ -61,8 +74,13 @@ export default function EditProfile() {
 
   const { suggestions: skillSuggestions, isLoading: skillSuggestionsLoading } =
     useSkillSuggestions(newSkillName);
-  const { suggestions: roleSuggestions, isLoading: roleSuggestionsLoading } =
-    useJobTitleSuggestions(newRole);
+  const { suggestions: roleJobSuggestions, isLoading: roleSuggestionsLoading } =
+    useJobSearchSuggestions(roleQuery);
+  const roleSuggestionOptions: JobOption[] = roleJobSuggestions.map((job) => ({
+    id: job.id,
+    label: formatJobLabel(job),
+  }));
+  const { jobsById: targetRoleJobs } = useTargetRoleJobs(targetRoles);
 
   const {
     control,
@@ -97,10 +115,14 @@ export default function EditProfile() {
       : 'Expected Graduation Year';
 
   const handleAddRole = () => {
-    const trimmed = newRole.trim();
-    if (!trimmed || targetRoles.includes(trimmed)) return;
-    setTargetRoles((prev) => [...prev, trimmed]);
-    setNewRole('');
+    if (!selectedRoleJob || targetRoles.includes(selectedRoleJob.id)) {
+      setRoleQuery('');
+      setSelectedRoleJob(null);
+      return;
+    }
+    setTargetRoles((prev) => [...prev, selectedRoleJob.id]);
+    setRoleQuery('');
+    setSelectedRoleJob(null);
   };
 
   const handleRemoveRole = (role: string) => {
@@ -413,37 +435,55 @@ export default function EditProfile() {
             <p className="text-sm text-muted-foreground mb-4">No target roles set yet.</p>
           ) : (
             <div className="flex flex-wrap gap-2 mb-4">
-              {targetRoles.map((role) => (
-                <span
-                  key={role}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted text-sm font-medium text-foreground"
-                >
-                  {role}
-                  <button
-                    type="button"
-                    aria-label={`Remove ${role}`}
-                    onClick={() => handleRemoveRole(role)}
-                    className="text-muted-foreground hover:text-destructive"
+              {targetRoles.map((roleId) => {
+                const job = targetRoleJobs.get(roleId);
+                const label = job ? formatJobLabel(job) : `Unresolved role (${roleId})`;
+                return (
+                  <span
+                    key={roleId}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-muted text-sm font-medium text-foreground"
                   >
-                    <X className="h-3.5 w-3.5" />
-                  </button>
-                </span>
-              ))}
+                    {label}
+                    <button
+                      type="button"
+                      aria-label={`Remove ${label}`}
+                      onClick={() => handleRemoveRole(roleId)}
+                      className="text-muted-foreground hover:text-destructive"
+                    >
+                      <X className="h-3.5 w-3.5" />
+                    </button>
+                  </span>
+                );
+              })}
             </div>
           )}
 
           <div className="flex gap-3">
             <div className="flex-1">
-              <Combobox
-                value={newRole}
-                onChange={setNewRole}
-                options={roleSuggestions}
+              <JobCombobox
+                query={roleQuery}
+                onQueryChange={(value) => {
+                  setRoleQuery(value);
+                  setSelectedRoleJob(null);
+                }}
+                onSelect={(option) => {
+                  setSelectedRoleJob(option);
+                  setRoleQuery(option.label);
+                }}
+                options={roleSuggestionOptions}
                 isLoading={roleSuggestionsLoading}
-                placeholder="e.g. Data Analyst"
+                selectedId={selectedRoleJob?.id ?? null}
+                placeholder="Search for a job title, e.g. Data Analyst"
                 aria-label="New target role"
               />
             </div>
-            <Button type="button" onClick={handleAddRole} variant="outline" className="gap-2">
+            <Button
+              type="button"
+              onClick={handleAddRole}
+              variant="outline"
+              className="gap-2"
+              disabled={!selectedRoleJob}
+            >
               <Plus className="h-4 w-4" />
               Add
             </Button>
