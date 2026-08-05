@@ -12,7 +12,7 @@ from fastapi import APIRouter, Depends, Query
 
 from app.core.deps import CurrentUser, get_current_user, get_graph_service
 from app.core.responses import AppError, envelope
-from app.schemas.job import JobOut
+from app.schemas.job import JobDetailOut, JobOut
 from app.services.graph_service import GraphService
 
 router = APIRouter(prefix="/jobs", tags=["jobs"])
@@ -59,4 +59,5 @@ def get_job(
     job = graph_service.get_job(job_id)
     if job is None:
         raise AppError("NOT_FOUND", f"Job {job_id} does not exist.", 404)
-    return envelope(data=JobOut(**job).model_dump())
+    required_skills = [s["name"] for s in graph_service.get_job_required_skills(job_id) if s.get("name")]
+    return envelope(data=JobDetailOut(**job, required_skills=required_skills).model_dump())

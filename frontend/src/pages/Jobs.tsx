@@ -19,11 +19,12 @@
 // Recommendations page's genuinely personalized cards.
 
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { Search, Filter, Building2, MapPin, DollarSign, Loader2, AlertCircle } from 'lucide-react';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { Button } from '@/components/ui/button';
 import { useJobs } from '@/hooks/useJobs';
-import type { JobOut } from '@/lib/api/jobs';
+import { jobsApi, type JobOut } from '@/lib/api/jobs';
 import { ApiError, NetworkError } from '@/lib/apiClient';
 import {
   Sheet,
@@ -52,10 +53,24 @@ function formatSalary(job: JobOut): string | null {
 }
 
 export default function Jobs() {
+  // The catalog row (title/company/location/type/salary) renders instantly
+  // on click; required_skills only exists on the GET /jobs/{id} detail
+  // response (see backend/app/schemas/job.py's JobDetailOut), so it's
+  // fetched separately and rendered once it resolves.
   const [selectedJob, setSelectedJob] = useState<JobOut | null>(null);
   const [typeFilter, setTypeFilter] = useState('All');
   const [locationFilter, setLocationFilter] = useState('All');
   const [searchInput, setSearchInput] = useState('');
+
+  const {
+    data: selectedJobDetail,
+    isLoading: isDetailLoading,
+    isError: isDetailError,
+  } = useQuery({
+    queryKey: ['job', selectedJob?.id],
+    queryFn: () => jobsApi.get(selectedJob!.id),
+    enabled: !!selectedJob,
+  });
 
   const {
     jobs,
@@ -258,6 +273,27 @@ export default function Jobs() {
                       </div>
                     </div>
                   )}
+
+                  <div>
+                    <h3 className="text-sm font-medium text-foreground mb-2">Required Skills</h3>
+                    {isDetailLoading ? (
+                      <p className="text-sm text-muted-foreground flex items-center gap-2">
+                        <Loader2 className="h-3.5 w-3.5 animate-spin" /> Loading skills...
+                      </p>
+                    ) : isDetailError ? (
+                      <p className="text-sm text-muted-foreground">Couldn't load required skills.</p>
+                    ) : selectedJobDetail && selectedJobDetail.required_skills.length > 0 ? (
+                      <div className="flex flex-wrap gap-1.5">
+                        {selectedJobDetail.required_skills.map((skill) => (
+                          <span key={skill} className="skill-tag text-xs">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">No skills listed for this role.</p>
+                    )}
+                  </div>
 
                   {selectedJob.source && (
                     <p className="text-xs text-muted-foreground">Source: {selectedJob.source}</p>

@@ -11,6 +11,13 @@ export interface JobOut {
   salary_max: number | null;
 }
 
+/** GET /jobs/{id} only -- adds the job's required skills (plain factual
+ * REQUIRES-edge data, not a personalized score). Not present on `JobOut`
+ * from the list/catalog endpoint. */
+export interface JobDetailOut extends JobOut {
+  required_skills: string[];
+}
+
 export interface JobFilters {
   type?: string;
   location?: string;
@@ -32,7 +39,7 @@ function toQueryString(filters: JobFilters): string {
 
 export const jobsApi = {
   list: (filters: JobFilters = {}) => apiClient.get<JobOut[]>(`/jobs${toQueryString(filters)}`),
-  get: (jobId: string) => apiClient.get<JobOut>(`/jobs/${jobId}`),
+  get: (jobId: string) => apiClient.get<JobDetailOut>(`/jobs/${jobId}`),
   /** GET /jobs/titles?search= — distinct job-title suggestions, used by the
    * target-role Combobox on Edit Profile. */
   titles: (query?: string, limit = 20) => {

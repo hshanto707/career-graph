@@ -97,7 +97,7 @@ export function AppLayout({ children }: AppLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-surface flex flex-col md:flex-row">
+    <div className="h-screen bg-surface flex flex-col md:flex-row overflow-hidden">
       {/* Mobile Header */}
       <header className="md:hidden sticky top-0 z-40 bg-card border-b border-border px-4 py-3 flex items-center justify-between">
         <div>
@@ -117,12 +117,12 @@ export function AppLayout({ children }: AppLayoutProps) {
       </header>
 
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex w-64 bg-card border-r border-border flex-col shrink-0">
+      <aside className="hidden md:flex w-64 bg-card border-r border-border flex-col shrink-0 h-screen overflow-y-auto">
         <SidebarContent />
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-y-auto">
         <div className="p-4 md:p-6 lg:p-8">{children}</div>
       </main>
     </div>
