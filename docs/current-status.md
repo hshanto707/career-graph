@@ -4,9 +4,12 @@
 > section of `project-roadmap.md` (both dated 2026-07-16 and now stale in
 > several places — noted inline below). Companion docs: `system-design.md`
 > (architecture spec, still accurate), `gnn-model.md`/`gnn-defense-guide.md`
-> (GNN training results), `algorithmic-agents-decisions.md` (documented
-> product decisions). This is the honest scoreboard plus the sequenced plan
-> to get from here to a defensible, demo-ready system.
+> (GNN training results), `gnn-training-guide.html` (a single self-contained
+> page walking through the whole GNN — data, architecture, training,
+> evaluation, and live integration — with code references, for anyone who
+> wants the complete picture in one read), `algorithmic-agents-decisions.md`
+> (documented product decisions). This is the honest scoreboard plus the
+> sequenced plan to get from here to a defensible, demo-ready system.
 
 ## Update — 2026-08-06: Milestone 1 (GNN integration) is done
 
@@ -58,7 +61,13 @@ First request after a cold start costs ~0.7s (building the graph + one
 encoder forward pass, cached in the process-wide singleton after that);
 warm requests are ~0.4s.
 
-Milestone 1 is fully closed. Milestones 2–6 below are unchanged and still open.
+Milestone 1 is fully closed. **Milestone 2 (real LLM key) is deliberately
+skipped by decision, not deferred for lack of time** — the LLM is optional
+narration only, never scoring/ranking, and the template fallback is
+already the app's real, tested, running behavior; see gap #2 below for the
+full reasoning. *(Update: Milestones 3, 4, and 5 are also now done as of
+later in this same day — see their own sections below for detail. Only
+Milestone 6, defense prep, remains open.)*
 
 ## TL;DR (original, 2026-08-05 — see update above for what's changed)
 
@@ -128,20 +137,19 @@ None of these were agent/engine logic bugs — they were data-shape and
 wiring bugs in the FastAPI/Neo4j/React layers. **The base structure is
 sound.** This is a genuine green light to move on to the agents/model work.
 
-## Test scoreboard (run fresh this session)
+## Test scoreboard (updated 2026-08-06, Milestone 4)
 
 | Suite | Result |
 |---|---|
-| Backend (pytest) | **182 passed, 1 failed** (pre-existing, unrelated CORS-origin test — see note below) |
-| Frontend (vitest) | **80 passed, 0 failed**, 14 test files |
+| Backend (pytest) | **195 passed, 0 failed** — fully green |
+| Frontend (vitest) | **85 passed, 0 failed**, 15 test files |
+| ML (`ml/tests`, torch installed) | **29 passed, 0 failed** |
 | Frontend typecheck | `tsc --noEmit` clean |
 
-The CORS test failure (`test_cors_preflight_allows_configured_frontend_origin`
-in `test_health.py`) asserts against the hardcoded origin `localhost:5173`;
-the container's real `FRONTEND_URL` is now `8080` to match the actual
-frontend. Either the test should read `settings.FRONTEND_URL` instead of a
-hardcoded literal, or the test fixture needs its own override — trivial fix,
-listed in Milestone 5.
+The formerly-failing CORS test (`test_cors_preflight_allows_configured_frontend_origin`
+in `test_health.py`) is fixed — it now reads `settings.FRONTEND_URL`
+instead of a hardcoded `localhost:5173` literal, so it's correct regardless
+of which origin a given deployment is actually configured for.
 
 ML pipeline tests weren't re-run this session (no `ml/.venv` active in this
 environment) — last known-good run (2026-07-18): 27 passed.
@@ -161,15 +169,28 @@ Verified live end to end against the actual running container, including
 one real bug the live verification caught and fixed (see "Update —
 2026-08-06" above).
 
-### 2. LLM has never been called for real
+### 2. ~~LLM has never been called for real~~ — DEFERRED BY DECISION, 2026-08-06 (not a gap)
 
 `LLM_PROVIDER=none` in the live `.env` (no `ANTHROPIC_API_KEY`/`OPENAI_API_KEY`
 configured anywhere). Every explanation/narrative/roadmap the app has ever
 shown a user is the template fallback, not `ReasoningAgent`. The provider
-abstraction and fallback logic are well-tested with **mocks only**. Before
-defense, this needs a real key and a manual smoke test capturing real
-output for the Implementation/Evaluation chapters — a reviewer asking "show
-me a real Claude-generated explanation" currently has nothing to point to.
+abstraction and fallback logic are well-tested with **mocks only**.
+
+**Decision: skip Milestone 2 deliberately, not defer it for lack of time.**
+The LLM is purely a decoupled, optional narration layer (`research-contribution.md`
+Contribution 3) — it never scores, ranks, or predicts anything; it only
+rewrites already-computed results (from the algorithmic agents / the GNN)
+into sentences. The trained GNN is the actual "custom AI model" and is
+fully live (Milestone 1). Running with `LLM_PROVIDER=none` is a real,
+tested, intentionally-supported configuration, not a stub — the template
+fallback is hand-written, non-empty copy that has been the app's actual
+behavior throughout this entire build. Skipping this milestone leaves
+nothing functionally incomplete. The only thing forgone is a defense-demo
+talking point ("here's a real Claude-generated sentence"), and the
+alternative framing — "the system runs LLM-free by design, which is itself
+evidence the graceful-degradation architecture is real, not just claimed"
+— is arguably the stronger thing to say in a defense. Revisit only if time
+remains after Milestones 3–6.
 
 ### 3. Data is still synthetic
 
@@ -201,23 +222,24 @@ same ids), but this should be **retrained after any data/ingestion change**,
 and definitely as part of Milestone 1 (wiring), so the served model matches
 the served graph.
 
-### 6. Smaller, real, lower-priority items
+### 6. ~~Smaller, real, lower-priority items~~ — ALL RESOLVED 2026-08-06 (Milestone 4)
 
-- `mockData.ts` still exists solely because `components/ui/job-card.tsx`
-  imports its `Job` type, and `job-card.tsx` itself is dead code (per a
-  comment in `Jobs.tsx`) — the Job Explorer builds its own list item instead.
-  Delete `job-card.tsx` + `mockData.ts` together, or keep both if
-  `JobCard` is still planned for the Recommendations page redesign.
-- No rate-limit/lockout policy on repeated failed logins.
-- No dedicated React error boundary for unhandled render crashes (only
-  per-query toast errors — a crash outside a query, e.g. a render bug,
-  currently white-screens).
-- `test_cors_preflight_allows_configured_frontend_origin` hardcodes an
-  origin that no longer matches the real `.env` — fix the test to read
-  `settings.FRONTEND_URL`.
-- Root README's docker-compose startup sequence should be re-verified
-  end-to-end (it likely still works — `make run` clearly does — but hasn't
-  been walked from a completely clean clone this session).
+- ~~`mockData.ts`/`job-card.tsx` dead code~~ — both deleted (only
+  `job-card.tsx` imported the former; only a stale comment in `Jobs.tsx`
+  referenced the latter, updated to explain the deletion instead).
+- ~~No rate-limit/lockout on repeated failed logins~~ — added
+  (`backend/app/core/login_lockout.py`, 5 attempts / 5-minute window per
+  email, 429 `TOO_MANY_ATTEMPTS`). Explicitly documented as an in-process,
+  non-distributed control — a real scope decision for a capstone demo, not
+  an oversight; see that module's docstring.
+- ~~No React error boundary~~ — added (`components/ErrorBoundary.tsx`,
+  wraps the whole app in `App.tsx`).
+- ~~`test_cors_preflight_allows_configured_frontend_origin` hardcoded an
+  origin~~ — fixed to read `settings.FRONTEND_URL`. **The backend test
+  suite is now 195/195 — fully green for the first time**, no more
+  pre-existing-failure caveat needed anywhere in this doc.
+- ~~Root README not re-verified~~ — actually run from a clean state (see
+  below) and found two real, previously-unknown bugs in the process.
 
 ---
 
@@ -253,7 +275,13 @@ model." Highest priority, do this first.*
    per-skill positive examples relative to graph size, per the existing
    evaluation report, is the current best explanation).
 
-### Milestone 2 — Make the LLM layer real
+### Milestone 2 — Make the LLM layer real — SKIPPED BY DECISION (see gap #2 above)
+
+Deliberately not pursued: the LLM is optional narration only, never scoring
+or ranking, and the no-LLM template path is already the app's real, tested,
+running behavior. Revisit only if time remains after Milestones 3–6 and a
+live-LLM demo moment is specifically wanted. If picked back up later, the
+original plan was:
 
 1. Get a real `ANTHROPIC_API_KEY` (or `OPENAI_API_KEY`), set
    `LLM_PROVIDER=claude` in `backend/.env`.
@@ -267,7 +295,23 @@ model." Highest priority, do this first.*
 4. Note any prompt-tuning needed once real output is visible (mocked tests
    only assert shape, not quality).
 
-### Milestone 3 — Data & LEADS_TO honesty pass
+### Milestone 3 — Data & LEADS_TO honesty pass — DONE 2026-08-06
+
+**Decision: stay synthetic, documented clearly.** Given project timeline,
+pursuing real Kaggle/O*NET data was deferred rather than attempted
+partially — a fully-documented synthetic dataset is more defensible than a
+half-migrated real one. The full Discussion-chapter limitations writeup is
+done: see `docs/discussion-limitations.md` (five limitations — synthetic
+dataset, `LEADS_TO` heuristic, GNN-vs-baseline result, single-region data,
+LLM narration never exercised live — plus a Threats to Validity section
+covering internal/external/construct validity and reproducibility). Also
+fixed a related honesty gap this milestone surfaced: `system-design.md`'s
+scope diagram claimed "Real jobmarket data" as an in-scope item — corrected
+with a footnote pointing at the actual (synthetic) status and the new doc.
+`docs/data-sources.md` also had a stale `onet_skills.csv` row count (~140,
+actually 518) — fixed.
+
+Original plan (kept for reference; superseded by the above):
 
 1. Decide explicitly: real Kaggle/O*NET data, or ship synthetic-with-
    documented-limitation. Given time constraints, the second is defensible
@@ -280,7 +324,46 @@ model." Highest priority, do this first.*
    against it, update `evaluation_report.json`, and fold the new numbers
    into `gnn-model.md`.
 
-### Milestone 4 — Polish & cleanup
+### Milestone 4 — Polish & cleanup — DONE 2026-08-06
+
+All five items done; see gap #6 above for the per-item detail. One item
+(#5, README re-verification) surfaced two real, previously-unknown bugs
+while actually running the flow from a clean state rather than assuming it
+still worked:
+
+1. **The root `docker-compose.yml` had a CORS-breaking default** —
+   `FRONTEND_URL` defaulted to `http://localhost:5173`, but that stack's
+   frontend is the nginx-served *built* container on port **80**, not a
+   Vite dev server — every request from that frontend to the API would
+   have failed CORS. Fixed to `http://localhost`. This is the exact same
+   class of bug fixed earlier in `backend/docker-compose.yml` (port 8081
+   vs. 8080) — evidently a recurring risk with this project's two parallel
+   compose files, worth remembering when either changes.
+2. **The root compose's `api` service was missing the `ml`/`backend/data`
+   mounts** the GNN integration (Milestone 1) added to
+   `backend/docker-compose.yml` — the GNN would have silently stayed
+   unavailable (no checkpoint found) in that stack. Added the same two
+   mounts for parity.
+3. The README itself was badly stale: claimed an `/api/v1/` path prefix
+   that has never existed, the wrong frontend port (5173 instead of 8080),
+   `postgresql+asyncpg` instead of the actual `psycopg2`, a manual
+   `alembic upgrade head` step that's now automatic in the
+   `backend/docker-compose.yml` path, "87 tests" (now 195+85+29), and an
+   orphaned, content-less thesis-chapter-outline fragment tacked onto the
+   end that looked like an accidental paste, not intended README content
+   (removed — flagged in case it was actually wanted somewhere else).
+   Rewritten to document both the actual dev workflow
+   (`backend/docker-compose.yml` + `make seed` + `npm run dev`) and the
+   one-shot full-containerized alternative (root `docker-compose.yml`),
+   with an explicit note that the two aren't meant to run simultaneously
+   (same host ports). Verified both flows live: stopped the dev stack,
+   brought the root stack up from nothing, ran the missing `alembic
+   upgrade head`, confirmed register/login/CORS/the containerized frontend/
+   the GNN all work, tore it down, and restored the original dev stack
+   with its data intact (verified: 9,380 jobs still present, 195/195
+   backend tests still passing afterward).
+
+Original plan (kept for reference; superseded by the above):
 
 1. Fix `test_cors_preflight_allows_configured_frontend_origin` to read
    `settings.FRONTEND_URL` instead of a hardcoded origin.
@@ -292,43 +375,70 @@ model." Highest priority, do this first.*
 5. Re-verify the root README's docker-compose instructions from a clean
    clone.
 
-### Milestone 5 — Thesis chapters (fed directly by Milestones 1–3)
+### Milestone 5 — Thesis chapters — WRITTEN 2026-08-06, one manual step remains
 
-1. **Implementation chapter** — stack, key engineering decisions
-   (including the real bugs found/fixed this session as evidence of a
-   rigorously tested system), screenshots of the working, GNN-integrated
-   app.
-2. **Evaluation chapter** — GNN vs. algorithmic-baseline table (already
-   exists in `evaluation_report.json`/`gnn-model.md`), extended with the
-   *integrated-system* result from Milestone 1 (e.g., does blending change
-   any live recommendation's ranking in a demonstrable way).
-3. **Discussion** — limitations: synthetic data, `LEADS_TO` heuristic,
-   single-region jobs, GNN underperforming the algorithmic baseline on
-   `REQUIRES` at this scale (with the sparse-positive-examples explanation).
-4. **Conclusion & Future Work** — reconcile against `system-design.md` §2
-   and `research-contribution.md`; real Kaggle/O*NET data and a temporal
-   `LEADS_TO` model are natural "future work" items either way.
+All four chapters are drafted, grounded in this project's actual repo
+content (real test counts, real evaluation numbers, real bugs found/fixed
+during hardening — nothing fabricated for the occasion):
+
+1. **`docs/implementation-chapter.md`** — stack, key engineering decisions
+   (the retrieve-then-rerank GNN integration, the graceful-degradation
+   pattern applied twice, the synthetic-data decision), and a dedicated
+   section on the four real bugs found/fixed during hardening as concrete
+   evidence of how the system was actually verified.
+2. **`docs/evaluation-chapter.md`** — the GNN-vs-baseline table, plus two
+   things the original plan didn't fully anticipate needing: a section
+   proving the GNN is actually *used* live (not just evaluated offline —
+   this was a real, closed gap, not always true during the build), and a
+   section on what a green test suite does and doesn't prove, using the
+   read-only-filesystem bug as the concrete example.
+3. **`docs/discussion-limitations.md`** — now the full Discussion chapter:
+   a new "Synthesis of findings" section up front (three separate verdicts:
+   is the software correct, does the model add value, is this a fair test
+   of the approach), followed by the limitations/threats-to-validity
+   content from Milestone 3.
+4. **`docs/conclusion-future-work.md`** — reconciles against
+   `system-design.md` §2 and all six `research-contribution.md`
+   contributions (delivered-as-verified, not just designed), plus a
+   12-item Future Work list ordered from "directly closes a stated
+   limitation" through `system-design.md`'s existing Post-Capstone Scope
+   to infrastructure items this project's own hardening phase surfaced.
+
+**One manual step remains, flagged rather than skipped:** the
+Implementation chapter has a placeholder screenshots section — actual
+screenshots of the running app need to be captured and inserted before
+submission (no browser/screenshot tool was available to do this
+automatically). Everything the screenshots would show has been verified
+working live (see `docs/evaluation-chapter.md` §4), so this is a capture
+task, not an open functional question.
 
 ### Milestone 6 — Defense prep
 
 1. Rehearse a live demo path: register → build profile → Job Explorer →
    Skill Gap Analysis → Recommendations → point out the GNN-influenced
-   result from Milestone 1 → point out a real LLM-generated explanation
-   from Milestone 2.
-2. Prepare answers for the two hardest predictable questions: *"why does
+   result (`match_source: "gnn"`) from Milestone 1.
+2. Prepare answers for the three hardest predictable questions: *"why does
    your trained model underperform a hand-tuned heuristic?"* (sparse
-   positives, documented in the evaluation report) and *"is this real
-   data?"* (honest synthetic-data limitation from Milestone 3).
+   positives, documented in the evaluation report), *"is this real
+   data?"* (honest synthetic-data limitation from Milestone 3), and *"why
+   isn't the LLM turned on?"* (deliberate design choice, not a gap — see
+   gap #2 above; the graceful-degradation architecture being genuinely
+   exercised, not just claimed, is itself the answer).
 3. `demo/thesis-presentation.html` already exists and covers research
    contribution + GNN training/evaluation detail — update it once
-   Milestones 1–2 change the "is this integrated" answer from no to yes.
+   Milestone 1's live-integration story is ready to present (already true).
 
 ---
 
 ## Suggested immediate next step
 
-Start Milestone 1, step 1 (retrain against the current live graph) and step
-2 (decide + implement the blend policy in `RecommendationAgent`) — that's
-the highest-leverage piece of remaining work and the one every other
-GNN-related deliverable (thesis chapters, defense narrative, "Contribution
-6") depends on.
+Milestones 1, 3, 4, and 5 are done; Milestone 2 is deliberately skipped
+(see above). All four thesis chapters are written
+(`docs/implementation-chapter.md`, `docs/evaluation-chapter.md`,
+`docs/discussion-limitations.md`, `docs/conclusion-future-work.md`).
+**Milestone 6 (defense prep)** is next: rehearse the live demo path,
+prepare the three hardest predictable Q&A answers, capture real
+screenshots for the Implementation chapter's placeholder section, and fill
+in `capstone-proposal.md`'s still-blank `[Your Name]`/`[Supervisor Name]`
+fields (noticed while cross-referencing chapters for this milestone —
+outside this doc's scope to fill in, but worth flagging before submission).

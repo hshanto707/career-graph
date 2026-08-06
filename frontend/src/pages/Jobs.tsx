@@ -10,13 +10,13 @@
 // purpose of a plain browse/filter page. Personalized scores + narratives
 // are exclusive to the Recommendations page (GET /recommendations/jobs).
 //
-// For the same reason this page does not reuse `components/ui/job-card.tsx`
-// as-is: that component's props are the mock `Job` shape, which bakes in
-// `matchPercentage`/`requiredSkills`/`whyRecommended` as required fields.
-// Fabricating those from a catalog-only response would either lie (a fake
-// score) or silently render broken/empty tags -- neither is acceptable.
-// JobCard is left untouched here so it stays available, unmodified, for the
-// Recommendations page's genuinely personalized cards.
+// For the same reason this page never used `components/ui/job-card.tsx`
+// (deleted 2026-08-06, docs/current-status.md Milestone 4 -- it was dead
+// code, its props being the mock `Job` shape with `matchPercentage`/
+// `requiredSkills`/`whyRecommended` baked in as required fields, which
+// only `lib/mockData.ts`, also deleted, ever satisfied). Recommendations.tsx
+// builds its own job list markup directly against the real
+// `JobRecommendationOut` API shape instead.
 
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';

@@ -1,0 +1,815 @@
+<title>CareerGraph — The GNN: Design, Training &amp; Integration</title>
+<meta name="description" content="Everything about CareerGraph's custom AI model: why a GNN, why this task, the data pipeline, architecture, training loop, evaluation methodology, honest results, and how it's wired into a live request.">
+<style>
+:root{
+  --bg:#eef2f3; --surface:#ffffff; --surface-2:#f4f7f8; --border:#d3dbde;
+  --ink:#16232a; --ink-dim:#55707c; --ink-faint:#8296a0;
+  --accent:#0d7a6c; --accent-strong:#095a50; --accent-soft:#d9efeb;
+  --warn:#a2591a; --warn-soft:#f6e6d3;
+  --code-bg:#0f1a1d; --code-ink:#dbe9e6; --code-dim:#7fa89e; --code-str:#c9a86a; --code-kw:#7fb8d9;
+  --radius:3px;
+  --serif: Charter, 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+  --sans: 'Avenir Next', 'Century Gothic', Futura, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b1013; --surface:#121a1e; --surface-2:#171f23; --border:#28353b;
+    --ink:#e6edec; --ink-dim:#9db3b0; --ink-faint:#6d858a;
+    --accent:#54cdb8; --accent-strong:#7fe0cd; --accent-soft:#132824;
+    --warn:#e4a565; --warn-soft:#2b2114;
+    --code-bg:#080f11; --code-ink:#d9ece7; --code-dim:#5f8a80; --code-str:#d3b479; --code-kw:#8fc7e6;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0b1013; --surface:#121a1e; --surface-2:#171f23; --border:#28353b;
+  --ink:#e6edec; --ink-dim:#9db3b0; --ink-faint:#6d858a;
+  --accent:#54cdb8; --accent-strong:#7fe0cd; --accent-soft:#132824;
+  --warn:#e4a565; --warn-soft:#2b2114;
+  --code-bg:#080f11; --code-ink:#d9ece7; --code-dim:#5f8a80; --code-str:#d3b479; --code-kw:#8fc7e6;
+}
+:root[data-theme="light"]{
+  --bg:#eef2f3; --surface:#ffffff; --surface-2:#f4f7f8; --border:#d3dbde;
+  --ink:#16232a; --ink-dim:#55707c; --ink-faint:#8296a0;
+  --accent:#0d7a6c; --accent-strong:#095a50; --accent-soft:#d9efeb;
+  --warn:#a2591a; --warn-soft:#f6e6d3;
+  --code-bg:#0f1a1d; --code-ink:#dbe9e6; --code-dim:#7fa89e; --code-str:#c9a86a; --code-kw:#7fb8d9;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--serif);
+  font-size:16px; line-height:1.6;
+}
+::selection{background:var(--accent-soft); color:var(--ink);}
+a{color:var(--accent-strong);}
+a:focus-visible, button:focus-visible, .navlink:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+h1,h2,h3,h4{font-family:var(--sans); font-weight:700; text-wrap:balance; color:var(--ink); margin:0;}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-faint);
+}
+
+.shell{display:flex; min-height:100vh; max-width:1400px; margin:0 auto;}
+nav.rail{
+  position:sticky; top:0; align-self:flex-start; height:100vh;
+  width:250px; flex:none; border-right:1px solid var(--border);
+  padding:28px 18px; overflow-y:auto;
+}
+.brand{font-family:var(--sans); font-weight:700; font-size:18px; letter-spacing:-.01em;}
+.brand small{display:block; font-family:var(--mono); font-weight:400; font-size:11px; color:var(--ink-faint); letter-spacing:.08em; margin-top:4px; text-transform:uppercase;}
+.rail-group{margin-top:26px;}
+.rail-group h4{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; margin-bottom:8px;}
+.navlink{
+  display:flex; align-items:baseline; gap:8px; padding:6px 8px; margin:0 -8px;
+  border-radius:var(--radius); text-decoration:none; color:var(--ink-dim);
+  font-family:var(--sans); font-size:13.5px; font-weight:500;
+  border-left:2px solid transparent;
+}
+.navlink:hover{color:var(--ink); background:var(--surface-2);}
+.navlink .tag{font-family:var(--mono); font-size:10px; color:var(--ink-faint);}
+
+main{flex:1; min-width:0; padding:44px 56px 120px;}
+@media (max-width:900px){
+  .shell{flex-direction:column;}
+  nav.rail{position:relative; height:auto; width:auto; border-right:none; border-bottom:1px solid var(--border);}
+  main{padding:32px 22px 90px;}
+}
+
+.hero{max-width:72ch;}
+.hero h1{font-size:32px; line-height:1.18; margin-top:10px;}
+.hero p.lede{font-size:17.5px; color:var(--ink-dim); margin-top:16px; max-width:64ch;}
+
+.pipeline-legend{display:flex; gap:22px; flex-wrap:wrap; margin-top:26px;}
+.tier-chip{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:13px; color:var(--ink-dim);}
+.dot{width:9px; height:9px; border-radius:50%; flex:none;}
+.dot.data{background:#7a90c9;}
+.dot.model{background:var(--accent);}
+.dot.live{background:var(--warn);}
+
+figure.diagram{margin:40px 0 0; padding:22px 20px 14px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);}
+figure.diagram svg{width:100%; height:auto; display:block; color:var(--ink-dim);}
+figcaption{font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); margin-top:10px; padding-top:10px; border-top:1px dotted var(--border);}
+
+section.stage{margin-top:70px; padding-top:6px;}
+.stage-head{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:26px; flex-wrap:wrap;}
+.stage-head .idx{font-family:var(--mono); font-size:13px; color:var(--ink-faint);}
+.stage-head h2{font-size:22px;}
+.stage-head .count{font-family:var(--sans); font-size:12.5px; color:var(--ink-faint); margin-left:auto;}
+
+.card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  padding:28px 30px 30px; margin-bottom:26px;
+}
+.card + .card{margin-top:26px;}
+.card-top{display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap;}
+.card-top h3{font-size:20px;}
+.filepath{
+  font-family:var(--mono); font-size:12.5px; color:var(--accent-strong); background:var(--accent-soft);
+  padding:3px 8px; border-radius:var(--radius); white-space:nowrap;
+}
+.badge{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+  padding:3px 7px; border-radius:var(--radius); border:1px solid var(--border); color:var(--ink-dim);
+}
+.badge.warn{border-color:var(--warn); color:var(--warn);}
+.badge.pure{border-color:var(--accent); color:var(--accent-strong);}
+
+.card h4.label{
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-faint); margin:24px 0 8px;
+}
+.card h4.label:first-of-type{margin-top:20px;}
+.card p{margin:0 0 10px; max-width:74ch;}
+.card ul, .card ol{margin:6px 0 10px; padding-left:20px;}
+.card li{margin-bottom:5px; max-width:70ch;}
+
+code.inline{font-family:var(--mono); font-size:.92em; background:var(--surface-2); border:1px solid var(--border); padding:1px 5px; border-radius:var(--radius);}
+
+.codeblock{
+  background:var(--code-bg); color:var(--code-ink); border-radius:var(--radius);
+  overflow-x:auto; margin:10px 0 16px; border:1px solid #00000030;
+}
+.codeblock .ref{
+  font-family:var(--mono); font-size:11px; color:var(--code-dim); padding:8px 14px;
+  border-bottom:1px solid #ffffff14; letter-spacing:.03em;
+}
+.codeblock pre{margin:0; padding:14px 16px; font-family:var(--mono); font-size:12.5px; line-height:1.62; white-space:pre;}
+.codeblock .c{color:var(--code-dim);}
+.codeblock .s{color:var(--code-str);}
+.codeblock .k{color:var(--code-kw);}
+.codeblock .n{color:var(--code-ink);}
+
+.formula{
+  font-family:var(--mono); font-size:13px; background:var(--surface-2); border-left:3px solid var(--accent);
+  padding:10px 14px; margin:10px 0 16px; border-radius:0 var(--radius) var(--radius) 0; white-space:pre-wrap; color:var(--ink);
+}
+
+.example{
+  background:var(--surface-2); border:1px dashed var(--border); border-radius:var(--radius);
+  padding:12px 16px; margin:10px 0 16px; font-size:14.5px;
+}
+.example .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-strong); display:block; margin-bottom:6px;}
+
+table.data{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; margin:10px 0 16px;}
+table.data th, table.data td{border:1px solid var(--border); padding:7px 10px; text-align:left; font-variant-numeric:tabular-nums;}
+table.data th{background:var(--surface-2); font-weight:600; color:var(--ink-dim); font-family:var(--sans); font-size:11.5px; text-transform:uppercase; letter-spacing:.05em;}
+.tablewrap{overflow-x:auto;}
+
+.callout{
+  border:1px solid var(--warn); background:var(--warn-soft); border-radius:var(--radius);
+  padding:12px 16px; margin:14px 0; font-size:14.5px;
+}
+.callout .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--warn); display:block; margin-bottom:6px;}
+
+.good{
+  border:1px solid var(--accent); background:var(--accent-soft); border-radius:var(--radius);
+  padding:12px 16px; margin:14px 0; font-size:14.5px;
+}
+.good .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-strong); display:block; margin-bottom:6px;}
+
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+@media (max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+.decision-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; margin:12px 0 18px;}
+.decision-grid > div{background:var(--surface); padding:14px 16px;}
+.decision-grid .h{font-family:var(--sans); font-weight:700; font-size:12.5px; background:var(--surface-2); text-transform:uppercase; letter-spacing:.04em; color:var(--ink-dim);}
+@media (max-width:640px){.decision-grid{grid-template-columns:1fr;}}
+
+.footer-note{margin-top:70px; padding-top:22px; border-top:1px solid var(--border); font-size:13px; color:var(--ink-faint); font-family:var(--sans); max-width:70ch;}
+
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto !important;}}
+html{scroll-behavior:smooth;}
+</style>
+
+<div class="shell">
+  <nav class="rail" aria-label="Guide index">
+    <div class="brand">CareerGraph<small>Custom AI Model · GNN</small></div>
+
+    <div class="rail-group">
+      <h4>Orientation</h4>
+      <a class="navlink" href="#overview">Overview &amp; pipeline</a>
+      <a class="navlink" href="#decisions">Design decisions</a>
+    </div>
+
+    <div class="rail-group">
+      <h4><span class="dot data" style="display:inline-block;margin-right:5px;"></span>Data</h4>
+      <a class="navlink" href="#graph-build">1 · Building the graph</a>
+      <a class="navlink" href="#export">2 · Export to PyG</a>
+      <a class="navlink" href="#split">3 · Split &amp; negative sampling</a>
+    </div>
+
+    <div class="rail-group">
+      <h4><span class="dot model" style="display:inline-block;margin-right:5px;"></span>Model</h4>
+      <a class="navlink" href="#architecture">4 · Architecture</a>
+      <a class="navlink" href="#training">5 · Training loop</a>
+      <a class="navlink" href="#evaluation">6 · Evaluation methodology</a>
+      <a class="navlink" href="#results">7 · Results, read honestly</a>
+    </div>
+
+    <div class="rail-group">
+      <h4><span class="dot live" style="display:inline-block;margin-right:5px;"></span>Going live</h4>
+      <a class="navlink" href="#inference">8 · Inference &amp; caching</a>
+      <a class="navlink" href="#integration">9 · Retrieve-then-rerank</a>
+      <a class="navlink" href="#deployment">10 · Deployment</a>
+    </div>
+
+    <div class="rail-group">
+      <h4>Wrap-up</h4>
+      <a class="navlink" href="#future">Where this goes next</a>
+      <a class="navlink" href="#files">File map</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="eyebrow">ml/ &amp; backend/app/engine/algorithmic/gnn_recommendation_agent.py</div>
+      <h1>The GNN, start to finish: what it is, why it's built this way, and how it actually ends up in a live recommendation</h1>
+      <p class="lede">CareerGraph's four algorithmic agents (Jaccard matching, BFS reachability, demand counting) are the system's real, always-on intelligence — deterministic, LLM-free, fully explainable. The GNN is a second, independently-evaluated signal layered on top: a small graph neural network trained to predict which skills a job plausibly requires and which skills plausibly lead to which. This page walks through the whole thing in the order it was actually built — the data, the model, the training run, the honest evaluation against the algorithmic baseline, and finally how a trained checkpoint sitting on disk turns into a real influence on a real API response.</p>
+
+      <div class="pipeline-legend">
+        <div class="tier-chip"><span class="dot data"></span>Data — Neo4j-shaped graph → PyTorch Geometric tensors</div>
+        <div class="tier-chip"><span class="dot model"></span>Model — architecture, training, evaluation</div>
+        <div class="tier-chip"><span class="dot live"></span>Live — inference wired into a real request</div>
+      </div>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 980 210" role="img" aria-label="Pipeline: kaggle_jobs.csv and onet_skills.csv flow through IngestionAgent/NormalizationAgent into a RawGraph, exported to a PyTorch Geometric HeteroData object, split into train/val/test edges, used to train a GraphSAGE LinkPredictor, evaluated against the algorithmic baseline, checkpointed to disk, then loaded by GNNRecommendationAgent inside the running backend and called by RecommendationAgent during a real recommendation request.">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <rect x="14" y="18" width="150" height="46" rx="3" fill="none" stroke="currentColor"/>
+          <text x="89" y="37" text-anchor="middle" font-family="var(--sans)" font-size="11.5" fill="currentColor">kaggle_jobs.csv</text>
+          <text x="89" y="52" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">+ onet_skills.csv</text>
+
+          <line x1="164" y1="41" x2="200" y2="41" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="202" y="8" width="170" height="66" rx="3" fill="none" stroke="#7a90c9" stroke-width="1.4"/>
+          <text x="287" y="30" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="#7a90c9">graph_build.py</text>
+          <text x="287" y="46" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">Ingestion + Normalization</text>
+          <text x="287" y="60" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">→ RawGraph (plain Python)</text>
+
+          <line x1="372" y1="41" x2="408" y2="41" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="410" y="8" width="150" height="66" rx="3" fill="none" stroke="#7a90c9" stroke-width="1.4"/>
+          <text x="485" y="30" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="#7a90c9">export_graph.py</text>
+          <text x="485" y="46" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">→ HeteroData</text>
+          <text x="485" y="60" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">(PyTorch Geometric)</text>
+
+          <line x1="560" y1="41" x2="596" y2="41" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="598" y="8" width="150" height="66" rx="3" fill="none" stroke="var(--accent-strong)" stroke-width="1.4"/>
+          <text x="673" y="30" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="var(--accent-strong)">train_gnn.py</text>
+          <text x="673" y="46" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">split.py + model.py</text>
+          <text x="673" y="60" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">→ checkpoint .pt</text>
+
+          <line x1="748" y1="41" x2="784" y2="41" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="786" y="8" width="150" height="66" rx="3" fill="none" stroke="var(--accent-strong)" stroke-width="1.4"/>
+          <text x="861" y="30" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="var(--accent-strong)">evaluate.py</text>
+          <text x="861" y="46" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">vs. baseline.py</text>
+          <text x="861" y="60" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">→ evaluation_report.json</text>
+
+          <line x1="673" y1="74" x2="673" y2="112" stroke="currentColor" marker-end="url(#arrow)"/>
+          <text x="687" y="98" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">checkpoint loaded at runtime</text>
+
+          <rect x="530" y="114" width="286" height="46" rx="3" fill="var(--accent-soft)" stroke="var(--accent-strong)"/>
+          <text x="673" y="133" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="var(--accent-strong)">GNNRecommendationAgent</text>
+          <text x="673" y="148" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">backend/app/engine/algorithmic/</text>
+
+          <line x1="530" y1="137" x2="490" y2="137" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="330" y="114" width="196" height="46" rx="3" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+          <text x="428" y="133" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="var(--warn)">RecommendationAgent</text>
+          <text x="428" y="148" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">retrieve-then-rerank</text>
+
+          <line x1="330" y1="137" x2="294" y2="137" stroke="currentColor" marker-end="url(#arrow)"/>
+
+          <rect x="118" y="114" width="176" height="46" rx="3" fill="none" stroke="var(--warn)" stroke-width="1.4"/>
+          <text x="206" y="133" text-anchor="middle" font-family="var(--sans)" font-weight="700" font-size="12" fill="var(--warn)">EngineOrchestrator</text>
+          <text x="206" y="148" text-anchor="middle" font-family="var(--mono)" font-size="9.5" fill="var(--ink-faint)">GET /recommendations/jobs</text>
+
+          <line x1="118" y1="137" x2="70" y2="137" stroke="currentColor" marker-end="url(#arrow)"/>
+          <text x="14" y="130" font-family="var(--sans)" font-size="11" fill="currentColor">student's</text>
+          <text x="14" y="144" font-family="var(--sans)" font-size="11" fill="currentColor">browser</text>
+        </svg>
+        <figcaption>Left half (blue) runs offline, ahead of time — building the graph and training the model. Right half (green/orange) runs live, inside the deployed backend, every time a student loads their Recommendations page.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="decisions">
+      <div class="stage-head">
+        <span class="idx">Why</span>
+        <h2>Design decisions — what was chosen, what was rejected, and why</h2>
+        <span class="count">docs/project-roadmap.md Part B · docs/gnn-model.md</span>
+      </div>
+
+      <div class="card">
+        <h4 class="label">Why a GNN at all, and not just more algorithmic agents?</h4>
+        <p>The capstone's scope explicitly calls for a custom-trained AI model, evaluated against the existing hand-tuned baseline — not as a replacement for it, but as a second, independently-assessed signal (<code class="inline">docs/project-roadmap.md</code> "Decisions locked in"). A knowledge-graph embedding / GNN link-prediction model was chosen specifically because CareerGraph's data <em>is</em> a graph (Student–Skill–Job–Course–Category, six relationship types already in Neo4j) — a GNN is the natural model family for predicting missing or plausible edges in that structure, as opposed to e.g. a text classifier, which would need to throw away the graph structure to work at all.</p>
+
+        <h4 class="label">Why link prediction, specifically, as the task?</h4>
+        <p>Two edge types were picked as prediction targets: <code class="inline">Job –REQUIRES→ Skill</code> and <code class="inline">Skill –LEADS_TO→ Skill</code>. Both map directly onto real product questions the system already needs answers to — "does this job plausibly need this skill" and "does knowing this skill plausibly lead toward that one" — so a trained model's output is usable by the exact same downstream consumers (<code class="inline">RecommendationAgent</code>, <code class="inline">PathFinderAgent</code>) that already consume the algorithmic version of the same signal, rather than needing a new integration point invented just for the model.</p>
+
+        <h4 class="label">Why 2-layer GraphSAGE, not GCN, GAT, or a from-scratch architecture?</h4>
+        <p>Explicitly scoped as "simple and defensible, not a from-scratch novel architecture" (<code class="inline">docs/project-roadmap.md</code> Part B item 3) — the thesis contribution is the <em>evaluated integration</em> (a trained model, compared honestly against a real baseline, actually wired into production), not novel architecture research. GraphSAGE was picked over GCN because it naturally supports the heterogeneous, multi-relation graph here (different <code class="inline">SAGEConv</code> per edge type via <code class="inline">HeteroConv</code>) without requiring a shared adjacency normalization scheme across node types the way vanilla GCN does. GAT (attention-weighted aggregation) was a plausible alternative and is named directly as the concrete next step if richer input features are added later (see <a href="#results">§7</a> and <code class="inline">docs/conclusion-future-work.md</code> item 3) — attention becomes more useful once nodes have real features to weight, which they don't yet (next point).</p>
+
+        <h4 class="label">Why learned embedding tables instead of real input features?</h4>
+        <p>No node type in the current schema carries rich numeric features — a <code class="inline">Skill</code> node is just a name and a category string, not e.g. a text embedding of a skill description. Rather than block the whole pipeline on building a feature-extraction step first, each node type gets a learned <code class="inline">nn.Embedding</code> table as its input (<a href="#architecture">§4</a>) — the standard fallback when no better features exist, and a known, explicitly identified limitation (not an oversight) discussed honestly in the results section.</p>
+
+        <h4 class="label">Why is the algorithmic baseline not a strawman?</h4>
+        <p>The comparison baseline (<code class="inline">ml/baseline.py</code>) doesn't reimplement a simplified version of the algorithmic logic for the sake of the comparison — it directly imports and reuses <code class="inline">RecommendationAgent</code>'s actual Jaccard-similarity and depth-1/2 <code class="inline">LEADS_TO</code>-reachability functions, the exact same code a real student's request runs through. This was a deliberate methodological choice: a favorable GNN result against a weakened baseline would prove nothing; a result against the system's real production logic is the only comparison worth reporting.</p>
+
+        <div class="decision-grid">
+          <div class="h">Decision</div><div class="h">Why this, not the alternative</div>
+          <div>2-layer heterogeneous GraphSAGE</div><div>Handles multi-relation graphs natively via per-edge-type <code class="inline">SAGEConv</code>; simple and defensible over a from-scratch design; GAT is the named next step once richer features exist.</div>
+          <div>Dot-product decoder, not an MLP decoder</div><div>Simplest scoring function that still supports a sigmoid-for-probability / logits-for-BCE-loss split; consistent with the "not novel architecture" scope decision.</div>
+          <div>Learned embedding tables as input features</div><div>No richer features exist in the schema yet; explicitly named as the top future-work item rather than blocking the whole pipeline on building one first.</div>
+          <div>Baseline reuses real production code</div><div>A win against a weakened baseline would be meaningless; the comparison is only informative if the baseline is what a real request actually runs.</div>
+          <div>Retrieve-then-rerank at inference, not score-everything</div><div>Scoring all ~9,400 jobs with the GNN per request is unnecessary and slow; a standard, explainable pattern in real recommender systems (<a href="#integration">§9</a>).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="graph-build">
+      <div class="stage-head">
+        <span class="idx">1</span>
+        <h2>Building the graph — from CSVs to a plain-Python graph object</h2>
+        <span class="count"><span class="filepath">ml/graph_build.py</span></span>
+      </div>
+
+      <div class="card">
+        <p>No live Neo4j connection is used for training — <code class="inline">build_synthetic_career_graph()</code> re-runs the exact same <code class="inline">IngestionAgent</code> → <code class="inline">NormalizationAgent</code> pipeline the real backend uses, but against <code class="inline">FakeGraphService</code> (the same in-memory test double the backend's own test suite uses) instead of a live Bolt connection. This means the exported graph is faithful to what real ingestion would produce — same synonym matching, same rapidfuzz fuzzy-matching threshold, same flag-for-review fallback — while remaining fully torch-free and unit-testable in any environment.</p>
+
+        <h4 class="label">Deliberately zero torch dependency here</h4>
+        <p>This module never imports torch — it only builds plain Python data structures (<code class="inline">RawGraph</code>: node id lists + <code class="inline">(src_id, dst_id)</code> edge pairs per relation). That's what lets <code class="inline">ml/tests/test_graph_build.py</code> run node/edge-count and determinism checks in <em>any</em> environment, including the plain backend test suite with no ML stack installed at all — the heavy torch-dependent tests live in a separate file that auto-skips when torch is missing (<a href="#evaluation">§6</a>).</p>
+
+        <h4 class="label">The one piece with no real data source at all: LEADS_TO</h4>
+        <p>Nothing in the ingestion pipeline — real or synthetic — ever populates <code class="inline">Skill –LEADS_TO→ Skill</code> edges; no "skill A is a prerequisite of skill B" data source exists yet (<code class="inline">docs/data-sources.md</code>). For the GNN to have a second link-prediction task at all, this module synthesizes a small, clearly-labeled placeholder: within each O*NET skill category, skills are sorted alphabetically and chained.</p>
+
+        <div class="codeblock">
+          <div class="ref">graph_build.py:87–103 — the synthetic LEADS_TO heuristic, in full</div>
+<pre><span class="k">def</span> <span class="n">_synthesize_leads_to</span>(
+    <span class="n">skill_categories</span>: <span class="n">dict</span>[<span class="n">str</span>, <span class="n">str</span> | <span class="k">None</span>],
+) -> <span class="n">list</span>[<span class="n">tuple</span>[<span class="n">str</span>, <span class="n">str</span>]]:
+    <span class="n">by_category</span>: <span class="n">dict</span>[<span class="n">str</span>, <span class="n">list</span>[<span class="n">str</span>]] = {}
+    <span class="k">for</span> <span class="n">skill_name</span>, <span class="n">category</span> <span class="k">in</span> <span class="n">skill_categories</span>.items():
+        <span class="k">if not</span> <span class="n">category</span>:
+            <span class="k">continue</span>
+        <span class="n">by_category</span>.setdefault(<span class="n">category</span>, []).append(<span class="n">skill_name</span>)
+
+    <span class="n">edges</span> = []
+    <span class="k">for</span> <span class="n">category</span> <span class="k">in</span> <span class="k">sorted</span>(<span class="n">by_category</span>):
+        <span class="n">names</span> = <span class="k">sorted</span>(<span class="n">by_category</span>[<span class="n">category</span>])
+        <span class="k">for</span> <span class="n">a</span>, <span class="n">b</span> <span class="k">in</span> <span class="k">zip</span>(<span class="n">names</span>, <span class="n">names</span>[<span class="mi">1</span>:]):
+            <span class="n">edges</span>.append((<span class="n">a</span>, <span class="n">b</span>))  <span class="c"># skill[i] -[:LEADS_TO]-> skill[i+1], alphabetically</span>
+    <span class="k">return</span> <span class="n">edges</span></pre>
+        </div>
+        <div class="callout">
+          <span class="tag">why this matters for reading the results honestly</span>
+          Because this heuristic is deterministic and fully known, a baseline that "reconstructs" it (by checking depth-1/2 reachability over the very edges this function produced) isn't demonstrating skill at prerequisite prediction — it's just replaying a known rule. This is exactly why the <code class="inline">LEADS_TO</code> results in <a href="#results">§7</a> need the caveat they get.
+        </div>
+
+        <h4 class="label">Five node types, five edge types — matching the live Neo4j schema exactly</h4>
+        <table class="data">
+          <tr><th>Node type</th><th>Count (10k-job dataset)</th><th>Edge type</th><th>Count</th></tr>
+          <tr><td>Student</td><td>3</td><td>Student –HAS_SKILL→ Skill</td><td>11</td></tr>
+          <tr><td>Skill</td><td>434</td><td>Job –REQUIRES→ Skill</td><td>54,288</td></tr>
+          <tr><td>Job</td><td>9,380</td><td>Skill –LEADS_TO→ Skill (synthetic)</td><td>388</td></tr>
+          <tr><td>Course</td><td>30</td><td>Course –TEACHES→ Skill</td><td>37</td></tr>
+          <tr><td>Category</td><td>14</td><td>Job –IN_CATEGORY→ Category</td><td>9,380</td></tr>
+        </table>
+        <p style="font-size:13.5px; color:var(--ink-dim);">9,380 distinct <code class="inline">Job</code> nodes rather than the full 10,000 CSV rows because some posting ids collapse to the same normalized job identity — the same dedup behavior the real ingestion pipeline's own test suite exercises, not a discrepancy specific to this export path.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="export">
+      <div class="stage-head">
+        <span class="idx">2</span>
+        <h2>Export — turning the plain-Python graph into tensors</h2>
+        <span class="count"><span class="filepath">ml/export_graph.py</span></span>
+      </div>
+
+      <div class="card">
+        <p><code class="inline">to_hetero_data()</code> converts <code class="inline">RawGraph</code> into a PyTorch Geometric <code class="inline">HeteroData</code> object: each node type's string ids become integer indices by sorted position (deterministic run-to-run), and each edge type becomes a <code class="inline">[2, num_edges]</code> <code class="inline">torch.long</code> tensor in PyG's expected layout.</p>
+
+        <div class="codeblock">
+          <div class="ref">export_graph.py:34–63 — RawGraph → HeteroData (abridged)</div>
+<pre><span class="k">def</span> <span class="n">to_hetero_data</span>(<span class="n">raw</span>: <span class="n">RawGraph</span>):
+    <span class="n">data</span> = <span class="n">HeteroData</span>()
+    <span class="n">indices</span> = {}
+
+    <span class="k">for</span> <span class="n">node_type</span> <span class="k">in</span> <span class="n">NODE_TYPES</span>:
+        <span class="n">ids</span> = <span class="n">raw</span>.node_ids.get(<span class="n">node_type</span>, [])
+        <span class="n">indices</span>[<span class="n">node_type</span>] = {<span class="n">nid</span>: <span class="n">i</span> <span class="k">for</span> <span class="n">i</span>, <span class="n">nid</span> <span class="k">in</span> <span class="k">enumerate</span>(<span class="n">ids</span>)}
+        <span class="n">data</span>[<span class="n">node_type</span>].num_nodes = <span class="k">len</span>(<span class="n">ids</span>)
+
+    <span class="k">for</span> <span class="n">edge_type</span> <span class="k">in</span> <span class="n">EDGE_TYPES</span>:
+        <span class="n">src_type</span>, <span class="n">relation</span>, <span class="n">dst_type</span> = <span class="n">edge_type</span>
+        <span class="n">pairs</span> = <span class="n">raw</span>.edges.get(<span class="n">edge_type</span>, [])
+        <span class="c"># ...build [rows, cols] index lists from indices[src_type]/[dst_type]...</span>
+        <span class="n">data</span>[<span class="n">src_type</span>, <span class="n">relation</span>, <span class="n">dst_type</span>].edge_index = <span class="n">edge_index</span>
+
+    <span class="k">return</span> <span class="n">data</span>, <span class="n">indices</span></pre>
+        </div>
+
+        <p>No node type has rich input features here — the model supplies those itself via learned embedding tables (<a href="#architecture">§4</a>), so this step's only job is correct node counts and edge index tensors, which is exactly what <code class="inline">ml/tests/test_graph_build.py</code>'s red/green tests check against direct counts on a fixed seeded dataset.</p>
+
+        <div class="good">
+          <span class="tag">a real bug this exact function was involved in</span>
+          <code class="inline">export()</code> (the CLI-facing wrapper around <code class="inline">to_hetero_data()</code>) always writes its result to disk as a side effect — fine for its offline/CLI use, but it turned out to be the direct cause of a live-request crash once the model was deployed. See <a href="#deployment">§10</a> for the full story; it's a genuinely instructive example of a bug that only a real deployment could surface.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="split">
+      <div class="stage-head">
+        <span class="idx">3</span>
+        <h2>Train / validation / test split, and negative sampling</h2>
+        <span class="count"><span class="filepath">ml/split.py</span> · pure Python, no torch</span>
+      </div>
+
+      <div class="card">
+        <h4 class="label">Edge-level split, not node-level — and why that distinction matters</h4>
+        <p><code class="inline">split_edges()</code> partitions each target relation's real ("positive") edges into disjoint train/val/test sets (default 80/10/10, seeded). This is deliberately <em>edge-level</em>: every node can still appear in multiple splits (a <code class="inline">Job</code> node might have some of its <code class="inline">REQUIRES</code> edges in train and others in test), but no single edge is ever double-counted across splits. <code class="inline">EdgeSplit.is_disjoint()</code> is asserted in <code class="inline">train_gnn.py</code> immediately after every split, and independently unit-tested in <code class="inline">ml/tests/test_split.py</code>.</p>
+
+        <div class="codeblock">
+          <div class="ref">split.py:26–31 — the disjointness guarantee, checked not just assumed</div>
+<pre><span class="k">def</span> <span class="n">is_disjoint</span>(<span class="n">self</span>) -> <span class="n">bool</span>:
+    <span class="n">t</span>, <span class="n">v</span>, <span class="n">te</span> = <span class="k">set</span>(<span class="n">self</span>.train), <span class="k">set</span>(<span class="n">self</span>.val), <span class="k">set</span>(<span class="n">self</span>.test)
+    <span class="k">return not</span> (<span class="n">t</span> & <span class="n">v</span>) <span class="k">and not</span> (<span class="n">t</span> & <span class="n">te</span>) <span class="k">and not</span> (<span class="n">v</span> & <span class="n">te</span>)</pre>
+        </div>
+
+        <h4 class="label">Leakage-safe: held-out edges never enter the encoder's input graph</h4>
+        <p>This is the detail that makes the split more than a formality. <code class="inline">train_gnn.py</code>'s <code class="inline">build_training_graph()</code> only feeds <strong>train-split</strong> positive edges (for the two target relations) into message passing — validation and test positives are excluded from the graph the encoder actually sees, not just excluded from the loss function. A model that could "see" a test edge while computing node embeddings, even without being directly trained on it, would have an unfair information advantage at evaluation time; this design closes that off entirely.</p>
+
+        <h4 class="label">Negative sampling — rejecting against the full edge set, not just train</h4>
+        <p><code class="inline">sample_negative_edges()</code> draws random <code class="inline">(src, dst)</code> pairs and rejects any pair that's a real edge — checked against <strong>train + val + test positives combined</strong>, never just train. This matters: if negatives were only checked against train positives, a "negative" sampled for the validation set could secretly be a real held-out test edge, silently corrupting the evaluation.</p>
+
+        <div class="formula">max_attempts = num_samples * 50 + 1000
+// bounded rejection sampling — degrades to fewer-than-requested negatives
+// rather than looping forever on a graph too dense to find enough negatives</div>
+
+        <h4 class="label">Reproducibility</h4>
+        <p>Every stochastic step — the shuffle before splitting, negative sampling, model weight initialization (<a href="#training">§5</a>) — takes an explicit <code class="inline">seed</code> parameter, and <code class="inline">seed=42</code> is used consistently throughout <code class="inline">ml/</code>. The checkpoint and evaluation report were independently re-run on a later date and reproduced the earlier numbers at noise-level precision (<a href="#results">§7</a>) — this is checked, not assumed.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="architecture">
+      <div class="stage-head">
+        <span class="idx">4</span>
+        <h2>Model architecture — layer by layer</h2>
+        <span class="count"><span class="filepath">ml/model.py</span></span>
+      </div>
+
+      <div class="card">
+        <h4 class="label">Encoder: 2-layer heterogeneous GraphSAGE</h4>
+        <p>Every node type gets its own learned embedding table (<code class="inline">nn.Embedding</code>) as input — there are no real input features in the schema yet (<a href="#decisions">§ Design decisions</a>). Two <code class="inline">HeteroConv</code> layers follow, each wrapping one <code class="inline">SAGEConv</code> per message-passing edge type (every real relation, plus a synthetic reverse edge for each, so information flows both directions — e.g. a <code class="inline">Skill</code> node also learns from the <code class="inline">Job</code>s that require it, not just the reverse).</p>
+
+        <div class="codeblock">
+          <div class="ref">model.py:22–58 — HeteroSAGEEncoder (abridged)</div>
+<pre><span class="k">class</span> <span class="n">HeteroSAGEEncoder</span>(<span class="n">nn</span>.Module):
+    <span class="k">def</span> <span class="n">__init__</span>(<span class="n">self</span>, <span class="n">node_types</span>, <span class="n">message_passing_edge_types</span>,
+                 <span class="n">num_nodes_per_type</span>, <span class="n">hidden_channels</span>=<span class="mi">64</span>, <span class="n">out_channels</span>=<span class="mi">32</span>):
+        <span class="n">self</span>.embeddings = <span class="n">nn</span>.ModuleDict({
+            <span class="n">nt</span>: <span class="n">nn</span>.Embedding(<span class="n">num_nodes_per_type</span>[<span class="n">nt</span>], <span class="n">hidden_channels</span>)
+            <span class="k">for</span> <span class="n">nt</span> <span class="k">in</span> <span class="n">node_types</span>
+        })
+
+        <span class="k">def</span> <span class="n">build_conv</span>(<span class="n">out_dim</span>):
+            <span class="k">return</span> <span class="n">HeteroConv</span>({
+                <span class="n">edge_type</span>: <span class="n">SAGEConv</span>((-<span class="mi">1</span>, -<span class="mi">1</span>), <span class="n">out_dim</span>)
+                <span class="k">for</span> <span class="n">edge_type</span> <span class="k">in</span> <span class="n">message_passing_edge_types</span>
+            }, <span class="n">aggr</span>=<span class="s">"mean"</span>)
+
+        <span class="n">self</span>.conv1 = <span class="n">build_conv</span>(<span class="n">hidden_channels</span>)  <span class="c"># 64-dim hidden layer</span>
+        <span class="n">self</span>.conv2 = <span class="n">build_conv</span>(<span class="n">out_channels</span>)   <span class="c"># 32-dim output embedding</span>
+
+    <span class="k">def</span> <span class="n">forward</span>(<span class="n">self</span>, <span class="n">x_dict_placeholder</span>, <span class="n">edge_index_dict</span>):
+        <span class="n">x_dict</span> = {<span class="n">nt</span>: <span class="n">self</span>.embeddings[<span class="n">nt</span>](<span class="n">torch</span>.arange(...)) <span class="k">for</span> <span class="n">nt</span> <span class="k">in</span> <span class="n">self</span>.node_types}
+        <span class="n">x_dict</span> = <span class="n">self</span>.conv1(<span class="n">x_dict</span>, <span class="n">edge_index_dict</span>)
+        <span class="n">x_dict</span> = {<span class="n">k</span>: <span class="n">F</span>.relu(<span class="n">v</span>) <span class="k">for</span> <span class="n">k</span>, <span class="n">v</span> <span class="k">in</span> <span class="n">x_dict</span>.items()}
+        <span class="n">x_dict</span> = <span class="n">self</span>.conv2(<span class="n">x_dict</span>, <span class="n">edge_index_dict</span>)
+        <span class="k">return</span> <span class="n">x_dict</span>  <span class="c"># final 32-dim embedding per node</span></pre>
+        </div>
+        <p><strong>Why 2 layers, specifically:</strong> each <code class="inline">SAGEConv</code> layer lets a node aggregate information from its direct neighbors; stacking two means a node's final embedding reflects its 2-hop neighborhood (neighbors of neighbors) — e.g. a <code class="inline">Skill</code>'s embedding is shaped by the <code class="inline">Job</code>s that require it, <em>and</em> by whatever those jobs' other required skills are shaped by, one hop further out. This is deep enough to capture meaningful graph structure without the over-smoothing risk deeper GNNs are known for on small graphs.</p>
+
+        <h4 class="label">Decoder: dot product, not an MLP</h4>
+        <div class="codeblock">
+          <div class="ref">model.py:60–65 — the entire decoder</div>
+<pre><span class="k">class</span> <span class="n">DotProductDecoder</span>(<span class="n">nn</span>.Module):
+    <span class="k">def</span> <span class="n">forward</span>(<span class="n">self</span>, <span class="n">z_src</span>, <span class="n">z_dst</span>) -> <span class="n">torch</span>.Tensor:
+        <span class="k">return</span> (<span class="n">z_src</span> * <span class="n">z_dst</span>).sum(<span class="n">dim</span>=-<span class="mi">1</span>)  <span class="c"># score(u, v) = z_u . z_v, a logit</span></pre>
+        </div>
+        <p>Two embeddings that are "similar" in the learned 32-dimensional space produce a high dot product — the simplest possible scoring function, and the standard choice for link prediction unless there's a specific reason to need an MLP's extra expressiveness. Logits at training time (for numerically stable <code class="inline">BCEWithLogitsLoss</code>), passed through a sigmoid at inference to become a 0–1 plausibility score (<a href="#inference">§8</a>).</p>
+
+        <h4 class="label"><code class="inline">LinkPredictor</code> — the full assembled model, and what gets checkpointed</h4>
+        <p>Wraps the encoder + decoder together, and stores its own constructor arguments as <code class="inline">self.config</code> — saved into every checkpoint alongside the weights, so a checkpoint can always be loaded into a freshly-constructed model of the exact same shape without hand-tracking hyperparameters separately. Loading a checkpoint into a differently-shaped model (e.g. after an architecture change) fails loudly with a clear error rather than silently loading garbage weights — a specific, tested edge case (<code class="inline">ml/tests/test_gnn_pipeline_requires_torch.py</code>).</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="training">
+      <div class="stage-head">
+        <span class="idx">5</span>
+        <h2>Training loop</h2>
+        <span class="count"><span class="filepath">ml/train_gnn.py</span></span>
+      </div>
+
+      <div class="card">
+        <h4 class="label">Loss: binary cross-entropy, summed across both target relations</h4>
+        <div class="codeblock">
+          <div class="ref">train_gnn.py:172–187 — one epoch, abridged</div>
+<pre><span class="k">for</span> <span class="n">epoch</span> <span class="k">in</span> <span class="k">range</span>(<span class="mi">1</span>, <span class="n">epochs</span> + <span class="mi">1</span>):
+    <span class="n">model</span>.train()
+    <span class="n">optimizer</span>.zero_grad()
+    <span class="n">z_dict</span> = <span class="n">model</span>.encode(<span class="n">edge_index_dict</span>)  <span class="c"># one encoder pass for the whole epoch</span>
+
+    <span class="n">loss</span> = <span class="n">torch</span>.tensor(<span class="mf">0.0</span>)
+    <span class="k">for</span> <span class="n">edge_type</span> <span class="k">in</span> <span class="n">TARGET_EDGE_TYPES</span>:  <span class="c"># REQUIRES, then LEADS_TO</span>
+        <span class="n">edge_label_index</span>, <span class="n">edge_label</span> = <span class="n">supervision</span>[<span class="n">edge_type</span>][<span class="s">"train"</span>]
+        <span class="n">logits</span> = <span class="n">model</span>.decode(<span class="n">z_dict</span>, <span class="n">src_type</span>, <span class="n">dst_type</span>, <span class="n">edge_label_index</span>)
+        <span class="n">loss</span> = <span class="n">loss</span> + <span class="n">F</span>.binary_cross_entropy_with_logits(<span class="n">logits</span>, <span class="n">edge_label</span>)
+
+    <span class="n">loss</span>.backward()
+    <span class="n">optimizer</span>.step()</pre>
+        </div>
+        <p>Each target relation's positive edges are labeled <code class="inline">1</code>, sampled negatives labeled <code class="inline">0</code> (built once in <code class="inline">build_training_graph()</code>), concatenated into one <code class="inline">edge_label_index</code>/<code class="inline">edge_label</code> pair per relation — both relations' losses are summed into a single scalar the optimizer steps on, so the encoder learns embeddings useful for both tasks jointly, not two separately-trained models.</p>
+
+        <h4 class="label">Hyperparameters, and why these values</h4>
+        <table class="data">
+          <tr><th>Parameter</th><th>Value</th><th>Why</th></tr>
+          <tr><td>Epochs</td><td>60</td><td>Loss (1.3843→0.0310) and validation AUC (peak 0.9367 at epoch 50) both plateau by 60; a slight val-AUC dip after epoch 50 is a mild overfitting signal, not a reason to add more without a learning-rate schedule.</td></tr>
+          <tr><td>Optimizer</td><td>Adam, lr=0.01</td><td>Standard default for small graph models; full-batch training (no mini-batching needed at this graph size) converges quickly with it.</td></tr>
+          <tr><td>hidden_channels</td><td>64</td><td>First-layer embedding width — small enough to train in seconds on CPU, large enough to represent 434 skills / 9,380 jobs distinctly.</td></tr>
+          <tr><td>out_channels</td><td>32</td><td>Final embedding width used for dot-product scoring.</td></tr>
+          <tr><td>Batching</td><td>Full-batch (no mini-batches)</td><td>The whole graph fits comfortably in memory at this scale (~9.4k Job nodes); mini-batch neighbor sampling would add complexity with no benefit here.</td></tr>
+        </table>
+
+        <h4 class="label">Wall-clock cost — a real, checked number, not an estimate</h4>
+        <p>The full pipeline — graph export, 60-epoch training, checkpointing — runs in <strong>~30 seconds</strong> on ordinary CPU hardware, no GPU needed. This is a genuine reproducibility strength worth stating plainly: any examiner can re-run the entire training pipeline live during a defense if asked.</p>
+
+        <h4 class="label">What gets saved in the checkpoint</h4>
+        <div class="codeblock">
+          <div class="ref">train_gnn.py:196–207 — everything needed to reload and serve the model later</div>
+<pre><span class="n">torch</span>.save({
+    <span class="s">"model_state_dict"</span>: <span class="n">model</span>.state_dict(),
+    <span class="s">"config"</span>: <span class="n">model</span>.config,                       <span class="c"># architecture hyperparameters</span>
+    <span class="s">"node_indices"</span>: <span class="n">node_indices</span>,                 <span class="c"># string id -> integer index, per node type</span>
+    <span class="s">"target_edge_types"</span>: <span class="n">TARGET_EDGE_TYPES</span>,
+    <span class="s">"message_passing_edge_types"</span>: <span class="n">message_passing_edge_types</span>,
+    <span class="s">"history"</span>: <span class="n">history</span>,                          <span class="c"># per-epoch loss/val_auc, for later inspection</span>
+    <span class="s">"seed"</span>: <span class="n">seed</span>,
+}, <span class="n">checkpoint_path</span>)</pre>
+        </div>
+        <p><code class="inline">node_indices</code> is what lets <code class="inline">GNNRecommendationAgent</code> (<a href="#inference">§8</a>) later translate a real string id like <code class="inline">"basecamp-support-labs::manager-quality-assurance-engineer"</code> into the correct row of the trained embedding table — without it, a served model would have no way to know which learned embedding corresponds to which real job.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="evaluation">
+      <div class="stage-head">
+        <span class="idx">6</span>
+        <h2>Evaluation methodology</h2>
+        <span class="count"><span class="filepath">ml/evaluate.py</span> · <span class="filepath">ml/baseline.py</span></span>
+      </div>
+
+      <div class="card">
+        <h4 class="label">The three metrics, explained plainly</h4>
+        <ul>
+          <li><strong>AUC-ROC</strong> — across every positive/negative score pair, how often does the model rank the real edge above the fake one? 0.5 = random guessing, 1.0 = perfect separation.</li>
+          <li><strong>Hits@10</strong> — for each real edge, rank it against all the sampled negatives by score; Hits@10 is the fraction of real edges that land in the top 10. Much stricter than AUC-ROC when the negative pool is large (here, 5,429 negatives per REQUIRES edge).</li>
+          <li><strong>MRR (Mean Reciprocal Rank)</strong> — the average of <code class="inline">1 / rank</code> across all real edges; rewards ranking a true edge <em>near</em> the top even when it doesn't crack the top 10, unlike Hits@10's all-or-nothing cutoff.</li>
+        </ul>
+
+        <div class="codeblock">
+          <div class="ref">evaluate.py:35–61 — ranking_metrics(), the actual Hits@k / MRR implementation</div>
+<pre><span class="k">def</span> <span class="n">ranking_metrics</span>(<span class="n">pos_scores</span>, <span class="n">neg_scores</span>, <span class="n">k</span>=<span class="mi">10</span>):
+    <span class="n">hits</span> = <span class="mi">0</span>
+    <span class="n">reciprocal_ranks</span> = []
+    <span class="n">sorted_neg</span> = <span class="k">sorted</span>(<span class="n">neg_scores</span>, <span class="n">reverse</span>=<span class="k">True</span>)
+    <span class="k">for</span> <span class="n">p</span> <span class="k">in</span> <span class="n">pos_scores</span>:
+        <span class="n">rank</span> = <span class="mi">1</span> + <span class="k">sum</span>(<span class="mi">1</span> <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">sorted_neg</span> <span class="k">if</span> <span class="n">n</span> > <span class="n">p</span>)
+        <span class="n">reciprocal_ranks</span>.append(<span class="mf">1.0</span> / <span class="n">rank</span>)
+        <span class="k">if</span> <span class="n">rank</span> <= <span class="n">k</span>: <span class="n">hits</span> += <span class="mi">1</span>
+    <span class="k">return</span> {<span class="s">"hits_at_k"</span>: <span class="n">hits</span> / <span class="k">len</span>(<span class="n">pos_scores</span>), <span class="s">"mrr"</span>: <span class="k">sum</span>(<span class="n">reciprocal_ranks</span>) / <span class="k">len</span>(<span class="n">reciprocal_ranks</span>)}</pre>
+        </div>
+
+        <h4 class="label">The correctness requirement: identical test edges for both models</h4>
+        <p><code class="inline">evaluate.py</code>'s <code class="inline">main()</code> builds <strong>one</strong> <code class="inline">splits</code> object via <code class="inline">prepare_splits()</code>, then passes that same object, unmodified, to both <code class="inline">evaluate_gnn()</code> and <code class="inline">evaluate_baseline()</code>. Neither function is allowed to construct its own split — a difference in the resulting metrics can therefore only reflect a difference between the models, never a difference in which edges happened to be held out for each. This is the single most important methodological guarantee in the whole evaluation, and it's structural (the same object is passed in), not just a stated intention.</p>
+
+        <h4 class="label">The baseline, precisely: what it is and isn't</h4>
+        <p>Built fresh from only the <strong>train-split</strong> edges (never val/test — the baseline must not see held-out edges any more than the GNN's message-passing graph does), via two functions directly imported from the live production code:</p>
+        <div class="two-col">
+          <div class="example">
+            <span class="tag">REQUIRES baseline</span>
+            <code class="inline">build_requires_baseline()</code> — job-to-job Jaccard similarity: score(job, skill) = the best skill-set overlap between this job and any other training-set job known to require that skill. Reuses <code class="inline">RecommendationAgent</code>'s exact <code class="inline">exact_score</code> formula.
+          </div>
+          <div class="example">
+            <span class="tag">LEADS_TO baseline</span>
+            <code class="inline">build_leads_to_baseline()</code> — depth-1/2 reachability over train-split LEADS_TO edges, reusing <code class="inline">RecommendationAgent</code>'s own <code class="inline">DEPTH1_CREDIT</code>/<code class="inline">DEPTH2_CREDIT</code> constants and BFS logic directly, not a reimplementation.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="results">
+      <div class="stage-head">
+        <span class="idx">7</span>
+        <h2>Results — read honestly, not spun</h2>
+        <span class="count">ml/results/evaluation_report.json · seed=42 · retrained 2026-08-06</span>
+      </div>
+
+      <div class="card">
+        <div class="tablewrap">
+        <table class="data">
+          <tr><th>Edge type</th><th>Model</th><th>AUC-ROC</th><th>Hits@10</th><th>MRR</th><th>#test pos/neg</th></tr>
+          <tr><td>Job –REQUIRES→ Skill</td><td>GNN (GraphSAGE)</td><td>0.937</td><td>0.014</td><td>0.012</td><td>5,429 / 5,429</td></tr>
+          <tr><td>Job –REQUIRES→ Skill</td><td>Algorithmic baseline</td><td>0.961</td><td>0.116</td><td>0.067</td><td>5,429 / 5,429</td></tr>
+          <tr><td>Skill –LEADS_TO→ Skill</td><td>GNN (GraphSAGE)</td><td>0.679</td><td>0.538</td><td>0.296</td><td>39 / 39</td></tr>
+          <tr><td>Skill –LEADS_TO→ Skill</td><td>Algorithmic baseline</td><td>0.500</td><td>1.000</td><td>1.000</td><td>39 / 39</td></tr>
+        </table>
+        </div>
+
+        <h4 class="label">REQUIRES: the baseline wins, on all three metrics</h4>
+        <p>Stated plainly because it's the actual result: on the task the thesis originally hoped the GNN would win, it doesn't. AUC-ROC is close (0.961 baseline vs. 0.937 GNN) but Hits@10/MRR are not (0.116 vs. 0.014, 0.067 vs. 0.012). The most defensible explanation available: positive-edge density is sparse per skill relative to the 5,429-strong negative pool, which favors a heuristic that directly reuses ground-truth co-occurrence structure over an embedding model with no richer input than a learned-from-scratch table per node. This directly contradicts the literature-precedent hope (Node2Vec/GNN approaches closing this gap "at scale," per <code class="inline">docs/literature-review.md</code>) — a real, useful negative result, not a hidden one.</p>
+
+        <h4 class="label">LEADS_TO: a genuine learning signal, against weak ground truth</h4>
+        <p>The GNN's AUC-ROC (0.679) meaningfully beats the baseline's coin-flip 0.500 — the model has learned <em>something</em> real about graph-structural similarity between skills. But the baseline's near-perfect Hits@10/MRR (1.000/1.000) isn't a counter-achievement: it's tautological reconstruction of the deterministic alphabetical rule from <a href="#graph-build">§1</a>, which the baseline has full visibility into. Neither number should be read as "how good is this at ordering a real learning path," because the ground truth itself is synthetic — this is exactly why <a href="#integration">§9</a>'s live rerank only ever calls <code class="inline">score_leads_to</code>, never <code class="inline">score_requires</code>.</p>
+
+        <div class="good">
+          <span class="tag">reproducibility, checked not assumed</span>
+          These numbers were independently re-run on 2026-08-06 from the same source data as an earlier 2026-07-18 run and matched at noise-level precision (0.935→0.937, 0.685→0.679, etc.) — a genuine strength of the evaluation, worth stating as such.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="inference">
+      <div class="stage-head">
+        <span class="idx">8</span>
+        <h2>Inference &amp; caching — loading the checkpoint inside the running backend</h2>
+        <span class="count"><span class="filepath">backend/app/engine/algorithmic/gnn_recommendation_agent.py</span></span>
+      </div>
+
+      <div class="card">
+        <h4 class="label">Graceful degradation — the exact same contract as the LLM provider</h4>
+        <p>Constructing <code class="inline">GNNRecommendationAgent</code> never raises, even with no checkpoint on disk or torch not installed — it just reports <code class="inline">is_available = False</code> with a human-readable <code class="inline">unavailable_reason</code>. Every scoring method returns <code class="inline">None</code>, never an exception, when unavailable or when a candidate node id was never seen at training time. This deliberately mirrors <code class="inline">LLMProvider</code>'s fallback pattern (<code class="inline">backend/app/engine/llm/</code>) — the second implementation of an already-proven pattern, not a new design.</p>
+
+        <div class="codeblock">
+          <div class="ref">gnn_recommendation_agent.py:69–96 — load-or-degrade, abridged</div>
+<pre><span class="k">def</span> <span class="n">_load</span>(<span class="n">self</span>) -> <span class="k">None</span>:
+    <span class="k">if not</span> <span class="n">self</span>.<span class="n">_checkpoint_path</span>.exists():
+        <span class="n">self</span>.<span class="n">_unavailable_reason</span> = <span class="s">f"no checkpoint found at {self._checkpoint_path}"</span>
+        <span class="k">return</span>
+    <span class="k">try</span>:
+        <span class="k">import</span> <span class="n">torch</span>
+    <span class="k">except</span> <span class="n">ImportError</span>:
+        <span class="n">self</span>.<span class="n">_unavailable_reason</span> = <span class="s">"torch is not installed (see ml/requirements.txt)"</span>
+        <span class="k">return</span>
+    <span class="k">try</span>:
+        <span class="n">checkpoint</span> = <span class="n">torch</span>.load(<span class="n">self</span>.<span class="n">_checkpoint_path</span>, <span class="n">weights_only</span>=<span class="k">False</span>)
+        <span class="n">model</span> = <span class="n">LinkPredictor</span>(**<span class="n">checkpoint</span>[<span class="s">"config"</span>])
+        <span class="n">model</span>.load_state_dict(<span class="n">checkpoint</span>[<span class="s">"model_state_dict"</span>])
+        <span class="n">model</span>.eval()
+        <span class="n">self</span>.<span class="n">_model</span> = <span class="n">model</span>
+    <span class="k">except</span> <span class="n">Exception</span> <span class="k">as</span> <span class="n">exc</span>:
+        <span class="n">self</span>.<span class="n">_model</span> = <span class="k">None</span>  <span class="c"># any load failure degrades, never crashes construction</span>
+        <span class="n">self</span>.<span class="n">_unavailable_reason</span> = <span class="s">f"failed to load checkpoint: {exc}"</span></pre>
+        </div>
+
+        <h4 class="label">Two layers of caching — the difference between milliseconds and minutes</h4>
+        <p><strong>Encoder output, per agent instance:</strong> <code class="inline">_get_z_dict()</code> runs the full GraphSAGE forward pass exactly once and caches the result — without this, scoring a 50-job rerank pool (<a href="#integration">§9</a>) would rerun the entire encoder for every single candidate skill pair, since each score call was originally recomputing it from scratch.</p>
+        <p><strong>The agent itself, process-wide:</strong> <code class="inline">get_default_gnn_agent()</code> is a module-level singleton, not reconstructed per request. <code class="inline">EngineOrchestrator</code> is rebuilt fresh on every API call (<code class="inline">app/core/deps.py::get_orchestrator</code>) — without a process-wide cache, the checkpoint would reload from disk (a <code class="inline">torch.load</code> deserialization) on <em>every single request to any route</em>, not just recommendation requests.</p>
+
+        <div class="codeblock">
+          <div class="ref">gnn_recommendation_agent.py — the singleton getter, in full</div>
+<pre><span class="n">_default_agent</span>: <span class="n">GNNRecommendationAgent</span> | <span class="k">None</span> = <span class="k">None</span>
+
+<span class="k">def</span> <span class="n">get_default_gnn_agent</span>() -> <span class="n">GNNRecommendationAgent</span>:
+    <span class="k">global</span> <span class="n">_default_agent</span>
+    <span class="k">if</span> <span class="n">_default_agent</span> <span class="k">is</span> <span class="k">None</span>:
+        <span class="n">_default_agent</span> = <span class="n">GNNRecommendationAgent</span>()
+    <span class="k">return</span> <span class="n">_default_agent</span></pre>
+        </div>
+
+        <p>Measured live, after this caching was in place: first request after a cold process start ~0.7s (building the graph + one encoder pass); every request after that ~0.4s. Both are well within an interactive request budget.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="integration">
+      <div class="stage-head">
+        <span class="idx">9</span>
+        <h2>Retrieve-then-rerank — how a checkpoint becomes part of a real ranking</h2>
+        <span class="count"><span class="filepath">backend/app/engine/algorithmic/recommendation_agent.py</span></span>
+      </div>
+
+      <div class="card">
+        <p><code class="inline">RecommendationAgent.rank_jobs()</code> always computes the cheap algorithmic score (Jaccard exact-match + LEADS_TO partial credit) for <em>every</em> job in the catalog first — the retrieval stage, no model inference involved. Only the top <code class="inline">GNN_RERANK_POOL_SIZE</code> (50) candidates by that score get rescored by the GNN and re-sorted; everything outside the pool keeps its algorithmic-only score.</p>
+
+        <div class="formula">// once a job is in the rerank pool:
+final_score = exact_score × 0.6 + partial_score × 0.15 + gnn_score × 0.25
+// (vs. exact_score × 0.8 + partial_score × 0.2 for the pure-algorithmic path)
+// gnn_score = average, over the job's still-missing required skills, of the
+// BEST score_leads_to(owned_skill, missing_skill) across the student's own skills</div>
+
+        <p>This is a deliberate systems decision, not just a performance shortcut: scoring every one of ~9,400 jobs with the GNN on each request would be both slow and unnecessary, since the algorithmic pass already discards the overwhelming majority of clearly-irrelevant jobs cheaply. It's also a standard, explainable pattern used in real production recommender systems — narrow a large catalog cheaply, then spend the expensive model only on the candidates worth spending it on.</p>
+
+        <h4 class="label">Why LEADS_TO, not REQUIRES, drives the live rerank</h4>
+        <p>The rerank signal is built entirely from <code class="inline">score_leads_to</code> — for each of a job's missing required skills, is there a skill the student already owns that the model thinks plausibly progresses toward it? This deliberately avoids <code class="inline">score_requires</code>, since <a href="#results">§7</a> showed the algorithmic baseline beats the GNN outright on that task at this scale — using the weaker-of-the-two-models' signal for live ranking would be indefensible. <code class="inline">LEADS_TO</code>, despite its own caveats (synthetic ground truth), is where the model actually demonstrated a genuine, non-tautological learning signal (AUC-ROC 0.679 vs. random-chance 0.500).</p>
+
+        <h4 class="label"><code class="inline">match_source</code> — making the claim inspectable, not just asserted</h4>
+        <p>Every job in <code class="inline">GET /recommendations/jobs</code>'s response carries <code class="inline">match_source: "gnn"</code> or <code class="inline">"algorithmic"</code>. This isn't cosmetic — it's what turns "the GNN is integrated" from a claim about the code into a checkable fact about any specific real response, and it's what a live verification could actually confirm end to end (a real registered student, real skills, a real API call, a real job in the response with <code class="inline">"match_source": "gnn"</code>).</p>
+
+        <p>Wired into <code class="inline">EngineOrchestrator.get_job_recommendations()</code>, which passes <code class="inline">self.gnn_agent</code> (the cached singleton from <a href="#inference">§8</a>) into <code class="inline">rank_jobs()</code> on every call — the one place in the whole backend where the offline-trained model actually reaches a real user.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="deployment">
+      <div class="stage-head">
+        <span class="idx">10</span>
+        <h2>Deployment — getting a torch-free API to actually run a torch model</h2>
+        <span class="count">backend/Dockerfile · backend/docker-compose.yml</span>
+      </div>
+
+      <div class="card">
+        <p>The backend was deliberately built torch-free (<code class="inline">ml/requirements.txt</code> is separate from <code class="inline">backend/requirements.txt</code>) so the core API never needs the heavy ML stack just to run its graceful-fallback path. Making the GNN <em>actually</em> live in the deployed container required two real changes, both eventually verified against a running container, not just reasoned about:</p>
+
+        <ol>
+          <li><strong>Install torch/torch_geometric/scikit-learn in the backend image</strong> — the same pinned versions as <code class="inline">ml/requirements.txt</code>, so the checkpoint deserializes correctly.</li>
+          <li><strong>Mount <code class="inline">ml/</code> and <code class="inline">backend/data</code> into the container</strong> — <code class="inline">GNNRecommendationAgent</code>'s checkpoint path and <code class="inline">graph_build.py</code>'s data path are both computed as repo-relative paths assuming <code class="inline">ml/</code> and <code class="inline">backend/</code> are siblings, which is only true inside the container if both are mounted at the paths that assumption expects.</li>
+        </ol>
+
+        <div class="callout">
+          <span class="tag">the bug only a real deployment could catch</span>
+          Once deployed, the very first real request crashed: <code class="inline">GNNRecommendationAgent</code>'s inference path called <code class="inline">export_graph.export()</code> (<a href="#export">§2</a>) to rebuild the message-passing graph — but that function <em>always writes its result to disk</em> as a side effect meant for its offline CLI use. With <code class="inline">ml/</code> correctly mounted <strong>read-only</strong> (deliberately, so the running app can't mutate training artifacts), that write failed: <code class="inline">RuntimeError: ... Read-only file system</code> — silently violating the exact "never raise" contract <a href="#inference">§8</a> describes. Every unit test for that contract (missing checkpoint, corrupt checkpoint, torch absent) had passed the entire build; none of them constructed a read-only-filesystem, production-shaped deployment scenario. Fixed by building the in-memory graph directly (<code class="inline">to_hetero_data(build_synthetic_career_graph())</code>) instead of the disk-writing wrapper — inference never actually needed the persisted file. A regression test now asserts <code class="inline">export_graph.export</code> is never called by the scoring path at all.
+        </div>
+
+        <p>This is the concrete, real example behind a broader lesson stated elsewhere in this project's docs (<code class="inline">docs/evaluation-chapter.md</code> §3.1): a fully green test suite is necessary but not sufficient evidence a system works — it took an actual deployment, not a passing test, to find this.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="future">
+      <div class="stage-head">
+        <span class="idx">Next</span>
+        <h2>Where this goes from here</h2>
+        <span class="count">docs/conclusion-future-work.md</span>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong>Real <code class="inline">LEADS_TO</code> data</strong> — course-curriculum ordering or historical career-progression data, so the GNN's already-promising 0.679 AUC-ROC result is evaluated against ground truth worth trusting.</li>
+          <li><strong>Richer input features for REQUIRES</strong> — text embeddings of job descriptions instead of learned-from-scratch embedding tables, the most plausible path to closing the gap with the algorithmic baseline. The architecture already supports this without redesign — only the encoder's input layer would change.</li>
+          <li><strong>Real Kaggle/O*NET data</strong> — the ingestion/training/evaluation machinery is proven correct at the intended scale and shape; only the input CSVs would need to change.</li>
+          <li><strong>A learned reranking policy</strong> — replacing the fixed <code class="inline">0.6/0.15/0.25</code> blend weights with something tuned, once real data makes such tuning meaningful.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="stage" id="files">
+      <div class="stage-head">
+        <span class="idx">Map</span>
+        <h2>Every file this page references, in one place</h2>
+      </div>
+      <div class="card">
+        <table class="data">
+          <tr><th>File</th><th>Role</th></tr>
+          <tr><td>ml/graph_build.py</td><td>Pure-Python graph construction from CSVs (no torch) — §1</td></tr>
+          <tr><td>ml/export_graph.py</td><td>RawGraph → PyTorch Geometric HeteroData — §2</td></tr>
+          <tr><td>ml/split.py</td><td>Leakage-safe edge split + negative sampling (no torch) — §3</td></tr>
+          <tr><td>ml/model.py</td><td>HeteroSAGEEncoder + DotProductDecoder + LinkPredictor — §4</td></tr>
+          <tr><td>ml/train_gnn.py</td><td>Training loop, checkpointing — §5</td></tr>
+          <tr><td>ml/evaluate.py</td><td>Metrics + GNN-vs-baseline comparison harness — §6, §7</td></tr>
+          <tr><td>ml/baseline.py</td><td>Algorithmic baseline, reusing real production scoring code — §6</td></tr>
+          <tr><td>ml/checkpoints/gnn_link_predictor.pt</td><td>Trained weights + config + node index mapping</td></tr>
+          <tr><td>ml/results/evaluation_report.json</td><td>Raw evaluation numbers — §7</td></tr>
+          <tr><td>backend/app/engine/algorithmic/gnn_recommendation_agent.py</td><td>Live inference, caching, graceful degradation — §8</td></tr>
+          <tr><td>backend/app/engine/algorithmic/recommendation_agent.py</td><td>Retrieve-then-rerank integration, <code class="inline">match_source</code> — §9</td></tr>
+          <tr><td>backend/app/engine/orchestrator.py</td><td>Wires the cached GNN agent into every recommendation request — §9</td></tr>
+          <tr><td>backend/docker-compose.yml</td><td>torch install + ml/ and backend/data mounts — §10</td></tr>
+          <tr><td>ml/tests/test_graph_build.py, test_split.py</td><td>Pure-Python tests, run anywhere</td></tr>
+          <tr><td>ml/tests/test_gnn_pipeline_requires_torch.py</td><td>Torch-dependent tests, auto-skip if torch missing</td></tr>
+          <tr><td>backend/tests/test_algorithmic_agents.py, test_routers.py</td><td>Rerank + orchestrator wiring tests, no torch needed (stub agent)</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Every code excerpt above is reproduced from the files cited next to it — read the full source at the paths shown for anything abbreviated with <code class="inline"># ...</code>. Companion reading: <code class="inline">docs/gnn-model.md</code> (fuller narrative form), <code class="inline">docs/gnn-defense-guide.md</code> (defense Q&amp;A framing), <code class="inline">docs/evaluation-chapter.md</code> and <code class="inline">docs/implementation-chapter.md</code> (thesis chapter drafts this page's content feeds). Generated 2026-08-06 against the working tree as of that date.
+    </div>
+  </main>
+</div>

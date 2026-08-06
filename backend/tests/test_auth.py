@@ -87,6 +87,11 @@ def _override_get_db(_auth_engine):
         with _auth_engine.begin() as conn:
             conn.execute(StudentProfile.__table__.delete())
             conn.execute(User.__table__.delete())
+        # login_lockout's failure counter is process-wide, not per-test-DB --
+        # reset it too so one test's failed logins don't lock out another.
+        from app.core import login_lockout
+
+        login_lockout.reset_all()
 
 
 @pytest.fixture()
@@ -210,6 +215,90 @@ def test_login_nonexistent_email_returns_same_message_as_wrong_password(client):
     ).json()["message"]
 
     assert wrong_password_msg == no_such_user_msg
+
+
+# ------------------------------------------------------------------ #
+# 4b. Login rate-limit / lockout (docs/current-status.md Milestone 4)
+# ------------------------------------------------------------------ #
+def test_login_locks_out_after_max_failed_attempts(client):
+    from app.core import login_lockout
+
+    _register(client)
+    for _ in range(login_lockout.MAX_ATTEMPTS):
+        resp = client.post(
+            "/auth/login", json={"email": "student@example.com", "password": "wrong-password"}
+        )
+        assert resp.status_code == 401
+
+    locked_resp = client.post(
+        "/auth/login", json={"email": "student@example.com", "password": "wrong-password"}
+    )
+    assert locked_resp.status_code == 429
+    assert locked_resp.json()["error"] == "TOO_MANY_ATTEMPTS"
+
+    # Locked out even with the *correct* password now -- the lockout is
+    # keyed by email attempt count, not tied to which password was tried.
+    correct_password_resp = client.post(
+        "/auth/login", json={"email": "student@example.com", "password": "Sup3rSecret!"}
+    )
+    assert correct_password_resp.status_code == 429
+
+
+def test_login_lockout_is_per_email_not_global(client):
+    from app.core import login_lockout
+
+    _register(client, email="victim@example.com")
+    _register(client, email="other@example.com")
+
+    for _ in range(login_lockout.MAX_ATTEMPTS):
+        client.post("/auth/login", json={"email": "victim@example.com", "password": "wrong-password"})
+
+    locked = client.post("/auth/login", json={"email": "victim@example.com", "password": "wrong-password"})
+    assert locked.status_code == 429
+
+    # A different email is unaffected.
+    still_ok = client.post(
+        "/auth/login", json={"email": "other@example.com", "password": "Sup3rSecret!"}
+    )
+    assert still_ok.status_code == 200
+
+
+def test_login_success_clears_the_failure_counter(client):
+    from app.core import login_lockout
+
+    _register(client)
+    for _ in range(login_lockout.MAX_ATTEMPTS - 1):
+        client.post("/auth/login", json={"email": "student@example.com", "password": "wrong-password"})
+
+    # One failed attempt short of lockout -- a correct login now must
+    # succeed and reset the counter, not carry the near-miss forward.
+    success = client.post("/auth/login", json={"email": "student@example.com", "password": "Sup3rSecret!"})
+    assert success.status_code == 200
+
+    # Fresh failed attempts after a successful login start from zero again.
+    for _ in range(login_lockout.MAX_ATTEMPTS - 1):
+        resp = client.post(
+            "/auth/login", json={"email": "student@example.com", "password": "wrong-password"}
+        )
+        assert resp.status_code == 401  # not yet locked out
+
+
+def test_login_lockout_expires_after_the_window(client, monkeypatch):
+    from app.core import login_lockout
+
+    _register(client)
+    for _ in range(login_lockout.MAX_ATTEMPTS):
+        client.post("/auth/login", json={"email": "student@example.com", "password": "wrong-password"})
+
+    locked = client.post("/auth/login", json={"email": "student@example.com", "password": "Sup3rSecret!"})
+    assert locked.status_code == 429
+
+    # Simulate the window elapsing rather than sleeping in the test.
+    real_time = login_lockout.time.time
+    monkeypatch.setattr(login_lockout.time, "time", lambda: real_time() + login_lockout.WINDOW_SECONDS + 1)
+
+    unlocked = client.post("/auth/login", json={"email": "student@example.com", "password": "Sup3rSecret!"})
+    assert unlocked.status_code == 200
 
 
 # ------------------------------------------------------------------ #

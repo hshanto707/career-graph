@@ -33,15 +33,23 @@ def test_health_reports_neo4j_status_without_crashing(client):
 
 
 def test_cors_preflight_allows_configured_frontend_origin(client):
+    # Read the actually-configured origin rather than hardcoding a literal
+    # -- conftest.py only *defaults* FRONTEND_URL to localhost:5173
+    # (os.environ.setdefault), so a real deployment's own FRONTEND_URL
+    # (e.g. the docker-compose container's .env-derived value) takes
+    # precedence and must be what this test checks against, whatever it is.
+    from app.core.config import get_settings
+
+    configured_origin = get_settings().FRONTEND_URL
     resp = client.options(
         "/health",
         headers={
-            "Origin": "http://localhost:5173",
+            "Origin": configured_origin,
             "Access-Control-Request-Method": "GET",
         },
     )
     assert resp.status_code in (200, 204)
-    assert resp.headers.get("access-control-allow-origin") == "http://localhost:5173"
+    assert resp.headers.get("access-control-allow-origin") == configured_origin
 
 
 def test_cors_preflight_rejects_unlisted_origin(client):

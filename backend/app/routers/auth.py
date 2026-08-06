@@ -9,6 +9,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
+from app.core import login_lockout
 from app.core.deps import CurrentUser, get_current_user
 from app.core.responses import AppError, envelope
 from app.core.security import create_access_token, hash_password, verify_password
@@ -64,11 +65,22 @@ def register(payload: UserCreate, db: Session = Depends(get_db)):
 @router.post("/login")
 def login(payload: UserLogin, db: Session = Depends(get_db)):
     email = _normalize_email(payload.email)
+
+    locked_for = login_lockout.seconds_until_unlocked(email)
+    if locked_for > 0:
+        raise AppError(
+            "TOO_MANY_ATTEMPTS",
+            f"Too many failed login attempts. Try again in {int(locked_for) + 1} seconds.",
+            429,
+        )
+
     user = db.query(User).filter(User.email == email).one_or_none()
 
     if user is None or not verify_password(payload.password, user.hashed_password):
+        login_lockout.record_failure(email)
         raise AppError("UNAUTHORIZED", _INVALID_CREDENTIALS_MESSAGE, 401)
 
+    login_lockout.record_success(email)
     token = create_access_token(user_id=user.id, email=user.email)
     return envelope(
         data=TokenResponse(token=token, user=UserOut.model_validate(user)).model_dump(),

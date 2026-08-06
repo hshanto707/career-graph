@@ -104,6 +104,20 @@ describe("Login page", () => {
     expect(window.localStorage.getItem(AUTH_STORAGE_KEY)).toBeNull();
   });
 
+  it("shows the backend's lockout message when rate-limited after too many failed attempts", async () => {
+    mockedLogin.mockRejectedValue(
+      new ApiError("TOO_MANY_ATTEMPTS", "Too many failed login attempts. Try again in 300 seconds.", 429)
+    );
+    renderLogin();
+    fillForm("a@b.com", "wrong-password");
+    fireEvent.click(screen.getByRole("button", { name: /sign in/i }));
+
+    await waitFor(() => {
+      expect(screen.getByRole("alert")).toHaveTextContent(/too many failed login attempts/i);
+    });
+    expect(window.localStorage.getItem(AUTH_STORAGE_KEY)).toBeNull();
+  });
+
   it("shows a generic network error message on network failure", async () => {
     mockedLogin.mockRejectedValue(new NetworkError());
     renderLogin();

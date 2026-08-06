@@ -82,7 +82,7 @@ graph LR
     subgraph IS["This Project IS"]
         Y1[Graph-based skill reasoning]:::yes
         Y2[Explainable recommendations]:::yes
-        Y3[Real jobmarket data]:::yes
+        Y3[Real-shaped job market data*]:::yes
         Y4[Modular agent architecture]:::yes
         Y5[Pluggable LLM providers]:::yes
         Y6[Skill gap analysis with roadmap]:::yes
@@ -105,6 +105,13 @@ graph LR
         P5[Multi-region analysis]:::post
     end
 ```
+
+\* As shipped for defense, `backend/data/` is a realistically-shaped
+**synthetic** corpus (10,000 job postings, 518-skill taxonomy), not the
+literal real-world Kaggle/O*NET datasets originally scoped — a stated,
+documented decision (`docs/current-status.md` Milestone 3), not an
+oversight. See `docs/data-sources.md` and `docs/discussion-limitations.md`
+for the full reasoning and what real-data acquisition would take.
 
 ---
 

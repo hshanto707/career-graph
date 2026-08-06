@@ -5,6 +5,7 @@ import { QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-qu
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ApiError, NetworkError } from "@/lib/apiClient";
 
 // App-wide error surfacing: any React Query failure, anywhere, shows a toast
@@ -53,70 +54,72 @@ const queryClient = new QueryClient({
 });
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile/edit"
-              element={
-                <ProtectedRoute>
-                  <EditProfile />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/jobs"
-              element={
-                <ProtectedRoute>
-                  <Jobs />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/skills"
-              element={
-                <ProtectedRoute>
-                  <SkillAnalysis />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/recommendations"
-              element={
-                <ProtectedRoute>
-                  <Recommendations />
-                </ProtectedRoute>
-              }
-            />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile/edit"
+                element={
+                  <ProtectedRoute>
+                    <EditProfile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/jobs"
+                element={
+                  <ProtectedRoute>
+                    <Jobs />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/skills"
+                element={
+                  <ProtectedRoute>
+                    <SkillAnalysis />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recommendations"
+                element={
+                  <ProtectedRoute>
+                    <Recommendations />
+                  </ProtectedRoute>
+                }
+              />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;

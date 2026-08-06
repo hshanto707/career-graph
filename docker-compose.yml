@@ -63,12 +63,25 @@ services:
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       LLM_PROVIDER: ${LLM_PROVIDER:-none}
       LLM_MODEL: ${LLM_MODEL:-claude-sonnet-4-6}
-      FRONTEND_URL: ${FRONTEND_URL:-http://localhost:5173}
+      # This stack's frontend is the built/nginx-served container below, on
+      # port 80 (not the Vite dev server's 8080) -- CORS must match that
+      # origin exactly (main.py's CORSMiddleware does an exact string
+      # compare), and a browser omits ":80" from the Origin header for
+      # plain HTTP, so this must be "http://localhost", not
+      # "http://localhost:80".
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost}
       OLLAMA_BASE_URL: http://ollama:11434
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app
+      # Same reasoning as backend/docker-compose.yml: the GNN inference
+      # path (app/engine/algorithmic/gnn_recommendation_agent.py) resolves
+      # the ml/ checkpoint + model.py at a repo-relative path assuming ml/
+      # and backend/ are siblings, which only holds inside the container if
+      # both are mounted at the paths that assumption expects.
+      - ./ml:/ml:ro
+      - ./backend/data:/backend/data:ro
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     depends_on:
       postgres:
