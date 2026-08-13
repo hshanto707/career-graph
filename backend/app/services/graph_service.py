@@ -101,15 +101,37 @@ class GraphService:
     # Jobs
     # ------------------------------------------------------------------ #
     def get_job(self, job_id: str) -> dict[str, Any] | None:
-        query = """
-        MATCH (j:Job {id: $job_id})
+        query_direct = """
+        MATCH (j:Job)
+        WHERE j.id = $job_id OR j.title = $job_id OR toLower(j.title) = toLower($job_id)
         RETURN j.id AS id, j.title AS title, j.company AS company,
                j.location AS location, j.type AS type, j.source AS source,
                j.salary_min AS salary_min, j.salary_max AS salary_max
+        LIMIT 1
         """
         with self._driver.session() as session:
-            record = session.run(query, job_id=job_id).single()
-            return dict(record) if record else None
+            record = session.run(query_direct, job_id=job_id).single()
+            if record:
+                return dict(record)
+
+            query_contains = """
+            MATCH (j:Job)
+            WHERE toLower(j.title) CONTAINS toLower($job_id) OR toLower($job_id) CONTAINS toLower(j.title)
+            RETURN count(j) AS count
+            """
+            count_rec = session.run(query_contains, job_id=job_id).single()
+            if count_rec and count_rec["count"] > 0:
+                return {
+                    "id": job_id,
+                    "title": job_id,
+                    "company": None,
+                    "location": "Remote / Various",
+                    "type": "Full-time",
+                    "source": "standard_role",
+                    "salary_min": None,
+                    "salary_max": None,
+                }
+            return None
 
     def list_jobs(self, filters: dict[str, Any] | None = None) -> list[dict[str, Any]]:
         """List jobs, optionally filtered by `type`, `location`, or a `search`
@@ -163,13 +185,56 @@ class GraphService:
             return [record["title"] for record in result]
 
     def get_job_required_skills(self, job_id: str) -> list[dict[str, Any]]:
-        query = """
+        # 1. Single job ID lookup (e.g. specific job posting or standard role node ID)
+        query_single = """
         MATCH (j:Job {id: $job_id})-[r:REQUIRES]->(sk:Skill)
         RETURN sk.name AS name, r.importance AS importance, r.frequency AS frequency
         """
         with self._driver.session() as session:
-            result = session.run(query, job_id=job_id)
-            return [dict(record) for record in result]
+            result = session.run(query_single, job_id=job_id)
+            single_skills = [dict(record) for record in result]
+            if single_skills and len(single_skills) <= 10:
+                return single_skills
+
+        # 2. Aggregated title match across postings: rank by frequency, resolve importance, cap at top 8 skills
+        query_aggregate = """
+        MATCH (j:Job)-[r:REQUIRES]->(sk:Skill)
+        WHERE j.id = $job_id OR j.title = $job_id OR toLower(j.title) = toLower($job_id) OR toLower(j.title) CONTAINS toLower($job_id)
+        RETURN sk.name AS name, r.importance AS importance, count(j) AS freq
+        ORDER BY freq DESC, name ASC
+        """
+        with self._driver.session() as session:
+            result = session.run(query_aggregate, job_id=job_id)
+            records = [dict(record) for record in result]
+            if records:
+                skills_map: dict[str, dict[str, Any]] = {}
+                must_counts: dict[str, int] = {}
+                total_counts: dict[str, int] = {}
+
+                for rec in records:
+                    sname = rec.get("name")
+                    if not sname:
+                        continue
+                    imp = rec.get("importance") or "nice"
+                    total_counts[sname] = total_counts.get(sname, 0) + 1
+                    if imp == "must":
+                        must_counts[sname] = must_counts.get(sname, 0) + 1
+
+                    if sname not in skills_map:
+                        skills_map[sname] = {
+                            "name": sname,
+                            "importance": imp,
+                            "frequency": rec.get("freq", 1),
+                        }
+
+                for sname, sdata in skills_map.items():
+                    m_cnt = must_counts.get(sname, 0)
+                    t_cnt = total_counts.get(sname, 1)
+                    sdata["importance"] = "must" if (m_cnt >= t_cnt / 2) else "nice"
+
+                sorted_skills = sorted(skills_map.values(), key=lambda x: x.get("frequency", 1), reverse=True)
+                return sorted_skills[:8]
+        return []
 
     def get_all_jobs_with_requires(self) -> list[dict[str, Any]]:
         """Return every Job with its REQUIRES edges, for RecommendationAgent."""

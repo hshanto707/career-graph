@@ -100,7 +100,7 @@ describe("EditProfile page", () => {
     await waitFor(() => expect(screen.getByDisplayValue("Computer Science")).toBeInTheDocument());
     expect(screen.getByDisplayValue("2026")).toBeInTheDocument();
     expect(screen.getByText(/Python/)).toBeInTheDocument();
-    await waitFor(() => expect(screen.getByText("Data Analyst — Acme Corp")).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText("Data Analyst")).toBeInTheDocument());
   });
 
   it("adds a skill via the skills endpoint and shows it without a full reload, rejecting duplicates", async () => {

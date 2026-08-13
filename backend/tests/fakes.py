@@ -77,7 +77,23 @@ class FakeGraphService:
     # ------------------------------------------------------------------ #
     def get_job(self, job_id: str) -> dict[str, Any] | None:
         job = self._jobs.get(job_id)
-        return dict(job) if job else None
+        if job:
+            return dict(job)
+        # Search by title match or substring
+        for j in self._jobs.values():
+            title = (j.get("title") or "").lower()
+            if title and (title == job_id.lower() or job_id.lower() in title or title in job_id.lower()):
+                return {
+                    "id": job_id,
+                    "title": job_id,
+                    "company": None,
+                    "location": "Remote / Various",
+                    "type": "Full-time",
+                    "source": "standard_role",
+                    "salary_min": None,
+                    "salary_max": None,
+                }
+        return None
 
     def list_jobs(self, filters: dict[str, Any] | None = None) -> list[dict[str, Any]]:
         filters = filters or {}
@@ -102,7 +118,15 @@ class FakeGraphService:
         return sorted(titles)[:limit]
 
     def get_job_required_skills(self, job_id: str) -> list[dict[str, Any]]:
-        return [dict(s) for s in self._job_skills.get(job_id, [])]
+        if job_id in self._job_skills:
+            return [dict(s) for s in self._job_skills[job_id]]
+        # Search by title match
+        for j_id, j in self._jobs.items():
+            title = (j.get("title") or "").lower()
+            if title and (title == job_id.lower() or job_id.lower() in title):
+                if j_id in self._job_skills:
+                    return [dict(s) for s in self._job_skills[j_id]]
+        return []
 
     def get_all_jobs_with_requires(self) -> list[dict[str, Any]]:
         return [

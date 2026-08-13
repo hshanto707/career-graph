@@ -259,9 +259,12 @@ export default function Recommendations() {
                             <span className="font-medium text-foreground">
                               Why recommended:
                             </span>{' '}
-                            This skill appears in {skill.demand_count} job listing
-                            {skill.demand_count === 1 ? '' : 's'} for your target roles,
-                            with a demand score of {Math.round(skill.demand_score)}%.
+                            {skill.why_recommended ??
+                              `This skill appears in ${skill.demand_count} job listing${
+                                skill.demand_count === 1 ? '' : 's'
+                              } for your target roles, with a demand score of ${Math.round(
+                                skill.demand_score
+                              )}%.`}
                           </p>
                         </div>
                       </div>

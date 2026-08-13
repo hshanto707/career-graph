@@ -32,6 +32,18 @@ through), it is treated as `nice`, never `must` — this is a conservative
 default so unclassified data can't silently inflate the higher-weighted
 bucket. Covered by `test_defensive_default_missing_importance_treated_as_nice`.
 
+## Open decision #7 — Skill Cluster Equivalence & Category Equivalence Matching
+
+**Where it's decided:** inside `SkillGapAgent` (`backend/app/engine/algorithmic/skill_gap_agent.py`) and `GraphService` (`backend/app/services/graph_service.py`).
+
+**The Problem:** Entry-level candidates for roles like *"Intern Software Engineer"* or *"Junior Software Engineer"* should not be penalized for not mastering every competing framework or language (e.g. needing React AND Angular AND Vue AND Svelte for frontend; or Node.js AND Python AND Go AND Spring for backend). Dumping dozens of competing framework requirements onto a junior candidate distorts the readiness score and missing skills analysis.
+
+**The Rule & Implemented Architecture:**
+1. **Skill Cluster Equivalence (`SkillGapAgent`)**: Common technology stack clusters (`frontend_framework`, `backend_tech`, `database`, `devops_cloud`, `mobile`, `testing`, `ui_design`) are registered in `SKILL_CLUSTERS`. When a job requires a skill in a cluster (e.g., `React`), if the candidate possesses *any* equivalent skill from that cluster (e.g. `Vue.js` or `Angular`), `SkillGapAgent` grants **equivalence match credit**. The requirement is marked satisfied (e.g., `"React (satisfied by Vue.js)"`) and competing alternative frameworks in that cluster are excluded from `missing_skills`.
+2. **Title Aggregation Filtering & Skill Capping (`GraphService`)**:
+   - `get_job_required_skills()` restricts title aggregation to `toLower(j.title) CONTAINS toLower($job_id)` (avoiding loose reverse containment matching that pulled in all generic 50 company postings).
+   - Aggregated required skills for standard target roles are capped to a clean, realistic set (top 10 core skills) so junior candidates receive a focused skill gap analysis.
+
 ## SkillGapAgent — readiness_score arithmetic
 
 ```

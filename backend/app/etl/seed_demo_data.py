@@ -136,7 +136,7 @@ DEMO_STUDENTS: list[dict[str, Any]] = [
             {"name": "Git", "proficiency": 6, "years": 1.5},
             {"name": "SQL", "proficiency": 4, "years": 0.5},
         ],
-        "target_roles": [],
+        "target_roles": ["Junior Software Engineer"],
     },
     {
         "id": "student-career-switcher",
@@ -146,7 +146,7 @@ DEMO_STUDENTS: list[dict[str, Any]] = [
             {"name": "SQL", "proficiency": 3, "years": 0.5},
             {"name": "Communication", "proficiency": 9, "years": 6.0},
         ],
-        "target_roles": [],
+        "target_roles": ["Junior Data Scientist"],
     },
     {
         "id": "student-business-analyst",
@@ -161,6 +161,178 @@ DEMO_STUDENTS: list[dict[str, Any]] = [
     },
 ]
 assert len(DEMO_STUDENTS) == 3
+
+STANDARDIZED_ROLES: list[dict[str, Any]] = [
+    {
+        "job": {
+            "id": "Intern Software Engineer",
+            "title": "Intern Software Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Internship",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "JavaScript", "normalized_name": "JavaScript", "importance": "must"},
+            {"raw_name": "Git", "normalized_name": "Git", "importance": "must"},
+            {"raw_name": "SQL", "normalized_name": "SQL", "importance": "nice"},
+            {"raw_name": "HTML", "normalized_name": "HTML", "importance": "nice"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Junior Software Engineer",
+            "title": "Junior Software Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "JavaScript", "normalized_name": "JavaScript", "importance": "must"},
+            {"raw_name": "Git", "normalized_name": "Git", "importance": "must"},
+            {"raw_name": "SQL", "normalized_name": "SQL", "importance": "must"},
+            {"raw_name": "React", "normalized_name": "React", "importance": "nice"},
+            {"raw_name": "Node.js", "normalized_name": "Node.js", "importance": "nice"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Mid Software Engineer",
+            "title": "Mid Software Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "JavaScript", "normalized_name": "JavaScript", "importance": "must"},
+            {"raw_name": "Git", "normalized_name": "Git", "importance": "must"},
+            {"raw_name": "SQL", "normalized_name": "SQL", "importance": "must"},
+            {"raw_name": "Docker", "normalized_name": "Docker", "importance": "nice"},
+            {"raw_name": "REST API", "normalized_name": "REST API", "importance": "must"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Senior Software Engineer",
+            "title": "Senior Software Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "System Architecture", "normalized_name": "System Architecture", "importance": "must"},
+            {"raw_name": "Docker", "normalized_name": "Docker", "importance": "must"},
+            {"raw_name": "Kubernetes", "normalized_name": "Kubernetes", "importance": "nice"},
+            {"raw_name": "PostgreSQL", "normalized_name": "PostgreSQL", "importance": "must"},
+            {"raw_name": "Git", "normalized_name": "Git", "importance": "must"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Junior Data Scientist",
+            "title": "Junior Data Scientist",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "SQL", "normalized_name": "SQL", "importance": "must"},
+            {"raw_name": "Pandas", "normalized_name": "Pandas", "importance": "must"},
+            {"raw_name": "NumPy", "normalized_name": "NumPy", "importance": "nice"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Mid Data Scientist",
+            "title": "Mid Data Scientist",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "SQL", "normalized_name": "SQL", "importance": "must"},
+            {"raw_name": "Pandas", "normalized_name": "Pandas", "importance": "must"},
+            {"raw_name": "Machine Learning", "normalized_name": "Machine Learning", "importance": "must"},
+            {"raw_name": "Scikit-Learn", "normalized_name": "Scikit-Learn", "importance": "nice"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Senior Data Scientist",
+            "title": "Senior Data Scientist",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "Python", "normalized_name": "Python", "importance": "must"},
+            {"raw_name": "Machine Learning", "normalized_name": "Machine Learning", "importance": "must"},
+            {"raw_name": "Deep Learning", "normalized_name": "Deep Learning", "importance": "must"},
+            {"raw_name": "PyTorch", "normalized_name": "PyTorch", "importance": "nice"},
+            {"raw_name": "TensorFlow", "normalized_name": "TensorFlow", "importance": "nice"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Junior Frontend Engineer",
+            "title": "Junior Frontend Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "HTML", "normalized_name": "HTML", "importance": "must"},
+            {"raw_name": "CSS", "normalized_name": "CSS", "importance": "must"},
+            {"raw_name": "JavaScript", "normalized_name": "JavaScript", "importance": "must"},
+            {"raw_name": "React", "normalized_name": "React", "importance": "nice"},
+        ],
+    },
+    {
+        "job": {
+            "id": "Senior Frontend Engineer",
+            "title": "Senior Frontend Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "JavaScript", "normalized_name": "JavaScript", "importance": "must"},
+            {"raw_name": "TypeScript", "normalized_name": "TypeScript", "importance": "must"},
+            {"raw_name": "React", "normalized_name": "React", "importance": "must"},
+            {"raw_name": "Web Performance", "normalized_name": "Web Performance", "importance": "must"},
+        ],
+    },
+    {
+        "job": {
+            "id": "3D Graphics Engineer",
+            "title": "3D Graphics Engineer",
+            "company": None,
+            "location": "Remote / Various",
+            "type": "Full-time",
+            "source": "standardized_role",
+        },
+        "skills": [
+            {"raw_name": "C++", "normalized_name": "C++", "importance": "must"},
+            {"raw_name": "OpenGL", "normalized_name": "OpenGL", "importance": "must"},
+            {"raw_name": "Vulkan", "normalized_name": "Vulkan", "importance": "nice"},
+            {"raw_name": "Linear Algebra", "normalized_name": "Linear Algebra", "importance": "must"},
+        ],
+    },
+]
 
 
 def run_seed(graph_service: Any, data_dir: Path = DATA_DIR, job_count: int = DEMO_JOB_COUNT) -> dict[str, Any]:
@@ -182,6 +354,9 @@ def run_seed(graph_service: Any, data_dir: Path = DATA_DIR, job_count: int = DEM
     )
     normalization_stats = normalization_agent.process_and_write(curated_records)
 
+    for role_data in STANDARDIZED_ROLES:
+        graph_service.ingest_job_posting(role_data["job"], role_data["skills"])
+
     for course in DEMO_COURSES:
         graph_service.seed_course(course)
 
@@ -194,6 +369,7 @@ def run_seed(graph_service: Any, data_dir: Path = DATA_DIR, job_count: int = DEM
 
     return {
         "jobs_seeded": len(curated_records),
+        "standardized_roles_seeded": len(STANDARDIZED_ROLES),
         "courses_seeded": len(DEMO_COURSES),
         "students_seeded": len(DEMO_STUDENTS),
         **normalization_stats.as_dict(),

@@ -16,6 +16,7 @@ export interface SkillRecommendationOut {
   skill_name: string;
   demand_score: number;
   demand_count: number;
+  why_recommended?: string;
 }
 
 export interface CourseRecommendationOut {

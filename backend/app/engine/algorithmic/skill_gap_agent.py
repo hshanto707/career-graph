@@ -93,6 +93,34 @@ class GapResult:
     nice_total: int = 0
 
 
+SKILL_CLUSTERS: dict[str, list[str]] = {
+    "frontend_framework": ["react", "vue.js", "angular", "svelte", "next.js", "nuxt.js"],
+    "backend_tech": ["node.js", "express.js", "python", "django", "fastapi", "go", "java", "spring", "ruby on rails", "c++", "nestjs"],
+    "database": ["sql", "postgresql", "mysql", "mongodb", "sqlite", "microsoft sql server", "oracle database"],
+    "devops_cloud": ["docker", "kubernetes", "amazon web services", "google cloud platform", "microsoft azure", "terraform"],
+    "mobile": ["react native", "flutter", "swift", "kotlin", "android development", "ios development"],
+    "ui_design": ["figma", "adobe xd", "sketch"],
+    "testing": ["jest", "vitest", "cypress", "selenium", "playwright"],
+}
+
+CLUSTER_BY_SKILL: dict[str, str] = {
+    skill: cluster_id
+    for cluster_id, skills in SKILL_CLUSTERS.items()
+    for skill in skills
+}
+
+
+def _find_equivalent_student_skill(required_key: str, student_by_name: dict[str, dict[str, Any]]) -> tuple[str, dict[str, Any]] | None:
+    """If required_key is in a cluster, check if student has an equivalent skill in that cluster."""
+    cluster_id = CLUSTER_BY_SKILL.get(required_key)
+    if not cluster_id:
+        return None
+    for member in SKILL_CLUSTERS[cluster_id]:
+        if member in student_by_name:
+            return (member, student_by_name[member])
+    return None
+
+
 class SkillGapAgent:
     """Computes weighted readiness scores between a student's skills and a
     job's required skills. Pure Python -- takes plain lists/dicts, never
@@ -145,8 +173,35 @@ class SkillGapAgent:
         must_total = len(must_skills)
         nice_total = len(nice_skills)
 
-        must_matched_keys = [k for k in must_skills if k in student_by_name]
-        nice_matched_keys = [k for k in nice_skills if k in student_by_name]
+        must_matched_keys: list[str] = []
+        must_matched_proficiencies: dict[str, float] = {}
+        matched_details: dict[str, str] = {}
+
+        for k in must_skills:
+            if k in student_by_name:
+                must_matched_keys.append(k)
+                must_matched_proficiencies[k] = student_by_name[k].get("proficiency", 0)
+                matched_details[k] = required_by_name[k]["name"]
+            else:
+                equiv = _find_equivalent_student_skill(k, student_by_name)
+                if equiv:
+                    must_matched_keys.append(k)
+                    must_matched_proficiencies[k] = equiv[1].get("proficiency", 0)
+                    matched_details[k] = f"{required_by_name[k]['name']} (satisfied by {equiv[1].get('name', equiv[0])})"
+
+        nice_matched_keys: list[str] = []
+        nice_matched_proficiencies: dict[str, float] = {}
+        for k in nice_skills:
+            if k in student_by_name:
+                nice_matched_keys.append(k)
+                nice_matched_proficiencies[k] = student_by_name[k].get("proficiency", 0)
+                matched_details[k] = required_by_name[k]["name"]
+            else:
+                equiv = _find_equivalent_student_skill(k, student_by_name)
+                if equiv:
+                    nice_matched_keys.append(k)
+                    nice_matched_proficiencies[k] = equiv[1].get("proficiency", 0)
+                    matched_details[k] = f"{required_by_name[k]['name']} (satisfied by {equiv[1].get('name', equiv[0])})"
 
         must_matched = len(must_matched_keys)
         nice_matched = len(nice_matched_keys)
@@ -160,22 +215,23 @@ class SkillGapAgent:
 
         # -- Proficiency bonus --
         matched_keys = must_matched_keys + nice_matched_keys
+        all_proficiencies = {**must_matched_proficiencies, **nice_matched_proficiencies}
         total_required = must_total + nice_total
         proficiency_bonus = 0.0
         if total_required and matched_keys:
             bonus_sum = sum(
-                (student_by_name[k].get("proficiency", 0) / 10.0) * MAX_BONUS_PER_SKILL
+                (all_proficiencies.get(k, 0) / 10.0) * MAX_BONUS_PER_SKILL
                 for k in matched_keys
             )
             proficiency_bonus = bonus_sum / total_required
 
         readiness_score = min(base_score + proficiency_bonus, MAX_READINESS_SCORE)
 
-        matched_names = [required_by_name[k]["name"] for k in matched_keys]
+        matched_names = [matched_details[k] for k in matched_keys]
         missing_names = [
             required_by_name[k]
             for k in required_by_name
-            if k not in student_by_name
+            if k not in matched_keys
         ]
 
         return GapResult(

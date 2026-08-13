@@ -128,6 +128,20 @@ def test_skill_gap_student_zero_skills_well_defined():
 
 def test_skill_gap_duplicate_skill_entries_deduped():
     """Edge case — duplicate skill entries in input arrays shouldn't double-count."""
+
+
+def test_skill_cluster_equivalence_matching():
+    """SkillGapAgent grants match credit when student has an equivalent skill in the same cluster (e.g. Vue.js for React)."""
+    agent = SkillGapAgent()
+    required = [_skill("React", "must"), _skill("Python", "must")]
+    # Student has Vue.js (frontend_framework cluster) instead of React, and Python
+    student = [_student_skill("Vue.js", proficiency=8), _student_skill("Python", proficiency=8)]
+    result = agent.compute_gap(student, required)
+
+    assert result.must_matched == 2
+    assert result.must_total == 2
+    assert result.missing_skills == []
+    assert any("React" in name and "satisfied by Vue.js" in name for name in result.matched_skills)
     agent = SkillGapAgent()
     required = [_skill("Python", "must"), _skill("Python", "must"), _skill("SQL", "nice")]
     student = [_student_skill("Python", proficiency=5), _student_skill("python", proficiency=8)]

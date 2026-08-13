@@ -14,15 +14,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Combobox } from '@/components/ui/combobox';
 import { JobCombobox, type JobOption } from '@/components/ui/job-combobox';
 import { useProfile, useUpdateProfile, useAddSkill } from '@/hooks/useProfile';
-import { useSkillSuggestions, useJobSearchSuggestions } from '@/hooks/useSuggestions';
+import { useSkillSuggestions, useJobTitleSuggestions } from '@/hooks/useSuggestions';
 import { useTargetRoleJobs } from '@/hooks/useJobs';
 import type { ExperienceItem, SkillEntry } from '@/lib/api/profile';
-import type { JobOut } from '@/lib/api/jobs';
 
-function formatJobLabel(job: Pick<JobOut, 'title' | 'company'>): string {
-  const title = job.title ?? 'Untitled role';
-  return job.company ? `${title} — ${job.company}` : title;
-}
 import { MONTH_NAMES, EXPERIENCE_YEAR_OPTIONS } from '@/lib/experienceDates';
 import { COMMON_MAJORS } from '@/lib/majors';
 import { toast } from '@/hooks/use-toast';
@@ -58,10 +53,6 @@ export default function EditProfile() {
   const updateProfile = useUpdateProfile();
   const addSkill = useAddSkill();
 
-  // `targetRoles` holds Job ids -- the backend resolves a student's target
-  // role by matching this value against Job.id, so it must never be a raw
-  // typed title (see the target-role picker below, which only ever commits
-  // an id from an actual search result).
   const [targetRoles, setTargetRoles] = useState<string[]>([]);
   const [roleQuery, setRoleQuery] = useState('');
   const [selectedRoleJob, setSelectedRoleJob] = useState<JobOption | null>(null);
@@ -74,11 +65,11 @@ export default function EditProfile() {
 
   const { suggestions: skillSuggestions, isLoading: skillSuggestionsLoading } =
     useSkillSuggestions(newSkillName);
-  const { suggestions: roleJobSuggestions, isLoading: roleSuggestionsLoading } =
-    useJobSearchSuggestions(roleQuery);
-  const roleSuggestionOptions: JobOption[] = roleJobSuggestions.map((job) => ({
-    id: job.id,
-    label: formatJobLabel(job),
+  const { suggestions: roleTitleSuggestions, isLoading: roleSuggestionsLoading } =
+    useJobTitleSuggestions(roleQuery);
+  const roleSuggestionOptions: JobOption[] = roleTitleSuggestions.map((title) => ({
+    id: title,
+    label: title,
   }));
   const { jobsById: targetRoleJobs } = useTargetRoleJobs(targetRoles);
 
@@ -261,7 +252,7 @@ export default function EditProfile() {
   if (isLoading) {
     return (
       <AppLayout>
-        <div className="space-y-6 md:space-y-8 max-w-4xl" data-testid="edit-profile-loading">
+        <div className="space-y-6 md:space-y-8" data-testid="edit-profile-loading">
           <Skeleton className="h-8 w-48" />
           <div className="stat-card space-y-4">
             <Skeleton className="h-4 w-full" />
@@ -274,7 +265,7 @@ export default function EditProfile() {
 
   return (
     <AppLayout>
-      <form className="space-y-6 md:space-y-8 max-w-4xl" onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form className="space-y-6 md:space-y-8" onSubmit={handleSubmit(onSubmit)} noValidate>
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
@@ -437,7 +428,7 @@ export default function EditProfile() {
             <div className="flex flex-wrap gap-2 mb-4">
               {targetRoles.map((roleId) => {
                 const job = targetRoleJobs.get(roleId);
-                const label = job ? formatJobLabel(job) : `Unresolved role (${roleId})`;
+                const label = job ? job.title ?? 'Untitled role' : `Unresolved role (${roleId})`;
                 return (
                   <span
                     key={roleId}

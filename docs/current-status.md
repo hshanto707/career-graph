@@ -11,6 +11,15 @@
 > (documented product decisions). This is the honest scoreboard plus the
 > sequenced plan to get from here to a defensible, demo-ready system.
 
+## Update — 2026-08-11: Target Role Standardization & Skill Cluster Equivalence
+
+- **Standardized Job Roles**: Target roles now use clean, company-agnostic titles with seniority levels (e.g. `Intern Software Engineer`, `Junior Software Engineer`, `Mid Software Engineer`, `Senior Software Engineer`). Seeded in `seed_demo_data.py` with curated core skills.
+- **Skill Cluster Equivalence (`SkillGapAgent`)**: Registered standard technology stack clusters (`frontend_framework`, `backend_tech`, `database`, `devops_cloud`, `mobile`, `testing`, `ui_design`). When a job requires a skill in a cluster (e.g., `React`), if the student possesses *any* equivalent skill from that cluster (e.g. `Vue.js` or `Angular`), `SkillGapAgent` grants equivalence match credit. Competing alternative frameworks in that cluster are excluded from missing skills, giving junior candidates a realistic gap analysis.
+- **Title Aggregation Filtering & Capping (`GraphService`)**:
+  - `get_job_required_skills()` restricts title aggregation to `toLower(j.title) CONTAINS toLower($job_id)` (removing loose reverse containment matching that pulled in all 50 general company job postings).
+  - Aggregated required skills for standard target roles are capped to top 10 core skills.
+- **Frontend & Tests**: Target role dropdown on `EditProfile.tsx` uses clean title suggestions (`useJobTitleSuggestions`). All 196 backend tests and 85 frontend tests passing cleanly (`196 passed`, `85 passed`).
+
 ## Update — 2026-08-06: Milestone 1 (GNN integration) is done
 
 Everything in this doc's original "Milestone 1" section is now implemented

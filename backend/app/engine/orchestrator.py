@@ -331,15 +331,53 @@ class EngineOrchestrator:
             )
         return f"Recommended based on an overall skill fit of {pct}% with this role."
 
-    def get_skill_recommendations(self, student_id: str, limit: int = 10) -> list[dict[str, Any]]:
-        """Skills the student doesn't yet have, ranked by market demand."""
+    def get_skill_recommendations(
+        self, student_id: str, target_job_id: str | None = None, limit: int = 10
+    ) -> list[dict[str, Any]]:
+        """Skills the student doesn't yet have, prioritized for their target role(s)
+        or overall market demand."""
         student_names = self._student_skill_names(student_id)
+
+        if target_job_id:
+            required = self.graph.get_job_required_skills(target_job_id)
+            missing = [
+                r for r in required
+                if r.get("name", "").strip().lower() not in student_names
+            ]
+
+            from app.engine.algorithmic.skill_gap_agent import _find_equivalent_student_skill
+            student_by_name = {name: {} for name in student_names}
+
+            target_recs: list[dict[str, Any]] = []
+            for r in missing:
+                name = r.get("name", "")
+                norm_key = name.strip().lower()
+                if _find_equivalent_student_skill(norm_key, student_by_name):
+                    continue
+
+                importance = r.get("importance", "nice")
+                freq = r.get("frequency", 1)
+                score = 85.0 if importance == "must" else 65.0
+
+                target_recs.append(
+                    {
+                        "skill_name": name,
+                        "demand_score": score,
+                        "demand_count": freq,
+                        "why_recommended": f"Required '{importance}' skill for your target role '{target_job_id}'.",
+                    }
+                )
+
+            if target_recs:
+                return target_recs[:limit]
+
         demand = self._demand_data()
         recs = [
             {
                 "skill_name": sd.skill_name,
                 "demand_score": sd.demand_score,
                 "demand_count": sd.demand_count,
+                "why_recommended": f"High market demand skill ({sd.demand_count} listings across market).",
             }
             for sd in demand.skill_demand
             if sd.skill_name.strip().lower() not in student_names
